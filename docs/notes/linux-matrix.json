@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T23:48:20+00:00",
+  "verified_at_utc": "2026-10-20T23:49:34+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1536,10 +1536,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39513217922/job/118939062106",
           "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39516376337/job/118950874118",
+          "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
+          "conclusion": "success"
         }
       ],
       "notes": "Current fork run built the x86_64 Nix derivation, installed it in a disposable profile, and passed runtime and GUI smoke checks.",
-      "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7"
+      "source_commit": "0a149db47c9748d166561eed220042e8604429e5"
     },
     {
       "target": "nix",
@@ -1619,10 +1625,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39515913122/job/118947889834",
           "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39516376337/job/118950874296",
+          "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
+          "conclusion": "success"
         }
       ],
       "notes": "Current fork run: AArch64 derivation build, disposable profile installation, runtime imports and GUI smoke succeeded.",
-      "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469"
+      "source_commit": "0a149db47c9748d166561eed220042e8604429e5"
     },
     {
       "target": "guix",
