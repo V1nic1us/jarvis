@@ -550,6 +550,11 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   ```
 - Log: `.superpowers/sdd/2026-10-14-jarvis-linux/host-kde-overlay-wayland-2026-10-20.log`
   (SHA256 `d930710bedce2b6185a2f96b446f47ca9f1ff26af81fa40ece18353a8dedd105`).
+- A mesma prova foi repetida com o binário release recém-compilado no worktree:
+  `cargo build --release --locked --manifest-path gui/src-tauri/Cargo.toml --bin jarvis-overlay`
+  terminou em 43,23 s e o fixture passou no KDE Wayland. O log está em
+  `.superpowers/sdd/2026-10-14-jarvis-linux/host-kde-overlay-wayland-release-2026-10-20.log`
+  (SHA256 `8ee7bdd8a7cf4efd89f16de2f72b25b9b00f204b13f49c2c631756b37f6f7ff1`).
 - Isto valida somente o lifecycle do overlay no KDE Wayland. O pacote instalado,
   concessões/revogação dos portais, áudio físico e outros desktops continuam
   pendentes.
