@@ -13,6 +13,7 @@
              (gnu packages cmake)
              (gnu packages commencement)
              (gnu packages compression)
+             (gnu packages curl)
              (gnu packages elf)
              (gnu packages freedesktop)
              (gnu packages gcc)
@@ -20,6 +21,8 @@
              (gnu packages glib)
              (gnu packages gtk)
              (gnu packages linux)
+             (gnu packages libffi)
+             (gnu packages llvm)
              (gnu packages machine-learning)
              (gnu packages node)
              (gnu packages ninja)
@@ -43,6 +46,7 @@
              (guix build utils))
 
 (load "cargo-crate-sources.scm")
+(load "rust-toolchain.scm")
 
 (define onednn-aarch64-jarvis
   ;; The Guix oneDNN 3.10.2 benchdnn sources do not compile on AArch64 with
@@ -352,16 +356,32 @@ that embeds espeak-ng for phonemization.")
           (delete 'validate-runpath)
           (add-after 'unpack 'enter-tauri-project
             (lambda _ (chdir "gui/src-tauri")))
-          ;; These Windows DLLs are test fixtures from libloading, not build or
+          ;; These Windows binaries are unused on Linux and are not build or
           ;; runtime inputs. Guix's pre-generated-file scan rejects them even
-          ;; though the package does not run upstream crate tests.
-          (add-after 'configure 'remove-libloading-test-dlls
+          ;; though Cargo does not build Windows-only target dependencies.
+          (add-after 'configure 'remove-unused-windows-binaries
             (lambda _
               (for-each
                (lambda (path)
-                 (when (file-exists? path) (delete-file path)))
+                 (when (file-exists? path) (delete-file-recursively path)))
                '("guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa32.dll"
-                 "guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa64.dll"))))
+                 "guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa64.dll"
+                 "guix-vendor/rust-winapi-i686-pc-windows-gnu-0.4.0.tar.gz/lib"
+                 "guix-vendor/rust-winapi-x86-64-pc-windows-gnu-0.4.0.tar.gz/lib"
+                 "guix-vendor/rust-windows-aarch64-gnullvm-0.42.2.tar.gz/lib"
+                 "guix-vendor/rust-windows-aarch64-msvc-0.42.2.tar.gz/lib"
+                 "guix-vendor/rust-windows-i686-gnu-0.42.2.tar.gz/lib"
+                 "guix-vendor/rust-windows-i686-msvc-0.42.2.tar.gz/lib"
+                 "guix-vendor/rust-windows-x86-64-gnu-0.42.2.tar.gz/lib"
+                 "guix-vendor/rust-windows-x86-64-gnullvm-0.42.2.tar.gz/lib"
+                 "guix-vendor/rust-windows-x86-64-msvc-0.42.2.tar.gz/lib"
+                 "guix-vendor/rust-webview2-com-sys-0.39.1.tar.gz/arm64"
+                 "guix-vendor/rust-webview2-com-sys-0.39.1.tar.gz/x64"
+                 "guix-vendor/rust-webview2-com-sys-0.39.1.tar.gz/x86"
+                 "guix-vendor/rust-wit-bindgen-0.57.1.tar.gz/src/rt/libwit_bindgen_cabi.a"
+                 "guix-vendor/rust-wit-bindgen-0.57.1.tar.gz/src/rt/wit_bindgen_cabi_realloc.o"
+                 "guix-vendor/rust-wit-bindgen-0.57.1.tar.gz/src/rt/wit_bindgen_cabi_wasip3.o"
+                 "guix-vendor/rust-wit-bindgen-0.57.1.tar.gz/wasi-cli@0.2.0.wasm"))))
           ;; Stripping OpenCode drops version metadata used by --version.
           (add-before 'strip 'save-opencode-unstripped
             (lambda* (#:key outputs #:allow-other-keys)
@@ -439,7 +459,10 @@ that embeds espeak-ng for phonemization.")
                    gtk+ webkitgtk-for-gtk3 libsoup glib at-spi2-core espeak-ng dbus
                    xdotool wl-clipboard xclip zlib openssl glibc
                    (list gcc-14 "lib")))
-    (native-inputs (list pkg-config node rust patchelf))
+    (native-inputs
+     (list pkg-config node rust-1.90-jarvis
+           (list rust-1.90-jarvis "cargo")
+           patchelf))
     (home-page "https://github.com/V1nic1us/jarvis")
     (synopsis "Voice assistant with a native Linux overlay")
     (description

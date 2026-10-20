@@ -66,7 +66,8 @@ case "$task_target" in
         python3 "$task_root/scripts/fetch-opencode.py" \
             --target "$task_arch-glibc" --output "$task_build/opencode-package"
         cp "$task_root/packaging/guix/jarvis.scm" \
-            "$task_root/packaging/guix/cargo-crate-sources.scm" "$task_build/"
+            "$task_root/packaging/guix/cargo-crate-sources.scm" \
+            "$task_root/packaging/guix/rust-toolchain.scm" "$task_build/"
         (cd "$task_build" && guix build -f ./jarvis.scm \
             --system="$task_system" \
             --root="$task_output/jarvis-assistant")

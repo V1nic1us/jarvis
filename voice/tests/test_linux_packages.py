@@ -211,14 +211,37 @@ def test_guix_aarch64_onednn_disables_upstream_tests():
     assert '"-DDNNL_BUILD_TESTS=OFF"' in onednn
 
 
-def test_guix_removes_libloading_windows_test_binaries_before_binary_scan():
+def test_guix_removes_unused_windows_binaries_before_binary_scan():
     recipe=(ROOT/"packaging/guix/jarvis.scm").read_text()
     assistant=recipe.split("(define-public jarvis-assistant",1)[1]
     phase=assistant.split("(replace 'install",1)[0]
-    assert "add-after 'configure 'remove-libloading-test-dlls" in phase
-    assert '(delete-file path)' in phase
+    assert "add-after 'configure 'remove-unused-windows-binaries" in phase
+    assert '(delete-file-recursively path)' in phase
     assert '"guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa32.dll"' in phase
     assert '"guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa64.dll"' in phase
+    assert '"guix-vendor/rust-winapi-i686-pc-windows-gnu-0.4.0.tar.gz/lib"' in phase
+    assert '"guix-vendor/rust-winapi-x86-64-pc-windows-gnu-0.4.0.tar.gz/lib"' in phase
+    for target in ('aarch64-gnullvm','aarch64-msvc','i686-gnu','i686-msvc',
+                   'x86-64-gnu','x86-64-gnullvm','x86-64-msvc'):
+        assert f'"guix-vendor/rust-windows-{target}-0.42.2.tar.gz/lib"' in phase
+    for path in ('arm64','x64','x86'):
+        assert f'"guix-vendor/rust-webview2-com-sys-0.39.1.tar.gz/{path}"' in phase
+    for path in ('src/rt/libwit_bindgen_cabi.a',
+                 'src/rt/wit_bindgen_cabi_realloc.o',
+                 'src/rt/wit_bindgen_cabi_wasip3.o',
+                 'wasi-cli@0.2.0.wasm'):
+        assert f'"guix-vendor/rust-wit-bindgen-0.57.1.tar.gz/{path}"' in phase
+
+
+def test_guix_pins_rust_190_for_current_cargo_lockfile():
+    recipe=(ROOT/'packaging/guix/jarvis.scm').read_text()
+    toolchain=(ROOT/'packaging/guix/rust-toolchain.scm').read_text()
+    assert '(define rust-1.90-jarvis' in toolchain
+    assert '"1.90.0"' in toolchain
+    assistant=recipe.split('(define-public jarvis-assistant',1)[1]
+    assert '(list pkg-config node rust-1.90-jarvis' in assistant
+    assert '(list rust-1.90-jarvis "cargo")' in assistant
+    assert '(load "rust-toolchain.scm")' in recipe
 
 
 def test_guix_uv_dynamic_versioning_uses_compatible_dunamai():
@@ -261,6 +284,8 @@ def test_guix_target_has_local_package_recipe_and_native_driver(tmp_path):
     listed=set(re.findall(r'^\s+(rust-[^\s)]+)',cargo_inputs,re.M))
     assert defined <= listed
     recipe_text=recipe.read_text()
+    build_driver=(ROOT/'scripts/build-package.sh').read_text()
+    assert '"$task_root/packaging/guix/rust-toolchain.scm"' in build_driver
     assert '(supported-systems \'("x86_64-linux" "aarch64-linux"))' in recipe_text
     assert '(guix build-system python)' in recipe_text
     assert '(inherit python-piper-tts)' not in recipe_text
@@ -284,7 +309,10 @@ def test_guix_target_has_local_package_recipe_and_native_driver(tmp_path):
     assert '(invoke "patchelf" "--set-interpreter" loader opencode)' in recipe_text
     assert '"--set-rpath"' not in recipe_text
     assert '(chmod opencode #o755)' in recipe_text
-    assert 'pkg-config node rust patchelf' in recipe_text
+    assert 'pkg-config node' in recipe_text
+    assert '(list pkg-config node rust-1.90-jarvis' in recipe_text
+    assert '(list rust-1.90-jarvis "cargo")' in recipe_text
+    assert 'patchelf))' in recipe_text
     assert 'xclip zlib openssl glibc' in recipe_text and '(list gcc-14 "lib")))' in recipe_text
     assert "(delete 'validate-runpath)" in recipe_text
     assert 'dirname (search-input-file inputs "/lib/libstdc++.so.6")' in recipe_text
