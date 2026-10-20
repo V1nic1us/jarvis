@@ -210,6 +210,7 @@ def test_guix_aarch64_onednn_disables_upstream_tests():
     recipe=(ROOT/'packaging/guix/jarvis.scm').read_text()
     onednn=recipe.split('(define onednn-aarch64-jarvis',1)[1].split('(define ctranslate2-aarch64-jarvis',1)[0]
     assert '"-DDNNL_BUILD_TESTS=OFF"' in onednn
+    assert '"-DDNNL_BUILD_EXAMPLES=OFF"' in onednn
 
 
 def test_guix_removes_unused_windows_binaries_before_binary_scan():

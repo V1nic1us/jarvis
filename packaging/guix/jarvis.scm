@@ -50,14 +50,16 @@
 
 (define onednn-aarch64-jarvis
   ;; The Guix oneDNN 3.10.2 benchdnn sources do not compile on AArch64 with
-  ;; DNNL_EXPERIMENTAL_UKERNEL enabled. Tests and benchmarks are not needed
-  ;; when oneDNN is a runtime dependency of PyTorch.
+  ;; DNNL_EXPERIMENTAL_UKERNEL enabled. Tests and examples are not needed when
+  ;; oneDNN is a runtime dependency of PyTorch.
   (package/inherit onednn
     (name "onednn-aarch64-jarvis")
     (arguments
      (substitute-keyword-arguments (package-arguments onednn)
        ((#:configure-flags flags)
-        #~(append #$flags '("-DDNNL_BUILD_TESTS=OFF")))))))
+        #~(append #$flags
+                  '("-DDNNL_BUILD_TESTS=OFF"
+                    "-DDNNL_BUILD_EXAMPLES=OFF")))))))
 
 (define ctranslate2-aarch64-jarvis
   (package/inherit ctranslate2
