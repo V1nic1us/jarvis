@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T21:43:00+00:00",
+  "verified_at_utc": "2026-10-20T21:45:45+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -74,6 +74,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953741",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156809",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
           "conclusion": "success"
         }
       ]
@@ -238,6 +244,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953699",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156841",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
           "conclusion": "success"
         }
       ]
@@ -622,6 +634,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953780",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901157153",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
           "conclusion": "success"
         }
       ]
