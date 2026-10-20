@@ -126,10 +126,18 @@ com consentimento e execução em outros desktops ainda não foram verificadas.
   uma segunda janela de teste permaneceu ativa e seu campo não foi alterado;
   posição do ponteiro reportada pelo XWayland permaneceu idêntica. O teste
   opt-in `JARVIS_DESKTOP_TESTS=1` passou, sem modificar apps do usuário.
-- Rechecagem no host KDE Wayland (2026-10-20): o mesmo teste opt-in foi
-  pulado antes de qualquer mutação porque tanto a janela de teste quanto a
-  sentinela reportaram `active=false`. O log e o estado do fixture foram
-  preservados; essa rechecagem não valida nem invalida o resultado anterior.
+- Rechecagem inicial no host KDE Wayland (2026-10-20) foi pulada antes de
+  qualquer mutação porque as janelas reportaram `active=false`. Uma execução
+  seguinte alcançou o pedido AT-SPI, mas falhou porque o socket `bus_1` do host
+  recusou conexões. O serviço `at-spi-dbus-bus` aparecia ativo; reiniciá-lo
+  restaurou o socket e a chamada D-Bus.
+- Após a correção do barramento da sessão, `JARVIS_DESKTOP_TESTS=1 python3 -m pytest voice/tests/test_atspi_desktop.py -q -rs`
+  passou com 1 teste. O campo
+  descartável recebeu texto em background, a janela sentinela manteve o foco e
+  a posição do ponteiro permaneceu inalterada. Log e hash:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/atspi-wayland-focus-recheck-pass-2026-10-20.log`
+  (`85c3e34df3337375b023792993d5880ace51098d60f8a6d4b62bb027a039340d`). O teste
+  continua limitado a esta sessão KDE Wayland e não cobre outros desktops.
 - Corrigida ambiguidade GI entre getter de interface `Accessible.get_text`
   e leitura `Atspi.Text.get_text`; falha real reproduzida antes da correção.
 - MCP inicializado pelo cliente stdio real: ferramentas neutras registradas e

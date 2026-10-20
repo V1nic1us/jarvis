@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T19:20:19+00:00",
+  "verified_at_utc": "2026-10-20T19:33:09+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1977,17 +1977,22 @@
       "session": "wayland",
       "package": "source tests",
       "capability": "atspi_background_focus_preservation_recheck",
-      "status": "unverified",
+      "status": "passed",
       "command": "JARVIS_DESKTOP_TESTS=1 python3 -m pytest voice/tests/test_atspi_desktop.py -q -rs",
       "evidence": [
         {
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/atspi-wayland-focus-skip-2026-10-20.log",
           "sha256": "e58eae7ec920342a740a7dcc640307b179d493b3dd38edd1900d5093bf60e835"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/atspi-wayland-focus-recheck-pass-2026-10-20.log",
+          "sha256": "85c3e34df3337375b023792993d5880ace51098d60f8a6d4b62bb027a039340d"
         }
       ],
-      "source_commit": "09c44c31f5c6ed5d0127147f8c686287f38262da",
-      "notes": "Recheck skipped safely before mutation: the test GTK window and its sentinel both reported active=false on the real Wayland session. This records a current test-environment limitation; it does not supersede the earlier successful background AT-SPI test recorded in docs/notes/linux-verification.md."
+      "source_commit": "322d08b039a4d7fafd2ac6d7d6db7fd8398b4ab2",
+      "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session."
     },
     {
       "target": "arch",
