@@ -273,6 +273,7 @@ def test_guix_target_has_local_package_recipe_and_native_driver(tmp_path):
     assert item['implementation']=='recipe'
     assert item['recipe']=='packaging/guix/jarvis.scm'
     assert item['validation']=='installed-smoke'
+    assert item['architectures']==['x86_64','aarch64']
     assert item['validated_architectures']==['x86_64']
     assert "#:cargo-build-flags ''(\"--release\")" in (ROOT/item['recipe']).read_text()
     assert '"../../scripts/prepare-package.py"' in (ROOT/item['recipe']).read_text()

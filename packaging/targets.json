@@ -207,7 +207,8 @@
     "version": null,
     "libc": "glibc",
     "architectures": [
-      "x86_64"
+      "x86_64",
+      "aarch64"
     ],
     "format": "guix",
     "recipe": "packaging/guix/jarvis.scm",
