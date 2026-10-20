@@ -1076,9 +1076,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053779/job/118825954133",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39513216427/job/118939057368",
+          "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7",
+          "conclusion": "success"
         }
       ],
-      "notes": "Revision 2 generated directly by xbps-src with mesa as an explicit runtime dependency. Removing Mesa before installation caused XBPS to install it from the package dependency; the clean lifecycle passed."
+      "notes": "Current fork run built the x86_64 glibc XBPS package, then installed, inspected and removed it in a clean Void container.",
+      "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7"
     },
     {
       "target": "void-glibc",
