@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T12:45:00+00:00",
+  "verified_at_utc": "2026-10-20T19:20:19+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -68,6 +68,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623593243",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953741",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ]
@@ -158,6 +164,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623593035",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953458",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ]
     },
@@ -221,6 +233,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623593683",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953699",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ]
     },
@@ -271,6 +289,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623630949",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953622",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ]
@@ -329,6 +353,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623652663",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953761",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ]
     },
@@ -385,6 +415,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623633898",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953133",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ]
@@ -443,6 +479,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623593495",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953851",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ]
     },
@@ -499,6 +541,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623593949",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953488",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ]
@@ -569,6 +617,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623594580",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953780",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ]
     },
@@ -619,6 +673,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623594626",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953576",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ],
@@ -678,6 +738,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623594276",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953802",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ],
       "notes": "AlmaLinux 10 package lifecycle passed on aarch64. xdotool pointer and xclip clipboard roundtrip ran through headless Xwayland using xwfb-run with Weston; the installed native Wayland overlay passed relaunch/exit. Full desktop, portal and physical audio remain unverified."
@@ -736,6 +802,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623595320",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953596",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ]
     },
@@ -792,6 +864,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181097/job/118623593860",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953662",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ]
@@ -862,6 +940,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181120/job/118615895953",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053779/job/118825954133",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ],
@@ -951,6 +1035,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181120/job/118615895335",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053779/job/118825953700",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ],
@@ -1183,6 +1273,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181102/job/118615566573",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053242/job/118825953298",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ]
     },
@@ -1239,6 +1335,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181102/job/118615567158",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053242/job/118825953153",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ]
@@ -1721,6 +1823,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181117/job/118615565826",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053338/job/118825953050",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+          "conclusion": "success"
         }
       ],
       "notes": "Native x86_64 Flatpak bundle built with pinned GNOME SDK/runtime commits, installed and removed from the user profile. Doctor found bundled Piper/model, OpenCode 1.18.23 and voice/MCP/AT-SPI imports passed; Piper synthesized a 2.67 s WAV. Real portal grants, desktop control/AT-SPI and audio capture/playback remain unverified."
@@ -1766,6 +1874,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39430093148/job/118652574045",
           "source_commit": "afddf316195189015163e55797d373c01ed35374",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053338/job/118825952876",
+          "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
         }
       ],

@@ -141,10 +141,13 @@ ABI e imports Python privados, recursos, integridade, abertura/segunda execuçã
 da interface em X11 isolado, saída e remoção preservando dados. Também cobre
 atualização DEB em x86_64/AArch64 e atualização APK assinada nas duas arquiteturas.
 Essas verificações não substituem a matriz de áudio, portais, GNOME/KDE e
-sessões reais. O Flatpak passou build e smoke em x86_64/AArch64 na [CI
-39419181117](https://github.com/V1nic1us/jarvis/actions/runs/39419181117); Nix
-passou build e ciclo de instalação em ambas as arquiteturas na [CI
-39419181102](https://github.com/V1nic1us/jarvis/actions/runs/39419181102).
+sessões reais. No commit `12279e468fc53a43ad5e49727bcff5d332d3fecf`, os 13 jobs
+nativos passaram na [CI native packages](https://github.com/V1nic1us/jarvis/actions/runs/39480053201),
+Flatpak x86_64/AArch64 passou na [CI Flatpak](https://github.com/V1nic1us/jarvis/actions/runs/39480053338)
+e Nix passou build e ciclo de instalação em ambas as arquiteturas na [CI Nix](https://github.com/V1nic1us/jarvis/actions/runs/39480053242).
+O [job Void glibc](https://github.com/V1nic1us/jarvis/actions/runs/39480053779)
+passou em x86_64 e AArch64; os jobs Void musl ainda estavam em execução quando
+esta evidência foi atualizada.
 
 Slackware current tem um SlackBuild local; build, instalação e imports do runtime
 foram exercitados em container x86_64, incluindo a reinicialização isolada do
