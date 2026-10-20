@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T19:33:09+00:00",
+  "verified_at_utc": "2026-10-20T19:41:30+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2060,6 +2060,29 @@
       ],
       "source_commit": "2d4cc2ea934719201b5f94ea247b3aecfa6928da",
       "notes": "The installed Flatpak window was found over the host AT-SPI bus; its tree exposed the frame, web document, and “Abrir menu Jarvis” button. The host at-spi-dbus-bus service had been restarted first because its stale socket refused connections. Confirms accessibility-tree discovery for this Flatpak/KDE Wayland session, not button activation, portal grants, or audio capture."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "source-level Linux integration tests",
+      "session": "pytest",
+      "package": "source-tests",
+      "capability": "linux_source_integration_suite",
+      "status": "passed",
+      "command": "PYTHONPATH=/tmp/jarvis-portal-test-deps:voice pytest -q -rs voice/tests/test_linux_context.py voice/tests/test_linux_input.py voice/tests/test_linux_install.py voice/tests/test_linux_screen.py voice/tests/test_portal.py voice/tests/test_flatpak_build.py",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-source-integration-suite-2026-10-20.log",
+          "sha256": "f2e04a751215aa6392e6b2a7dafca9e65f9321df6977c13b416c7d9cd1d0c88b",
+          "passed": 58
+        }
+      ],
+      "source_commit": "c63750b5aabe3792675d91cef9763484e393c681",
+      "notes": "All selected Linux integration suites passed with the pinned runtime dependency dbus-next==0.2.3 available in an isolated temporary directory. This source-level result does not replace live portal permission, physical audio, or cross-desktop validation."
     }
   ],
   "pending_gates": [

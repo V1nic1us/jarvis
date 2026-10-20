@@ -610,3 +610,15 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O app foi removido sem `--delete-data`. O diretório de dados do usuário
   permaneceu com 362975429 bytes, incluindo o modelo de voz de 63201294 bytes.
   Portais e gravação física de áudio seguem pendentes.
+
+### Suíte de integração Linux de código-fonte — 2026-10-20
+
+- `test_linux_context`, `test_linux_input`, `test_linux_install`,
+  `test_linux_screen`, `test_portal` e `test_flatpak_build` passaram juntos:
+  **58 passed**, sem skips, em Arch rolling x86_64.
+- O host não tinha `dbus-next`; a versão fixada `0.2.3` foi instalada em um
+  diretório temporário isolado, sem alterar o ambiente do sistema. O resultado
+  está em `.superpowers/sdd/2026-10-14-jarvis-linux/linux-source-integration-suite-2026-10-20.log`
+  (SHA256 `f2e04a751215aa6392e6b2a7dafca9e65f9321df6977c13b416c7d9cd1d0c88b`).
+- São testes de código e harnesses locais; consentimento real de portal, áudio
+  físico e funcionamento em outras sessões desktop continuam pendentes.
