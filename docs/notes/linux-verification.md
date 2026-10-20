@@ -677,6 +677,9 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O tarball tem 235 entradas e inclui `LICENSE`, `voice/`, `gui/`, `mcp_servers/`,
   `packaging/` e `scripts/`. Ambientes locais, `.superpowers`, `.worktrees` e
   arquivos de configuração do usuário são excluídos pelo arquivador.
+- Repeti a verificação em checkout limpo de `5aa0407`: ambas as gerações deram
+  SHA256 `9ff8f82bd3519a1de507e6052ece0c84d0058d5a51ffa8666a4e25ffafc9cf80`,
+  também com 235 entradas e `LICENSE` presente.
 - Isso comprova reprodutibilidade do arquivo de fontes do checkout, mas ainda
   não associa cada pacote publicado ao seu arquivo de fontes nem gera SBOM ou
   confirma a presença dos avisos de licença de todas as dependências.
