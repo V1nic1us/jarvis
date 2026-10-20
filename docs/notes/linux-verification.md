@@ -559,3 +559,17 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   (`f8c66788eb652ca13bf9db1c01c05789f08d66b365605e3290b05ccc3c56b5a8`) e
   `.superpowers/sdd/2026-10-14-jarvis-linux/arch-linux-screen-portal-tests-2026-10-20.log`
   (`46531d98af9cf9dc800252a196ea7d13e555233134f913a8cd56263e6045ef03`).
+
+### Regressão Linux e serviços MCP — 2026-10-20
+
+- Em venv isolado no host Arch x86_64, `voice/tests` passou com 481 testes e
+  1 skip. O único skip restante é o teste opt-in que digita numa janela
+  descartável da sessão gráfica; não foi habilitado nesta execução.
+- Os 12 testes do portal D-Bus privado e o teste STT de decodificação PCM
+  passaram com `dbus-next==0.2.3`, `faster-whisper==1.2.1` e `av==18.1.0`,
+  respeitando os limites de `voice/requirements.txt`.
+- `mcp_servers/win_context/tests`: 13 passed; `mcp_servers/delegate_local/tests`:
+  17 passed. As dependências foram instaladas no mesmo venv conforme os
+  arquivos `requirements.txt` dos serviços (`mcp==2.3.0`).
+- Esses testes usam serviços D-Bus privados ou doubles; não validam concessão
+  real de portal, hardware de áudio, nem o comportamento em cada desktop/distro.
