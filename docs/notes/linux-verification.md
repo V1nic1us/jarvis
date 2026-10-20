@@ -654,3 +654,17 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   evidências de lifecycle e configuração dos workflows. Log:
   `.superpowers/sdd/2026-10-14-jarvis-linux/linux-package-recipe-tests-current-2026-10-20.log`
   (SHA256 `106194d44b683958bbf138d9f5f2c7d196e448659b6cbbea67f088768695af0d`).
+
+### Atualização e preservação de dados do Flatpak — 2026-10-20
+
+- Em um perfil Flatpak isolado, instalei o bundle x86_64 do run
+  `39444588292`, confirmei `jarvis --doctor`, gravei uma sentinela no
+  `XDG_DATA_HOME` do sandbox e atualizei in-place para o bundle do run
+  `39480053338` com `flatpak install --bundle --or-update`.
+- O `jarvis --doctor` passou antes e depois da atualização, e a sentinela
+  permaneceu com o mesmo SHA256. Os dois bundles conferiram com seus sidecars.
+  O log reproduzível está em
+  `.superpowers/sdd/2026-10-14-jarvis-linux/flatpak-x86_64-upgrade-2026-10-20.log`
+  (SHA256 `9c47ef6f9561fedee554d4b7463a9461468ba838e81cf4b8c6e233e4e4e3e15e`).
+- Isso fecha somente o lifecycle de atualização e preservação de dados Flatpak
+  x86_64; autorização real de portal e captura de áudio continuam pendentes.

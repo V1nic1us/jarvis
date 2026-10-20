@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T22:05:46+00:00",
+  "verified_at_utc": "2026-10-20T22:26:51+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2312,6 +2312,28 @@
       ],
       "source_commit": "9e692028c619f5e9ea11dde5db59e74612285d4f",
       "notes": "The packaging test suite checked target declarations against recipe files, architecture claims, package lifecycle evidence and workflow setup; all 63 tests passed on the current matrix."
+    },
+    {
+      "target": "flatpak",
+      "distro": "universal-linux",
+      "version": "GNOME Platform 49",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "isolated Flatpak user profile",
+      "session": "stable bundle in-place upgrade",
+      "package": "flatpak bundle",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "flatpak install --user --bundle <old>; jarvis --doctor; write XDG_DATA_HOME sentinel; flatpak install --user --bundle --or-update <new>; jarvis --doctor; verify sentinel; flatpak uninstall",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/flatpak-x86_64-upgrade-2026-10-20.log",
+          "sha256": "9c47ef6f9561fedee554d4b7463a9461468ba838e81cf4b8c6e233e4e4e3e15e"
+        }
+      ],
+      "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
+      "notes": "Installed the x86_64 bundle from run 39444588292, then updated in-place to run 39480053338. jarvis --doctor passed before and after; an XDG_DATA_HOME sentinel retained the same SHA256. Bundle sidecar checksums matched. This verifies Flatpak user-data preservation and lifecycle only; it does not verify real portal consent or audio capture."
     }
   ],
   "pending_gates": [
