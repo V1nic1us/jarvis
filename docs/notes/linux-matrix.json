@@ -1761,6 +1761,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39419181117/job/118615566152",
           "source_commit": "d6b851859d122ef52e6a471e54d6f27e3f2c9a7d",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39430093148/job/118652574045",
+          "source_commit": "afddf316195189015163e55797d373c01ed35374",
+          "conclusion": "success"
         }
       ],
       "notes": "AArch64 bundle built on an ARM runner, installed and inspected in the sandbox. Doctor and imports passed. The CI smoke does not test uninstall, real desktop portals or physical audio; those remain separate validation gates."

@@ -131,7 +131,8 @@
     "implementation": "recipe",
     "validation": "bundle-smoke",
     "validated_architectures": [
-      "x86_64"
+      "x86_64",
+      "aarch64"
     ]
   },
   "void-glibc": {

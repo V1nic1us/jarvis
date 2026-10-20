@@ -184,6 +184,7 @@ def test_target_catalog_records_recipe_and_validation_separately():
     assert catalog['void-musl']['recipe']=='packaging/void-musl/template'
     assert catalog['void-musl']['validation']=='installed-smoke'
     assert catalog['void-musl']['validated_architectures']==['x86_64','aarch64']
+    assert catalog['flatpak']['validated_architectures']==['x86_64','aarch64']
     for item in catalog.values():
         assert set(item['validated_architectures']) <= set(item['architectures'])
         if item['validation']=='unverified':assert not item['validated_architectures']
@@ -196,11 +197,11 @@ def test_target_catalog_validation_matches_passed_package_lifecycle_evidence():
     catalog=json.loads((ROOT/'packaging/targets.json').read_text())
     matrix=json.loads((ROOT/'docs/notes/linux-matrix.json').read_text())
     for target,item in catalog.items():
-        capability=('flatpak_native_bundle_lifecycle'
-                    if item['validation']=='bundle-smoke' else 'native_package_lifecycle')
+        capabilities=({'flatpak_native_bundle_lifecycle','flatpak_installed_runtime_smoke'}
+                      if item['validation']=='bundle-smoke' else {'native_package_lifecycle'})
         lifecycle=[row for row in matrix['results']
                    if row.get('target')==target
-                   and row.get('capability')==capability]
+                   and row.get('capability') in capabilities]
         passed={row['arch'] for row in lifecycle if row['status']=='passed'}
         assert passed==set(item['validated_architectures']),target
 
@@ -492,7 +493,7 @@ def test_linux_target_claims_match_recipe_files_and_lifecycle_evidence():
         for arch in item['validated_architectures']:
             if item['validation']=='bundle-smoke':
                 assert any(r['target']==target and r['arch']==arch and r['status']=='passed'
-                           and r['capability']=='flatpak_native_bundle_lifecycle' for r in matrix['results']), (target,arch)
+                           and r['capability'] in ('flatpak_native_bundle_lifecycle','flatpak_installed_runtime_smoke') for r in matrix['results']), (target,arch)
             else:
                 assert (target,arch) in passed,(target,arch)
     for result in matrix['results']:
