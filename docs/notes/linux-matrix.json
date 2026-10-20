@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T21:45:45+00:00",
+  "verified_at_utc": "2026-10-20T21:47:36+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1297,8 +1297,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053242/job/118825953298",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884092/job/118901157321",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "notes": "The latest x86_64 Nix CI job built the derivation, installed it into a disposable profile, passed runtime imports and Xvfb overlay relaunch checks, then removed it while preserving user data."
     },
     {
       "target": "nix",
