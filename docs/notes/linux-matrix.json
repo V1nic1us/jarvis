@@ -1627,7 +1627,9 @@
       "evidence": [
         {
           "kind": "local_validation_log",
-          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-lifecycle-x86_64.log"
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-lifecycle-x86_64.log",
+          "sha256": "3314985baaa8e4ec90e740fa85c708aa3a898260eb76d71a1f02088942761219",
+          "size_bytes": 418288
         }
       ]
     },
