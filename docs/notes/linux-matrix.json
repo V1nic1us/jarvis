@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T22:26:51+00:00",
+  "verified_at_utc": "2026-10-20T22:57:16+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2339,7 +2339,7 @@
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: x86_64 RHEL, Gentoo, Nix, Guix, Solus and Flatpak; AArch64 Arch, Fedora, openSUSE, RHEL, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
+    "Native package upgrade/data-preservation tests still missing: x86_64 RHEL, Gentoo, Nix, Guix and Solus; AArch64 Arch, Fedora, openSUSE, RHEL, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
