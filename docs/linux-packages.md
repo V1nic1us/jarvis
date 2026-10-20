@@ -121,25 +121,29 @@ Ubuntu com as dependências de build e Rust compatível já instalados.
 
 ## Estado da validação
 
-A [CI 38910794267](https://github.com/V1nic1us/jarvis/actions/runs/38910794267)
-concluiu os nove testes nativos do commit `9ac3e30`:
+A [CI nativa 39419181097](https://github.com/V1nic1us/jarvis/actions/runs/39419181097)
+concluiu com sucesso 13 combinações depois de repetir o job Arch x86_64:
 
-| Família | Base | Arquiteturas com teste básico instalado |
+| Família | Base | Arquiteturas validadas |
 |---|---|---|
 | Arch | rolling | x86_64 |
 | Debian | 13 | x86_64, aarch64 |
 | Ubuntu | 24.04 | x86_64, aarch64 |
 | Fedora | 44 | x86_64, aarch64 |
 | openSUSE | Tumbleweed | x86_64, aarch64 |
+| RHEL | 10 (AlmaLinux) | x86_64, aarch64 |
+| Alpine | 3.24 | x86_64, aarch64 |
 
-Esses testes cobrem instalação pelo gerenciador nativo, diagnóstico, ABI e
-imports Python privados, recursos, integridade, abertura e segunda execução da
-interface em X11 isolado, saída e remoção preservando o dado de teste.
-Não substituem a matriz de áudio, portais, GNOME/KDE e sessões reais.
-Atualizações de versão dessas cinco famílias continuam pendentes.
+O ciclo CI instala cada pacote no gerenciador nativo e verifica diagnóstico,
+ABI e imports Python privados, recursos, integridade, abertura/segunda execução
+da interface em X11 isolado, saída e remoção preservando dados. Também cobre
+atualização DEB em x86_64/AArch64 e atualização APK assinada nas duas arquiteturas.
+Essas verificações não substituem a matriz de áudio, portais, GNOME/KDE e
+sessões reais. O Flatpak passou build e smoke em x86_64/AArch64 na [CI
+39419181117](https://github.com/V1nic1us/jarvis/actions/runs/39419181117); Nix
+passou build e ciclo de instalação em ambas as arquiteturas na [CI
+39419181102](https://github.com/V1nic1us/jarvis/actions/runs/39419181102).
 
-Alpine 3.24 e RHEL 10 também passaram por smoke instalado em x86_64 e ARM64;
-as lacunas de desktop, áudio e atualização entre versões estão descritas abaixo.
 Slackware current tem um SlackBuild local; build, instalação e imports do runtime
 foram exercitados em container x86_64, incluindo a reinicialização isolada do
 overlay e remoção preservando os dados do usuário. O catálogo registra
