@@ -573,3 +573,16 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   arquivos `requirements.txt` dos serviços (`mcp==2.3.0`).
 - Esses testes usam serviços D-Bus privados ou doubles; não validam concessão
   real de portal, hardware de áudio, nem o comportamento em cada desktop/distro.
+
+### Bundle Flatpak x86_64 instalado no Arch — 2026-10-20
+
+- O artefato `jarvis-flatpak-x86_64` da CI 39449565922 foi baixado e seu
+  SHA256 conferido. A CI usou o commit `2d4cc2ea934719201b5f94ea247b3aecfa6928da`;
+  desde ele, até o commit local `0e8f324`, só houve alterações de documentação.
+- Instalação pelo Flatpak de usuário passou. `jarvis --doctor` encontrou
+  OpenCode 1.18.23, Piper, modelo de voz e backend Pulse; os imports de
+  faster-whisper, Piper, MCP, httpx, DBus e AT-SPI passaram.
+- O app foi removido sem `--delete-data`; o diretório preexistente
+  `~/.var/app/com.jarvis.overlay` permaneceu com 361402124 bytes. Nenhuma janela
+  foi aberta: esta evidência cobre instalação/runtime/remoção, não portais ou
+  interação gráfica nessa sessão.
