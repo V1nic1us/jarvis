@@ -25,6 +25,12 @@ def test_overlay_x11_environment_ignores_host_desktop_choice(monkeypatch):
     assert 'XDG_SESSION_DESKTOP' not in env
 
 
+def test_void_builds_are_not_cancelled_by_new_commits():
+    for name in ('linux-void.yml','linux-nix.yml','linux-packages.yml'):
+        workflow=(ROOT/'.github/workflows'/name).read_text()
+        assert 'cancel-in-progress: false' in workflow, name
+
+
 def archive(binary=b'\x7fELFtest',kind=tarfile.REGTYPE,extra=None):
     stream=io.BytesIO()
     with tarfile.open(fileobj=stream,mode='w:gz') as tar:

@@ -10,7 +10,7 @@ permissions:
   contents: read
 concurrency:
   group: linux-void-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   void-glibc:
     name: void-glibc-${{ matrix.arch }}
