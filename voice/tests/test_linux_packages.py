@@ -16,6 +16,15 @@ overlay=importlib.util.module_from_spec(overlay_spec)
 overlay_spec.loader.exec_module(overlay)
 
 
+def test_overlay_x11_environment_ignores_host_desktop_choice(monkeypatch):
+    monkeypatch.setenv('XDG_CURRENT_DESKTOP','KDE')
+    monkeypatch.setenv('XDG_SESSION_DESKTOP','KDE')
+    env=overlay.x11_environment(':42')
+    assert env['DISPLAY']==':42'
+    assert 'XDG_CURRENT_DESKTOP' not in env
+    assert 'XDG_SESSION_DESKTOP' not in env
+
+
 def archive(binary=b'\x7fELFtest',kind=tarfile.REGTYPE,extra=None):
     stream=io.BytesIO()
     with tarfile.open(fileobj=stream,mode='w:gz') as tar:

@@ -71,6 +71,25 @@ def reap_helpers(excluded):
         time.sleep(0.05)
 
 
+def x11_environment(display):
+    env = dict(
+        os.environ,
+        DISPLAY=f":{display}" if str(display).isdigit() else str(display),
+        GDK_BACKEND="x11",
+        LIBGL_ALWAYS_SOFTWARE="1",
+        WEBKIT_DISABLE_COMPOSITING_MODE="1",
+        GTK_USE_PORTAL="0",
+        GIO_USE_VFS="local",
+    )
+    env["XDG_SESSION_TYPE"] = "x11"
+    for name in (
+        "AT_SPI_BUS_ADDRESS", "DBUS_STARTER_ADDRESS", "DBUS_STARTER_BUS_TYPE",
+        "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP", "XDG_SESSION_DESKTOP",
+    ):
+        env.pop(name, None)
+    return env
+
+
 def inside_session(binary):
     import gi
     gi.require_version("Atspi", "2.0")
@@ -177,18 +196,7 @@ def main():
         assert select.select([read_fd], [], [], 10)[0], "Xvfb did not initialize"
         display = os.read(read_fd, 64).decode().strip()
         assert display.isdigit(), "Xvfb did not allocate a display"
-        env = dict(
-            os.environ,
-            DISPLAY=f":{display}",
-            GDK_BACKEND="x11",
-            LIBGL_ALWAYS_SOFTWARE="1",
-            WEBKIT_DISABLE_COMPOSITING_MODE="1",
-            GTK_USE_PORTAL="0",
-            GIO_USE_VFS="local",
-        )
-        env["XDG_SESSION_TYPE"] = "x11"
-        for name in ("AT_SPI_BUS_ADDRESS", "DBUS_STARTER_ADDRESS", "DBUS_STARTER_BUS_TYPE", "WAYLAND_DISPLAY"):
-            env.pop(name, None)
+        env = x11_environment(display)
         with tempfile.TemporaryDirectory(prefix="jarvis-display-test-") as directory:
             env["HOME"] = directory
             for kind in ("CONFIG", "DATA", "CACHE", "STATE", "RUNTIME"):
