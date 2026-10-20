@@ -627,3 +627,7 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   (SHA256 `f2e04a751215aa6392e6b2a7dafca9e65f9321df6977c13b416c7d9cd1d0c88b`).
 - São testes de código e harnesses locais; consentimento real de portal, áudio
   físico e funcionamento em outras sessões desktop continuam pendentes.
+- Reexecução no checkout atual (`4ec4d80`): **58 passed, sem skips**, com
+  `dbus-next==0.2.3` isolado em `/tmp/jarvis-portal-test-deps`. Log:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/linux-source-integration-suite-current-2026-10-20.log`
+  (SHA256 `1f81eee383857373a4863cb478a77a589e027655de3dcac17c3b201e66babed9`).

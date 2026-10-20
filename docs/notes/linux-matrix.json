@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T21:51:12+00:00",
+  "verified_at_utc": "2026-10-20T21:58:16+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2116,10 +2116,17 @@
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-source-integration-suite-2026-10-20.log",
           "sha256": "f2e04a751215aa6392e6b2a7dafca9e65f9321df6977c13b416c7d9cd1d0c88b",
           "passed": 58
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-source-integration-suite-current-2026-10-20.log",
+          "sha256": "1f81eee383857373a4863cb478a77a589e027655de3dcac17c3b201e66babed9",
+          "passed": 58,
+          "skipped": 0
         }
       ],
-      "source_commit": "c63750b5aabe3792675d91cef9763484e393c681",
-      "notes": "All selected Linux integration suites passed with the pinned runtime dependency dbus-next==0.2.3 available in an isolated temporary directory. This source-level result does not replace live portal permission, physical audio, or cross-desktop validation."
+      "source_commit": "4ec4d80e5207be309f28dbe394102574aa760950",
+      "notes": "The full selected source-level Linux integration suite passed again on the current checkout: 58 passed, no skips, with pinned dbus-next 0.2.3 from an isolated temporary directory. This does not replace live portal permission, physical audio, or cross-desktop validation."
     }
   ],
   "pending_gates": [
