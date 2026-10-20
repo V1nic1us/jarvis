@@ -112,7 +112,18 @@
                (base32 "0xx13cmssda0p6h4x69njyiibkyd85hiv3mv8m1n5bgy5chhg35i"))))
     ;; Upstream tests import optional test-only packages such as tcolorpy,
     ;; which are not needed by Piper at runtime.
-    (arguments (list #:tests? #f))))
+    (arguments
+     (list
+      #:tests? #f
+      #:phases
+      #~(modify-phases %standard-phases
+          (add-after 'install 'fix-wheel-version
+            (lambda* (#:key outputs #:allow-other-keys)
+              (for-each
+               (lambda (metadata)
+                 (substitute* metadata
+                   (("^Version: 0\\.0\\.0$") "Version: 3.3.1")))
+               (find-files (assoc-ref outputs "out") "METADATA$"))))))))
 
 (define opencode-binary
   (local-file "opencode-package" "jarvis-opencode-1.18.23"))
