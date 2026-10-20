@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T22:02:13+00:00",
+  "verified_at_utc": "2026-10-20T22:05:46+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2288,6 +2288,30 @@
       ],
       "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
       "notes": "A second package revision upgraded the installed package, verified doctor/package integrity and preserved XDG user data before removal."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "source-level Linux packaging tests",
+      "session": "pytest",
+      "package": "source-tests",
+      "capability": "linux_package_recipe_tests",
+      "status": "passed",
+      "command": "python3 -m pytest -q voice/tests/test_linux_packages.py",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-package-recipe-tests-current-2026-10-20.log",
+          "sha256": "106194d44b683958bbf138d9f5f2c7d196e448659b6cbbea67f088768695af0d",
+          "passed": 63,
+          "skipped": 0
+        }
+      ],
+      "source_commit": "9e692028c619f5e9ea11dde5db59e74612285d4f",
+      "notes": "The packaging test suite checked target declarations against recipe files, architecture claims, package lifecycle evidence and workflow setup; all 63 tests passed on the current matrix."
     }
   ],
   "pending_gates": [

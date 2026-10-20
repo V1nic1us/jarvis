@@ -646,3 +646,11 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - A execução ocorreu no commit de código `91c7bba`; commits posteriores só
   atualizaram evidências. Esses resultados são de ciclo de pacote headless e
   não substituem desktops reais, áudio físico, nem concessão/revogação de portais.
+
+### Coerência das receitas e matriz de pacotes — 2026-10-20
+
+- `python3 -m pytest -q voice/tests/test_linux_packages.py`: **63 passed**.
+  A suíte verifica declarações de alvos contra arquivos de receita, arquiteturas,
+  evidências de lifecycle e configuração dos workflows. Log:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/linux-package-recipe-tests-current-2026-10-20.log`
+  (SHA256 `106194d44b683958bbf138d9f5f2c7d196e448659b6cbbea67f088768695af0d`).
