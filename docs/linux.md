@@ -2,9 +2,10 @@
 
 O porte está em implementação. Voz, screenshot, ações, contexto AT-SPI,
 arquivos e overlay já têm implementação nativa e evidências no Arch/KDE
-Wayland. O Flatpak experimental passou por build e smoke de instalação em
-x86_64 e ARM64; ainda faltam testes completos de desktop/áudio/portais e
-publicação. Pacotes nativos por gerenciador continuam em expansão.
+Wayland. O catálogo declara 15 alvos de empacotamento e 28 combinações de
+arquitetura, das quais 26 estão validadas. Gentoo ARM64 e Guix ARM64 seguem em
+build e validação. Ainda faltam testes completos de desktop, áudio e portais,
+além da publicação dos artefatos.
 Veja `docs/notes/linux-verification.md` para os testes e as lacunas atuais.
 
 ## Instalação por fonte

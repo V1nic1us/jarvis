@@ -1,6 +1,8 @@
 # Pacotes Linux em desenvolvimento
 
-O porte ainda está em validação. A disponibilidade de uma receita não significa
+O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
+26 combinações estão validadas. Gentoo ARM64 e Guix ARM64 seguem em build e
+validação. Uma receita ou um ciclo de pacote aprovado não prova, por si só,
 que áudio, captura e controle foram verificados em todas as distribuições.
 
 ## NixOS
