@@ -349,8 +349,7 @@ preservação de dados passaram. O artefato e o log de validação estão em
 revisão `_1` para `_2`, com doctor antes e depois e sentinel dos dados do usuário
 preservado; isso não substitui atualização entre versões de aplicativo
 publicadas. CI também construiu o pacote e passou instalação, inspeção e
-remoção em Void glibc AArch64. Desktop real, áudio e atualização AArch64 entre
-versões publicadas ainda não foram validados.
+remoção em Void glibc AArch64 na [CI 39419181120](https://github.com/V1nic1us/jarvis/actions/runs/39419181120). Desktop real, áudio e atualização AArch64 entre versões publicadas ainda não foram validados.
 
 A variante musl tem uma receita XBPS em `packaging/void-musl/template`, que
 compila ONNX Runtime 1.24.4 dentro do build nativo em vez de reutilizar wheels
@@ -360,8 +359,7 @@ Xvfb de xdotool/xclip, reabertura do overlay, verificação do banco de pacotes,
 remoção e preservação de dados do usuário. O artefato e o log estão em
 `.superpowers/sdd/2026-10-14-jarvis-linux/void-musl-native-artifacts` e
 `void-musl-native-lifecycle.log`. Desktop real, áudio, portais e atualização
-entre versões reais ainda seguem pendentes. CI também construiu o pacote musl
-AArch64 e passou instalação, inspeção e remoção. Atualização AArch64 entre
+entre versões reais ainda seguem pendentes. A [CI 39419181120](https://github.com/V1nic1us/jarvis/actions/runs/39419181120) também passou build, instalação, inspeção e remoção em Void musl x86_64 e AArch64. Atualização AArch64 entre
 versões publicadas, desktop real, áudio e portais ainda não foram validados
 nessa arquitetura. O XBPS também passou uma
 atualização controlada da revisão `_1` para `_2`, com `jarvis --doctor` antes e
