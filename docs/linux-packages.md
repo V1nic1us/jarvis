@@ -145,9 +145,10 @@ sessões reais. No commit `12279e468fc53a43ad5e49727bcff5d332d3fecf`, os 13 jobs
 nativos passaram na [CI native packages](https://github.com/V1nic1us/jarvis/actions/runs/39480053201),
 Flatpak x86_64/AArch64 passou na [CI Flatpak](https://github.com/V1nic1us/jarvis/actions/runs/39480053338)
 e Nix passou build e ciclo de instalação em ambas as arquiteturas na [CI Nix](https://github.com/V1nic1us/jarvis/actions/runs/39480053242).
-O [job Void glibc](https://github.com/V1nic1us/jarvis/actions/runs/39480053779)
-passou em x86_64 e AArch64; os jobs Void musl ainda estavam em execução quando
-esta evidência foi atualizada.
+O [workflow Void mais recente](https://github.com/V1nic1us/jarvis/actions/runs/39402420125)
+passou nos quatro jobs: glibc e musl em x86_64 e AArch64. Isso valida build e
+ciclo do pacote nessas combinações; desktops reais, áudio e upgrades continuam
+pendentes conforme a matriz de verificação.
 
 Slackware current tem um SlackBuild local; build, instalação e imports do runtime
 foram exercitados em container x86_64, incluindo a reinicialização isolada do
