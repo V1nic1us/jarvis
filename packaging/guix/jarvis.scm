@@ -121,10 +121,18 @@
             (lambda* (#:key outputs #:allow-other-keys)
               (for-each
                (lambda (metadata)
-                 (substitute* metadata
-                   (("Version: 0.0.0") "Version: 3.3.1")))
-               (append (find-files (assoc-ref outputs "out") "METADATA")
-                       (find-files (assoc-ref outputs "out") "PKG-INFO"))))))))))
+                 (let* ((dist-info (dirname metadata))
+                        (site-packages (dirname dist-info))
+                        (versioned-dist-info
+                         (string-append site-packages
+                                        "/pathvalidate-3.3.1.dist-info")))
+                   (substitute* metadata
+                     (("Version: 0.0.0") "Version: 3.3.1"))
+                   (substitute* (string-append dist-info "/RECORD")
+                     (("pathvalidate-0\\.0\\.0.dist-info")
+                      "pathvalidate-3.3.1.dist-info"))
+                   (rename-file dist-info versioned-dist-info)))
+               (find-files (assoc-ref outputs "out") "METADATA")))))))))
 
 (define opencode-binary
   (local-file "opencode-package" "jarvis-opencode-1.18.23"))
