@@ -224,8 +224,8 @@ def test_guix_piper_uses_compatible_pathvalidate():
     pathvalidate=recipe.split('(define python-pathvalidate-jarvis',1)[1].split('(define opencode-binary',1)[0]
     assert '(version "3.3.1")' in pathvalidate
     assert '#:tests? #f' in pathvalidate
-    assert 'Version: 3.3.1' in pathvalidate
-    assert '"(METADATA|PKG-INFO)$"' in pathvalidate
+    assert '("Version: 0.0.0") "Version: 3.3.1"' in pathvalidate
+    assert 'find-files (assoc-ref outputs "out") "METADATA"' in pathvalidate
     piper=recipe.split('(define-public python-piper-tts-jarvis',1)[1].split('(define rust-lock-inputs',1)[0]
     assert 'python-pathvalidate-jarvis' in piper
 
