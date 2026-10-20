@@ -211,6 +211,16 @@ def test_guix_aarch64_onednn_disables_upstream_tests():
     assert '"-DDNNL_BUILD_TESTS=OFF"' in onednn
 
 
+def test_guix_removes_libloading_windows_test_binaries_before_binary_scan():
+    recipe=(ROOT/"packaging/guix/jarvis.scm").read_text()
+    assistant=recipe.split("(define-public jarvis-assistant",1)[1]
+    phase=assistant.split("(replace 'install",1)[0]
+    assert "add-after 'configure 'remove-libloading-test-dlls" in phase
+    assert '(delete-file path)' in phase
+    assert '"guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa32.dll"' in phase
+    assert '"guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa64.dll"' in phase
+
+
 def test_guix_uv_dynamic_versioning_uses_compatible_dunamai():
     recipe=(ROOT/'packaging/guix/jarvis.scm').read_text()
     dunamai=recipe.split('(define python-dunamai-jarvis',1)[1].split('(define-public python-uv-dynamic-versioning-jarvis',1)[0]

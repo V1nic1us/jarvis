@@ -352,6 +352,16 @@ that embeds espeak-ng for phonemization.")
           (delete 'validate-runpath)
           (add-after 'unpack 'enter-tauri-project
             (lambda _ (chdir "gui/src-tauri")))
+          ;; These Windows DLLs are test fixtures from libloading, not build or
+          ;; runtime inputs. Guix's pre-generated-file scan rejects them even
+          ;; though the package does not run upstream crate tests.
+          (add-after 'configure 'remove-libloading-test-dlls
+            (lambda _
+              (for-each
+               (lambda (path)
+                 (when (file-exists? path) (delete-file path)))
+               '("guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa32.dll"
+                 "guix-vendor/rust-libloading-0.7.4.tar.gz/tests/nagisa64.dll"))))
           ;; Stripping OpenCode drops version metadata used by --version.
           (add-before 'strip 'save-opencode-unstripped
             (lambda* (#:key outputs #:allow-other-keys)
