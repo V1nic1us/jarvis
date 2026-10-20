@@ -668,3 +668,30 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   (SHA256 `9c47ef6f9561fedee554d4b7463a9461468ba838e81cf4b8c6e233e4e4e3e15e`).
 - Isso fecha somente o lifecycle de atualização e preservação de dados Flatpak
   x86_64; autorização real de portal e captura de áudio continuam pendentes.
+
+### Reprodutibilidade do arquivo de fontes — 2026-10-20
+
+- No checkout `5b8aa04`, gerei duas vezes `scripts/source-archive.py` em diretório
+  temporário. Os arquivos produziram o mesmo SHA256:
+  `4a0e70b06bbe64dec8327a4e15d8087cac6e76d818ddb23a650f9f6b1b3c57f5`.
+- O tarball tem 235 entradas e inclui `LICENSE`, `voice/`, `gui/`, `mcp_servers/`,
+  `packaging/` e `scripts/`. Ambientes locais, `.superpowers`, `.worktrees` e
+  arquivos de configuração do usuário são excluídos pelo arquivador.
+- Isso comprova reprodutibilidade do arquivo de fontes do checkout, mas ainda
+  não associa cada pacote publicado ao seu arquivo de fontes nem gera SBOM ou
+  confirma a presença dos avisos de licença de todas as dependências.
+
+### Auditoria de avisos de licença e fontes de dependências — 2026-10-20
+
+- `scripts/fetch-opencode.py` valida o SHA256 do tarball do OpenCode e extrai
+  somente o membro `opencode`. O manifesto declara MIT, mas o pacote não recebe
+  o texto da licença nem o código-fonte correspondente desse componente.
+- As receitas Flatpak compilam/bundlam xclip, xdotool, wl-clipboard e libXmu,
+  mas não instalam seus avisos upstream. Slackware inclui avisos de xclip,
+  xdotool e wl-clipboard; RHEL empacota xdotool à parte com `%license`.
+- Os metadados `dist-info/licenses` dos wheels Python e os arquivos de licença
+  do `node_modules` seguem no runtime privado. Isto ainda requer conferência por
+  artefato e não cobre automaticamente componentes sem esses metadados.
+- Esses achados deixam pendentes a correção dos avisos/fonte do OpenCode, os
+  avisos dos auxiliares Flatpak, a correspondência entre cada pacote e suas
+  fontes, o SBOM e a revisão legal independente.

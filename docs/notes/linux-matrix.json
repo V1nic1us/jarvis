@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T22:57:16+00:00",
+  "verified_at_utc": "2026-10-20T23:01:32+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2345,6 +2345,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Licenses, corresponding sources, SBOM and independent whole-branch review"
+    "OpenCode and Flatpak helper license notices/source correspondence, SBOM and independent whole-branch review"
   ]
 }
