@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T23:19:17+00:00",
+  "verified_at_utc": "2026-10-20T23:20:12+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -775,10 +775,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156540",
           "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39513216143/job/118939058410",
+          "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7",
+          "conclusion": "success"
         }
       ],
-      "notes": "AlmaLinux 10 package lifecycle passed on x86_64. xdotool pointer and xclip clipboard roundtrip ran through headless Xwayland using xwfb-run with Weston; the installed native Wayland overlay passed relaunch/exit. Full desktop, portal and physical audio remain unverified.",
-      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
+      "notes": "Current fork run passed native x86_64 RPM build, clean install, inspection and removal. This does not cover package upgrade.",
+      "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7"
     },
     {
       "target": "rhel",
@@ -2034,9 +2040,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053338/job/118825952876",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39513218111/job/118939060761",
+          "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7",
+          "conclusion": "success"
         }
       ],
-      "notes": "AArch64 bundle built on an ARM runner, installed and inspected in the sandbox. Doctor and imports passed. The CI smoke does not test uninstall, real desktop portals or physical audio; those remain separate validation gates."
+      "notes": "Current fork run passed AArch64 Flatpak build, install and bundled runtime inspection.",
+      "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7"
     },
     {
       "target": "ubuntu",
