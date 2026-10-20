@@ -598,10 +598,15 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   KDE Plasma/Wayland em Arch rolling x86_64. Screenshot local:
   `.superpowers/sdd/2026-10-14-jarvis-linux/flatpak-desktop-smoke-2026-10-20.png`
   (SHA256 `5888c45f615564bb35aa46cb73a87fcb41dc1fda1b4c9b70df8d036b4a68efe5`).
-- AT-SPI continua sem validação: o lançamento avisou que não conseguiu conectar
-  ao barramento; uma consulta direta ao socket `bus_1` do host também foi
-  recusada fora do sandbox. Portanto, o resultado aponta uma limitação do
-  barramento AT-SPI desta sessão e não comprova a integração da aplicação.
+- O primeiro lançamento avisou que não conseguiu conectar ao AT-SPI e uma
+  consulta direta ao socket `bus_1` do host também foi recusada. O serviço
+  `at-spi-dbus-bus` estava ativo, mas não aceitava conexões; após reiniciá-lo,
+  chamadas locais e do sandbox passaram. Com o Flatpak aberto, `list_windows`
+  encontrou a janela `jarvis:listening` e `accessibility_tree` leu o frame, o
+  documento web e o botão “Abrir menu Jarvis”. Log e hash:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/flatpak-atspi-tree-2026-10-20.log`
+  (`d3e4b7395853f35c45e29b7d64d66f4f38b3b3c8cd246d6a4c8847038c900664`). Isto
+  confirma descoberta/leitura da árvore AT-SPI, não ativação do botão ou portal.
 - O app foi removido sem `--delete-data`. O diretório de dados do usuário
   permaneceu com 362975429 bytes, incluindo o modelo de voz de 63201294 bytes.
-  Portais, gravação de áudio e interação AT-SPI seguem pendentes.
+  Portais e gravação física de áudio seguem pendentes.

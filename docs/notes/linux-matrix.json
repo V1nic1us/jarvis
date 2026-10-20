@@ -2038,6 +2038,28 @@
       ],
       "source_commit": "cba55c571cc4fba0feaab4dd8fa8fa44ca6ba086",
       "notes": "Eight unit tests passed for Wayland portal dispatch, portal URI image copying/validation, X11 root capture sizing, failed capture safety, and headless behavior. This is mocked/unit coverage; real portal grants and screenshot consent are still unverified."
+    },
+    {
+      "target": "flatpak",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "wayland",
+      "package": "flatpak bundle",
+      "capability": "flatpak_desktop_atspi_tree",
+      "status": "passed",
+      "command": "flatpak install --user --bundle; flatpak run --user com.jarvis.overlay; PYTHONPATH=voice /usr/bin/python3 accessibility_tree smoke",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/flatpak-atspi-tree-2026-10-20.log",
+          "sha256": "d3e4b7395853f35c45e29b7d64d66f4f38b3b3c8cd246d6a4c8847038c900664"
+        }
+      ],
+      "source_commit": "2d4cc2ea934719201b5f94ea247b3aecfa6928da",
+      "notes": "The installed Flatpak window was found over the host AT-SPI bus; its tree exposed the frame, web document, and “Abrir menu Jarvis” button. The host at-spi-dbus-bus service had been restarted first because its stale socket refused connections. Confirms accessibility-tree discovery for this Flatpak/KDE Wayland session, not button activation, portal grants, or audio capture."
     }
   ],
   "pending_gates": [
