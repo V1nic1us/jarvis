@@ -221,8 +221,9 @@ def test_guix_uv_dynamic_versioning_uses_compatible_dunamai():
 
 def test_guix_piper_uses_compatible_pathvalidate():
     recipe=(ROOT/'packaging/guix/jarvis.scm').read_text()
-    pathvalidate=recipe.split('(define python-pathvalidate-jarvis',1)[1].split('(define-public python-piper-tts-jarvis',1)[0]
+    pathvalidate=recipe.split('(define python-pathvalidate-jarvis',1)[1].split('(define opencode-binary',1)[0]
     assert '(version "3.3.1")' in pathvalidate
+    assert '(arguments (list #:tests? #f))' in pathvalidate
     piper=recipe.split('(define-public python-piper-tts-jarvis',1)[1].split('(define rust-lock-inputs',1)[0]
     assert 'python-pathvalidate-jarvis' in piper
 

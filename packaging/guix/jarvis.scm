@@ -109,7 +109,10 @@
               (method url-fetch)
               (uri (pypi-uri "pathvalidate" version))
               (sha256
-               (base32 "0xx13cmssda0p6h4x69njyiibkyd85hiv3mv8m1n5bgy5chhg35i"))))))
+               (base32 "0xx13cmssda0p6h4x69njyiibkyd85hiv3mv8m1n5bgy5chhg35i"))))
+    ;; Upstream tests import optional test-only packages such as tcolorpy,
+    ;; which are not needed by Piper at runtime.
+    (arguments (list #:tests? #f))))
 
 (define opencode-binary
   (local-file "opencode-package" "jarvis-opencode-1.18.23"))
