@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-20T21:58:16+00:00",
+  "verified_at_utc": "2026-10-20T22:02:13+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -82,7 +82,8 @@
           "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
           "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "arch",
@@ -176,8 +177,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953458",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156991",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "debian",
@@ -252,7 +260,8 @@
           "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
           "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "fedora",
@@ -308,8 +317,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953622",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156967",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "fedora",
@@ -371,8 +387,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953761",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901157218",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "ubuntu",
@@ -434,8 +457,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953133",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156840",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "ubuntu",
@@ -497,8 +527,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953851",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156824",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "suse",
@@ -560,8 +597,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953488",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156938",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "suse",
@@ -642,7 +686,8 @@
           "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
           "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "rhel",
@@ -698,9 +743,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953576",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156540",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
       ],
-      "notes": "AlmaLinux 10 package lifecycle passed on x86_64. xdotool pointer and xclip clipboard roundtrip ran through headless Xwayland using xwfb-run with Weston; the installed native Wayland overlay passed relaunch/exit. Full desktop, portal and physical audio remain unverified."
+      "notes": "AlmaLinux 10 package lifecycle passed on x86_64. xdotool pointer and xclip clipboard roundtrip ran through headless Xwayland using xwfb-run with Weston; the installed native Wayland overlay passed relaunch/exit. Full desktop, portal and physical audio remain unverified.",
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "rhel",
@@ -762,9 +814,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953802",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156803",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
       ],
-      "notes": "AlmaLinux 10 package lifecycle passed on aarch64. xdotool pointer and xclip clipboard roundtrip ran through headless Xwayland using xwfb-run with Weston; the installed native Wayland overlay passed relaunch/exit. Full desktop, portal and physical audio remain unverified."
+      "notes": "AlmaLinux 10 package lifecycle passed on aarch64. xdotool pointer and xclip clipboard roundtrip ran through headless Xwayland using xwfb-run with Weston; the installed native Wayland overlay passed relaunch/exit. Full desktop, portal and physical audio remain unverified.",
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "alpine",
@@ -826,8 +885,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953596",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156871",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "alpine",
@@ -889,8 +955,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39480053201/job/118825953662",
           "source_commit": "12279e468fc53a43ad5e49727bcff5d332d3fecf",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156858",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "void-glibc",
@@ -1529,8 +1602,15 @@
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/alpine-full-source-signed-upgrade-retry.log",
           "r0_sha256": "f81adad7954d3b7e44df4009a8055b14e595501628a1854a0aac9245d5f53ec7",
           "r1_sha256": "6f80400154441f360e034d9740d540bf53b6f634eae671162d179783a8b1bce4"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156871",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
-      ]
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5"
     },
     {
       "target": "solus",
@@ -1692,9 +1772,15 @@
           "url": "https://github.com/GuilhermeBn198/jarvis/actions/runs/39363293683/job/118434199885",
           "source_commit": "4eecb4f262efbaf90d58842960fefdb7a9a53a22",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156991",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "7ba6968e00fb1ce86e835a4d329d90c0e0157e3d",
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
       "notes": "Old Debian 13 artifact updated to a current worktree build. The builder changed the copied debian/changelog to 0.1.0-2 for this test only. Doctor, OpenCode 1.18.23, dpkg -V, user-data hash preservation, Xvfb overlay relaunch and removal passed."
     },
     {
@@ -1950,9 +2036,15 @@
           "url": "https://github.com/GuilhermeBn198/jarvis/actions/runs/39363293683/job/118434200196",
           "source_commit": "4eecb4f262efbaf90d58842960fefdb7a9a53a22",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156840",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "c4679f6c768345a8a7d625e0ae74399c4b633b3e",
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
       "notes": "Ubuntu 24.04 x86_64 disposable-container test: installed 0.1.0-1, upgraded through APT to 0.1.0-2, checked doctor/runtime and isolated Xvfb GUI lifecycle, removed package, and verified unchanged config/model-data/cache hashes. Package was built in CI; upgrade test runner came from commit 4eecb4f."
     },
     {
@@ -2127,10 +2219,79 @@
       ],
       "source_commit": "4ec4d80e5207be309f28dbe394102574aa760950",
       "notes": "The full selected source-level Linux integration suite passed again on the current checkout: 58 passed, no skips, with pinned dbus-next 0.2.3 from an isolated temporary directory. This does not replace live portal permission, physical audio, or cross-desktop validation."
+    },
+    {
+      "target": "debian",
+      "distro": "debian",
+      "version": "13",
+      "arch": "aarch64",
+      "libc": "glibc",
+      "desktop": "package manager",
+      "session": "native package upgrade test",
+      "package": "deb",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "apt install revision 1; apt install revision 2; jarvis --doctor; dpkg -V; apt remove",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156841",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+      "notes": "A second package revision upgraded the installed package, verified doctor/package integrity and preserved XDG user data before removal."
+    },
+    {
+      "target": "ubuntu",
+      "distro": "ubuntu",
+      "version": "24.04",
+      "arch": "aarch64",
+      "libc": "glibc",
+      "desktop": "package manager",
+      "session": "native package upgrade test",
+      "package": "deb",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "apt install revision 1; apt install revision 2; jarvis --doctor; dpkg -V; apt remove",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156824",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+      "notes": "A second package revision upgraded the installed package, verified doctor/package integrity and preserved XDG user data before removal."
+    },
+    {
+      "target": "alpine",
+      "distro": "alpine",
+      "version": "3.24",
+      "arch": "aarch64",
+      "libc": "musl",
+      "desktop": "package manager",
+      "session": "native package upgrade test",
+      "package": "apk",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "signed apk add revision 0; signed apk update to revision 1; remove",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39501884094/job/118901156858",
+          "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "91c7bba32652a147d53e64e608771b53719ef0f5",
+      "notes": "A second package revision upgraded the installed package, verified doctor/package integrity and preserved XDG user data before removal."
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests: x86_64 missing RHEL, Gentoo, Nix, Guix, Solus and Flatpak; AArch64 upgrades remain unverified across package targets",
+    "Native package upgrade/data-preservation tests still missing: x86_64 RHEL, Gentoo, Nix, Guix, Solus and Flatpak; AArch64 Arch, Fedora, openSUSE, RHEL, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",

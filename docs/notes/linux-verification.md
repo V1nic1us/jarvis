@@ -631,3 +631,18 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   `dbus-next==0.2.3` isolado em `/tmp/jarvis-portal-test-deps`. Log:
   `.superpowers/sdd/2026-10-14-jarvis-linux/linux-source-integration-suite-current-2026-10-20.log`
   (SHA256 `1f81eee383857373a4863cb478a77a589e027655de3dcac17c3b201e66babed9`).
+
+### CI de pacotes Linux — 2026-10-20
+
+- O workflow [39501884094](https://github.com/V1nic1us/jarvis/actions/runs/39501884094)
+  passou nos 13 jobs de instalação, inspeção e remoção em Arch, Debian, Ubuntu,
+  Fedora, openSUSE, RHEL e Alpine, x86_64/AArch64 conforme cada alvo. Os jobs
+  Debian e Ubuntu atualizaram revisões DEB nas duas arquiteturas; Alpine fez
+  atualização assinada APK nas duas arquiteturas, preservando os dados do usuário.
+  Os IDs por alvo e arquitetura estão na matriz JSON.
+- O workflow [39501884092](https://github.com/V1nic1us/jarvis/actions/runs/39501884092)
+  passou build, instalação em perfil descartável, imports e remoção em Nix
+  x86_64 e AArch64, preservando dados. Ambos foram executados em runners nativos.
+- A execução ocorreu no commit de código `91c7bba`; commits posteriores só
+  atualizaram evidências. Esses resultados são de ciclo de pacote headless e
+  não substituem desktops reais, áudio físico, nem concessão/revogação de portais.
