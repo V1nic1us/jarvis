@@ -577,12 +577,23 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 ### Bundle Flatpak x86_64 instalado no Arch — 2026-10-20
 
 - O artefato `jarvis-flatpak-x86_64` da CI 39449565922 foi baixado e seu
-  SHA256 conferido. A CI usou o commit `2d4cc2ea934719201b5f94ea247b3aecfa6928da`;
-  desde ele, até o commit local `0e8f324`, só houve alterações de documentação.
-- Instalação pelo Flatpak de usuário passou. `jarvis --doctor` encontrou
-  OpenCode 1.18.23, Piper, modelo de voz e backend Pulse; os imports de
-  faster-whisper, Piper, MCP, httpx, DBus e AT-SPI passaram.
-- O app foi removido sem `--delete-data`; o diretório preexistente
-  `~/.var/app/com.jarvis.overlay` permaneceu com 361402124 bytes. Nenhuma janela
-  foi aberta: esta evidência cobre instalação/runtime/remoção, não portais ou
-  interação gráfica nessa sessão.
+  SHA256 `584b92f2b1c3ec751bbef9defaf3438e6e42a3c2034017e2ad63acca44beee1` conferido.
+  A CI usou o commit `2d4cc2ea934719201b5f94ea247b3aecfa6928da`; até
+  `12279e468fc53a43ad5e49727bcff5d332d3fecf`, não houve mudanças no runtime
+  Flatpak, GUI, voz ou scripts de instalação.
+- A instalação de usuário passou. `flatpak run --user --command=jarvis com.jarvis.overlay --doctor`
+  encontrou OpenCode, Piper e o modelo de voz;
+  reportou sessão Wayland e backend Pulse disponível. Isso não confirma gravação
+  física de microfone nem síntese TTS real. Os imports de faster-whisper, Piper,
+  MCP, httpx, D-Bus e AT-SPI também passaram no smoke anterior.
+- `flatpak run --user com.jarvis.overlay` abriu o overlay, visível na sessão
+  KDE Plasma/Wayland em Arch rolling x86_64. Screenshot local:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/flatpak-desktop-smoke-2026-10-20.png`
+  (SHA256 `5888c45f615564bb35aa46cb73a87fcb41dc1fda1b4c9b70df8d036b4a68efe5`).
+- AT-SPI continua sem validação: o lançamento avisou que não conseguiu conectar
+  ao barramento; uma consulta direta ao socket `bus_1` do host também foi
+  recusada fora do sandbox. Portanto, o resultado aponta uma limitação do
+  barramento AT-SPI desta sessão e não comprova a integração da aplicação.
+- O app foi removido sem `--delete-data`. O diretório de dados do usuário
+  permaneceu com 362975429 bytes, incluindo o modelo de voz de 63201294 bytes.
+  Portais, gravação de áudio e interação AT-SPI seguem pendentes.
