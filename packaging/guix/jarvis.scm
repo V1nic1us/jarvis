@@ -53,7 +53,7 @@
     (arguments
      (substitute-keyword-arguments (package-arguments onednn)
        ((#:configure-flags flags)
-        #~(append #$flags '("-DDNNL_BUILD_TESTS=OFF")))))))
+        #~(append #$flags '("-DONEDNN_BUILD_TESTS=OFF")))))))
 
 (define ctranslate2-aarch64-jarvis
   (package/inherit ctranslate2
