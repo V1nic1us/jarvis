@@ -91,6 +91,9 @@
     ;; test-only inputs pull in very large, broken-on-QEMU AArch64 builds.
     (arguments
      (substitute-keyword-arguments (package-arguments onnxruntime)
+       ;; ONNX Runtime's C++ compilation exceeds the memory available to the
+       ;; AArch64 Guix builder when CMake builds with its default job count.
+       ((#:parallel-build? parallel-build? #t) #f)
        ((#:tests? tests? #t) #f)))
     (native-inputs
      (modify-inputs (package-native-inputs onnxruntime)
