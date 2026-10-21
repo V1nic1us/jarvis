@@ -713,3 +713,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - Esses achados deixam pendentes a correção dos avisos/fonte do OpenCode, os
   avisos dos auxiliares Flatpak, a correspondência entre cada pacote e suas
   fontes, o SBOM e a revisão legal independente.
+
+### Nix profile upgrade lifecycle — 2026-10-21
+
+- CI run [39685647412](https://github.com/V1nic1us/jarvis/actions/runs/39685647412) passou nos dois alvos, `x86_64-linux` e `aarch64-linux`: build, instalação em perfil descartável, imports do runtime, `jarvis --doctor`, `nix profile upgrade --all`, remoção e preservação do sentinel em `XDG_DATA_HOME`.
+- Esse check exercita o comando de atualização no perfil Nix; não representa uma migração entre duas versões publicadas diferentes. Guix e Gentoo AArch64 continuam pausados a pedido do usuário.

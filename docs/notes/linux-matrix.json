@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T21:31:40Z",
+  "verified_at_utc": "2026-10-21T22:28:35Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2072,9 +2072,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880886/job/119248713336",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39685647412/job/119518900585",
+          "source_commit": "30dd7d9e09d2e569804000f6cbb4d6db2152a5b4",
+          "conclusion": "success"
         }
       ],
-      "notes": "Nix x86_64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for x86_64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on x86_64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for x86_64.",
+      "notes": "Nix x86_64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for x86_64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on x86_64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for x86_64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on x86_64.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -2185,9 +2191,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880886/job/119248713064",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39685647412/job/119518900149",
+          "source_commit": "30dd7d9e09d2e569804000f6cbb4d6db2152a5b4",
+          "conclusion": "success"
         }
       ],
-      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64.",
+      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on aarch64.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -3776,12 +3788,12 @@
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: Gentoo, Nix, Guix and Solus; AArch64 Arch, Gentoo, Nix, Guix, Void glibc, Void musl",
+    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Arch, Gentoo, Nix, Guix, Void glibc, Void musl",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "The xdg-open provider and OpenCode MIT notice are now asserted by installed-package smoke checks. Eleven native jobs passed those checks in CI run 39681218040, including Fedora AArch64; RHEL x86_64 failed before packaging while fetching EPEL metadata and Fedora x86_64 remains in progress. Flatpak passed its revalidation on x86_64/AArch64 in CI run 39683082664. Void glibc passed both architectures; Void musl remains in progress. Gentoo/Guix are paused. Remaining work: rerun failed/transient targets, complete active jobs, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. CI run 39681218040 passed 11 native jobs but RHEL x86_64 failed on EPEL metadata and Fedora x86_64 was incomplete. New native run 39683082677 is active: Arch x86_64 passed; Debian x86_64/AArch64 build, install and removal passed; other package jobs remain active. Flatpak run 39685647380 remains active on x86_64/AArch64. Void glibc and musl results are active in run 39681218050. Nix run 39685647412 passed profile install/upgrade/removal and runtime checks on x86_64/AArch64. Gentoo/Guix remain paused. Remaining work: finish active jobs, rerun transient failures, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }
