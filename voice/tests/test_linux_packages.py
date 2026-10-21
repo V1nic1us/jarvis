@@ -999,6 +999,13 @@ def test_rpm_upgrade_runner_uses_native_upgrade_commands_and_checks_user_data():
     assert 'sha256sum -c' in source
 
 
+def test_rpm_upgrade_fixture_hashes_do_not_require_find():
+    source=(ROOT/'scripts/test-native-rpm-upgrade.sh').read_text()
+    assert 'find "$task_state"' not in source
+    normalized=' '.join(source.replace('\\\n',' ').split())
+    assert 'sha256sum "$XDG_CONFIG_HOME/jarvis/settings.json" "$XDG_DATA_HOME/jarvis/models/opaque-user-data.bin" "$XDG_CACHE_HOME/jarvis/cache-sentinel" > "$task_state.sha256"' in normalized
+
+
 def test_native_package_workflow_runs_rpm_upgrade_lifecycle_on_all_rpm_targets():
     workflow=(ROOT/'.github/workflows/linux-packages.yml').read_text()
     assert "if: matrix.family == 'fedora' || matrix.family == 'suse' || matrix.family == 'rhel'" in workflow

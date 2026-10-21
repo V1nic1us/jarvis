@@ -34,7 +34,9 @@ mkdir -p "$XDG_DATA_HOME/jarvis/models" "$XDG_CONFIG_HOME/jarvis" "$XDG_CACHE_HO
 printf '%s\n' '{"language":"pt","fixture":"preserve RPM upgrade"}' > "$XDG_CONFIG_HOME/jarvis/settings.json"
 dd if=/dev/urandom of="$XDG_DATA_HOME/jarvis/models/opaque-user-data.bin" bs=1024 count=8 2>/dev/null
 printf '%s\n' cache-fixture > "$XDG_CACHE_HOME/jarvis/cache-sentinel"
-find "$task_state" -type f -exec sha256sum '{}' \; > "$task_state.sha256"
+sha256sum "$XDG_CONFIG_HOME/jarvis/settings.json" \
+    "$XDG_DATA_HOME/jarvis/models/opaque-user-data.bin" \
+    "$XDG_CACHE_HOME/jarvis/cache-sentinel" > "$task_state.sha256"
 
 case "$task_manager" in
     fedora)
