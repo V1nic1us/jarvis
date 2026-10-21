@@ -65,6 +65,11 @@ PulseAudio; FFmpeg disponibiliza entradas pulse e alsa.
   integração `tts.speak_piper` gerou WAV mono PCM a 22050 Hz com 60672 frames.
   O arquivo não foi reproduzido. Hash do modelo:
   `858555e3a064209c57088fe6bd70c4c3dc54d03eaa00c45d5ecaf43a33f95aa7`.
+- Também em 2026-10-21, `capture.record` e `measure_level` usaram FFmpeg/ALSA
+  com o dispositivo sintético `null`; a gravação temporária foi um WAV PCM
+  estéreo válido de 48000 Hz. Isso valida o caminho ALSA sem capturar áudio do
+  microfone físico. Este host não tem `arecord`, então enumeração ALSA não foi
+  testada aqui; os pacotes nativos declaram `alsa-utils` como dependência.
 - Artefatos internos usam arquivos exclusivos e limpeza por context manager.
 - Falha de gravação implícita reproduzida por teste: temporário vazava;
   correção limpa arquivos próprios ao lançar erro, preservando saída explícita.
