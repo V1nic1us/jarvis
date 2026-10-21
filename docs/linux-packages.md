@@ -541,4 +541,6 @@ OpenCode 1.18.23, remoção do perfil e preservação dos dados do usuário). Is
 valida o pacote e seu lifecycle headless em x86_64; desktop real,
 áudio/microfone e Wayland/X11 permanecem sem teste Guix. A compilação AArch64
 usa variantes próprias de PyTorch e ONNX Runtime e ainda requer build e smoke
-completos antes de ser considerada validada.
+completos antes de ser considerada validada. A retomada dos builds ARM64 de
+Guix e Gentoo está pausada; progresso e comandos para retomar estão registrados
+em `docs/notes/linux-arm64-builds-paused.md`.

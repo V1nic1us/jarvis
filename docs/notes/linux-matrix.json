@@ -2247,7 +2247,7 @@
           "failure": "oneDNN compiled, but Guix check phase failed because CTest registered no tests and was invoked with --no-tests=error"
         }
       ],
-      "notes": "AArch64 local build reached 100% for oneDNN but failed during Guix check because CTest had no registered tests. Commit ca398f3 disables the empty check phase. A corrected local rerun is active; keep package lifecycle unverified until it succeeds."
+      "notes": "AArch64 build previously compiled oneDNN but failed in Guix check because CTest registered no tests; commit ca398f3 disables that empty check phase. The serial retry was paused at the user's request while oneDNN compiled at 74% (rnn_utils.cpp.o). Its container exited with code 137 and OOMKilled=false on 2026-10-21 19:48 UTC; no package lifecycle or install smoke passed. Resume details are in docs/notes/linux-arm64-builds-paused.md; keep this target unverified."
     },
     {
       "target": "slackware",
