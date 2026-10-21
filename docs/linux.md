@@ -1,17 +1,16 @@
 # Linux nativo
 
-O porte está em implementação. Voz, screenshot, ações, contexto AT-SPI,
-arquivos e overlay já têm implementação nativa e evidências no Arch/KDE
-Wayland. O catálogo declara 15 alvos de empacotamento e 28 combinações de
-arquitetura, das quais 26 estão validadas. Os builds de Gentoo e Guix estão
-pausados a pedido. Na rodada atual, Nix passou em x86_64/AArch64; 11 de 13 jobs
-nativos passaram, Fedora AArch64 passou e Fedora x86_64 segue em execução. RHEL
-x86_64 falhou ao obter metadados do espelho EPEL. Void glibc passou nas duas
-arquiteturas, Void musl continua em execução e Flatpak passou novamente em
-x86_64/AArch64. Ainda faltam upgrades para mais gerenciadores e testes completos
-de desktop, áudio e portais; a publicação dos artefatos também está pendente.
-Veja `docs/notes/linux-verification.md` para os testes e as lacunas atuais.
-
+O porte continua em implementação. Voz, screenshot, ações, contexto AT-SPI,
+arquivos e overlay têm implementação nativa; o runtime foi exercitado no Arch/KDE
+Wayland. O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 estão
+validadas. Todos os 13 jobs nativos passaram build, instalação, inspeção e
+remoção no [CI 39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677),
+com testes de atualização/preservação de dados nos gerenciadores cobertos pelo
+workflow. Nix e Flatpak passaram em x86_64/AArch64; Void glibc também passou nas
+duas arquiteturas. Void musl continua em compilação. Os builds de Gentoo e Guix
+estão pausados a pedido. Ainda faltam combinações de atualização, desktops reais,
+áudio/captura e portais em mais distribuições. Veja `docs/linux-packages.md` e
+`docs/notes/linux-verification.md` para a matriz e as limitações de cada teste.
 ## Instalação por fonte
 
 Requer Python 3.10+, Rust, ferramentas de compilação GTK3/WebKitGTK 4.1,
@@ -114,4 +113,6 @@ cargo test --manifest-path gui/src-tauri/Cargo.toml
 Testes GUI opt-in usam somente janelas descartáveis próprias:
 `JARVIS_DESKTOP_TESTS=1 voice/.venv/bin/python -m pytest voice/tests/test_atspi_desktop.py -q`.
 Um resultado no Arch/KDE não comprova funcionamento nas demais distros,
-arquiteturas ou gerenciadores. A matriz completa e os pacotes seguem pendentes.
+arquiteturas ou gerenciadores. Os checks de CI validam os alvos listados na
+matriz, mas não substituem testes de desktop real, microfone, áudio e portais em
+cada combinação.
