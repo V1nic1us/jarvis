@@ -25,6 +25,9 @@ task_new_version=${task_new_identity#* }
     exit 2
 }
 
+# Arch's base image excludes documentation by default. The package records
+# /usr/share/doc in its mtree, so disable that extraction filter for integrity checks.
+sed -i '/^[[:space:]]*NoExtract[[:space:]]*=/d' /etc/pacman.conf
 pacman -Syu --noconfirm --needed xorg-server-xvfb dbus
 pacman -U --noconfirm "$task_old_package"
 test "$(pacman -Q "$task_old_name")" = "$task_old_identity"

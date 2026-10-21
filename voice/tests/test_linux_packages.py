@@ -1014,3 +1014,5 @@ def test_native_package_workflow_runs_arch_upgrade_lifecycle():
     workflow=(ROOT/'.github/workflows/linux-packages.yml').read_text()
     assert "if: matrix.family == 'arch'" in workflow
     assert 'test-native-arch-upgrade.sh' in workflow
+    arch_upgrade=(ROOT/'scripts/test-native-arch-upgrade.sh').read_text()
+    assert "sed -i '/^[[:space:]]*NoExtract[[:space:]]*=/d' /etc/pacman.conf" in arch_upgrade
