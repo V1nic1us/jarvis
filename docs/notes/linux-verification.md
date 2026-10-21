@@ -60,6 +60,11 @@ PulseAudio; FFmpeg disponibiliza entradas pulse e alsa.
 - Calibração de 0,5 s: mean -32,5 dB, max -20,1 dB.
 - VAD limitado a 1 s/espera 0,5 s: encerrou sem fala detectada.
 - PTT com parada programada após 0,7 s: WAV válido, 50400 frames.
+- Rechecagem em 2026-10-21 no host: `jarvis --download-voice` baixou o modelo
+  Faber no `XDG_DATA_HOME` temporário e validou os hashes SHA256 fixados; a
+  integração `tts.speak_piper` gerou WAV mono PCM a 22050 Hz com 60672 frames.
+  O arquivo não foi reproduzido. Hash do modelo:
+  `858555e3a064209c57088fe6bd70c4c3dc54d03eaa00c45d5ecaf43a33f95aa7`.
 - Artefatos internos usam arquivos exclusivos e limpeza por context manager.
 - Falha de gravação implícita reproduzida por teste: temporário vazava;
   correção limpa arquivos próprios ao lançar erro, preservando saída explícita.
@@ -67,7 +72,7 @@ PulseAudio; FFmpeg disponibiliza entradas pulse e alsa.
 
 ## Ainda não verificado
 
-ALSA real, reconhecimento de fala CPU, Piper real/streaming, ações Linux,
+ALSA real, reconhecimento de fala CPU, streaming Piper, ações Linux,
 portais, contexto AT-SPI, overlay, Flatpak, pacotes nativos e demais distros/
 arquiteturas. Instalação das dependências de voz em venv privado em andamento.
 
