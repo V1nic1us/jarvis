@@ -1,23 +1,13 @@
 # Pacotes Linux em desenvolvimento
 
 O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
-26 combinações estão validadas. Gentoo ARM64 e Guix ARM64 seguem em build e
-validação. Uma receita ou um ciclo de pacote aprovado não prova, por si só,
-que áudio, captura e controle foram verificados em todas as distribuições.
+26 combinações estão validadas. Gentoo ARM64 e Guix ARM64 seguem sem validação
+final e os respectivos builds estão pausados a pedido do usuário. Uma receita
+ou um ciclo de pacote aprovado não prova, por si só, que áudio, captura e
+controle foram verificados em todas as distribuições.
 
-Na rodada atual, Nix passou build e instalação em x86_64 e AArch64
-([CI](https://github.com/V1nic1us/jarvis/actions/runs/39683082896)).
-Flatpak passou novamente em ambas as arquiteturas
-([CI](https://github.com/V1nic1us/jarvis/actions/runs/39683082664)). Na CI de
-pacotes nativos, 11 de 13 alvos passaram, incluindo Fedora AArch64; Fedora
-x86_64 ainda roda e RHEL x86_64 falhou ao obter metadados do espelho EPEL
-([CI](https://github.com/V1nic1us/jarvis/actions/runs/39681218040)). Void
-glibc passou nas duas arquiteturas e Void musl ainda roda
-([CI](https://github.com/V1nic1us/jarvis/actions/runs/39681218050)). Os builds
-de Gentoo e Guix estão pausados a pedido. Ainda faltam upgrades para outros
-alvos e validação de desktop, áudio e portais reais; a matriz lista cada job
-e suas limitações.
-
+Na rodada atual, todos os 13 jobs de pacotes nativos passaram build, instalação,
+inspeção e remoção no [CI 39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677); cada gerenciador executou também os testes de atualização e preservação de dados previstos no workflow. Nix passou o ciclo de perfil, incluindo `nix profile upgrade --all`, nas duas arquiteturas ([CI 39685647412](https://github.com/V1nic1us/jarvis/actions/runs/39685647412)). Flatpak passou em x86_64 e AArch64 ([CI 39685647380](https://github.com/V1nic1us/jarvis/actions/runs/39685647380)). Void glibc passou nas duas arquiteturas; Void musl ainda está compilando ([CI 39685647431](https://github.com/V1nic1us/jarvis/actions/runs/39685647431)). Um rerun de RHEL x86_64 segue ativo ([CI 39681218040](https://github.com/V1nic1us/jarvis/actions/runs/39681218040)). Ainda faltam ciclos de atualização em alguns alvos e validação de desktop, áudio e portais reais; a matriz lista cada job e suas limitações.
 ## NixOS
 
 A flake da raiz fornece `jarvis-assistant` para x86_64-linux e aarch64-linux.
