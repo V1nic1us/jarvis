@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T22:47:18Z",
+  "verified_at_utc": "2026-10-21T23:11:36Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2063,9 +2063,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39681218050/job/119504468392",
           "source_commit": "3506b442aeb536f33c3d2c3e0a9905465297e867",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39685647431/job/119523619735",
+          "source_commit": "30dd7d9e09d2e569804000f6cbb4d6db2152a5b4",
+          "conclusion": "success"
         }
       ],
-      "notes": "GitHub Actions concluiu o build nativo do pacote Void musl AArch64, instalação em container Void musl limpo, inspeção e remoção. Desktop real, áudio e atualização entre versões publicadas ainda não foram verificados nessa arquitetura. A compilação nativa mais recente, exportação do pacote e lifecycle de instalação/inspeção/remoção em Void musl limpo passaram no commit cba55c5 (2026-10-20). CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050.",
+      "notes": "GitHub Actions concluiu o build nativo do pacote Void musl AArch64, instalação em container Void musl limpo, inspeção e remoção. Desktop real, áudio e atualização entre versões publicadas ainda não foram verificados nessa arquitetura. A compilação nativa mais recente, exportação do pacote e lifecycle de instalação/inspeção/remoção em Void musl limpo passaram no commit cba55c5 (2026-10-20). CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050. Latest native package lifecycle passed in CI run 39685647431.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -3998,6 +4004,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. Native run 39683082677 passed all 13 package jobs, including build/install/inspection/removal and manager-specific upgrade/data-preservation checks where configured. Flatpak run 39685647380 passed bundle build/install/runtime inspection on x86_64/AArch64. Void glibc passed package lifecycle on both architectures in run 39685647431; Void musl x86_64/AArch64 remain active. Nix profile install/upgrade/removal and runtime checks passed on x86_64/AArch64 in run 39685647412. Gentoo/Guix remain paused. Remaining work: complete Void musl, finish missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. Native run 39683082677 passed all 13 package jobs, including build/install/inspection/removal and manager-specific upgrade/data-preservation checks where configured. New native run 39691135658 is building 14 jobs, including Arch AArch64. Flatpak run 39685647380 passed bundle build/install/runtime inspection on x86_64/AArch64. Void glibc and Void musl AArch64 passed package lifecycle in run 39685647431; Void musl x86_64 remains active. Nix profile install/upgrade/removal and runtime checks passed on x86_64/AArch64 in run 39685647412. Gentoo/Guix remain paused. Remaining work: complete active jobs, finish missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }

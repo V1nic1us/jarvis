@@ -18,10 +18,11 @@ arquiteturas ([CI
 passou em x86_64 e AArch64 ([CI
 39685647380](https://github.com/V1nic1us/jarvis/actions/runs/39685647380)).
 
-Void glibc passou nas duas arquiteturas; Void musl ainda está compilando ([CI
-39685647431](https://github.com/V1nic1us/jarvis/actions/runs/39685647431)). Um rerun de
-RHEL x86_64 segue ativo ([CI
-39681218040](https://github.com/V1nic1us/jarvis/actions/runs/39681218040)). Ainda faltam
+Void glibc passou nas duas arquiteturas, assim como Void musl AArch64; Void musl
+x86_64 ainda compila ([CI
+39685647431](https://github.com/V1nic1us/jarvis/actions/runs/39685647431)). A nova rodada
+nativa 39691135658 está construindo 14 alvos, incluindo Arch ARM64 ([CI
+39691135658](https://github.com/V1nic1us/jarvis/actions/runs/39691135658)). Ainda faltam
 ciclos de atualização em alguns alvos e validação de desktop, áudio e portais reais; a
 matriz lista cada job e suas limitações.
 

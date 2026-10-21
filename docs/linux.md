@@ -7,8 +7,10 @@ validadas. Todos os 13 jobs nativos passaram build, instalação, inspeção e
 remoção no [CI 39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677),
 com testes de atualização/preservação de dados nos gerenciadores cobertos pelo
 workflow. Nix e Flatpak passaram em x86_64/AArch64; Void glibc também passou nas
-duas arquiteturas. Void musl continua em compilação. Os builds de Gentoo e Guix
-estão pausados a pedido. Ainda faltam combinações de atualização, desktops reais,
+duas arquiteturas; Void musl AArch64 também passou, com x86_64 ainda compilando.
+A nova rodada nativa 39691135658, agora com 14 jobs, inclui o ciclo Arch ARM64.
+Os builds de Gentoo e Guix estão pausados a pedido. Ainda faltam combinações de
+atualização, desktops reais,
 áudio/captura e portais em mais distribuições. Veja `docs/linux-packages.md` e
 `docs/notes/linux-verification.md` para a matriz e as limitações de cada teste.
 
