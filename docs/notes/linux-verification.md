@@ -743,3 +743,9 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 
 - O run [39691135412](https://github.com/V1nic1us/jarvis/actions/runs/39691135412) repetiu com sucesso build, profile install/upgrade/removal, runtime imports e preservação de dados Nix em x86_64 e AArch64.
+
+
+### Revalidação Nix e Flatpak — 2026-10-21
+
+- O run [39692211308](https://github.com/V1nic1us/jarvis/actions/runs/39692211308) passou o build e ciclo de perfil Nix em x86_64 e AArch64, incluindo `nix profile upgrade --all`, runtime imports e preservação dos dados do usuário.
+- O run [39692211264](https://github.com/V1nic1us/jarvis/actions/runs/39692211264) passou build e instalação/inspeção do bundle Flatpak em ambas as arquiteturas.

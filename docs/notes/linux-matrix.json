@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T23:15:50Z",
+  "verified_at_utc": "2026-10-21T23:28:48Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2222,9 +2222,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39691135412/job/119537311968",
           "source_commit": "63cfe4de38beba7899c2c0cf83e4ea5a958152d5",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863404",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Nix x86_64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for x86_64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on x86_64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for x86_64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on x86_64. CI run 39691135412 again passed profile install/upgrade/removal and runtime checks on x86_64.",
+      "notes": "Nix x86_64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for x86_64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on x86_64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for x86_64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on x86_64. CI run 39691135412 again passed profile install/upgrade/removal and runtime checks on x86_64. Latest CI revalidation passed in run 39692211308.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -2347,9 +2353,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39691135412/job/119537311656",
           "source_commit": "63cfe4de38beba7899c2c0cf83e4ea5a958152d5",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863678",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on aarch64. CI run 39691135412 again passed profile install/upgrade/removal and runtime checks on aarch64.",
+      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on aarch64. CI run 39691135412 again passed profile install/upgrade/removal and runtime checks on aarch64. Latest CI revalidation passed in run 39692211308.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -3117,9 +3129,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39685647380/job/119518899644",
           "source_commit": "30dd7d9e09d2e569804000f6cbb4d6db2152a5b4",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211264/job/119540862419",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39607881416 passed native x86_64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380.",
+      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39607881416 passed native x86_64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -3831,10 +3849,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39685647380/job/119518899389",
           "source_commit": "30dd7d9e09d2e569804000f6cbb4d6db2152a5b4",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211264/job/119540862750",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
-      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380."
+      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264."
     },
     {
       "target": "arch",
@@ -4016,6 +4040,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. Native run 39683082677 passed all 13 package jobs, including build/install/inspection/removal and manager-specific upgrade/data-preservation checks where configured. New native run 39691135658 is building 14 jobs, including Arch AArch64. Flatpak run 39685647380 passed bundle build/install/runtime inspection on x86_64/AArch64. Void glibc and Void musl AArch64 passed package lifecycle in run 39685647431; Void musl x86_64 remains active. Nix profile install/upgrade/removal and runtime checks passed on x86_64/AArch64 in runs 39685647412 and 39691135412. Gentoo/Guix remain paused. Remaining work: complete active jobs, finish missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. Native run 39683082677 passed all 13 package jobs, including build/install/inspection/removal and manager-specific upgrade/data-preservation checks where configured. New native run 39691135658 is building 14 jobs, including Arch AArch64. Flatpak runs 39685647380 and 39692211264 passed bundle build/install/runtime inspection on x86_64/AArch64. Void glibc and Void musl AArch64 passed package lifecycle in run 39685647431; Void musl x86_64 remains active. Nix profile install/upgrade/removal and runtime checks passed on x86_64/AArch64 in runs 39685647412, 39691135412 and 39692211308. Gentoo/Guix remain paused. Remaining work: complete active jobs, finish missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }
