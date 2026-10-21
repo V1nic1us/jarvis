@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T17:09:59Z",
+  "verified_at_utc": "2026-10-21T17:11:05Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3491,16 +3491,16 @@
       "package": "Flatpak runtime",
       "capability": "xdg_open_runtime_availability",
       "status": "passed",
-      "command": "flatpak info --user --arch=aarch64 --show-location org.gnome.Platform//49; test -x <runtime>/files/bin/xdg-open; file <runtime>/files/bin/xdg-open",
+      "command": "qemu-aarch64 -L <runtime>/files -E LD_LIBRARY_PATH=/lib/aarch64-linux-gnu:/usr/lib/aarch64-linux-gnu:/usr/lib <runtime>/files/bin/xdg-open --help",
       "evidence": [
         {
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/flatpak-platform49-aarch64-xdg-open-2026-10-21.log",
-          "sha256": "2c0190776e678fa632a7ff8c0b6e96d18a1e826bc97ffa0f8383b0ff4c94e7a8"
+          "sha256": "84785d2fcfae96d4e39436561c86062906f6087806363580fb593771f218e0d9"
         }
       ],
-      "source_commit": "8a051c3ddd9f33875fe58bee83d668478d36d22d",
-      "notes": "Installed GNOME Platform 49 AArch64 runtime contains an executable bin/xdg-open identified as an ELF AArch64 binary. Presence and file type were verified; execution was not attempted on the x86_64 host."
+      "source_commit": "729af567707cc3cb61f587bf3121da5663a47df7",
+      "notes": "Installed GNOME Platform 49 AArch64 runtime contains executable bin/xdg-open. Its help command exited successfully under qemu-aarch64 using the runtime libraries; this is user-mode emulation, not a native ARM hardware or real URL-dispatch test."
     }
   ],
   "pending_gates": [
