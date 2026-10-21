@@ -4,10 +4,11 @@ O porte está em implementação. Voz, screenshot, ações, contexto AT-SPI,
 arquivos e overlay já têm implementação nativa e evidências no Arch/KDE
 Wayland. O catálogo declara 15 alvos de empacotamento e 28 combinações de
 arquitetura, das quais 26 estão validadas. Os builds de Gentoo e Guix estão
-pausados a pedido. Na rodada atual, Nix passou em x86_64/AArch64; 10 de 13 jobs
-nativos passaram, Fedora segue em execução e RHEL x86_64 falhou ao obter metadados
-do espelho EPEL. Void glibc passou nas duas arquiteturas, Void musl continua em
-execução e Flatpak está sendo revalidado. Ainda faltam upgrades para mais gerenciadores e testes completos
+pausados a pedido. Na rodada atual, Nix passou em x86_64/AArch64; 11 de 13 jobs
+nativos passaram, Fedora AArch64 passou e Fedora x86_64 segue em execução. RHEL
+x86_64 falhou ao obter metadados do espelho EPEL. Void glibc passou nas duas
+arquiteturas, Void musl continua em execução e Flatpak passou novamente em
+x86_64/AArch64. Ainda faltam upgrades para mais gerenciadores e testes completos
 de desktop, áudio e portais; a publicação dos artefatos também está pendente.
 Veja `docs/notes/linux-verification.md` para os testes e as lacunas atuais.
 

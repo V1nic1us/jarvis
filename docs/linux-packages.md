@@ -7,10 +7,10 @@ que áudio, captura e controle foram verificados em todas as distribuições.
 
 Na rodada atual, Nix passou build e instalação em x86_64 e AArch64
 ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39683082896)).
-Flatpak está sendo revalidado em ambas as arquiteturas
+Flatpak passou novamente em ambas as arquiteturas
 ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39683082664)). Na CI de
-pacotes nativos, 10 de 13 alvos passaram; Fedora x86_64/AArch64 ainda roda e
-RHEL x86_64 falhou ao obter metadados do espelho EPEL
+pacotes nativos, 11 de 13 alvos passaram, incluindo Fedora AArch64; Fedora
+x86_64 ainda roda e RHEL x86_64 falhou ao obter metadados do espelho EPEL
 ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39681218040)). Void
 glibc passou nas duas arquiteturas e Void musl ainda roda
 ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39681218050)). Os builds
