@@ -718,3 +718,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 - CI run [39685647412](https://github.com/V1nic1us/jarvis/actions/runs/39685647412) passou nos dois alvos, `x86_64-linux` e `aarch64-linux`: build, instalação em perfil descartável, imports do runtime, `jarvis --doctor`, `nix profile upgrade --all`, remoção e preservação do sentinel em `XDG_DATA_HOME`.
 - Esse check exercita o comando de atualização no perfil Nix; não representa uma migração entre duas versões publicadas diferentes. Guix e Gentoo AArch64 continuam pausados a pedido do usuário.
+
+### Revalidação Void e Flatpak — 2026-10-21
+
+- O run [39681218050](https://github.com/V1nic1us/jarvis/actions/runs/39681218050) passou build, instalação, inspeção e remoção de Void glibc e musl em x86_64 e AArch64.
+- O run [39685647380](https://github.com/V1nic1us/jarvis/actions/runs/39685647380) passou build e instalação/inspeção do bundle Flatpak x86_64 e AArch64.
