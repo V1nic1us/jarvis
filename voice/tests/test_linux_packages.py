@@ -447,6 +447,10 @@ def test_nix_target_is_a_profile_installable_package():
     assert lock['nodes']['nixpkgs']['locked']['rev'] in flake
     assert lock['nodes']['nixpkgs']['locked']['narHash'].startswith('sha256-')
     recipe=(ROOT/'packaging/nix/default.nix').read_text()
+    nix_lifecycle=(ROOT/'scripts/test-nix-package.sh').read_text()
+    assert 'nix-store -qR "$task_store"' in nix_lifecycle
+    assert 'grep -F "$task_xdg_store/bin" "$task_store/bin/jarvis"' in nix_lifecycle
+    assert 'test -x "$task_xdg_store/bin/xdg-open"' in nix_lifecycle
     assert 'export HOME="$TMPDIR"' in recipe
     assert 'chmod -R u+w .' in recipe
     assert 'npmDepsHash = "sha256-lnyoIScrNdPeu9J7XUpbteOUQVENF7tzJqrII0fwTbY=";' in recipe
@@ -481,7 +485,10 @@ def test_nix_lifecycle_script_uses_an_isolated_profile_and_preserves_user_data(t
     import os, subprocess
     store=tmp_path/'store'
     (store/'bin').mkdir(parents=True)
-    (store/'bin/jarvis').write_text('#!/bin/sh\nexit 0\n')
+    xdg_store=tmp_path/'store/xdg-utils-1.0'
+    (xdg_store/'bin').mkdir(parents=True)
+    (xdg_store/'bin/xdg-open').write_text('#!/bin/sh\nexit 0\n')
+    (store/'bin/jarvis').write_text(f'#!/bin/sh\nexport PATH="{xdg_store}/bin:$PATH"\nexit 0\n')
     (store/'bin/jarvis-overlay').write_text('#!/bin/sh\nexit 0\n')
     (store/'lib/jarvis/bin').mkdir(parents=True)
     (store/'lib/jarvis/bin/opencode').write_text('#!/bin/sh\nprintf "1.18.23\\n"\n')
@@ -508,6 +515,9 @@ case "$action" in
 esac
 ''')
     fake_nix.chmod(0o755)
+    fake_nix_store=fake_bin/'nix-store'
+    fake_nix_store.write_text('#!/bin/sh\nprintf "%s\\n" "$JARVIS_XDG_STORE"\n')
+    fake_nix_store.chmod(0o755)
     gui_marker=tmp_path/'gui-called'
     fake_python=fake_bin/'python3'
     fake_python.write_text('''#!/bin/sh
@@ -519,6 +529,7 @@ printf '%s\\n' called > "$JARVIS_GUI_MARKER"
     fake_python.chmod(0o755)
     env={**os.environ,'PATH':f'{fake_bin}:/usr/bin:/bin',
          'JARVIS_EXPECTED_OVERLAY':str(store/'bin/jarvis-overlay'),
+         'JARVIS_XDG_STORE':str(xdg_store),
          'JARVIS_GUI_MARKER':str(gui_marker)}
     result=subprocess.run(['sh',str(ROOT/'scripts/test-nix-package.sh'),str(store),'--gui'],
                           env=env,capture_output=True,text=True,timeout=10)

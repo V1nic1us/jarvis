@@ -8,6 +8,10 @@ task_checks=$(CDPATH= cd -P "$(dirname "$0")" && pwd)
 command -v nix >/dev/null || { echo 'Nix package manager is required.' >&2; exit 2; }
 task_store=$(readlink -f "$task_store")
 [ -x "$task_store/bin/jarvis" ] || { echo 'Nix output has no jarvis launcher.' >&2; exit 2; }
+task_xdg_store=$(nix-store -qR "$task_store" | grep '/xdg-utils-' | head -n 1)
+[ -n "$task_xdg_store" ] || { echo 'Nix output has no xdg-utils runtime dependency.' >&2; exit 2; }
+grep -F "$task_xdg_store/bin" "$task_store/bin/jarvis" >/dev/null
+test -x "$task_xdg_store/bin/xdg-open"
 [ -x "$task_store/lib/jarvis/runtime/bin/python3" ] || {
     echo 'Nix output has no bound Python runtime.' >&2
     exit 2
