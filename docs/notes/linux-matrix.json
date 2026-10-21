@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T17:11:05Z",
+  "verified_at_utc": "2026-10-21T17:29:32Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3501,10 +3501,32 @@
       ],
       "source_commit": "729af567707cc3cb61f587bf3121da5663a47df7",
       "notes": "Installed GNOME Platform 49 AArch64 runtime contains executable bin/xdg-open. Its help command exited successfully under qemu-aarch64 using the runtime libraries; this is user-mode emulation, not a native ARM hardware or real URL-dispatch test."
+    },
+    {
+      "target": "flatpak",
+      "distro": "universal-linux",
+      "version": "GNOME Platform 49",
+      "arch": "aarch64",
+      "libc": "glibc",
+      "desktop": "isolated Flatpak user installation on x86_64 host",
+      "session": "stable bundle in-place upgrade",
+      "package": "Flatpak bundle",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "flatpak install --user --bundle <old>; write app-data sentinel; flatpak install --user --bundle --or-update <new>; verify sentinel and changed commit; flatpak uninstall",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/flatpak-aarch64-upgrade-2026-10-21.log",
+          "sha256": "c331b780c4e2a1dce3232c5f34ad403a20184e0c7e0dae419642658fada0be2b"
+        }
+      ],
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "notes": "Installed the AArch64 bundle from run 39526318796 (commit d721f78), updated in place with the bundle from run 39607881416 (commit ddaeb16), and verified an app-data sentinel SHA256 remained unchanged. The app executable was not run in this upgrade test; package runtime and native ARM hardware remain separate checks."
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: Gentoo, Nix, Guix and Solus; AArch64 Arch, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
+    "Native package upgrade/data-preservation tests still missing: Gentoo, Nix, Guix and Solus; AArch64 Arch, Gentoo, Nix, Guix, Void glibc, Void musl",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
