@@ -203,6 +203,19 @@ PY
             rpmbuild --define "_topdir $task_build" -ba "$task_build/SPECS/xdotool.spec"
         fi
         rpmbuild --define "_topdir $task_build" -ba "$task_build/SPECS/jarvis-assistant.spec"
+        if [ "${JARVIS_TEST_PACKAGE_UPGRADE:-0}" = 1 ]; then
+            python3 - "$task_build/SPECS/jarvis-assistant.spec" <<'PY'
+from pathlib import Path
+import re,sys
+spec=Path(sys.argv[1])
+text=spec.read_text()
+updated,count=re.subn(r'(?m)^(Release:\s*)1(%\{\?dist\})?\s*$',r'\g<1>2\g<2>',text)
+if count != 1:
+    raise SystemExit(f'expected one RPM Release 1 entry, found {count}')
+spec.write_text(updated)
+PY
+            rpmbuild --define "_topdir $task_build" -ba "$task_build/SPECS/jarvis-assistant.spec"
+        fi
         find "$task_build/RPMS" "$task_build/SRPMS" -name '*.rpm' -type f -exec cp '{}' "$task_output/" \;
         ;;
     arch)

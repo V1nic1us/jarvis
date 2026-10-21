@@ -981,6 +981,35 @@ def test_arch_upgrade_runner_refuses_to_run_outside_disposable_container():
     assert 'container descartavel' in result.stderr
 
 
+def test_rpm_upgrade_runner_refuses_to_run_outside_disposable_container():
+    import subprocess
+    script=ROOT/'scripts/test-native-rpm-upgrade.sh'
+    result=subprocess.run(['sh',str(script),'fedora','old.rpm','new.rpm'],capture_output=True,text=True)
+    assert result.returncode==2
+    assert 'container descartavel' in result.stderr
+
+
+def test_rpm_upgrade_runner_uses_native_upgrade_commands_and_checks_user_data():
+    script=ROOT/'scripts/test-native-rpm-upgrade.sh'
+    assert script.is_file()
+    source=script.read_text()
+    assert 'dnf upgrade' in source
+    assert 'zypper --non-interactive install' in source
+    assert 'rpm -V jarvis-assistant' in source
+    assert 'sha256sum -c' in source
+
+
+def test_native_package_workflow_runs_rpm_upgrade_lifecycle_on_all_rpm_targets():
+    workflow=(ROOT/'.github/workflows/linux-packages.yml').read_text()
+    assert "if: matrix.family == 'fedora' || matrix.family == 'suse' || matrix.family == 'rhel'" in workflow
+    assert 'test-native-rpm-upgrade.sh' in workflow
+    for dockerfile in ('fedora','suse','rhel'):
+        assert 'JARVIS_TEST_PACKAGE_UPGRADE=1' in (ROOT/f'packaging/rpm/{dockerfile}/Dockerfile').read_text()
+    builder=(ROOT/'scripts/build-package.sh').read_text()
+    assert 'JARVIS_TEST_PACKAGE_UPGRADE' in builder
+    assert "Release:\\s*)1" in builder
+
+
 def test_native_package_workflow_runs_arch_upgrade_lifecycle():
     workflow=(ROOT/'.github/workflows/linux-packages.yml').read_text()
     assert "if: matrix.family == 'arch'" in workflow

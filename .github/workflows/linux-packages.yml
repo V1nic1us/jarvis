@@ -44,6 +44,8 @@ jobs:
           test "$(uname -m)" = "$ARCH"
           if [ "$FAMILY" = alpine ]; then
             docker build --progress=plain --build-arg JARVIS_TEST_PACKAGE_UPGRADE=1 -f "$DOCKERFILE" -t jarvis-package .
+          elif [ "$FAMILY" = fedora ] || [ "$FAMILY" = suse ] || [ "$FAMILY" = rhel ]; then
+            docker build --progress=plain --build-arg JARVIS_TEST_PACKAGE_UPGRADE=1 -f "$DOCKERFILE" -t jarvis-package .
           else
             docker build --progress=plain -f "$DOCKERFILE" -t jarvis-package .
           fi
@@ -140,6 +142,20 @@ jobs:
           test -n "$old_package" && test -f "$new_package"
           docker run --rm -v "$PWD/dist/native:/packages:ro" -v "$PWD/scripts:/checks:ro" archlinux:base \
             sh /checks/test-native-arch-upgrade.sh "/packages/$(basename "$old_package")" "/packages/$(basename "$new_package")"
+      - name: Upgrade RPM package and verify user data preservation
+        if: matrix.family == 'fedora' || matrix.family == 'suse' || matrix.family == 'rhel'
+        env:
+          FAMILY: ${{ matrix.family }}
+          IMAGE: ${{ matrix.image }}
+          ARCH: ${{ matrix.arch }}
+        run: |
+          rpm_arch=$ARCH
+          [ "$rpm_arch" = x86_64 ] || rpm_arch=aarch64
+          old_package=$(find dist/native -maxdepth 1 -type f -name "jarvis-assistant-0.1.0-1*.$rpm_arch.rpm" -print -quit)
+          new_package=$(find dist/native -maxdepth 1 -type f -name "jarvis-assistant-0.1.0-2*.$rpm_arch.rpm" -print -quit)
+          test -n "$old_package" && test -n "$new_package"
+          docker run --rm -v "$PWD/dist/native:/packages:ro" -v "$PWD/scripts:/checks:ro" "$IMAGE" \
+            sh /checks/test-native-rpm-upgrade.sh "$FAMILY" "/packages/$(basename "$old_package")" "/packages/$(basename "$new_package")"
       - name: Upload experimental package artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

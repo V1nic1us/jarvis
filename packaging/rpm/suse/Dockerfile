@@ -6,7 +6,13 @@ RUN zypper --non-interactive install --no-recommends \
     zypper clean --all
 WORKDIR /build/jarvis
 COPY . .
+ARG JARVIS_TEST_PACKAGE_UPGRADE=0
 # The source archiver inventories Git files; Docker intentionally omits .git.
 # A local empty index preserves its allowlist and ignore rules for this context.
-RUN git init --quiet && scripts/build-package.sh --target suse --output /dist
+RUN git init --quiet && \
+    if [ "$JARVIS_TEST_PACKAGE_UPGRADE" = 1 ]; then \
+        JARVIS_TEST_PACKAGE_UPGRADE=1 scripts/build-package.sh --target suse --output /dist; \
+    else \
+        scripts/build-package.sh --target suse --output /dist; \
+    fi
 CMD ["sh", "-c", "cp /dist/*.rpm /out/"]

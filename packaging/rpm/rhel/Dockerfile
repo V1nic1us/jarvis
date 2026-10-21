@@ -9,5 +9,11 @@ RUN dnf install -y dnf-plugins-core epel-release && \
     dnf clean all
 WORKDIR /build/jarvis
 COPY . .
-RUN git init --quiet && scripts/build-package.sh --target rhel --output /dist
+ARG JARVIS_TEST_PACKAGE_UPGRADE=0
+RUN git init --quiet && \
+    if [ "$JARVIS_TEST_PACKAGE_UPGRADE" = 1 ]; then \
+        JARVIS_TEST_PACKAGE_UPGRADE=1 scripts/build-package.sh --target rhel --output /dist; \
+    else \
+        scripts/build-package.sh --target rhel --output /dist; \
+    fi
 CMD ["sh", "-c", "cp /dist/*.rpm /out/"]
