@@ -971,3 +971,17 @@ def test_deb_upgrade_runner_refuses_to_run_outside_disposable_container():
     result=subprocess.run(['sh',str(script),'debian','old.deb','new.deb'],capture_output=True,text=True)
     assert result.returncode==2
     assert 'container descartavel' in result.stderr
+
+
+def test_arch_upgrade_runner_refuses_to_run_outside_disposable_container():
+    import subprocess
+    script=ROOT/'scripts/test-native-arch-upgrade.sh'
+    result=subprocess.run(['sh',str(script),'old.pkg.tar.zst','new.pkg.tar.zst'],capture_output=True,text=True)
+    assert result.returncode==2
+    assert 'container descartavel' in result.stderr
+
+
+def test_native_package_workflow_runs_arch_upgrade_lifecycle():
+    workflow=(ROOT/'.github/workflows/linux-packages.yml').read_text()
+    assert "if: matrix.family == 'arch'" in workflow
+    assert 'test-native-arch-upgrade.sh' in workflow

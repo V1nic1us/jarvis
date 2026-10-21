@@ -106,6 +106,40 @@ jobs:
           docker run --rm -e JARVIS_APK_REQUIRE_SIGNATURE=1 \
             -v "$PWD/dist/native:/packages:ro" -v "$PWD/scripts:/checks:ro" alpine:3.24 \
             sh -ec 'find /packages -name "*.pub" -exec cp {} /etc/apk/keys/ \;; exec sh /checks/test-native-apk-upgrade.sh /packages/jarvis-assistant-0.1.0-r0.apk 0.1.0-r0 /packages/jarvis-assistant-0.1.0-r1.apk 0.1.0-r1'
+      - name: Prepare second Arch package revision
+        if: matrix.family == 'arch'
+        run: |
+          package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.pkg.tar.zst' -print -quit)
+          test -n "$package"
+          docker run --rm -v "$PWD/dist/native:/packages" archlinux:base sh -ec '
+            command -v bsdtar >/dev/null
+            command -v zstd >/dev/null
+            old=/packages/'"$(basename "$package")"'
+            work=$(mktemp -d)
+            bsdtar -xf "$old" -C "$work"
+            sed -i "s/^pkgver = 0.1.0-1$/pkgver = 0.1.0-2/" "$work/.PKGINFO"
+            grep -qx "pkgver = 0.1.0-2" "$work/.PKGINFO"
+            ( cd "$work"
+              set -- .BUILDINFO .MTREE .PKGINFO
+              for entry in * .[^.]*; do
+                [ -e "$entry" ] || [ -L "$entry" ] || continue
+                case "$entry" in .BUILDINFO|.MTREE|.PKGINFO) continue ;; esac
+                set -- "$@" "$entry"
+              done
+              bsdtar --uid 0 --gid 0 -cf - "$@"
+            ) | zstd -T0 -o /packages/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst
+            pacman -Qp /packages/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst | grep -qx "jarvis-assistant 0.1.0-2"
+          '
+          cd dist/native
+          find . -maxdepth 1 -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
+      - name: Upgrade Arch package and verify user data preservation
+        if: matrix.family == 'arch'
+        run: |
+          old_package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0-1-*.pkg.tar.zst' -print -quit)
+          new_package=dist/native/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst
+          test -n "$old_package" && test -f "$new_package"
+          docker run --rm -v "$PWD/dist/native:/packages:ro" -v "$PWD/scripts:/checks:ro" archlinux:base \
+            sh /checks/test-native-arch-upgrade.sh "/packages/$(basename "$old_package")" "/packages/$(basename "$new_package")"
       - name: Upload experimental package artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
