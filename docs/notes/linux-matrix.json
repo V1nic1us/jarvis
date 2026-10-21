@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T20:24:30Z",
+  "verified_at_utc": "2026-10-21T21:18:35Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -111,9 +111,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248714316",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947844",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork run: package build, artifact export, clean native install, inspection and removal succeeded. Run 39526318763 passed native arch x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64."
     },
     {
@@ -244,9 +250,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713475",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482003581",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork workflow passed native debian x86_64 package build, clean install, inspection, upgrade/data-preservation checks and removal. Run 39526318763 passed native debian x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64."
     },
     {
@@ -351,9 +363,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713610",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481946856",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Run 39526318763 passed native debian aarch64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for aarch64."
     },
     {
@@ -446,9 +464,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713576",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482011225",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork run passed native Fedora x86_64 RPM build, clean install, inspection and removal. Run 39526318763 passed native fedora x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64."
     },
     {
@@ -547,9 +571,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713922",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482026581",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork run passed native Fedora AArch64 RPM build, clean install, inspection and removal. Run 39526318763 passed native fedora aarch64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for aarch64."
     },
     {
@@ -582,9 +612,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713922",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482026581",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the fedora aarch64 native package upgrade and user-data-preservation test."
     },
     {
@@ -683,9 +719,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713670",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481946325",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork workflow passed native ubuntu x86_64 package build, clean install, inspection, upgrade/data-preservation checks and removal. Run 39526318763 passed native ubuntu x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64."
     },
     {
@@ -784,9 +826,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713947",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482009472",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Run 39526318763 passed native ubuntu aarch64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for aarch64."
     },
     {
@@ -879,9 +927,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713911",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947101",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Run 39526318763 passed native suse x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64."
     },
     {
@@ -992,9 +1046,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713524",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947742",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork run passed native AArch64 package build, clean install, inspection and removal. Run 39526318763 passed native suse aarch64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for aarch64."
     },
     {
@@ -1087,10 +1147,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713518",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481948805",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run passed native x86_64 RPM build, clean install, inspection and removal. This does not cover package upgrade. Run 39526318763 passed native rhel x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64.",
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
+      "notes": "Latest native package CI passed x86_64 RPM build, clean installation, inspection, upgrade/data preservation and removal.",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a"
     },
     {
       "target": "rhel",
@@ -1122,9 +1188,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713518",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481948805",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the rhel x86_64 native package upgrade and user-data-preservation test."
     },
     {
@@ -1359,9 +1431,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713044",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947885",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork workflow built and verified the native Alpine APK on x86_64. Run 39526318763 passed native alpine x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64."
     },
     {
@@ -1454,9 +1532,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713527",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947750",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current fork workflow built and verified the native Alpine APK on aarch64. Run 39526318763 passed native alpine aarch64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for aarch64."
     },
     {
@@ -2302,9 +2386,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713044",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947885",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the alpine x86_64 native package upgrade and user-data-preservation test."
     },
     {
@@ -2477,9 +2567,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248714316",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947844",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the arch x86_64 native package upgrade and user-data-preservation test."
     },
     {
@@ -2551,9 +2647,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713475",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482003581",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the debian x86_64 native package upgrade and user-data-preservation test."
     },
     {
@@ -2600,9 +2702,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713576",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482011225",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the fedora x86_64 native package upgrade and user-data-preservation test."
     },
     {
@@ -2649,9 +2757,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713911",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947101",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the suse x86_64 native package upgrade and user-data-preservation test."
     },
     {
@@ -2950,9 +3064,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713670",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481946325",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the ubuntu x86_64 native package upgrade and user-data-preservation test."
     },
     {
@@ -3223,9 +3343,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713610",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481946856",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the debian aarch64 native package upgrade and user-data-preservation test."
     },
     {
@@ -3276,9 +3402,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713947",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119482009472",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the ubuntu aarch64 native package upgrade and user-data-preservation test."
     },
     {
@@ -3323,9 +3455,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713527",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947750",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the alpine aarch64 native package upgrade and user-data-preservation test."
     },
     {
@@ -3412,9 +3550,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713524",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481947742",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "Current CI run 39526318763 passed the suse aarch64 native package upgrade and user-data-preservation test."
     },
     {
