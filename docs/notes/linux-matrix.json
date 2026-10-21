@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T00:01:14+00:00",
+  "verified_at_utc": "2026-10-21T00:01:51+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -551,9 +551,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39515913103/job/118947890117",
           "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39516376373/job/118953910894",
+          "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
+      "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
       "notes": "Current fork workflow passed native ubuntu x86_64 package build, clean install, inspection, upgrade/data-preservation checks and removal."
     },
     {
