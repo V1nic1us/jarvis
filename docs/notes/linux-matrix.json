@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T14:00:47Z",
+  "verified_at_utc": "2026-10-21T14:12:59Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1823,10 +1823,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39526318795/job/118981677839",
           "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880824/job/119248713930",
+          "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+          "conclusion": "success"
         }
       ],
       "notes": "GitHub Actions concluiu o build nativo do pacote Void musl AArch64, instalação em container Void musl limpo, inspeção e remoção. Desktop real, áudio e atualização entre versões publicadas ainda não foram verificados nessa arquitetura. A compilação nativa mais recente, exportação do pacote e lifecycle de instalação/inspeção/remoção em Void musl limpo passaram no commit cba55c5 (2026-10-20). CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal.",
-      "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643"
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
       "target": "gentoo",
