@@ -138,6 +138,11 @@ com consentimento e execução em outros desktops ainda não foram verificadas.
   `.superpowers/sdd/2026-10-14-jarvis-linux/atspi-wayland-focus-recheck-pass-2026-10-20.log`
   (`85c3e34df3337375b023792993d5880ace51098d60f8a6d4b62bb027a039340d`). O teste
   continua limitado a esta sessão KDE Wayland e não cobre outros desktops.
+- Rechecagem em 2026-10-21 reproduziu a recusa no socket `bus_1` embora
+  `at-spi-dbus-bus.service` estivesse ativo. Reiniciar somente esse serviço da
+  sessão restaurou a conexão; `JARVIS_DESKTOP_TESTS=1 PYTHONPATH=voice python3
+  -m pytest -q -rs voice/tests/test_atspi_desktop.py` passou com **1 teste**.
+  A confirmação continua restrita à sessão KDE Wayland atual.
 - Corrigida ambiguidade GI entre getter de interface `Accessible.get_text`
   e leitura `Atspi.Text.get_text`; falha real reproduzida antes da correção.
 - MCP inicializado pelo cliente stdio real: ferramentas neutras registradas e
