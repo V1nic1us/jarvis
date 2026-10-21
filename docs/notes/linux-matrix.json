@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T20:11:21Z",
+  "verified_at_utc": "2026-10-21T20:23:24Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3549,17 +3549,17 @@
       "version": "rolling",
       "arch": "x86_64",
       "libc": "glibc",
-      "desktop": "archlinux:base + package metadata",
-      "session": "container and package metadata audit",
+      "desktop": "archlinux:base + installed jarvis-assistant package",
+      "session": "disposable Arch container; headless",
       "package": "pkg.tar.zst",
       "capability": "xdg_open_runtime_availability",
-      "status": "unverified",
-      "command": "docker run --rm --platform linux/amd64 archlinux:base sh -lc 'command -v xdg-open'; pacman -Qip <jarvis-package>",
+      "status": "failed",
+      "command": "pacman -Sy --noconfirm; pacman -U --noconfirm <jarvis-package>; command -v xdg-open; jarvis --doctor",
       "evidence": [
         {
           "kind": "local_validation_log",
-          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-xdg-open-dependency-gap-2026-10-21.log",
-          "sha256": "d5f7e68870b74deec752990a3dba95c2e70078230f3aa6f6c18a6d92edf21626"
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-xdg-open-installed-smoke-2026-10-21.log",
+          "sha256": "b5592685b7c7fd5b95a5acf3bf5d0798e8293afb2a12527f62d96d8a5c90e5e0"
         },
         {
           "kind": "local_package_artifact",
@@ -3572,7 +3572,7 @@
           "sha256": "785259242a8e19d23d6584de0c636a129f2098981756496e7c7fc13526802811"
         }
       ],
-      "notes": "The Arch base image lacks xdg-open, the package does not declare xdg-utils directly, and the current Arch required-dependency closure for its direct requirements does not contain xdg-utils. The artifact itself was not installed during the closure audit, so installed availability remains unverified until an installed smoke checks command -v xdg-open."
+      "notes": "Installed jarvis-assistant 0.1.0-2 with its declared dependencies in disposable archlinux:base. command -v xdg-open returned status 1 after installation; jarvis --doctor recognized Linux. This reproduces the missing runtime command without testing URI dispatch in a desktop session."
     },
     {
       "target": "flatpak",
