@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T16:39:30Z",
+  "verified_at_utc": "2026-10-21T16:40:35Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3007,9 +3007,16 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/atspi-wayland-focus-recheck-pass-2026-10-20.log",
           "sha256": "85c3e34df3337375b023792993d5880ace51098d60f8a6d4b62bb027a039340d"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-2026-10-21.log",
+          "sha256": "941fd927604956af95533710b95a4b5cfe32fe875376a69b8cd3d6db814e3c2b",
+          "passed": 1,
+          "skipped": 0
         }
       ],
-      "source_commit": "322d08b039a4d7fafd2ac6d7d6db7fd8398b4ab2",
+      "source_commit": "a4d3ad89e6b5e3c239a7933f1c3988c9b2a18af5",
       "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session."
     },
     {
