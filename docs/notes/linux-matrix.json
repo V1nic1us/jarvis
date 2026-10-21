@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T00:03:42Z",
+  "verified_at_utc": "2026-10-21T20:06:12Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3076,7 +3076,7 @@
         {
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-installed-wayland-overlay-2026-10-21.log",
-          "sha256": "0f783d2b3c375f7f82c7c61bd1651ac7c38c411a82608412d304db9dd32b4025"
+          "sha256": "0c742fc8176b68cf8b63088b754c9b19d2babd64a0df15bbe47790b3a059eadb"
         },
         {
           "kind": "local_package_artifact",
@@ -3569,6 +3569,7 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
+    "Declare and installed-smoke-check xdg-open availability across native package managers; Nix/Guix PATH and Slackware manual prerequisite",
     "OpenCode and Flatpak helper license notices/source correspondence, SBOM and independent whole-branch review"
   ]
 }
