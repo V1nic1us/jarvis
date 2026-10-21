@@ -12,19 +12,11 @@ inspeção e remoção no [CI
 gerenciador executou também os testes de atualização e preservação de dados previstos no
 workflow.
 
-Nix passou o ciclo de perfil, incluindo `nix profile upgrade --all`, nas duas
-arquiteturas ([CI
-39685647412](https://github.com/V1nic1us/jarvis/actions/runs/39685647412)). Flatpak
-passou em x86_64 e AArch64 ([CI
-39685647380](https://github.com/V1nic1us/jarvis/actions/runs/39685647380)).
+Nix passou o ciclo de perfil, incluindo `nix profile upgrade --all`, nas duas arquiteturas ([CI 39692211308](https://github.com/V1nic1us/jarvis/actions/runs/39692211308)). Flatpak passou em x86_64 e AArch64 ([CI 39692211264](https://github.com/V1nic1us/jarvis/actions/runs/39692211264)).
 
 Void glibc passou nas duas arquiteturas, assim como Void musl AArch64; Void musl
 x86_64 ainda compila ([CI
-39685647431](https://github.com/V1nic1us/jarvis/actions/runs/39685647431)). A nova rodada
-nativa 39691135658 está construindo 14 alvos, incluindo Arch ARM64 ([CI
-39691135658](https://github.com/V1nic1us/jarvis/actions/runs/39691135658)). Ainda faltam
-ciclos de atualização em alguns alvos e validação de desktop, áudio e portais reais; a
-matriz lista cada job e suas limitações.
+39685647431](https://github.com/V1nic1us/jarvis/actions/runs/39685647431)). A rodada nativa 39692211142 está ativa com 14 alvos. Arch x86_64 e AArch64 já passaram build, instalação, inspeção e remoção; Fedora x86_64/AArch64, RHEL x86_64 e openSUSE x86_64 seguem em execução. RHEL AArch64 falhou ao baixar metadados do EPEL por erros TLS/checksum dos mirrors e precisa de nova tentativa. A mesma rodada confirmou `xdg-open` e o aviso MIT no pacote Arch x86_64. A matriz registra cada job e suas limitações; desktops reais, áudio e portais continuam pendentes.
 
 ## NixOS
 

@@ -749,3 +749,10 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 - O run [39692211308](https://github.com/V1nic1us/jarvis/actions/runs/39692211308) passou o build e ciclo de perfil Nix em x86_64 e AArch64, incluindo `nix profile upgrade --all`, runtime imports e preservação dos dados do usuário.
 - O run [39692211264](https://github.com/V1nic1us/jarvis/actions/runs/39692211264) passou build e instalação/inspeção do bundle Flatpak em ambas as arquiteturas.
+
+### Atualização da CI nativa, aviso MIT e upgrade Nix — 2026-10-21
+
+- O run [39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142) passou os jobs Arch x86_64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549500146)) e Arch Linux ARM AArch64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549500247)), incluindo build, instalação, inspeção e remoção. No x86_64, o smoke instalado exige `xdg-open` e confere o aviso MIT do binário OpenCode. Isso substitui os dois registros de falha baseados no pacote local antigo de 18/10, que não refletia a receita atual.
+- Nix passou novamente instalação, `nix profile upgrade --all`, imports, remoção e preservação dos dados em x86_64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863404)) e AArch64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863678)).
+- RHEL AArch64 falhou antes do build ao baixar os metadados EPEL: mirrors retornaram TLS e checksum errors. É falha de infraestrutura externa observada no [job](https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549499983), que requer nova tentativa; não confirma falha da receita Jarvis.
+- Na hora deste registro, o run nativo ainda construía Fedora x86_64/AArch64, RHEL x86_64 e openSUSE x86_64. Builds Gentoo e Guix permanecem pausados conforme pedido.

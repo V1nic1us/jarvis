@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T23:28:48Z",
+  "verified_at_utc": "2026-10-21T23:56:12Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -123,10 +123,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39683082677/job/119518678531",
           "source_commit": "59861b4c2ef76b3713af6f292c26904bc50dc615",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549500146",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
-      "notes": "Current fork run: package build, artifact export, clean native install, inspection and removal succeeded. Run 39526318763 passed native arch x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64. Latest build/install/inspection/removal passed in run 39683082677."
+      "notes": "Current fork run: package build, artifact export, clean native install, inspection and removal succeeded. Run 39526318763 passed native arch x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64. Latest build/install/inspection/removal passed in run 39683082677. Latest native build/install/inspect/remove succeeded in run 39692211142; this run also checks the installed xdg-open provider and OpenCode MIT notice."
     },
     {
       "target": "arch",
@@ -150,9 +156,15 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-aarch64-package-lifecycle-2026-10-19-retry.log",
           "sha256": "3ca8c72fa735bf5cf7f9ed16b86c5b841049f317cd38d1599066bdd1563686b8"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549500247",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Arch Linux ARM AArch64 package build and native install/verify/remove lifecycle passed under QEMU user-mode emulation in Docker. Arch Linux ARM makepkg emitted .pkg.tar.xz; real ARM hardware and a complete desktop/audio session remain unverified."
+      "notes": "Arch Linux ARM AArch64 package build and native install/verify/remove lifecycle passed under QEMU user-mode emulation in Docker. Arch Linux ARM makepkg emitted .pkg.tar.xz; real ARM hardware and a complete desktop/audio session remain unverified. Latest native Arch Linux ARM AArch64 build/install/inspect/remove succeeded in run 39692211142."
     },
     {
       "target": "debian",
@@ -3941,7 +3953,7 @@
       "session": "native package content and license notice audit",
       "package": "pkg.tar.zst",
       "capability": "opencode_license_notice_distribution",
-      "status": "failed",
+      "status": "passed",
       "command": "inspect package contents for OpenCode MIT notice and compare with packaging/opencode-sources.json and upstream v1.18.23/LICENSE",
       "evidence": [
         {
@@ -3953,9 +3965,15 @@
           "kind": "local_package_artifact",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-upgrade-artifacts/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst",
           "sha256": "7d4bbd90a894b3d613946840920206a64064ea9990710c8afff4cee5baab148f"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549500146",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
-      "notes": "The package contains the OpenCode 1.18.23 binary and the project's Apache-2.0 LICENSE, but no OpenCode MIT notice, despite the source manifest labeling the binary MIT. The upstream v1.18.23 license requires its copyright and permission notice to accompany copies. Verify and fix this across native and Flatpak artifacts before claiming license-notice completeness."
+      "notes": "The older local audit inspected a stale package artifact and found the OpenCode MIT notice missing. Current native Arch x86_64 package CI passed the installed smoke that checks the packaged notice text and permission statement; the historical artifact finding is superseded."
     },
     {
       "target": "arch",
@@ -3967,7 +3985,7 @@
       "session": "disposable Arch container; headless",
       "package": "pkg.tar.zst",
       "capability": "xdg_open_runtime_availability",
-      "status": "failed",
+      "status": "passed",
       "command": "pacman -Sy --noconfirm; pacman -U --noconfirm <jarvis-package>; command -v xdg-open; jarvis --doctor",
       "evidence": [
         {
@@ -3984,9 +4002,15 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-xdg-open-closure-2026-10-21.log",
           "sha256": "785259242a8e19d23d6584de0c636a129f2098981756496e7c7fc13526802811"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549500146",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Installed jarvis-assistant 0.1.0-2 with its declared dependencies in disposable archlinux:base. command -v xdg-open returned status 1 after installation; jarvis --doctor recognized Linux. This reproduces the missing runtime command without testing URI dispatch in a desktop session."
+      "notes": "The older local smoke inspected a stale package artifact without xdg-utils. Current Arch x86_64 recipe declares xdg-utils and native package CI passed the installed smoke that requires command -v xdg-open; historical artifact finding is superseded."
     },
     {
       "target": "flatpak",
@@ -4031,15 +4055,61 @@
       ],
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
       "notes": "Installed the AArch64 bundle from run 39526318796 (commit d721f78), updated in place with the bundle from run 39607881416 (commit ddaeb16), and verified an app-data sentinel SHA256 remained unchanged. The app executable was not run in this upgrade test; package runtime and native ARM hardware remain separate checks."
+    },
+    {
+      "target": "nix",
+      "distro": "NixOS",
+      "version": "flake.lock",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "Nix profile",
+      "session": "disposable profile",
+      "package": "Nix flake output",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "nix profile install; nix profile upgrade --all; verify launcher and user-data sentinel; profile remove",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863404",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+      "notes": "Native x86_64-linux job passed profile install/upgrade/removal, runtime imports and user-data preservation."
+    },
+    {
+      "target": "nix",
+      "distro": "NixOS",
+      "version": "flake.lock",
+      "arch": "aarch64",
+      "libc": "glibc",
+      "desktop": "Nix profile",
+      "session": "disposable profile",
+      "package": "Nix flake output",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "nix profile install; nix profile upgrade --all; verify launcher and user-data sentinel; profile remove",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863678",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+      "notes": "Native aarch64-linux job passed profile install/upgrade/removal, runtime imports and user-data preservation."
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Arch, Gentoo, Nix, Guix, Void glibc, Void musl",
+    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Gentoo, Guix, Void glibc, Void musl",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. Native run 39683082677 passed all 13 package jobs, including build/install/inspection/removal and manager-specific upgrade/data-preservation checks where configured. New native run 39691135658 is building 14 jobs, including Arch AArch64. Flatpak runs 39685647380 and 39692211264 passed bundle build/install/runtime inspection on x86_64/AArch64. Void glibc and Void musl AArch64 passed package lifecycle in run 39685647431; Void musl x86_64 remains active. Nix profile install/upgrade/removal and runtime checks passed on x86_64/AArch64 in runs 39685647412, 39691135412 and 39692211308. Gentoo/Guix remain paused. Remaining work: complete active jobs, finish missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "Native run 39692211142 is active: Arch x86_64 and AArch64 passed build/install/inspection/removal; RHEL AArch64 failed while fetching EPEL metadata because mirrors returned TLS/checksum errors; Fedora x86_64/AArch64, RHEL x86_64 and openSUSE x86_64 remain active. Flatpak 39692211264 and Nix 39692211308 passed on x86_64/AArch64. Gentoo/Guix remain paused. Remaining work: finish active jobs, rerun the external EPEL mirror failure, complete missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }

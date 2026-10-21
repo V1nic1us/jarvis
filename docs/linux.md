@@ -6,9 +6,9 @@ Wayland. O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 est�
 validadas. Todos os 13 jobs nativos passaram build, instalação, inspeção e
 remoção no [CI 39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677),
 com testes de atualização/preservação de dados nos gerenciadores cobertos pelo
-workflow. Nix e Flatpak passaram em x86_64/AArch64; Void glibc também passou nas
+workflow. Nix (incluindo upgrade de perfil e preservação de dados) e Flatpak passaram em x86_64/AArch64; Void glibc também passou nas
 duas arquiteturas; Void musl AArch64 também passou, com x86_64 ainda compilando.
-A nova rodada nativa 39691135658, agora com 14 jobs, inclui o ciclo Arch ARM64.
+A rodada nativa 39692211142 está ativa com 14 jobs: Arch x86_64 e ARM64 passaram; a falha RHEL ARM64 veio de erros externos TLS/checksum ao baixar metadados do EPEL, e quatro outros jobs seguem ativos.
 Os builds de Gentoo e Guix estão pausados a pedido. Ainda faltam combinações de
 atualização, desktops reais,
 áudio/captura e portais em mais distribuições. Veja `docs/linux-packages.md` e
