@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T20:08:24Z",
+  "verified_at_utc": "2026-10-21T20:09:39Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3539,9 +3539,14 @@
           "kind": "local_package_artifact",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-upgrade-artifacts/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst",
           "sha256": "7d4bbd90a894b3d613946840920206a64064ea9990710c8afff4cee5baab148f"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-xdg-open-closure-2026-10-21.log",
+          "sha256": "785259242a8e19d23d6584de0c636a129f2098981756496e7c7fc13526802811"
         }
       ],
-      "notes": "The Arch base image lacks xdg-open and this package does not declare xdg-utils directly. Whether another Jarvis dependency provides xdg-open transitively has not been tested, so installed availability remains unverified."
+      "notes": "The Arch base image lacks xdg-open, the package does not declare xdg-utils directly, and the current Arch required-dependency closure for its direct requirements does not contain xdg-utils. The artifact itself was not installed during the closure audit, so installed availability remains unverified until an installed smoke checks command -v xdg-open."
     },
     {
       "target": "flatpak",
@@ -3595,7 +3600,7 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Declare and installed-smoke-check xdg-open availability across native package managers; Nix/Guix PATH and Slackware manual prerequisite (Arch base image lacks xdg-open; package omits direct xdg-utils dependency, transitive availability untested)",
+    "Declare and installed-smoke-check xdg-open availability across native package managers; Nix/Guix PATH and Slackware manual prerequisite (Arch base and required package dependency closure lack xdg-utils)",
     "OpenCode and Flatpak helper license notices/source correspondence, SBOM and independent whole-branch review"
   ]
 }
