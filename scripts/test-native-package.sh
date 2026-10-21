@@ -82,6 +82,7 @@ from gi.repository import Atspi
 print('Private runtime, resources and AT-SPI typelib passed')
 PY
 task_runtime_tools="ffmpeg ffplay pactl arecord xdotool wl-paste xclip"
+task_runtime_tools="$task_runtime_tools xdg-open"
 for task_tool in $task_runtime_tools; do command -v "$task_tool"; done
 ffmpeg -version >/dev/null
 ffplay -version >/dev/null

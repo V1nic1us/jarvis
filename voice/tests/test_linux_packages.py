@@ -8,6 +8,27 @@ from pathlib import Path
 import pytest
 
 ROOT=Path(__file__).resolve().parents[2]
+
+
+def test_completed_native_package_recipes_provide_xdg_open():
+    recipes={
+        'Arch': (ROOT/'packaging/arch/PKGBUILD', "'xdg-utils'"),
+        'Alpine': (ROOT/'packaging/alpine/APKBUILD', 'xdg-utils'),
+        'Debian/Ubuntu': (ROOT/'packaging/debian/control', 'xdg-utils'),
+        'Fedora': (ROOT/'packaging/rpm/fedora/jarvis-assistant.spec', 'xdg-utils'),
+        'RHEL/AlmaLinux': (ROOT/'packaging/rpm/rhel/jarvis-assistant.spec', 'xdg-utils'),
+        'openSUSE': (ROOT/'packaging/rpm/suse/jarvis-assistant.spec', 'xdg-utils'),
+        'Void glibc': (ROOT/'packaging/void/template', 'xdg-utils'),
+        'Void musl': (ROOT/'packaging/void-musl/template', 'xdg-utils'),
+        'Solus': (ROOT/'packaging/solus/package.yml', 'xdg-utils'),
+        'Nix': (ROOT/'packaging/nix/default.nix', 'xdg-utils'),
+    }
+    missing=[name for name,(path,provider) in recipes.items() if provider not in path.read_text()]
+    assert not missing, f'missing xdg-open provider in completed recipes: {missing}'
+    lifecycle=(ROOT/'scripts/test-native-package.sh').read_text()
+    assert 'task_runtime_tools="$task_runtime_tools xdg-open"' in lifecycle
+
+
 spec=importlib.util.spec_from_file_location('fetch_opencode',ROOT/'scripts/fetch-opencode.py')
 fetch=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(fetch)

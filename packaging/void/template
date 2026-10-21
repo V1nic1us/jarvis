@@ -9,7 +9,7 @@ nodebug=yes
 hostmakedepends="rust cargo nodejs python3 python3-pip pkg-config git tar"
 makedepends="gtk+3-devel libwebkit2gtk41-devel libffi-devel python3-devel"
 depends="python3>=3.14<3.15 ffmpeg pulseaudio-utils python3-gobject
- at-spi2-core alsa-utils xdotool wl-clipboard xclip mesa"
+ at-spi2-core alsa-utils xdotool wl-clipboard xclip xdg-utils mesa"
 python_version=3
 short_desc="Voice assistant with native Linux overlay"
 maintainer="Jarvis local build contributors <jarvis@localhost.invalid>"

@@ -6,7 +6,7 @@ pkgdesc='Assistente pessoal por voz com overlay e controle nativo Linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/GuilhermeBn198/jarvis'
 license=('Apache-2.0' 'MIT' 'GPL-3.0-or-later')
-depends=('python' 'gtk3' 'webkit2gtk-4.1' 'ffmpeg' 'libpulse' 'libx11' 'xdotool' 'wl-clipboard' 'xclip' 'python-gobject' 'at-spi2-core' 'alsa-utils')
+depends=('python' 'gtk3' 'webkit2gtk-4.1' 'ffmpeg' 'libpulse' 'libx11' 'xdotool' 'wl-clipboard' 'xclip' 'xdg-utils' 'python-gobject' 'at-spi2-core' 'alsa-utils')
 makedepends=('rust' 'cargo' 'pkgconf' 'python-pip' 'nodejs' 'npm')
 options=('!strip' '!debug')
 

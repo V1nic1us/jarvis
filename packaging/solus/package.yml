@@ -41,6 +41,7 @@ rundeps    :
     - wl-clipboard
     - xclip
     - xdotool
+    - xdg-utils
 build      : |
     cargo build --release --locked --jobs 2 --manifest-path gui/src-tauri/Cargo.toml
     npm ci --prefix .opencode --ignore-scripts

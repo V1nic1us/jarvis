@@ -11,7 +11,7 @@ makedepends="gtk+3-devel libwebkit2gtk41-devel libffi-devel python3-devel
  python3-numpy python3-pybind11 python3-setuptools python3-wheel openblas-devel protobuf protobuf-devel
  abseil-cpp-devel gtest-devel re2-devel icu-devel"
 depends="python3>=3.14<3.15 python3-numpy ffmpeg pulseaudio-utils python3-gobject libprotobuf abseil-cpp
- at-spi2-core alsa-utils xdotool wl-clipboard xclip mesa openblas musl"
+ at-spi2-core alsa-utils xdotool wl-clipboard xclip xdg-utils mesa openblas musl"
 shlib_provides="libc.musl-x86_64.so.1 libc.musl-aarch64.so.1"
 distfiles="https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.24.4.tar.gz>onnxruntime-1.24.4.tar.gz"
 checksum=0cf4d2ee4392fbb8aedaabc6b2ba11b4a680d1071fa4f75546c2289ca5b404cf

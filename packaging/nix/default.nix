@@ -22,6 +22,7 @@
   xdotool,
   wl-clipboard,
   xclip,
+  xdg-utils,
   at-spi2-core,
   espeak-ng,
   zlib,
@@ -143,6 +144,7 @@ let
     xdotool
     wl-clipboard
     xclip
+    xdg-utils
     espeak-ng
     at-spi2-core
   ];

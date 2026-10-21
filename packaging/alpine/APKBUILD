@@ -7,7 +7,7 @@ url="https://github.com/GuilhermeBn198/jarvis"
 arch="x86_64 aarch64"
 license="Apache-2.0 AND MIT AND GPL-3.0-or-later"
 depends="python3 gtk+3.0 webkit2gtk-4.1 ffmpeg ffplay pulseaudio-utils libpulse
-    libx11 xdotool wl-clipboard xclip py3-gobject3 at-spi2-core alsa-utils
+    libx11 xdotool wl-clipboard xclip xdg-utils py3-gobject3 at-spi2-core alsa-utils
     py3-onnxruntime py3-numpy openblas libgomp libstdc++"
 makedepends="build-base cmake ninja git python3-dev py3-pip py3-pybind11-dev
     linux-headers openblas-dev ffmpeg-dev pkgconf rust cargo nodejs npm

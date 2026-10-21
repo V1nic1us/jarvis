@@ -55,7 +55,8 @@ GCC/binutils, autoconf/automake/m4, Meson, Ninja, Git, and X11/Wayland headers.
 Runtime packages: Python ${task_python_abi}, same Python minor version used to build
 this package; GTK+3, WebKitGTK 4.1, ffmpeg, PulseAudio utilities/libraries, ALSA
 libraries and utilities, AT-SPI2, Mesa, libXmu, libXt, libICE, libSM, libXtst,
-libXinerama, libxkbcommon, and Wayland client libraries. This package includes
+libXinerama, libxkbcommon, Wayland client libraries, and xdg-utils (for xdg-open).
+This package includes
 xdotool, wl-clipboard, and xclip built from pinned upstream revisions; their
 licenses are in the third-party documentation directory. Install runtime
 packages from Slackware or a configured third-party repository before

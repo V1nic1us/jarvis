@@ -23,7 +23,7 @@ Requires:       python%{python3_version}dist(pygobject)
 Requires:       gtk3 webkit2gtk4.1 ffmpeg-free pulseaudio-libs pulseaudio-utils libX11
 Requires:       python3-gobject gobject-introspection at-spi2-core alsa-utils
 Requires:       xdotool >= 4.20260303.1
-Requires:       wl-clipboard xclip libstdc++ libgcc libgomp
+Requires:       wl-clipboard xclip xdg-utils libstdc++ libgcc libgomp
 
 %description
 Assistente por voz, captura autorizada e controle do desktop. Inclui overlay,

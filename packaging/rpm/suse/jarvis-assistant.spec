@@ -22,7 +22,7 @@ Requires:       python(abi) = %{python3_version}
 Requires:       python%{python3_version}dist(pygobject)
 Requires:       libgtk-3-0 libwebkit2gtk-4_1-0 ffmpeg libpulse0 pulseaudio-utils libX11-6
 Requires:       python3-gobject gobject-introspection typelib-1_0-Atspi-2_0 at-spi2-core
-Requires:       alsa-utils xdotool wl-clipboard xclip libstdc++6 libgcc_s1 libgomp1
+Requires:       alsa-utils xdotool wl-clipboard xclip xdg-utils libstdc++6 libgcc_s1 libgomp1
 
 %description
 Assistente por voz com overlay, agente e runtime Python privado compilado
