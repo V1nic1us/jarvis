@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T22:30:00Z",
+  "verified_at_utc": "2026-10-21T22:44:36Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1153,9 +1153,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481948805",
           "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39683082677/job/119518679135",
+          "source_commit": "59861b4c2ef76b3713af6f292c26904bc50dc615",
+          "conclusion": "success"
         }
       ],
-      "notes": "Latest native package CI passed x86_64 RPM build, clean installation, inspection, upgrade/data preservation and removal.",
+      "notes": "Latest native package CI passed x86_64 RPM build, clean installation, inspection, upgrade/data preservation and removal. Latest native build/install/inspection/removal passed in CI run 39683082677.",
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a"
     },
     {
@@ -1658,9 +1664,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39681218050/job/119504468785",
           "source_commit": "3506b442aeb536f33c3d2c3e0a9905465297e867",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39685647431/job/119523619348",
+          "source_commit": "30dd7d9e09d2e569804000f6cbb4d6db2152a5b4",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run built the x86_64 glibc XBPS package, then installed, inspected and removed it in a clean Void container. CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050.",
+      "notes": "Current fork run built the x86_64 glibc XBPS package, then installed, inspected and removed it in a clean Void container. CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050. Latest native build/install/inspection/removal passed in CI run 39685647431.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -1784,9 +1796,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39681218050/job/119504468876",
           "source_commit": "3506b442aeb536f33c3d2c3e0a9905465297e867",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39685647431/job/119523619566",
+          "source_commit": "30dd7d9e09d2e569804000f6cbb4d6db2152a5b4",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run built the AArch64 glibc XBPS package, then installed, inspected and removed it in a clean Void container. CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050.",
+      "notes": "Current fork run built the AArch64 glibc XBPS package, then installed, inspected and removed it in a clean Void container. CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050. Latest native build/install/inspection/removal passed in CI run 39685647431.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -3830,6 +3848,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. CI run 39681218040 passed 11 native jobs but RHEL x86_64 failed on EPEL metadata and Fedora x86_64 was incomplete. New native run 39683082677 is active: Arch x86_64 passed; Debian x86_64/AArch64 build, install and removal passed; other package jobs remain active. Flatpak run 39685647380 passed native bundle build/install/runtime inspection on x86_64/AArch64. Void glibc and musl passed package build/install/inspection/removal on both architectures in run 39681218050. Nix run 39685647412 passed profile install/upgrade/removal and runtime checks on x86_64/AArch64. Gentoo/Guix remain paused. Remaining work: finish active jobs, rerun transient failures, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "The xdg-open provider and OpenCode MIT notice are asserted by package smoke checks. Native run 39683082677 has passed 12/13 package jobs, including RHEL x86_64; Fedora x86_64/AArch64 remain active. Flatpak run 39685647380 passed bundle build/install/runtime inspection on x86_64/AArch64. Void glibc passed build/install/inspection/removal on both architectures in run 39685647431; Void musl remains active on both architectures. Nix run 39685647412 passed profile install/upgrade/removal and runtime checks on x86_64/AArch64. Gentoo/Guix remain paused. Remaining work: finish active jobs, rerun transient failures, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }

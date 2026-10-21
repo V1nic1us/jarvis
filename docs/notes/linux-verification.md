@@ -723,3 +723,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 - O run [39681218050](https://github.com/V1nic1us/jarvis/actions/runs/39681218050) passou build, instalação, inspeção e remoção de Void glibc e musl em x86_64 e AArch64.
 - O run [39685647380](https://github.com/V1nic1us/jarvis/actions/runs/39685647380) passou build e instalação/inspeção do bundle Flatpak x86_64 e AArch64.
+
+### RHEL x86_64 e Void glibc — 2026-10-21
+
+- O job RHEL x86_64 do run [39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677/job/119518679135) concluiu build, instalação, inspeção e remoção do RPM.
+- O run [39685647431](https://github.com/V1nic1us/jarvis/actions/runs/39685647431) concluiu o mesmo ciclo para Void glibc x86_64 e AArch64. Void musl e Fedora continuam em execução.
