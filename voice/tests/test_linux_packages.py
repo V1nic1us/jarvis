@@ -136,6 +136,15 @@ def test_arch_native_builder_accepts_arch_linux_arm_identity():
 def test_arch_native_package_lifecycle_accepts_arch_linux_arm_identity():
     lifecycle=(ROOT/'scripts/test-native-package.sh').read_text()
     assert 'arch:arch|arch:archarm)' in lifecycle
+    upgrade=(ROOT/'scripts/test-native-arch-upgrade.sh').read_text()
+    assert 'arch|archarm)' in upgrade
+
+
+def test_arch_arm64_has_native_package_build_and_upgrade_ci():
+    workflow=(ROOT/'.github/workflows/linux-packages.yml').read_text()
+    assert "family: arch, arch: aarch64, runner: ubuntu-24.04-arm" in workflow
+    assert "image: 'lfdevs/archlinuxarm:base-devel'" in workflow
+    assert 'test-native-arch-upgrade.sh' in workflow
 
 
 @pytest.mark.parametrize(('arch','repo','bootstrap'),[

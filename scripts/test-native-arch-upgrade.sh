@@ -6,8 +6,14 @@ task_old_package=${1:?pacote Arch anterior obrigatorio}
 task_new_package=${2:?pacote Arch novo obrigatorio}
 task_checks=$(CDPATH= cd -P "$(dirname "$0")" && pwd)
 . /etc/os-release
-[ "$ID" = arch ] || { echo 'O lifecycle de upgrade exige Arch Linux.' >&2; exit 2; }
-[ "$(uname -m)" = x86_64 ] || { echo 'O teste de upgrade Arch exige x86_64.' >&2; exit 2; }
+case "$ID" in
+    arch|archarm) ;;
+    *) echo 'O lifecycle de upgrade exige Arch Linux ou Arch Linux ARM.' >&2; exit 2 ;;
+esac
+case "$(uname -m)" in
+    x86_64|aarch64) ;;
+    *) echo 'O teste de upgrade Arch exige x86_64 ou AArch64.' >&2; exit 2 ;;
+esac
 [ -f "$task_old_package" ] && [ -f "$task_new_package" ] || { echo 'Pacotes antigo e novo precisam existir.' >&2; exit 2; }
 
 task_old_identity=$(pacman -Qp "$task_old_package")

@@ -28,7 +28,8 @@ jobs:
           - {family: fedora, arch: aarch64, runner: ubuntu-24.04-arm, dockerfile: packaging/rpm/fedora/Dockerfile, image: 'registry.fedoraproject.org/fedora:44', pattern: 'jarvis-assistant-*.aarch64.rpm'}
           - {family: suse, arch: x86_64, runner: ubuntu-24.04, dockerfile: packaging/rpm/suse/Dockerfile, image: 'opensuse/tumbleweed:latest', pattern: 'jarvis-assistant-*.x86_64.rpm'}
           - {family: suse, arch: aarch64, runner: ubuntu-24.04-arm, dockerfile: packaging/rpm/suse/Dockerfile, image: 'opensuse/tumbleweed:latest', pattern: 'jarvis-assistant-*.aarch64.rpm'}
-          - {family: arch, arch: x86_64, runner: ubuntu-24.04, dockerfile: packaging/arch/Dockerfile, image: 'archlinux:base', pattern: 'jarvis-assistant-*.pkg.tar.zst'}
+          - {family: arch, arch: x86_64, runner: ubuntu-24.04, dockerfile: packaging/arch/Dockerfile, image: 'archlinux:base', pattern: 'jarvis-assistant-*.pkg.tar.*'}
+          - {family: arch, arch: aarch64, runner: ubuntu-24.04-arm, dockerfile: packaging/arch/Dockerfile, image: 'lfdevs/archlinuxarm:base-devel', pattern: 'jarvis-assistant-*.pkg.tar.*'}
           - {family: rhel, arch: x86_64, runner: ubuntu-24.04, dockerfile: packaging/rpm/rhel/Dockerfile, image: 'almalinux:10', pattern: 'jarvis-assistant-*.x86_64.rpm'}
           - {family: rhel, arch: aarch64, runner: ubuntu-24.04-arm, dockerfile: packaging/rpm/rhel/Dockerfile, image: 'almalinux:10', pattern: 'jarvis-assistant-*.aarch64.rpm'}
           - {family: alpine, arch: x86_64, runner: ubuntu-24.04, dockerfile: packaging/alpine/Dockerfile, image: 'alpine:3.24', pattern: 'jarvis-assistant-*.apk', export: '/export'}
@@ -40,12 +41,15 @@ jobs:
           DOCKERFILE: ${{ matrix.dockerfile }}
           ARCH: ${{ matrix.arch }}
           FAMILY: ${{ matrix.family }}
+          IMAGE: ${{ matrix.image }}
         run: |
           test "$(uname -m)" = "$ARCH"
           if [ "$FAMILY" = alpine ]; then
             docker build --progress=plain --build-arg JARVIS_TEST_PACKAGE_UPGRADE=1 -f "$DOCKERFILE" -t jarvis-package .
           elif [ "$FAMILY" = fedora ] || [ "$FAMILY" = suse ] || [ "$FAMILY" = rhel ]; then
             docker build --progress=plain --build-arg JARVIS_TEST_PACKAGE_UPGRADE=1 -f "$DOCKERFILE" -t jarvis-package .
+          elif [ "$FAMILY" = arch ]; then
+            docker build --progress=plain --build-arg ARCH_BASE_IMAGE="$IMAGE" -f "$DOCKERFILE" -t jarvis-package .
           else
             docker build --progress=plain -f "$DOCKERFILE" -t jarvis-package .
           fi
@@ -110,13 +114,21 @@ jobs:
             sh -ec 'find /packages -name "*.pub" -exec cp {} /etc/apk/keys/ \;; exec sh /checks/test-native-apk-upgrade.sh /packages/jarvis-assistant-0.1.0-r0.apk 0.1.0-r0 /packages/jarvis-assistant-0.1.0-r1.apk 0.1.0-r1'
       - name: Prepare second Arch package revision
         if: matrix.family == 'arch'
+        env:
+          IMAGE: ${{ matrix.image }}
+          ARCH: ${{ matrix.arch }}
         run: |
-          package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.pkg.tar.zst' -print -quit)
+          package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.pkg.tar.*' -print -quit)
           test -n "$package"
-          docker run --rm -v "$PWD/dist/native:/packages" archlinux:base sh -ec '
+          docker run --rm -e ARCH="$ARCH" -v "$PWD/dist/native:/packages" "$IMAGE" sh -ec '
+            test "$(uname -m)" = "$ARCH"
             command -v bsdtar >/dev/null
-            command -v zstd >/dev/null
             old=/packages/'"$(basename "$package")"'
+            case "$old" in
+              *.pkg.tar.zst) ext=zst; command -v zstd >/dev/null ;;
+              *.pkg.tar.xz) ext=xz; command -v xz >/dev/null ;;
+              *) echo "Unsupported Arch package extension: $old" >&2; exit 2 ;;
+            esac
             work=$(mktemp -d)
             bsdtar -xf "$old" -C "$work"
             sed -i "s/^pkgver = 0.1.0-1$/pkgver = 0.1.0-2/" "$work/.PKGINFO"
@@ -129,18 +141,26 @@ jobs:
                 set -- "$@" "$entry"
               done
               bsdtar --uid 0 --gid 0 -cf - "$@"
-            ) | zstd -T0 -o /packages/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst
-            pacman -Qp /packages/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst | grep -qx "jarvis-assistant 0.1.0-2"
+            ) | if [ "$ext" = zst ]; then
+                  zstd -T0 -o "/packages/jarvis-assistant-0.1.0-2-$ARCH.pkg.tar.zst"
+                else
+                  xz -T0 -c > "/packages/jarvis-assistant-0.1.0-2-$ARCH.pkg.tar.xz"
+                fi
+            new="/packages/jarvis-assistant-0.1.0-2-$ARCH.pkg.tar.$ext"
+            pacman -Qp "$new" | grep -qx "jarvis-assistant 0.1.0-2"
           '
           cd dist/native
           find . -maxdepth 1 -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS
       - name: Upgrade Arch package and verify user data preservation
         if: matrix.family == 'arch'
+        env:
+          IMAGE: ${{ matrix.image }}
+          ARCH: ${{ matrix.arch }}
         run: |
-          old_package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0-1-*.pkg.tar.zst' -print -quit)
-          new_package=dist/native/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst
+          old_package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0-1-*.pkg.tar.*' -print -quit)
+          new_package=$(find dist/native -maxdepth 1 -type f -name "jarvis-assistant-0.1.0-2-$ARCH.pkg.tar.*" -print -quit)
           test -n "$old_package" && test -f "$new_package"
-          docker run --rm -v "$PWD/dist/native:/packages:ro" -v "$PWD/scripts:/checks:ro" archlinux:base \
+          docker run --rm -v "$PWD/dist/native:/packages:ro" -v "$PWD/scripts:/checks:ro" "$IMAGE" \
             sh /checks/test-native-arch-upgrade.sh "/packages/$(basename "$old_package")" "/packages/$(basename "$new_package")"
       - name: Upgrade RPM package and verify user data preservation
         if: matrix.family == 'fedora' || matrix.family == 'suse' || matrix.family == 'rhel'
