@@ -8,4 +8,4 @@ COPY --chown=builder:builder . .
 USER builder
 RUN scripts/build-package.sh --target arch --arch "$(uname -m)" --output /build/packages
 USER root
-CMD ["sh", "-c", "cp /build/packages/*.pkg.tar.zst /out/"]
+CMD ["sh", "-c", "cp /build/packages/*.pkg.tar.* /out/"]

@@ -147,6 +147,11 @@ def test_arch_arm64_has_native_package_build_and_upgrade_ci():
     assert 'test-native-arch-upgrade.sh' in workflow
 
 
+def test_arch_docker_export_accepts_makepkg_compression_extensions():
+    dockerfile=(ROOT/'packaging/arch/Dockerfile').read_text()
+    assert 'cp /build/packages/*.pkg.tar.* /out/' in dockerfile
+
+
 @pytest.mark.parametrize(('arch','repo','bootstrap'),[
     ('x86_64','https://repo-default.voidlinux.org/current','https://repo-default.voidlinux.org/current/bootstrap'),
     ('aarch64','https://repo-default.voidlinux.org/current/aarch64','https://repo-default.voidlinux.org/current/aarch64/bootstrap'),
