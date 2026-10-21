@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T21:18:35Z",
+  "verified_at_utc": "2026-10-21T21:31:40Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1295,10 +1295,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713674",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481946488",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run passed native AArch64 RPM build, clean install, inspection and removal. Package upgrade remains unverified. Run 39526318763 passed native rhel aarch64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for aarch64.",
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
+      "notes": "Latest RHEL AArch64 CI job passed native RPM build, clean installation, inspection and removal.",
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a"
     },
     {
       "target": "rhel",
@@ -1330,10 +1336,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880873/job/119248713674",
           "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39670095511/job/119481946488",
+          "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
-      "notes": "Current CI run 39526318763 passed the rhel aarch64 native package upgrade and user-data-preservation test."
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+      "notes": "Latest RHEL AArch64 CI job passed RPM upgrade, installed-runtime checks, removal and user-data preservation. The first retry attempt was blocked by an EPEL mirror TLS/checksum error; the completed retry passed."
     },
     {
       "target": "alpine",
