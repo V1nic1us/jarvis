@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T01:02:21Z",
+  "verified_at_utc": "2026-10-21T01:10:42Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -490,6 +490,29 @@
       ],
       "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
       "notes": "Current fork run passed native Fedora AArch64 RPM build, clean install, inspection and removal."
+    },
+    {
+      "target": "fedora",
+      "distro": "fedora",
+      "version": "44",
+      "arch": "aarch64",
+      "libc": "glibc",
+      "desktop": "Xvfb fixture",
+      "session": "x11",
+      "package": "rpm",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "dnf install 0.1.0-1; dnf upgrade 0.1.0-2; jarvis --doctor; rpm -V; dnf remove",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39522180663/job/118969561687",
+          "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+      "notes": "Fedora 44 AArch64 RPM upgrade and user-data preservation passed in the current fork run."
     },
     {
       "target": "ubuntu",
@@ -2844,7 +2867,7 @@
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: Gentoo, Nix, Guix and Solus; AArch64 Arch, Fedora, openSUSE, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
+    "Native package upgrade/data-preservation tests still missing: Gentoo, Nix, Guix and Solus; AArch64 Arch, openSUSE, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
