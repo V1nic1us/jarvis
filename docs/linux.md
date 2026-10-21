@@ -11,6 +11,7 @@ duas arquiteturas. Void musl continua em compilação. Os builds de Gentoo e Gui
 estão pausados a pedido. Ainda faltam combinações de atualização, desktops reais,
 áudio/captura e portais em mais distribuições. Veja `docs/linux-packages.md` e
 `docs/notes/linux-verification.md` para a matriz e as limitações de cada teste.
+
 ## Instalação por fonte
 
 Requer Python 3.10+, Rust, ferramentas de compilação GTK3/WebKitGTK 4.1,
