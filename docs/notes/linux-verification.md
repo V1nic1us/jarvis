@@ -730,3 +730,7 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O run [39685647431](https://github.com/V1nic1us/jarvis/actions/runs/39685647431) concluiu o mesmo ciclo para Void glibc x86_64 e AArch64. Void musl e Fedora continuam em execução.
 
 - Atualização do run [39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677/job/119518678470): Fedora x86_64 passou build, instalação, inspeção e remoção; Fedora AArch64 é o único job nativo ainda ativo.
+
+### Matriz nativa completa — 2026-10-21
+
+- O run [39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677) concluiu com sucesso os 13 alvos nativos: Alpine x86_64/AArch64, Arch x86_64, Debian e Ubuntu x86_64/AArch64, Fedora x86_64/AArch64, RHEL x86_64/AArch64 e openSUSE x86_64/AArch64. Cada job construiu e instalou o pacote, verificou o runtime e removeu o pacote; os workflows também executaram os testes de atualização e preservação de dados aplicáveis a cada gerenciador.
