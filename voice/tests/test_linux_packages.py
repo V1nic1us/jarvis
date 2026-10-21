@@ -458,6 +458,7 @@ def test_nix_target_is_a_profile_installable_package():
     recipe=(ROOT/'packaging/nix/default.nix').read_text()
     nix_lifecycle=(ROOT/'scripts/test-nix-package.sh').read_text()
     assert 'nix-store -qR "$task_store"' in nix_lifecycle
+    assert "grep -- '-xdg-utils-'" in nix_lifecycle
     assert 'grep -F "$task_xdg_store/bin" "$task_store/bin/jarvis"' in nix_lifecycle
     assert 'test -x "$task_xdg_store/bin/xdg-open"' in nix_lifecycle
     assert 'export HOME="$TMPDIR"' in recipe
@@ -494,7 +495,7 @@ def test_nix_lifecycle_script_uses_an_isolated_profile_and_preserves_user_data(t
     import os, subprocess
     store=tmp_path/'store'
     (store/'bin').mkdir(parents=True)
-    xdg_store=tmp_path/'store/xdg-utils-1.0'
+    xdg_store=tmp_path/'store/abc123-xdg-utils-1.0'
     (xdg_store/'bin').mkdir(parents=True)
     (xdg_store/'bin/xdg-open').write_text('#!/bin/sh\nexit 0\n')
     (store/'bin/jarvis').write_text(f'#!/bin/sh\nexport PATH="{xdg_store}/bin:$PATH"\nexit 0\n')
