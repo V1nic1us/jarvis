@@ -492,7 +492,7 @@ def test_nix_opencode_binary_is_not_stripped():
 
 
 def test_nix_lifecycle_script_uses_an_isolated_profile_and_preserves_user_data(tmp_path):
-    import os, subprocess
+    import os, platform, subprocess
     store=tmp_path/'store'
     (store/'bin').mkdir(parents=True)
     xdg_store=tmp_path/'store/abc123-xdg-utils-1.0'
@@ -516,13 +516,23 @@ set -eu
 profile=
 action=
 need_profile=0
+upgrade_all=0
+installable=
 for arg in "$@"; do
     if [ "$need_profile" = 1 ]; then profile=$arg; need_profile=0; continue; fi
     [ "$arg" = --profile ] && { need_profile=1; continue; }
-    case "$arg" in install|remove) action=$arg ;; esac
+    [ "$arg" = --all ] && upgrade_all=1
+    case "$arg" in *#packages.*.jarvis-assistant) installable=$arg ;; esac
+    case "$arg" in install|upgrade|remove) action=$arg ;; esac
 done
+printf '%s\n' "$action" >> "$JARVIS_NIX_ACTIONS"
 case "$action" in
-    install) mkdir -p "$profile/bin"; printf '#!/bin/sh\\nexit 0\\n' > "$profile/bin/jarvis"; chmod +x "$profile/bin/jarvis" ;;
+    install)
+        [ "$installable" = "$JARVIS_EXPECTED_FLAKE" ]
+        mkdir -p "$profile/bin"
+        ln -s "$JARVIS_EXPECTED_PROFILE_BINARY" "$profile/bin/jarvis"
+        ;;
+    upgrade) [ "$upgrade_all" = 1 ] && [ -x "$profile/bin/jarvis" ] ;;
     remove) rm -f "$profile/bin/jarvis" ;;
     *) exit 9 ;;
 esac
@@ -542,13 +552,17 @@ printf '%s\\n' called > "$JARVIS_GUI_MARKER"
     fake_python.chmod(0o755)
     env={**os.environ,'PATH':f'{fake_bin}:/usr/bin:/bin',
          'JARVIS_EXPECTED_OVERLAY':str(store/'bin/jarvis-overlay'),
+         'JARVIS_EXPECTED_PROFILE_BINARY':str(store/'bin/jarvis'),
+         'JARVIS_EXPECTED_FLAKE':f'{ROOT}#packages.{platform.machine()}-linux.jarvis-assistant',
          'JARVIS_XDG_STORE':str(xdg_store),
+         'JARVIS_NIX_ACTIONS':str(tmp_path/'nix-actions'),
          'JARVIS_GUI_MARKER':str(gui_marker)}
     result=subprocess.run(['sh',str(ROOT/'scripts/test-nix-package.sh'),str(store),'--gui'],
                           env=env,capture_output=True,text=True,timeout=10)
     assert result.returncode==0,result.stderr
-    assert 'Nix profile install, runtime imports, removal and user data preservation' in result.stdout
+    assert 'Nix profile install/upgrade, runtime imports, removal and user data preservation' in result.stdout
     assert gui_marker.read_text().strip()=='called'
+    assert (tmp_path/'nix-actions').read_text().splitlines()==['install','upgrade','remove']
 
 
 def test_linux_target_claims_match_recipe_files_and_lifecycle_evidence():
