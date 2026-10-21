@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T13:33:47Z",
+  "verified_at_utc": "2026-10-21T13:37:41Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2629,10 +2629,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39526318796/job/118981677852",
           "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607881416/job/119248715442",
+          "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection.",
-      "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643"
+      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39607881416 passed native x86_64 bundle build, install and runtime inspection.",
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
       "target": "flatpak",
@@ -3174,10 +3180,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39526318796/job/118981677558",
           "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607881416/job/119248716426",
+          "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
-      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection."
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection."
     }
   ],
   "pending_gates": [
