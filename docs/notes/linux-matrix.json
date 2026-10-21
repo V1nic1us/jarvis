@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T16:44:00Z",
+  "verified_at_utc": "2026-10-21T16:50:05Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3457,6 +3457,28 @@
       ],
       "source_commit": "3cf9a81",
       "notes": "FFmpeg/ALSA captured the synthetic null PCM device to a valid stereo 48000 Hz PCM WAV and measure_level returned measured levels. No physical microphone was opened; this is not microphone calibration evidence. Host ALSA device enumeration was not tested because arecord is absent; distro package recipes include alsa-utils."
+    },
+    {
+      "target": "flatpak",
+      "distro": "universal-linux",
+      "version": "GNOME Platform 49",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "installed GNOME Flatpak runtime",
+      "session": "runtime filesystem inspection",
+      "package": "Flatpak runtime",
+      "capability": "xdg_open_runtime_availability",
+      "status": "passed",
+      "command": "flatpak info --show-location org.gnome.Platform//49; test -x <runtime>/files/bin/xdg-open",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/flatpak-platform49-xdg-open-2026-10-21.log",
+          "sha256": "8bd4a38987bbaa0bdb473068382ec61bbfdce4907a7fed16c318c9777d74f1a8"
+        }
+      ],
+      "source_commit": "3198fb5e9a629d25423ebf81d259cb74724a10de",
+      "notes": "GNOME Platform 49 x86_64 runtime contains an executable /usr/bin/xdg-open. This confirms the Flatpak runtime dependency is present on this installed runtime; AArch64 runtime binary was not inspected."
     }
   ],
   "pending_gates": [
