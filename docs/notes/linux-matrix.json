@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T14:30:06Z",
+  "verified_at_utc": "2026-10-21T16:31:07Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3377,6 +3377,50 @@
       ],
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
       "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "native KDE Plasma Wayland",
+      "session": "wayland",
+      "package": "source checkout",
+      "capability": "native_piper_synthesis",
+      "status": "passed",
+      "command": "XDG_DATA_HOME=<temporary> ./jarvis --download-voice; tts.speak_piper(text, output_wav, linux_config)",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-piper-native-synthesis-2026-10-21.log",
+          "sha256": "08616c2afed1382613fd022ab4b45805749879f605f63fa2ed73d29585c08693"
+        }
+      ],
+      "source_commit": "3cf9a81",
+      "notes": "Pinned Piper Faber model downloaded over HTTPS and verified against SHA256 858555e3a064209c57088fe6bd70c4c3dc54d03eaa00c45d5ecaf43a33f95aa7. The application tts.speak_piper function produced mono 22050 Hz PCM WAV with 60672 frames. Output was not played; this does not verify playback or streaming."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "native KDE Plasma Wayland",
+      "session": "wayland",
+      "package": "source checkout",
+      "capability": "alsa_synthetic_capture_and_level",
+      "status": "passed",
+      "command": "capture.record(0.5, output_wav, config[AUDIO_BACKEND=alsa, MIC_DEVICE=null]); measure_level(0.5, config)",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-alsa-synthetic-capture-2026-10-21.log",
+          "sha256": "c800e43d5f708b394853c3f871729a477ee98d0558abf350745c05dd787afb4c"
+        }
+      ],
+      "source_commit": "3cf9a81",
+      "notes": "FFmpeg/ALSA captured the synthetic null PCM device to a valid stereo 48000 Hz PCM WAV and measure_level returned measured levels. No physical microphone was opened; this is not microphone calibration evidence. Host ALSA device enumeration was not tested because arecord is absent; distro package recipes include alsa-utils."
     }
   ],
   "pending_gates": [
