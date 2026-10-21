@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T13:43:25Z",
+  "verified_at_utc": "2026-10-21T13:45:39Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3238,10 +3238,17 @@
           "sha256": "106194d44b683958bbf138d9f5f2c7d196e448659b6cbbea67f088768695af0d",
           "passed": 63,
           "skipped": 0
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-package-recipe-tests-current-2026-10-21.log",
+          "sha256": "06d1fc412e10fdf4a475b67c3655c48fe2fe9f7045db408d547b053a29bc382f",
+          "passed": 72,
+          "skipped": 0
         }
       ],
-      "source_commit": "9e692028c619f5e9ea11dde5db59e74612285d4f",
-      "notes": "The packaging test suite checked target declarations against recipe files, architecture claims, package lifecycle evidence and workflow setup; all 63 tests passed on the current matrix."
+      "source_commit": "187422e5a3b1931eb1d7558c7ff5c0a48e2e4c29",
+      "notes": "The packaging test suite checked target declarations against recipe files, architecture claims, package lifecycle evidence and workflow setup; all 72 tests passed on 2026-10-21."
     },
     {
       "target": "flatpak",
