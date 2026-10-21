@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T00:52:38Z",
+  "verified_at_utc": "2026-10-21T00:59:35Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -933,6 +933,29 @@
       ],
       "notes": "Current fork run passed native x86_64 RPM build, clean install, inspection and removal. This does not cover package upgrade.",
       "source_commit": "0a149db47c9748d166561eed220042e8604429e5"
+    },
+    {
+      "target": "rhel",
+      "distro": "almalinux",
+      "version": "10",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "Xvfb fixture",
+      "session": "package manager upgrade test",
+      "package": "rpm",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "dnf install 0.1.0-1; dnf upgrade 0.1.0-2; jarvis --doctor; rpm -V; dnf remove",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39522180663/job/118969561630",
+          "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+      "notes": "AlmaLinux 10 x86_64 RPM upgrade and user-data preservation passed in the current fork run."
     },
     {
       "target": "rhel",
@@ -1914,10 +1937,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39515913103/job/118947890280",
           "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39522180663/job/118969561559",
+          "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
-      "notes": "Current fork workflow on x86_64 built, installed, inspected and removed the APK; signed APK revision upgrade preserved user data."
+      "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+      "notes": "Current fork run built, installed, inspected and removed the x86_64 APK; signed revision upgrade preserved user data."
     },
     {
       "target": "solus",
@@ -2780,7 +2809,7 @@
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: x86_64 RHEL, Gentoo, Nix, Guix and Solus; AArch64 Arch, Fedora, openSUSE, RHEL, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
+    "Native package upgrade/data-preservation tests still missing: Gentoo, Nix, Guix and Solus; AArch64 Arch, Fedora, openSUSE, RHEL, Gentoo, Nix, Guix, Void glibc, Void musl and Flatpak",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
