@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T16:40:35Z",
+  "verified_at_utc": "2026-10-21T16:42:00Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2414,9 +2414,17 @@
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-private-dbus-portal-tests-2026-10-20.log",
           "sha256": "f8c66788eb652ca13bf9db1c01c05789f08d66b365605e3290b05ccc3c56b5a8",
           "passed": 12
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/portal-tests-with-dbus-next-2026-10-21.log",
+          "sha256": "55b829303684621b98a6c8be020ed53263ce3074d17bec587073f5ad75d5bd55",
+          "passed": 12,
+          "skipped": 0
         }
       ],
-      "notes": "The private D-Bus portal harness passed 12 tests, including response, denial, cancellation, timeout, session and invalid-address cases. Real GNOME/KDE portal authorization and revocation remain pending."
+      "notes": "The private D-Bus portal harness passed 12 tests, including response, denial, cancellation, timeout, session and invalid-address cases. Real GNOME/KDE portal authorization and revocation remain pending.",
+      "source_commit": "b4ba272d239549d8a22b14842d4c5e4d0ac8850a"
     },
     {
       "target": "arch",
