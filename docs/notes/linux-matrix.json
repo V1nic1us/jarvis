@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T17:33:25Z",
+  "verified_at_utc": "2026-10-22T00:03:42Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3059,6 +3059,32 @@
       ],
       "source_commit": "f1ddf9c1321912780821be5a06c7092bb01238c0",
       "notes": "A freshly built release binary passed the overlay relaunch and accessibility lifecycle fixture on the active Arch x86_64 KDE Wayland compositor. It used temporary XDG paths and a private D-Bus session; this validates the source checkout, not a package-manager installation. Real portal grants/revocation, physical audio and other desktops remain unverified."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "headless Weston",
+      "session": "wayland",
+      "package": "pkg.tar.zst",
+      "capability": "installed_wayland_overlay_lifecycle",
+      "status": "passed",
+      "command": "install .superpowers/sdd/2026-10-14-jarvis-linux/arch-upgrade-artifacts/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst in disposable Arch container; python scripts/test-overlay-wayland.py /usr/bin/jarvis-overlay",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-installed-wayland-overlay-2026-10-21.log",
+          "sha256": "0f783d2b3c375f7f82c7c61bd1651ac7c38c411a82608412d304db9dd32b4025"
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-upgrade-artifacts/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst",
+          "sha256": "7d4bbd90a894b3d613946840920206a64064ea9990710c8afff4cee5baab148f"
+        }
+      ],
+      "notes": "The installed package passed the isolated Weston relaunch test: the second launch exited and the primary window survived. The artifact was built on 2026-10-18, not from current HEAD. Headless GDK warnings and a missing Bubblewrap sandbox warning were emitted. Real desktop portal grants/revocation, audio, and other desktops remain unverified."
     },
     {
       "target": "arch",
