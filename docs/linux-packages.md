@@ -5,13 +5,8 @@ O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
 validação. Uma receita ou um ciclo de pacote aprovado não prova, por si só,
 que áudio, captura e controle foram verificados em todas as distribuições.
 
-No workflow mais recente, em `91c7bba`, os 13 jobs de pacotes nativos passaram
-instalação, inspeção e remoção em ambientes limpos; Debian/Ubuntu também passaram
-upgrade DEB em x86_64 e AArch64, e Alpine passou upgrade APK assinado nas duas
-arquiteturas. Nix passou build e lifecycle de perfil em x86_64/AArch64. Os builds
-Gentoo ARM64 e Guix ARM64 continuam em validação; upgrades de outros alvos e
-desktops/áudio/portais reais continuam pendentes. A matriz de evidências lista
-cada job e as limitações por alvo.
+Na execução mais recente, no commit `0a149db`, os 13 jobs de pacotes nativos
+passaram build, instalação, inspeção e remoção em ambientes limpos ([CI nativa](https://github.com/V1nic1us/jarvis/actions/runs/39516376373)). Flatpak ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39516376414)) e Nix ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39516376337)) também passaram em x86_64 e AArch64. Void glibc passou nas duas arquiteturas; Void musl segue em execução na [CI](https://github.com/V1nic1us/jarvis/actions/runs/39515913223). Gentoo ARM64 e Guix ARM64 continuam em build local. Ainda faltam upgrades para outros alvos e validação de desktop, áudio e portais reais. A matriz de evidências lista cada job e suas limitações.
 
 ## NixOS
 

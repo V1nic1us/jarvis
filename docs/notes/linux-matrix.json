@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T00:04:55+00:00",
+  "verified_at_utc": "2026-10-21T00:10:00+00:00",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -391,9 +391,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39515913103/job/118947890210",
           "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39516376373/job/118953910755",
+          "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
+      "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
       "notes": "Current fork run passed native Fedora x86_64 RPM build, clean install, inspection and removal."
     },
     {
@@ -474,9 +480,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39515913103/job/118947890367",
           "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39516376373/job/118953910754",
+          "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
+      "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
       "notes": "Current fork run passed native Fedora AArch64 RPM build, clean install, inspection and removal."
     },
     {
@@ -1089,9 +1101,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39515913103/job/118947890280",
           "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39516376373/job/118953910925",
+          "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
+      "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
       "notes": "Current fork workflow built and verified the native Alpine APK on x86_64."
     },
     {
@@ -1166,9 +1184,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39513216143/job/118939058337",
           "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39516376373/job/118953910860",
+          "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "4fe3233f8f94f7b1ad82921c4b03f42b3ea030d7",
+      "source_commit": "0a149db47c9748d166561eed220042e8604429e5",
       "notes": "Current fork workflow built and verified the native Alpine APK on aarch64."
     },
     {
