@@ -5,7 +5,7 @@ RUN xbps-install -Syu xbps && xbps-install -Syu
 # base-chroot intentionally replaces normal shell/grep/util-linux packages.
 # Install into an empty root, as required by upstream's ethereal build mode.
 COPY packaging/void/repository-url.sh /usr/local/bin/jarvis-void-repository-url
-RUN mkdir -p /rootfs/var/db/xbps /rootfs/var/cache/xbps /rootfs/etc/xbps.d && \
+RUN mkdir -p /var/cache/xbps /rootfs/var/db/xbps /rootfs/var/cache/xbps /rootfs/etc/xbps.d && \
     cp -a /var/db/xbps/keys /rootfs/var/db/xbps/ && \
     cp -a /var/cache/xbps/. /rootfs/var/cache/xbps/ && \
     task_arch=$(xbps-uhelper arch) && \

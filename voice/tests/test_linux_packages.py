@@ -128,6 +128,12 @@ def test_void_repository_url_resolves_architecture_layout(arch,repo,bootstrap):
     assert boot.stdout.strip()=='https://mirror.example/void/current'+expected_bootstrap_suffix
 
 
+def test_void_bootstrap_creates_host_xbps_cache_before_copying_it():
+    dockerfile=(ROOT/'packaging/void/Dockerfile').read_text()
+    assert 'mkdir -p /var/cache/xbps' in dockerfile
+    assert dockerfile.index('mkdir -p /var/cache/xbps') < dockerfile.index('cp -a /var/cache/xbps/.')
+
+
 def test_overlay_accessibility_reader_retries_stale_nodes():
     class StaleNodeError(Exception):pass
     def stale_read():raise StaleNodeError('application no longer exists')
