@@ -18,6 +18,10 @@ def test_staged_launcher_works_from_arbitrary_directory(tmp_path):
     assert (prefix/'lib/jarvis/.opencode/plugins/act-tools.ts').is_file()
     assert (prefix/'lib/jarvis/voice/triggers.json').is_file()
     assert (prefix/'share/applications/com.jarvis.overlay.desktop').is_file()
+    opencode_license=prefix/'share/licenses/jarvis/opencode-MIT.txt'
+    assert opencode_license.is_file()
+    assert 'Copyright (c) 2025 opencode' in opencode_license.read_text()
+    assert 'Permission is hereby granted' in opencode_license.read_text()
     assert not (prefix/'lib/jarvis/voice/tests').exists()
     assert not (prefix/'lib/jarvis/voice/.venv').exists()
     unknown=subprocess.run([str(prefix/'bin/jarvis'),'--mcp','unknown'],capture_output=True,text=True,timeout=10)

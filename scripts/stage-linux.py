@@ -31,6 +31,7 @@ def stage(prefix: str,destdir: str,overlay: str | None,with_node_modules: bool=F
     copy(ROOT/'gui/src-tauri/icons/icon.png',output/'share/icons/hicolor/128x128/apps/jarvis.png')
     copy(ROOT/'docs/linux.md',output/'share/doc/jarvis/linux.md')
     copy(ROOT/'LICENSE',output/'share/licenses/jarvis/LICENSE')
+    copy(ROOT/'packaging/opencode/LICENSE',output/'share/licenses/jarvis/opencode-MIT.txt')
     files=sorted(str(path.relative_to(output)) for path in output.rglob('*') if path.is_file() or path.is_symlink())
     (app/'install-manifest.json').write_text(json.dumps({'prefix':prefix,'files':files},indent=2)+'\n')
     print(f'staged application at {output}')

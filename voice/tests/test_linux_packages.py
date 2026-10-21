@@ -110,6 +110,7 @@ def test_source_archive_contains_build_inputs_without_user_state(tmp_path):
         names=set(tar.getnames())
     for required in ('gui/src-tauri/Cargo.lock','scripts/prepare-package.py',
                      'packaging/rpm/fedora/jarvis-assistant.spec','voice/linux_input.py',
+                     'packaging/opencode/LICENSE',
                      '.opencode/package-lock.json','flake.nix','flake.lock'):
         assert 'jarvis-0.1.0/'+required in names
     assert not any('/.venv/' in name or '/node_modules/' in name or '/.superpowers/' in name or '/target/' in name for name in names)
