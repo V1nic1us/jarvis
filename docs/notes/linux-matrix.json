@@ -3437,10 +3437,15 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-piper-native-synthesis-2026-10-21.log",
           "sha256": "08616c2afed1382613fd022ab4b45805749879f605f63fa2ed73d29585c08693"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-piper-native-synthesis-2026-10-21-rerun.log",
+          "sha256": "bb31438e7ab87467d5c20cc44dff638297f1598ff0f15d0cae114f055c69a1d3"
         }
       ],
-      "source_commit": "3cf9a81",
-      "notes": "Pinned Piper Faber model downloaded over HTTPS and verified against SHA256 858555e3a064209c57088fe6bd70c4c3dc54d03eaa00c45d5ecaf43a33f95aa7. The application tts.speak_piper function produced mono 22050 Hz PCM WAV with 60672 frames. Output was not played; this does not verify playback or streaming."
+      "source_commit": "2fbae508e655e079e16b9fdfd372401fafffa802",
+      "notes": "Pinned Piper Faber model downloaded over HTTPS and verified against SHA256 858555e3a064209c57088fe6bd70c4c3dc54d03eaa00c45d5ecaf43a33f95aa7. The application tts.speak_piper function produced mono 22050 Hz PCM WAV with 60672 frames. Output was not played; this does not verify playback or streaming. Re-run on current branch: native CLI downloaded the pinned model into temporary XDG_DATA_HOME; both SHA256 checks passed, and tts.speak_piper produced mono 22050 Hz PCM WAV (1.381587 s, approx. 30464 frames). Playback, microphone, calibration and streaming remain unverified."
     },
     {
       "target": "arch",
