@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T16:42:00Z",
+  "verified_at_utc": "2026-10-21T16:44:00Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3131,9 +3131,16 @@
           "sha256": "07a0b3adb98e347442de5375baffeeff45c861dfff2eacad0f5a11f4fa7613f0",
           "passed": 481,
           "skipped": 10
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-voice-tests-with-runtime-deps-2026-10-21.log",
+          "sha256": "8c430806d3e3d4276145060e98c23a761b6827a00a40b2227917b8ecdf9cbce5",
+          "passed": 490,
+          "skipped": 1
         }
       ],
-      "source_commit": "1759ef99f20adeb25a0065e9a06ab960916fa14d",
+      "source_commit": "8494c0b906368cfa186ea9326d18a66041c933ef",
       "notes": "The full selected source-level Linux integration suite passed again on the current checkout: 58 passed, no skips, with pinned dbus-next 0.2.3 from an isolated temporary directory. This does not replace live portal permission, physical audio, or cross-desktop validation."
     },
     {
