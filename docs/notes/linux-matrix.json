@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T13:27:49Z",
+  "verified_at_utc": "2026-10-21T13:33:47Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1850,10 +1850,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39526318789/job/118981677686",
           "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880886/job/119248713336",
+          "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+          "conclusion": "success"
         }
       ],
-      "notes": "Nix x86_64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for x86_64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on x86_64.",
-      "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643"
+      "notes": "Nix x86_64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for x86_64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on x86_64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for x86_64.",
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
       "target": "nix",
@@ -1957,10 +1963,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39526318789/job/118981677883",
           "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880886/job/119248713064",
+          "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+          "conclusion": "success"
         }
       ],
-      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64.",
-      "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643"
+      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64.",
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
       "target": "guix",
@@ -2524,10 +2536,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39526318789/job/118981677883",
           "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607880886/job/119248713064",
+          "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+          "conclusion": "success"
         }
       ],
-      "notes": "The aarch64-linux derivation evaluates successfully in the official nixos/nix arm64 container under QEMU user-mode emulation. This validates flake evaluation only; build, profile installation and runtime lifecycle remain unverified on aarch64. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64.",
-      "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643"
+      "notes": "The aarch64-linux derivation evaluates successfully in the official nixos/nix arm64 container under QEMU user-mode emulation. This validates flake evaluation only; build, profile installation and runtime lifecycle remain unverified on aarch64. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64.",
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
       "target": "flatpak",
