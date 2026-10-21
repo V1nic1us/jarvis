@@ -33,6 +33,7 @@ esac
     --state-dir="$task_output/state" "$task_output/build" "$task_output/sources/com.jarvis.overlay.json"
 task_agent_version=$(flatpak build "$task_output/build" /app/lib/jarvis/bin/opencode --version)
 [ "$task_agent_version" = '1.18.23' ] || { echo "Agente foi alterado pelo empacotamento: $task_agent_version" >&2; exit 2; }
+flatpak build "$task_output/build" /usr/bin/python3 -c 'from pathlib import Path; text=Path("/app/share/licenses/jarvis/opencode-MIT.txt").read_text(); assert "Copyright (c) 2025 opencode" in text and "Permission is hereby granted" in text'
 flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo \
     "$task_output/repo" "$task_output/jarvis-$task_arch.flatpak" com.jarvis.overlay stable
 (

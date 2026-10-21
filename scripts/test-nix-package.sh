@@ -12,6 +12,8 @@ task_xdg_store=$(nix-store -qR "$task_store" | grep '/xdg-utils-' | head -n 1)
 [ -n "$task_xdg_store" ] || { echo 'Nix output has no xdg-utils runtime dependency.' >&2; exit 2; }
 grep -F "$task_xdg_store/bin" "$task_store/bin/jarvis" >/dev/null
 test -x "$task_xdg_store/bin/xdg-open"
+grep -F 'Copyright (c) 2025 opencode' "$task_store/share/licenses/jarvis/opencode-MIT.txt" >/dev/null
+grep -F 'Permission is hereby granted' "$task_store/share/licenses/jarvis/opencode-MIT.txt" >/dev/null
 [ -x "$task_store/lib/jarvis/runtime/bin/python3" ] || {
     echo 'Nix output has no bound Python runtime.' >&2
     exit 2

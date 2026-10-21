@@ -29,6 +29,15 @@ def test_completed_native_package_recipes_provide_xdg_open():
     assert 'task_runtime_tools="$task_runtime_tools xdg-open"' in lifecycle
 
 
+def test_installed_package_smokes_verify_opencode_mit_notice():
+    native=(ROOT/'scripts/test-native-package.sh').read_text()
+    nix=(ROOT/'scripts/test-nix-package.sh').read_text()
+    flatpak=(ROOT/'scripts/build-flatpak.sh').read_text()
+    for content in (native,nix,flatpak):
+        assert 'opencode-MIT.txt' in content
+        assert 'Copyright (c) 2025 opencode' in content
+
+
 spec=importlib.util.spec_from_file_location('fetch_opencode',ROOT/'scripts/fetch-opencode.py')
 fetch=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(fetch)
@@ -494,6 +503,9 @@ def test_nix_lifecycle_script_uses_an_isolated_profile_and_preserves_user_data(t
     (store/'lib/jarvis/bin/opencode').write_text('#!/bin/sh\nprintf "1.18.23\\n"\n')
     (store/'lib/jarvis/runtime/bin').mkdir(parents=True)
     (store/'lib/jarvis/runtime/bin/python3').write_text('#!/bin/sh\ncat >/dev/null\n')
+    (store/'share/licenses/jarvis').mkdir(parents=True)
+    (store/'share/licenses/jarvis/opencode-MIT.txt').write_text(
+        'Copyright (c) 2025 opencode\nPermission is hereby granted\n')
     for path in store.rglob('*'):
         if path.is_file():path.chmod(0o755)
     fake_bin=tmp_path/'bin';fake_bin.mkdir()

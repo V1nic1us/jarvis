@@ -57,6 +57,8 @@ esac
 test "$(cat "$XDG_DATA_HOME/jarvis/package-test")" = preserved
 jarvis --doctor
 [ "$(/usr/lib/jarvis/bin/opencode --version)" = '1.18.23' ]
+grep -F 'Copyright (c) 2025 opencode' /usr/share/licenses/jarvis/opencode-MIT.txt >/dev/null
+grep -F 'Permission is hereby granted' /usr/share/licenses/jarvis/opencode-MIT.txt >/dev/null
 PYTHONPATH=/usr/lib/jarvis/python /usr/lib/jarvis/runtime/bin/python3 - <<'PY'
 from pathlib import Path
 import importlib,gi,platform,json,sys
