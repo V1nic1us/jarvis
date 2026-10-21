@@ -5,8 +5,18 @@ O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
 validação. Uma receita ou um ciclo de pacote aprovado não prova, por si só,
 que áudio, captura e controle foram verificados em todas as distribuições.
 
-Na execução mais recente, no commit `0a149db`, os 13 jobs de pacotes nativos
-passaram build, instalação, inspeção e remoção em ambientes limpos ([CI nativa](https://github.com/V1nic1us/jarvis/actions/runs/39516376373)). Flatpak ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39516376414)) e Nix ([CI](https://github.com/V1nic1us/jarvis/actions/runs/39516376337)) também passaram em x86_64 e AArch64. Void glibc passou nas duas arquiteturas; Void musl segue em execução na [CI](https://github.com/V1nic1us/jarvis/actions/runs/39515913223). Gentoo ARM64 e Guix ARM64 continuam em build local. Ainda faltam upgrades para outros alvos e validação de desktop, áudio e portais reais. A matriz de evidências lista cada job e suas limitações.
+Na rodada atual, Nix passou build e instalação em x86_64 e AArch64
+([CI](https://github.com/V1nic1us/jarvis/actions/runs/39683082896)).
+Flatpak está sendo revalidado em ambas as arquiteturas
+([CI](https://github.com/V1nic1us/jarvis/actions/runs/39683082664)). Na CI de
+pacotes nativos, 10 de 13 alvos passaram; Fedora x86_64/AArch64 ainda roda e
+RHEL x86_64 falhou ao obter metadados do espelho EPEL
+([CI](https://github.com/V1nic1us/jarvis/actions/runs/39681218040)). Void
+glibc passou nas duas arquiteturas e Void musl ainda roda
+([CI](https://github.com/V1nic1us/jarvis/actions/runs/39681218050)). Os builds
+de Gentoo e Guix estão pausados a pedido. Ainda faltam upgrades para outros
+alvos e validação de desktop, áudio e portais reais; a matriz lista cada job
+e suas limitações.
 
 ## NixOS
 

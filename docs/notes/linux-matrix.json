@@ -3782,7 +3782,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Installed smoke validation for declared xdg-open providers remains pending across native targets; the previous Arch x86_64 install lacked the command. Active native recipes now declare xdg-utils, Nix adds it to the launcher PATH, and Slackware documents it as a manual prerequisite. Guix and Gentoo builds remain paused.",
-    "OpenCode MIT notice was absent from the previous Arch artifact. Common staging now adds the upstream v1.18.23 LICENSE at share/licenses/jarvis/opencode-MIT.txt; validate installed native and Flatpak artifacts, helper/source correspondence, SBOM and independent whole-branch review."
+    "The xdg-open provider and OpenCode MIT notice are now asserted by installed-package smoke checks. Ten native jobs passed those checks in CI run 39681218040; RHEL x86_64 failed before packaging while fetching EPEL metadata, Fedora x86_64/AArch64 remain in progress, and Gentoo/Guix are paused. Flatpak checks are being rerun in CI run 39683082664. Remaining work: rerun failed/transient targets, complete the active jobs, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }
