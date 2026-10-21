@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T00:10:00+00:00",
+  "verified_at_utc": "2026-10-21T00:46:00Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2037,10 +2037,16 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-upgrade-2026-10-18.log",
           "sha256": "6ff9961f278e27f944030672cd2d57764d5630be45cf9d4abfe2a6df62d2053d"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39522180663/job/118969561713",
+          "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "7ba6968e00fb1ce86e835a4d329d90c0e0157e3d",
-      "notes": "Old package artifact from the prior Arch validation upgraded to a current worktree build. The builder changed PKGBUILD pkgrel to 2 for this test only. Doctor, OpenCode 1.18.23, pacman -Qkk, user-data hash preservation and removal passed; this does not validate migration from arbitrary historical user configs."
+      "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+      "notes": "Arch x86_64 native package upgrade, data preservation, inspection and removal passed in run 39522180663."
     },
     {
       "target": "debian",
@@ -2656,10 +2662,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39515913103/job/118947890168",
           "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39522180663/job/118969561634",
+          "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "6a52d69c4a6fa72964e4fdcc87aed62c9bcd2469",
-      "notes": "Current fork workflow upgraded the native DEB package on AArch64 and verified user-data preservation."
+      "source_commit": "1288bbe97285c7e465cdb1d590d49f8d115c006e",
+      "notes": "Ubuntu AArch64 DEB upgrade and user-data preservation passed in run 39522180663."
     },
     {
       "target": "alpine",
