@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-21T17:29:32Z",
+  "verified_at_utc": "2026-10-21T17:33:25Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2876,10 +2876,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39526318796/job/118981677558",
           "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39607881416/job/119248716426",
+          "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run passed the AArch64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection.",
-      "source_commit": "8f53e14378952e64c80dba847e8d8bd09922b643"
+      "notes": "Native AArch64 GitHub runner built and installed the bundle, then passed flatpak run --command=jarvis com.jarvis.overlay --doctor, the pinned OpenCode --version check, and bundled Python voice/MCP/AT-SPI imports in run 39607881416. This validates the installed CLI/runtime smoke on ARM64; portal consent, audio capture, GUI interaction and data-preserving update are separate checks.",
+      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
       "target": "ubuntu",
