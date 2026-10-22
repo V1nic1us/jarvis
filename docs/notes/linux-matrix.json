@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:15:26Z",
+  "verified_at_utc": "2026-10-22T03:17:01Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5085,6 +5085,37 @@
       ],
       "source_commit": "56324ac",
       "notes": "The native Arch package overlay passed the isolated X11 relaunch/accessibility test: the secondary launch exited, the primary window remained available, and its menu/exit controls were activated through AT-SPI. This is an isolated X11 check, not an installed user session or real Wayland/portal validation."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "GTK package runtime",
+      "session": "headless file output",
+      "package": "pkg.tar.zst",
+      "capability": "native_package_tts_synthesis_file",
+      "status": "passed",
+      "command": "packaged Python runtime + speak_piper(test phrase, to_file); verify with ffprobe",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-tts-smoke-2026-10-22.log",
+          "sha256": "94db1ba4c0ac68cf0c0dce219c8ad6138a9680a19d984fec8a59407355ddad30",
+          "size_bytes": 566,
+          "source_commit": "56324ac",
+          "package_sha256": "847a060134565455c6a69496c8242e099f66f5e4ba8f223e78bc865a02367dbd",
+          "output_path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-audio/tts-smoke.wav",
+          "output_sha256": "d539735025786ff145e33b3b16a5740ea241d935d3d2099dc04528f912b3ecf7",
+          "output_bytes": 128044,
+          "sample_rate": 22050,
+          "channels": 1,
+          "duration_seconds": 2.902494
+        }
+      ],
+      "source_commit": "56324ac",
+      "notes": "Piper synthesis through the extracted current-HEAD Arch package runtime produced a valid mono 22050 Hz PCM WAV using the existing Portuguese voice model. The model was read only; no microphone capture or audio playback occurred. This validates synthesis-to-file, not playback/streaming."
     }
   ],
   "pending_gates": [
