@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T04:37:23Z",
+  "verified_at_utc": "2026-10-22T04:43:09Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1625,9 +1625,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846082",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105374",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
-      "notes": "Latest RHEL AArch64 CI job passed native RPM build, clean installation, inspection and removal. Latest build/install/inspection/removal passed in run 39683082677. Latest RHEL AArch64 native build/install/inspect/remove and RPM upgrade/data-preservation checks passed in run 39692211142 attempt 2. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2.",
+      "notes": "Latest RHEL AArch64 CI job passed native RPM build, clean installation, inspection and removal. Latest build/install/inspection/removal passed in run 39683082677. Latest RHEL AArch64 native build/install/inspect/remove and RPM upgrade/data-preservation checks passed in run 39692211142 attempt 2. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2. CI run 39721460709 passed the RHEL AArch64 native package lifecycle and RPM upgrade/data-preservation test with the metadata-retry helper present. This run did not reproduce the EPEL mirror error, so the retry branch was not exercised natively; helper retries are covered by simulated tests.",
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a"
     },
     {
@@ -1684,10 +1690,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846082",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105374",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
-      "notes": "Latest RHEL AArch64 CI job passed RPM upgrade, installed-runtime checks, removal and user-data preservation. The first retry attempt was blocked by an EPEL mirror TLS/checksum error; the completed retry passed. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677. Latest RHEL AArch64 native build/install/inspect/remove and RPM upgrade/data-preservation checks passed in run 39692211142 attempt 2. Latest package upgrade and user-data-preservation step passed in 39692211142 attempt 2."
+      "notes": "Latest RHEL AArch64 CI job passed RPM upgrade, installed-runtime checks, removal and user-data preservation. The first retry attempt was blocked by an EPEL mirror TLS/checksum error; the completed retry passed. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677. Latest RHEL AArch64 native build/install/inspect/remove and RPM upgrade/data-preservation checks passed in run 39692211142 attempt 2. Latest package upgrade and user-data-preservation step passed in 39692211142 attempt 2. CI run 39721460709 passed the RHEL AArch64 native package lifecycle and RPM upgrade/data-preservation test with the metadata-retry helper present. This run did not reproduce the EPEL mirror error, so the retry branch was not exercised natively; helper retries are covered by simulated tests."
     },
     {
       "target": "alpine",
