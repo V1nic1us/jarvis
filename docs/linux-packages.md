@@ -3,7 +3,7 @@
 O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
 26 têm evidência de ciclo instalado: 24 pacotes nativos e dois bundles Flatpak.
 Gentoo AArch64 e Guix AArch64 são as duas combinações sem validação final. A
-matriz registra 86 de 88 verificações aprovadas.
+matriz registra 87 de 89 verificações aprovadas.
 Gentoo ARM64 e Guix ARM64 estão sem validação final e seus builds estão pausados
 a pedido do usuário. Uma receita ou um ciclo de pacote aprovado não prova, por si
 só, que áudio, captura e controle foram verificados em todas as distribuições.
@@ -17,7 +17,7 @@ Flatpak e Nix passaram em x86_64/AArch64 ([Flatpak](https://github.com/V1nic1us/
 
 A matriz registra cada job e suas limitações. O host Arch/KDE Wayland já passou testes funcionais do overlay, MCP instalado
 e áudio sintético por ALSA e PipeWire/Pulse, incluindo Piper, STT e VAD. Medições de nível Pulse e ALSA por 0,5 s passaram no host; o launcher do pacote
-Arch também passou `--mic-level` via Pulse. Ainda faltam PTT/VAD e
+Arch também passou `--mic-level` via Pulse. Ainda faltam PTT e VAD com fala real e
 reprodução/streaming nos pacotes instalados, autorização/recusa/revogação real
 de Screenshot e RemoteDesktop e repetir a cobertura em outros desktops e distros.
 

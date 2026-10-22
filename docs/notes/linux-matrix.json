@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T02:56:22Z",
+  "verified_at_utc": "2026-10-22T02:58:06Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4922,6 +4922,33 @@
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "The saved Arch package artifact from source commit 02381f5cd88090f24fb24db4218eb9c94dc2ac7a was extracted into a temporary directory; its installed launcher ran --mic-level for 5 s against the live Pulse input and returned mean -38.4 dB and max -22.5 dB. No WAV was saved or transcribed. voice/capture.py and voice/audio.py are unchanged since that source commit. This validates the packaged audio path on this Arch host only; the artifact predates current HEAD and other package targets still need their own audio checks."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "PipeWire/Pulse",
+      "package": "Arch native package artifact 0.1.0-2",
+      "capability": "native_package_pulse_vad_idle_cleanup",
+      "status": "passed",
+      "command": "extract package; capture.record_auto(AUDIO_BACKEND=pulse, max_s=3); assert no WAV remains in temporary XDG_CACHE_HOME",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-pulse-vad-idle-2026-10-22.log",
+          "sha256": "e79957e6a1c644725985d34fb68ab8f73798ec1515627db5dd4458d0df6fde33"
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-upgrade-artifacts/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst",
+          "sha256": "7d4bbd90a894b3d613946840920206a64064ea9990710c8afff4cee5baab148f"
+        }
+      ],
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+      "notes": "The saved Arch package artifact from source commit 02381f5cd88090f24fb24db4218eb9c94dc2ac7a was extracted into a temporary directory and its packaged record_auto path listened to the live Pulse input for up to 3 s. No speech was detected in this idle sample and no WAV remained in the temporary XDG cache. STT was not run. voice/capture.py and voice/audio.py are unchanged since the artifact source commit. This is a negative VAD/cleanup smoke only; positive speech detection and other package targets remain unverified."
     }
   ],
   "pending_gates": [

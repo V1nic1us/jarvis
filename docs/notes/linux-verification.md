@@ -156,6 +156,13 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
   `voice/audio.py` não mudaram desde então. Log e SHA-256:
   `.superpowers/sdd/2026-10-14-jarvis-linux/arch-package-pulse-mic-level-2026-10-22.log`
   (`ad87a3c1d1c8bf74c27959d8c38ff135d137040574a90ec2a4b28b7b92a1c8b0`).
+- O caminho VAD do pacote Arch 0.1.0-2 também foi exercitado em uma captura
+  Pulse ociosa de até 3 s; não detectou fala e não deixou WAV no cache XDG
+  temporário. STT não foi iniciado. O artefato usa o source commit `02381f5`;
+  `voice/capture.py` e `voice/audio.py` não mudaram desde então. Evidência:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/arch-package-pulse-vad-idle-2026-10-22.log`
+  (SHA-256 `e79957e6a1c644725985d34fb68ab8f73798ec1515627db5dd4458d0df6fde33`).
+  Isso cobre ausência de falso positivo e limpeza no host, não detecção de fala real.
 - A bateria Linux focada na venv do projeto (`test_linux_install`,
   `test_linux_packages`, contexto, entrada, tela, plataformas, áudio, captura,
   diagnóstico, portal e STT) passou com **177 testes** em 6,55 s. Ela inclui os
