@@ -1064,3 +1064,17 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   acessar Git não foi reproduzida: o script gerou um tarball dentro de
   `jarvis-gentoo-aarch64` usando o mount `/src`. O container foi parado após a
   verificação e nenhum build Gentoo/Guix foi iniciado.
+
+
+### Arch: instalação do pacote atual pelo pacman — 2026-10-22
+
+- Baixei o artefato `jarvis-arch-x86_64` do CI no commit `8a63692`. O ZIP passou
+  em `unzip -t`; seu SHA-256 bateu com o digest da API do GitHub, e o SHA-256 do
+  pacote `0.1.0-1` bateu com `SHA256SUMS` do artefato.
+- O pacote foi reinstalado pelo pacman no host Arch. `pacman -Qkk` reportou
+  8.140 arquivos e nenhum alterado. `jarvis --doctor` agora informa Wayland
+  disponível, autorização do portal necessária e validação de runtime pendente.
+- Os launchers instalados `win_context` e `delegate_local` completaram MCP
+  initialize e `tools/list` por stdio, expondo 8 e 1 ferramentas. Nenhuma
+  ferramenta foi invocada; controle real do desktop e áudio físico continuam
+  pendentes. Log e hash estão registrados em `linux-matrix.json`.
