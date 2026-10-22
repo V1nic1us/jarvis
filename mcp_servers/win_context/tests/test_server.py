@@ -70,3 +70,21 @@ def test_linux_windows_alias_selects_native_backend(monkeypatch):
     assert s.win_list_text()=="atspi:opaque\tgtk\tação"
     with pytest.raises(ValueError,match="hwnd"):
         s.win_tree_text(123)
+
+
+@pytest.mark.parametrize(
+    ("tool_name", "message"),
+    [
+        ("desktop_list_text", "AT-SPI exige sessao grafica"),
+        ("desktop_clipboard_text", "clipboard exige sessao grafica"),
+    ],
+)
+def test_linux_desktop_context_reports_unsupported_when_headless(monkeypatch, tool_name, message):
+    s = _server()
+    monkeypatch.setenv("JARVIS_PLATFORM", "linux")
+    monkeypatch.delenv("XDG_SESSION_TYPE", raising=False)
+    monkeypatch.delenv("WAYLAND_DISPLAY", raising=False)
+    monkeypatch.delenv("DISPLAY", raising=False)
+
+    with pytest.raises(RuntimeError, match=message):
+        getattr(s, tool_name)()
