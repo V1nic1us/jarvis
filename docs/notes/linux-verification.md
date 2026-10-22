@@ -771,3 +771,10 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 - `voice/.venv/bin/python -m pytest -q -rs voice/tests`: **494 passed, 1 skipped** em 16,35 s no host Arch Linux x86_64 Wayland. O único skip é o teste interativo opt-in. Log: `.superpowers/sdd/2026-10-14-jarvis-linux/linux-voice-tests-2026-10-22.log`, SHA-256 `7d884865027d89e1c364a2562d0001f61ecbce6f4b36f80930dac8ae83d83f92`.
 - A rechecagem `JARVIS_DESKTOP_TESTS=1` do teste AT-SPI foi pulada antes de qualquer mutação porque a fixture sentinela não recebeu foco. Nenhuma janela real do usuário foi modificada. Log: `.superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-skip-2026-10-22.log`, SHA-256 `e63ed49708f3ebe2537d2181b0917cb994f0d19528c0184317f7fe1d785ee638`. A aprovação anterior do teste na sessão KDE continua válida; esta execução não a substitui.
+
+### Regressão de escopo de shell nos upgrades Void — 2026-10-22
+
+- No run [39703429679](https://github.com/V1nic1us/jarvis/actions/runs/39703429679), Void glibc x86_64, glibc AArch64 e musl AArch64 passaram pelo build/export e falharam na inspeção/instalação. A etapa de instalação referenciava `$previous`, definido apenas na etapa de exportação; o shell de cada etapa do Actions é separado, então o caminho do pacote anterior ficava vazio.
+- A correção em `631404ec409696cbe780a462c3dd590bbfd13347` procura o pacote anterior dentro da própria etapa de instalação para glibc e musl. O teste de regressão `test_void_upgrade_steps_locate_previous_package_in_their_own_shell` está coberto por `python -m pytest -q voice/tests/test_linux_packages.py`: **79 passaram** no commit registrado acima.
+- O rerun [39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455), que contém a correção, ainda está pendente no grupo de concorrência do Void enquanto o build musl x86_64 do run anterior [39703429679](https://github.com/V1nic1us/jarvis/actions/runs/39703429679/job/119577756407) continua ativo. Portanto, as falhas da rodada antiga ainda precisam de confirmação no rerun corrigido.
+- Evidência local: `.superpowers/sdd/2026-10-14-jarvis-linux/void-workflow-variable-scope-2026-10-22.log`.
