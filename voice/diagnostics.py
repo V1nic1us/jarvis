@@ -1,10 +1,28 @@
 """Read-only diagnostics. Presence is distinct from runtime validation."""
 import os
 import shutil
+import subprocess
 from pathlib import Path
 from audio import list_devices
 from platforms import desktop_session
 from tts import VoiceError
+
+
+def _ffmpeg_has_audio_input(config) -> bool:
+    try:
+        result = subprocess.run(
+            [config.ffmpeg_exe, '-hide_banner', '-demuxers'],
+            capture_output=True, text=True, errors='replace', timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return False
+    if result.returncode != 0:
+        return False
+    for line in (result.stdout + '\n' + result.stderr).splitlines():
+        fields = line.split()
+        if len(fields) > 1 and fields[0].startswith('D') and config.audio_backend in fields[1:4]:
+            return True
+    return False
 
 
 def _capture_capability(config, ffmpeg_available: bool) -> dict:
@@ -14,6 +32,9 @@ def _capture_capability(config, ffmpeg_available: bool) -> dict:
         return capability
     if config.platform != 'linux':
         capability.update(available=True, reason='ffmpeg presente; gravacao real ainda nao testada')
+        return capability
+    if not _ffmpeg_has_audio_input(config):
+        capability['reason'] = f'ffmpeg nao disponibiliza entrada {config.audio_backend}'
         return capability
     try:
         list_devices(config)

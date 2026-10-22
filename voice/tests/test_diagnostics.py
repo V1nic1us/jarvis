@@ -25,6 +25,8 @@ def test_doctor_marks_pulse_capture_unavailable_when_server_is_unreachable(monke
     cfg = load_config({'JARVIS_PLATFORM': 'linux', 'AUDIO_BACKEND': 'pulse'})
     monkeypatch.setattr('diagnostics.shutil.which', lambda executable: f'/usr/bin/{executable}')
     def run(argv, **kwargs):
+        if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
+            return subprocess.CompletedProcess(argv, 0, '', ' D d pulse Pulse audio input\n')
         assert argv == ['pactl', '--format=json', 'list', 'sources']
         return subprocess.CompletedProcess(argv, 1, '', 'Connection refused')
     monkeypatch.setattr('audio.subprocess.run', run)
@@ -39,6 +41,8 @@ def test_doctor_reports_pulse_server_reachable_without_claiming_capture_tested(m
     cfg = load_config({'JARVIS_PLATFORM': 'linux', 'AUDIO_BACKEND': 'pulse'})
     monkeypatch.setattr('diagnostics.shutil.which', lambda executable: f'/usr/bin/{executable}')
     def run(argv, **kwargs):
+        if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
+            return subprocess.CompletedProcess(argv, 0, '', ' D d pulse Pulse audio input\n')
         assert argv == ['pactl', '--format=json', 'list', 'sources']
         return subprocess.CompletedProcess(argv, 0, '[{"name":"mic usb"}]', '')
     monkeypatch.setattr('audio.subprocess.run', run)
@@ -48,6 +52,42 @@ def test_doctor_reports_pulse_server_reachable_without_claiming_capture_tested(m
     assert capture['available'] is True
     assert capture['backend'] == 'pulse'
     assert 'gravacao real ainda nao testada' in capture['reason']
+
+
+def test_doctor_marks_capture_unavailable_when_ffmpeg_lacks_backend_demuxer(monkeypatch):
+    cfg = load_config({'JARVIS_PLATFORM': 'linux', 'AUDIO_BACKEND': 'pulse'})
+    monkeypatch.setattr('diagnostics.shutil.which', lambda executable: f'/usr/bin/{executable}')
+    def run(argv, **kwargs):
+        if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
+            return subprocess.CompletedProcess(argv, 0, '', ' D d alsa ALSA audio input\n')
+        assert argv == ['pactl', '--format=json', 'list', 'sources']
+        return subprocess.CompletedProcess(argv, 0, '[{"name":"mic usb"}]', '')
+    monkeypatch.setattr('audio.subprocess.run', run)
+
+    capture = diagnose(cfg)['capabilities']['capture']
+
+    assert capture['available'] is False
+    assert 'ffmpeg nao disponibiliza entrada pulse' in capture['reason']
+
+
+def test_doctor_checks_alsa_input_support_and_device_enumerator(monkeypatch):
+    cfg = load_config({'JARVIS_PLATFORM': 'linux', 'AUDIO_BACKEND': 'alsa'})
+    monkeypatch.setattr('diagnostics.shutil.which', lambda executable: f'/usr/bin/{executable}')
+    calls = []
+    def run(argv, **kwargs):
+        calls.append(argv)
+        if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
+            return subprocess.CompletedProcess(argv, 0, '', ' D d alsa ALSA audio input\n')
+        assert argv == ['arecord', '-L']
+        return subprocess.CompletedProcess(argv, 0, 'default\n    Default PCM\n', '')
+    monkeypatch.setattr('audio.subprocess.run', run)
+
+    capture = diagnose(cfg)['capabilities']['capture']
+
+    assert capture['available'] is True
+    assert capture['backend'] == 'alsa'
+    assert 'gravacao real ainda nao testada' in capture['reason']
+    assert calls == [['ffmpeg', '-hide_banner', '-demuxers'], ['arecord', '-L']]
 
 
 def test_doctor_cli_prints_json_without_starting_agent():
