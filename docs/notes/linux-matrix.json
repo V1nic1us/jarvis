@@ -6401,7 +6401,7 @@
         {
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-current-package-install-2026-10-22.log",
-          "sha256": "aa7347409f88da9810cbbbf7c6b60a1dd55d9ab35f0fbd18913df39841589017"
+          "sha256": "e48506afa7630ca21546e23aafbcd1b9d1873918cf1bc70d3a16857c3accb1f5"
         },
         {
           "kind": "ci_job",
@@ -6415,8 +6415,8 @@
         }
       ],
       "capability": "native_package_runtime_host_smoke",
-      "command": "pacman -U package; pacman -Qkk jarvis-assistant; jarvis --doctor",
-      "notes": "Current CI package installed on the user Arch host. pacman -Qkk reported 8140 files and 0 altered files. Doctor reports Wayland available with authorization_required=true and validation=not_run. This does not validate live portal input or physical audio."
+      "command": "pacman -U package; pacman -Qkk jarvis-assistant; jarvis --doctor; jarvis --list-mics",
+      "notes": "Current CI package installed on the user Arch host. pacman -Qkk reported 8140 files and 0 altered files. Doctor reports Wayland available with authorization_required=true and validation=not_run. The installed launcher enumerated the default source and two PipeWire/ALSA sources; no recording was made, so physical audio remains unverified."
     },
     {
       "target": "arch",

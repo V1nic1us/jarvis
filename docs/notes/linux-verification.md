@@ -1074,6 +1074,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O pacote foi reinstalado pelo pacman no host Arch. `pacman -Qkk` reportou
   8.140 arquivos e nenhum alterado. `jarvis --doctor` agora informa Wayland
   disponível, autorização do portal necessária e validação de runtime pendente.
+- `jarvis --list-mics` enumerou a fonte padrão e duas fontes PipeWire/ALSA; não
+  gravei áudio.
 - Os launchers instalados `win_context` e `delegate_local` completaram MCP
   initialize e `tools/list` por stdio, expondo 8 e 1 ferramentas. Nenhuma
   ferramenta foi invocada; controle real do desktop e áudio físico continuam
