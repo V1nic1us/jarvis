@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T04:13:18Z",
+  "verified_at_utc": "2026-10-22T04:37:23Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -141,6 +141,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278888",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105368",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -185,6 +191,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278936",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105570",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -316,6 +328,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278883",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105258",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -446,6 +464,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278882",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105361",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -875,6 +899,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278880",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105240",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -1000,6 +1030,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278779",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105049",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -1124,6 +1160,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278870",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105707",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -1261,6 +1303,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278865",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105259",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -1767,6 +1815,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278951",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105384",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -1891,6 +1945,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626279158",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105484",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -2909,6 +2969,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278951",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105384",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -3169,6 +3235,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278888",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105368",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -3272,6 +3344,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278883",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105258",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -3424,6 +3502,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278870",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105707",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -3786,6 +3870,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278880",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105240",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -4114,6 +4204,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278882",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105361",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -4197,6 +4293,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278779",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105049",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -4273,6 +4375,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626279158",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105484",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -4400,6 +4508,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278865",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105259",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -4730,6 +4844,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278936",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105570",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
