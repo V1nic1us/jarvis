@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:09:11Z",
+  "verified_at_utc": "2026-10-22T05:10:27Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2775,10 +2775,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863678",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39725806478/job/119649295348",
+          "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on aarch64. CI run 39691135412 again passed profile install/upgrade/removal and runtime checks on aarch64. Latest CI revalidation passed in run 39692211308.",
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
+      "notes": "Nix aarch64 derivation build, disposable-profile install, runtime imports and GUI smoke passed in run 39523816912. CI run 39526318789 passed the Nix build and disposable-profile installed-runtime smoke for aarch64. CI run 39526318789 passed Nix package build, disposable profile installation, and runtime smoke on aarch64. Latest run 39607880886 passed package build, disposable-profile install and runtime smoke for aarch64. CI run 39685647412 also passed profile install, `nix profile upgrade --all`, runtime checks, removal and user-data preservation on aarch64. CI run 39691135412 again passed profile install/upgrade/removal and runtime checks on aarch64. Latest CI revalidation passed in run 39692211308. Latest NixOS AArch64 rebuild on 787dc9f passed derivation build, disposable profile installation, and runtime verification in run 39725806478.",
+      "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b"
     },
     {
       "target": "guix",
