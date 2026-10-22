@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T06:22:31Z",
+  "verified_at_utc": "2026-10-22T06:27:33Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5945,6 +5945,41 @@
       ],
       "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
       "notes": "Release 3 installed in an updated, privileged Solus container. The packaged launcher completed ALSA enumeration and listed default, null and sysdefault:CARD=sofhdadsp; eopkg integrity and removal passed. This is device enumeration only; it does not establish that a physical microphone captured audio."
+    },
+    {
+      "target": "solus",
+      "distro": "solus",
+      "version": "4.9",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "headless container",
+      "session": "FFmpeg synthetic speech; Piper, VAD and faster-whisper CPU int8",
+      "package": "eopkg release 3",
+      "capability": "native_package_vad_speech_roundtrip",
+      "status": "passed",
+      "command": "Installed release 3: packaged Piper synthesizes Portuguese speech; FFmpeg wrapper feeds speech plus leading/trailing silence to packaged VAD; packaged faster-whisper transcribes offline; eopkg check and remove",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-voice-roundtrip-2026-10-22.log",
+          "sha256": "b1cf76d52418bbcdc5ef315b9c7cbfa11a54674d56b5325ca8a4821defa6df12",
+          "size_bytes": 1071588
+        },
+        {
+          "kind": "test_script",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-voice-roundtrip-2026-10-22.py",
+          "sha256": "609cbf5b3cca83a301ea8ed10ce7eb37ab22ade10c5a545e92f37b65cea9511c",
+          "size_bytes": 3110
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release-3/jarvis-assistant-0.1.0-3-1-x86_64.eopkg",
+          "sha256": "55539ac2567ae95d9f633bca3fc2b1c69429a2af3146459e34f722cb372346aa",
+          "size_bytes": 202582589
+        }
+      ],
+      "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
+      "notes": "Piper generated “Olá, tudo bem?” and faster-whisper recognized “Olá tudo bem?” from the VAD segment. The 3.065-second segment ended before the 3.8-second fixture finished its trailing silence. This is a packaged CPU speech pipeline with synthetic audio; no physical microphone capture or speaker playback was performed."
     }
   ],
   "pending_gates": [

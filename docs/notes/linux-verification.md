@@ -966,3 +966,15 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   `null` e `sysdefault:CARD=sofhdadsp`; `eopkg check` e remoção passaram.
 - O log foi registrado na matriz. O container era headless: isso valida o
   caminho de enumeração do pacote, não captura de um microfone físico.
+
+
+### Solus: fala sintética pelo runtime do pacote — 2026-10-22
+
+- Na release 3 instalada, o Piper empacotado sintetizou “Olá, tudo bem?”.
+  Um wrapper do FFmpeg alimentou a fala com silêncios sintéticos ao VAD
+  empacotado; o faster-whisper empacotado reconheceu “Olá tudo bem?” em CPU.
+  O segmento de 3,065 s terminou antes do fixture de 3,8 s, e `eopkg check`
+  e remoção passaram.
+- O teste foi headless e sintético: não capturou microfone físico nem reproduziu
+  som. Script, pacote e log estão na linha Solus da matriz com SHA-256. A matriz
+  atualiza para 101/103 verificações aprovadas (98,1%).
