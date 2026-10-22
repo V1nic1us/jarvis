@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T06:36:15Z",
+  "verified_at_utc": "2026-10-22T06:47:35Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -6097,6 +6097,41 @@
       ],
       "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
       "notes": "The installed MCP desktop_processes_text tool invoked the Linux processes implementation with a literal filter and returned python3 plus a PID from inside the disposable container. This is a read-only container process query, not desktop-process discovery on the host. MCP initialize/tools/list, package integrity and removal also passed."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "extracted native package; headless security check",
+      "session": "packaged Linux file-write credential path guard",
+      "package": "pacman pkg.tar.zst built from source commit 7c739d0",
+      "capability": "native_package_dotenv_casefold_security",
+      "status": "passed",
+      "command": "scripts/build-package.sh --target arch --arch x86_64; pacman -Qp artifact; extract packaged voice/local_files.py and verify write_text rejects .ENV and .ENV.production without creating either file",
+      "evidence": [
+        {
+          "kind": "test_script",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release4-package-security.py",
+          "sha256": "da951b784356927c02e11e471bf30e8e651661a9d4df741093698801a89d04b1",
+          "size_bytes": 967
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release4-package-security.log",
+          "sha256": "fc78fc5192bc38417cbc3c741724d1aee237073ee8480d1c93947c6f77187d63",
+          "size_bytes": 83
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release4-build/jarvis-assistant-0.1.0-1-x86_64.pkg.tar.zst",
+          "sha256": "7e993d52f3bf16a327b5b2649aac91a082448d83cda157aa6f3f4f52aadec740",
+          "size_bytes": 229837854
+        }
+      ],
+      "source_commit": "7c739d0",
+      "notes": "The Arch package metadata identifies jarvis-assistant 0.1.0-1. The check executed the exact local_files.py extracted from that package. Both uppercase dotenv names raised the credential/secret rejection and neither path was created. This is a package-code security smoke, not a pacman installation lifecycle test."
     }
   ],
   "pending_gates": [

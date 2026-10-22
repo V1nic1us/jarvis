@@ -1011,3 +1011,14 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   do desktop hospedeiro. Não valida clipboard, AT-SPI ou outras ações. Script e
   log estão na matriz com hashes; total atual: 104/106 verificações aprovadas
   (98,1%).
+
+
+### Arch: bloqueio de nomes dotenv sem diferenciar maiúsculas — 2026-10-22
+
+- O pacote Arch x86_64 foi reconstruído a partir do commit `7c739d0`; `pacman -Qp`
+  confirmou o metadado `jarvis-assistant 0.1.0-1`. O código `voice/local_files.py`
+  extraído do artefato recusou escrita em `.ENV` e `.ENV.production` com erro de
+  credencial/segredo, sem criar os arquivos.
+- O smoke executou o código empacotado em diretório temporário. Não instalou o
+  pacote com pacman; os hashes do pacote, script e log estão na matriz. Estado
+  atualizado: 105/107 verificações aprovadas (98,1%).
