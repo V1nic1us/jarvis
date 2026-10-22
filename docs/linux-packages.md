@@ -11,8 +11,11 @@ remoção e os testes de atualização/preservação de dados previstos para cad
 gerenciador ([CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511)).
 Flatpak e Nix passaram em x86_64/AArch64 ([Flatpak](https://github.com/V1nic1us/jarvis/actions/runs/39705918446), [Nix](https://github.com/V1nic1us/jarvis/actions/runs/39705918449)). Void glibc passou build, instalação e upgrade nas duas arquiteturas; os builds/upgrade de Void musl seguem ativos ([CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455)).
 
-A matriz registra cada job e suas limitações. Desktop real, áudio físico e
-portais continuam pendentes.
+A matriz registra cada job e suas limitações. O host Arch/KDE Wayland já passou
+testes funcionais do overlay, MCP instalado e áudio sintético por ALSA e
+PipeWire/Pulse, incluindo Piper, STT e VAD. Permanecem pendentes microfone e
+reprodução físicos, autorização/recusa/revogação real de Screenshot e
+RemoteDesktop e a repetição dessa cobertura em outros desktops e distribuições.
 
 ## NixOS
 
