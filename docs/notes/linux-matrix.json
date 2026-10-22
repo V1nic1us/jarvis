@@ -6516,7 +6516,7 @@
     }
   ],
   "pending_gates": [
-    "In-scope distro and architecture rows are limited to evidence-backed targets; Gentoo and Guix remain explicitly paused and outside the current delivery scope.",
+    "Evidence-backed targets are not universal Linux coverage. Gentoo AArch64 and Guix AArch64 remain required for the all-distro objective, but their builds are paused at the user's explicit request; do not resume them until the user changes that instruction.",
     "Complete real desktop-session validation on GNOME/KDE Wayland and X11, including RemoteDesktop keyboard/pointer injection, portal denial/revocation, focus/accessibility, clipboard, and process cleanup; current real-session capture evidence covers Arch KDE Wayland only.",
     "Complete end-to-end physical audio validation for PTT/VAD/STT and speaker playback/streaming on representative PulseAudio/PipeWire and ALSA systems. The current installed Arch package now has 0.5 s physical input-level measurements for both Pulse/PipeWire and ALSA; these do not validate speech transcription or physical output.",
     "Validate a package SBOM and obtain independent whole-branch review before declaring the Linux port complete."

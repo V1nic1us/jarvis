@@ -1,11 +1,11 @@
 # Pacotes Linux em desenvolvimento
 
-O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
-26 têm evidência de ciclo instalado: 24 pacotes nativos e dois bundles Flatpak.
-Gentoo AArch64 e Guix AArch64 são as duas combinações sem validação final. A
-matriz registra 107 de 109 verificações aprovadas (98,2%).
+O catálogo declara 15 alvos de empacotamento. A matriz atual contém 114
+registros: 112 aprovados e dois sem validação (98,2%). Ela inclui 29
+combinações de distribuição/arquitetura/contexto, entre elas um teste de fonte;
+registros de pacote e testes funcionais são contabilizados separadamente.
 Gentoo ARM64 e Guix ARM64 estão sem validação final e seus builds estão pausados
-a pedido do usuário. Uma receita ou um ciclo de pacote aprovado não prova, por si
+a pedido do usuário. Esses alvos continuam fazendo parte do objetivo de suporte Linux amplo; builds e validação estão pendentes até que a pausa seja alterada. Uma receita ou um ciclo de pacote aprovado não prova, por si
 só, que áudio, captura e controle foram verificados em todas as distribuições.
 O guia [Flatpak](../packaging/flatpak/README.md) contém os comandos específicos
 para instalar e executar o bundle `.flatpak`.

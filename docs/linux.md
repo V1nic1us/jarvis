@@ -4,10 +4,13 @@ O porte continua em implementação. Voz, screenshot, ações, contexto AT-SPI,
 arquivos e overlay têm implementação nativa. No host Arch/KDE Wayland foram
 exercitados o overlay e o MCP instalado, síntese Piper, captura de áudio
 sintético via PipeWire/Pulse e ALSA, STT em português e VAD com áudio sintético.
-O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 têm evidência de
-ciclo instalado: 24 pacotes nativos e dois bundles Flatpak. Gentoo AArch64 e
-Guix AArch64 são as duas combinações sem validação final. A matriz registra 107 de 109 verificações aprovadas (98,2%). Todos os 14
-jobs nativos passaram na [CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511),
+O catálogo declara 15 alvos de empacotamento. A matriz atual contém 114
+registros: 112 aprovados e dois sem validação (98,2%); ela inclui 29
+combinações de distribuição/arquitetura/contexto, entre elas um teste de fonte.
+Isso não significa cobertura universal: Gentoo AArch64 e Guix AArch64 seguem
+sem validação final e seus builds estão pausados a pedido. Os ciclos de pacote
+e testes funcionais são contabilizados separadamente. Os jobs nativos passaram
+na [CI 39808807318](https://github.com/V1nic1us/jarvis/actions/runs/39808807318),
 incluindo upgrades e preservação de dados onde configurados. Nix e Flatpak
 passaram em x86_64/AArch64. Void glibc e musl passaram build, instalação,
 upgrade e preservação de dados em ambas as arquiteturas na [CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455).
