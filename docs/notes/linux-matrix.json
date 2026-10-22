@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:01:41Z",
+  "verified_at_utc": "2026-10-22T05:03:34Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3127,9 +3127,20 @@
           "skip_reason": "interactive desktop test requires an authorized desktop session",
           "source_commit": "6f037671f4f55a40fb78a902f4ab9526c3dbe7c0",
           "environment": "Arch Linux x86_64 KDE Wayland; project venv; PYTHONPATH unset"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-voice-suite-2026-10-22-nix-pythonpath-fix.log",
+          "sha256": "575bb86a551cfc9e653cfb539ec70a9e8e22aee5603b1c58f62ef469d54ad182",
+          "size_bytes": 714,
+          "passed": 501,
+          "skipped": 1,
+          "skip_reason": "interactive desktop test requires authorized desktop session",
+          "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+          "environment": "Arch Linux x86_64 KDE Wayland; project venv; PYTHONPATH unset"
         }
       ],
-      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session. The current commit 6f03767 also passed 501 tests with one authorized-desktop test skipped when run with PYTHONPATH unset.",
+      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session. The current commit 6f03767 also passed 501 tests with one authorized-desktop test skipped when run with PYTHONPATH unset. Commit 787dc9f removes inherited host PYTHONPATH while checking the Nix external Python runtime; full suite passed 501 tests with one authorized-desktop test skipped.",
       "source_commit": "0ce1d68"
     },
     {
