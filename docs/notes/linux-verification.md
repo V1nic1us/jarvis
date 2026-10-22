@@ -144,6 +144,11 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
   nenhum WAV foi salvo ou transcrito. Log:
   `.superpowers/sdd/2026-10-14-jarvis-linux/arch-pulse-capture-measure-level-2026-10-22.log`
   (SHA-256 `16a84b94bc96f8b3b100c33f3dfa315a1adc87c8b7486ba664a402acc43cc499`).
+- Captura real de entrada ALSA por 0,5 s no host: `measure_level` retornou
+  mean -41,3 dBFS e pico -28,6 dBFS. FFmpeg enviou os samples ao muxer null;
+  nenhum WAV foi salvo ou transcrito. Log:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/arch-alsa-capture-measure-level-2026-10-22.log`
+  (SHA-256 `5f89b81e2c86dab1806ccd9e6842a54dab6ef1d1ec68ce65faa03fe3760be97d`).
 - A bateria Linux focada na venv do projeto (`test_linux_install`,
   `test_linux_packages`, contexto, entrada, tela, plataformas, áudio, captura,
   diagnóstico, portal e STT) passou com **177 testes** em 6,55 s. Ela inclui os

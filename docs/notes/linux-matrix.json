@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T02:53:36Z",
+  "verified_at_utc": "2026-10-22T02:54:41Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4873,6 +4873,28 @@
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "The saved Arch package artifact from source commit 02381f5cd88090f24fb24db4218eb9c94dc2ac7a was extracted into a temporary directory and ran --doctor plus --list-mics on the live Arch Wayland host. Bundled Piper/OpenCode were found and the Pulse input backend enumerated default plus two sources. No system install or audio capture occurred. This artifact predates current HEAD and is supplemental runtime evidence, not verification of the latest source."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "ALSA",
+      "package": "native host runtime",
+      "capability": "alsa_microphone_capture_level_measurement",
+      "status": "passed",
+      "command": "PYTHONPATH=voice voice/.venv/bin/python measure_level(seconds=0.5, AUDIO_BACKEND=alsa, MIC_DEVICE=default)",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-alsa-capture-measure-level-2026-10-22.log",
+          "sha256": "5f89b81e2c86dab1806ccd9e6842a54dab6ef1d1ec68ce65faa03fe3760be97d"
+        }
+      ],
+      "source_commit": "521608d12a54b802f732266d9f28cf1545731fdc",
+      "notes": "On the Arch Linux x86_64 KDE Wayland host, FFmpeg captured 0.5 s from the ALSA default input and volumedetect returned mean -41.3 dBFS and max -28.6 dBFS. Output went to the null muxer: no WAV was saved and no speech was transcribed. This validates a level measurement on this host only; PTT/VAD, playback/streaming and installed-package coverage remain pending."
     }
   ],
   "pending_gates": [
