@@ -45,6 +45,9 @@ jobs:
       - name: Install, inspect and remove in clean Void container
         run: |
           package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.xbps' -print -quit)
+          previous=$(find dist/upgrade -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0_1.*.xbps' -print -quit)
+          test -n "$package"
+          test -n "$previous"
           docker run --rm \
             -v "$PWD/dist/native:/packages:ro" \
             -v "$PWD/dist/upgrade:/upgrade:ro" \
@@ -94,6 +97,9 @@ jobs:
       - name: Install, inspect and remove in clean Void musl container
         run: |
           package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.*-musl.xbps' -print -quit)
+          previous=$(find dist/upgrade -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0_1.*-musl.xbps' -print -quit)
+          test -n "$package"
+          test -n "$previous"
           docker run --rm \
             -v "$PWD/dist/native:/packages:ro" \
             -v "$PWD/dist/upgrade:/upgrade:ro" \

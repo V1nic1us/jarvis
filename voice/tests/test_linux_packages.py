@@ -627,6 +627,17 @@ def test_void_glibc_ci_builds_and_tests_native_xbps_on_both_architectures():
     assert 'scripts/repack-xbps-previous.py' in dockerfile
 
 
+def test_void_upgrade_steps_locate_previous_package_in_their_own_shell():
+    text=(ROOT/'.github/workflows/linux-void.yml').read_text()
+    for step_name in ('Install, inspect and remove in clean Void container',
+                      'Install, inspect and remove in clean Void musl container'):
+        start=text.index(f'- name: {step_name}')
+        end=text.find('\n      - name:',start+1)
+        step=text[start:end if end!=-1 else None]
+        assert 'previous=$(find dist/upgrade ' in step
+        assert '"/upgrade/$(basename "$previous")"' in step
+
+
 def test_void_builder_supports_a_musl_target_without_changing_glibc_defaults():
     dockerfile=(ROOT/'packaging/void/Dockerfile').read_text()
     assert 'ARG JARVIS_VOID_LIBC=glibc' in dockerfile
