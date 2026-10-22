@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:12:00Z",
+  "verified_at_utc": "2026-10-22T01:12:24Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4418,6 +4418,28 @@
       ],
       "source_commit": "7c0c34a",
       "notes": "The pinned Portuguese Piper voice downloaded with SHA-256 verification; Jarvis synthesized speech and ffplay routed a live sink-input to a temporary PipeWire null sink. Its monitor captured non-silent audio. No physical output was used; STT, physical mic acoustics, and cross-distro playback remain unverified."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland / PipeWire",
+      "package": "source checkout",
+      "capability": "faster_whisper_portuguese_stt_pipewire_loopback",
+      "status": "passed",
+      "command": "transcribe(pipewire_captured_piper_wav, config[WHISPER_MODEL=base, VOICE_LANGUAGE=pt])",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-pipewire-whisper-stt-2026-10-22.log",
+          "sha256": "5888fdda0ce9c00f77010e69f4d79d09d47511ae434b1ec46d71fa074512d64a"
+        }
+      ],
+      "source_commit": "8c33e64",
+      "notes": "The default faster-whisper base model completed CPU int8 inference on a PipeWire monitor capture and returned non-empty Portuguese text. Recognition was approximate, so this proves runtime path only, not STT accuracy, physical microphone behavior, or cross-distro support."
     }
   ],
   "pending_gates": [
