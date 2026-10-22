@@ -1928,6 +1928,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543031023",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338707",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
       "notes": "Current fork run built the x86_64 glibc XBPS package, then installed, inspected and removed it in a clean Void container. CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050. Latest native build/install/inspection/removal passed in CI run 39685647431. Latest native package build/install/inspect/remove lifecycle passed in run 39692211144.",
@@ -1960,6 +1966,12 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/void-glibc-upgrade-preservation.log",
           "sha256": "b6976840d83b24fc8b7ba3eb52c02702b0988d36f32be4f45dd8958c08e7182e"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338707",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
       "notes": "XBPS updated Jarvis from revision _1 to _2; jarvis --doctor passed before and after, user data sentinel remained unchanged, and package removal preserved it."
