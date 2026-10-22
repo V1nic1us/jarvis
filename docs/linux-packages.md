@@ -7,6 +7,8 @@ matriz registra 81 de 83 verificações aprovadas.
 Gentoo ARM64 e Guix ARM64 estão sem validação final e seus builds estão pausados
 a pedido do usuário. Uma receita ou um ciclo de pacote aprovado não prova, por si
 só, que áudio, captura e controle foram verificados em todas as distribuições.
+O guia [Flatpak](../packaging/flatpak/README.md) contém os comandos específicos
+para instalar e executar o bundle `.flatpak`.
 
 Na rodada mais recente, os 14 jobs nativos passaram build, instalação, inspeção,
 remoção e os testes de atualização/preservação de dados previstos para cada
@@ -307,6 +309,17 @@ mkdir -p dist/alpine
 docker run --rm -v "$PWD/dist/alpine:/export" jarvis-linux-alpine
 ```
 
+O container exporta junto ao APK a chave pública que assinou o pacote. Confie
+essa chave no Alpine de destino antes da instalação; para um build com `abuild`
+local, copie para `/etc/apk/keys/` a chave pública correspondente ao assinador:
+
+```sh
+sudo cp dist/alpine/*.pub /etc/apk/keys/
+sudo apk add --no-cache ./dist/alpine/jarvis-assistant-0.1.0-r0.apk
+jarvis --doctor
+sudo apk del jarvis-assistant
+```
+
 Dentro de um ambiente Alpine com as dependências de build instaladas, um usuário
 não root com chave `abuild` configurada também pode executar
 `scripts/build-package.sh --target alpine --output dist/alpine`.
@@ -371,7 +384,19 @@ preservado; isso não substitui atualização entre versões de aplicativo
 publicadas. CI também construiu o pacote e passou instalação, inspeção e
 remoção em Void glibc AArch64 na [CI 39419181120](https://github.com/V1nic1us/jarvis/actions/runs/39419181120). Desktop real, áudio e atualização AArch64 entre versões publicadas ainda não foram validados.
 
-A variante musl tem uma receita XBPS em `packaging/void-musl/template`, que
+Em um host Void glibc nativo, compile o pacote e instale-o pelo repositório
+XBPS local:
+
+```sh
+scripts/build-package.sh --target void-glibc --arch x86_64 --output "$PWD/dist/void"
+sudo xbps-rindex -a "$PWD"/dist/void/jarvis-assistant-*.xbps
+sudo xbps-install -y -R "$PWD/dist/void" jarvis-assistant
+jarvis --doctor
+sudo xbps-remove -y jarvis-assistant
+```
+
+Use uma pasta de repositório vazia para cada arquitetura e variante de libc. A
+variante musl tem uma receita XBPS em `packaging/void-musl/template`, que
 compila ONNX Runtime 1.24.4 dentro do build nativo em vez de reutilizar wheels
 glibc. A revisão `_2` foi construída por `xbps-src` e passou pelo ciclo XBPS
 x86_64: instalação, `jarvis --doctor`, ABI/imports privados e AT-SPI, smoke
@@ -385,6 +410,21 @@ nessa arquitetura. O XBPS também passou uma
 atualização controlada da revisão `_1` para `_2`, com `jarvis --doctor` antes e
 depois e sentinel dos dados do usuário preservado; isso ainda não substitui uma
 atualização entre versões de aplicativo publicadas.
+
+Em um host Void musl nativo, use o alvo específico e o mesmo fluxo de repositório
+XBPS:
+
+```sh
+scripts/build-package.sh --target void-musl --arch x86_64 --output "$PWD/dist/void-musl"
+sudo xbps-rindex -a "$PWD"/dist/void-musl/jarvis-assistant-*.xbps
+sudo xbps-install -y -R "$PWD/dist/void-musl" jarvis-assistant
+jarvis --doctor
+sudo xbps-remove -y jarvis-assistant
+```
+
+Para ARM64, execute cada build em um host Void da arquitetura correspondente e
+troque `--arch x86_64` por `--arch aarch64`. Não instale pacote musl em Void
+glibc nem pacote glibc em Void musl.
 
 ### Gentoo rolling: pacote local em validação
 
