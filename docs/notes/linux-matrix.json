@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:12:24Z",
+  "verified_at_utc": "2026-10-22T01:20:12Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4440,6 +4440,28 @@
       ],
       "source_commit": "8c33e64",
       "notes": "The default faster-whisper base model completed CPU int8 inference on a PipeWire monitor capture and returned non-empty Portuguese text. Recognition was approximate, so this proves runtime path only, not STT accuracy, physical microphone behavior, or cross-distro support."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland / PipeWire Pulse compatibility protocol",
+      "package": "source checkout",
+      "capability": "pulse_record_auto_vad_synthetic_loopback",
+      "status": "passed",
+      "command": "record_auto(out_path, config[AUDIO_BACKEND=pulse, MIC_DEVICE=jarvis_vad_test.monitor]); transcribe(captured_wav, config[WHISPER_MODEL=base])",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-pipewire-record-auto-synthetic-2026-10-22.log",
+          "sha256": "0736bc402dd1ba65eb6b8ffeb435479903cab34419bdc1c82b5b5d886a095bc1"
+        }
+      ],
+      "source_commit": "b8e4418",
+      "notes": "Jarvis record_auto captured a synthetic Portuguese Piper utterance from an ephemeral PipeWire null sink and stopped after trailing silence; faster-whisper returned non-empty approximate text. No physical microphone or speakers were used. This does not establish physical microphone calibration, PTT, STT accuracy, or cross-distro behavior."
     }
   ],
   "pending_gates": [
