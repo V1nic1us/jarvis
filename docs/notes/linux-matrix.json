@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:13:18Z",
+  "verified_at_utc": "2026-10-22T05:14:19Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3891,10 +3891,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918446/job/119585808383",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39725806395/job/119649294691",
+          "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Native AArch64 GitHub runner built and installed the bundle, then passed flatpak run --command=jarvis com.jarvis.overlay --doctor, the pinned OpenCode --version check, and bundled Python voice/MCP/AT-SPI imports in run 39607881416. This validates the installed CLI/runtime smoke on ARM64; portal consent, audio capture, GUI interaction and data-preserving update are separate checks.",
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
+      "notes": "Native AArch64 GitHub runner built and installed the bundle, then passed flatpak run --command=jarvis com.jarvis.overlay --doctor, the pinned OpenCode --version check, and bundled Python voice/MCP/AT-SPI imports in run 39607881416. This validates the installed CLI/runtime smoke on ARM64; portal consent, audio capture, GUI interaction and data-preserving update are separate checks. Latest native AArch64 Flatpak build/install/runtime validation passed in CI run 39725806395.",
+      "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b"
     },
     {
       "target": "ubuntu",
@@ -4709,10 +4715,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39719013757/job/119627896362",
           "source_commit": "5ce66ca8aeededff4200ec4ab142c0f12193f8f7",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39725806395/job/119649294691",
+          "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
-      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264. Latest native AArch64 bundle build/install/runtime inspection passed in run 39719013757."
+      "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264. Latest native AArch64 bundle build/install/runtime inspection passed in run 39719013757. Latest native AArch64 Flatpak build/install/runtime validation passed in CI run 39725806395."
     },
     {
       "target": "arch",
