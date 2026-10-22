@@ -1,4 +1,5 @@
 """Read-only diagnostics. Presence is distinct from runtime validation."""
+import importlib.util
 import os
 import shutil
 import subprocess
@@ -67,6 +68,36 @@ def _capture_capability(config, ffmpeg_available: bool) -> dict:
     return capability
 
 
+def _desktop_capability(config, session: str) -> dict:
+    capability = {'available': False, 'backend': session, 'validation': 'not_run'}
+    if config.platform != 'linux':
+        capability['reason'] = 'backend Windows exige validacao de runtime'
+        return capability
+    if session == 'headless':
+        capability['reason'] = 'sem sessao grafica'
+        return capability
+    if session == 'wayland':
+        if importlib.util.find_spec('dbus_next') is None:
+            capability['reason'] = 'dbus-next ausente no runtime Python do Jarvis'
+            return capability
+        capability.update(
+            available=True,
+            authorization_required=True,
+            reason='backend Wayland disponivel; o portal exige autorizacao do usuario para captura e controle; runtime ainda nao validado',
+        )
+        return capability
+    if session == 'x11':
+        xdotool = shutil.which('xdotool')
+        capability.update(
+            available=xdotool is not None,
+            authorization_required=False,
+            reason='xdotool encontrado; entrada e acessibilidade ainda nao validadas' if xdotool else 'xdotool ausente',
+        )
+        return capability
+    capability['reason'] = 'sessao grafica desconhecida'
+    return capability
+
+
 def diagnose(config) -> dict:
     session = desktop_session(os.environ)
     dependencies = {}
@@ -83,11 +114,7 @@ def diagnose(config) -> dict:
         'capture': _capture_capability(config, dependencies['ffmpeg']['available']),
         'tts': {'available': dependencies['piper']['available'] and model_exists and dependencies['ffplay']['available'],
                 'backend': config.tts_backend, 'reason': 'presenca de dependencias; sintese nao verificada'},
-        'desktop': {'available': False, 'backend': session, 'validation': 'not_run',
-                    'reason': 'sem sessao grafica' if session == 'headless' else
-                    ('portal Wayland exige autorizacao; controle e AT-SPI precisam de teste na sessao' if session == 'wayland' else
-                     'controle X11 exige xdotool; controle e AT-SPI precisam de teste na sessao')
-                    if config.platform == 'linux' else 'backend Windows exige validacao de runtime'},
+        'desktop': _desktop_capability(config, session),
     }
     if config.tts_backend == 'sapi':
         found = shutil.which(config.powershell_exe)

@@ -1,4 +1,5 @@
 import json
+import importlib.util
 import subprocess
 import sys
 from pathlib import Path
@@ -99,10 +100,13 @@ def test_doctor_cli_prints_json_without_starting_agent():
 
 def test_doctor_wayland_reports_authorization_requirement(monkeypatch):
     monkeypatch.setenv('WAYLAND_DISPLAY','wayland-test')
+    monkeypatch.setattr(importlib.util, 'find_spec', lambda name: object() if name == 'dbus_next' else None)
     cfg=load_config({'JARVIS_PLATFORM':'linux'})
     desktop=diagnose(cfg)['capabilities']['desktop']
     assert desktop['backend']=='wayland'
+    assert desktop['available'] is True
     assert desktop['validation']=='not_run'
+    assert desktop['authorization_required'] is True
     assert 'autorizacao' in desktop['reason']
     assert 'nao implementado' not in desktop['reason']
 
