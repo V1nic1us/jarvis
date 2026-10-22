@@ -2860,6 +2860,15 @@
           "sha256": "55b829303684621b98a6c8be020ed53263ce3074d17bec587073f5ad75d5bd55",
           "passed": 12,
           "skipped": 0
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/portal-tests-with-dbus-next-2026-10-22.log",
+          "sha256": "36229853b4077a58a6f13ed92943da55ff90acbf3e6db103d9f1a89c2c842fdc",
+          "passed": 12,
+          "skipped": 0,
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "verified_at_utc": "2026-10-22T01:34:07Z"
         }
       ],
       "notes": "The private D-Bus portal harness passed 12 tests, including response, denial, cancellation, timeout, session and invalid-address cases. Real GNOME/KDE portal authorization and revocation remain pending.",
