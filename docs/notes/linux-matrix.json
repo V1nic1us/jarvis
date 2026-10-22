@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:08:00Z",
+  "verified_at_utc": "2026-10-22T01:12:00Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4396,6 +4396,28 @@
       ],
       "source_commit": "bc56558",
       "notes": "Jarvis recorded a synthetic 440 Hz tone through an ephemeral PipeWire null sink and the Pulse-compatible protocol; measure_level returned -21.1 dB mean/-18.1 dB max and independent volumedetect confirmed the captured WAV was non-silent. The physical microphone was not opened. This is host-specific synthetic I/O evidence, not physical mic calibration, STT, PTT/VAD, playback, or cross-distro verification."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland / PipeWire",
+      "package": "source checkout",
+      "capability": "piper_tts_pipewire_nullsink_playback",
+      "status": "passed",
+      "command": "./jarvis --download-voice; speak_piper(text, config=load_config()) with temporary PipeWire null sink as default output",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-pipewire-piper-tts-2026-10-22.log",
+          "sha256": "80716f1e2336ac738f11600d39dfb8b819c6074ffdc77c5aeb24991d234c61ac"
+        }
+      ],
+      "source_commit": "7c0c34a",
+      "notes": "The pinned Portuguese Piper voice downloaded with SHA-256 verification; Jarvis synthesized speech and ffplay routed a live sink-input to a temporary PipeWire null sink. Its monitor captured non-silent audio. No physical output was used; STT, physical mic acoustics, and cross-distro playback remain unverified."
     }
   ],
   "pending_gates": [
