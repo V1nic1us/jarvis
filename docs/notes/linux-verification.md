@@ -921,3 +921,11 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - Sem `eopkg`, `solbuild` ou artefato `.eopkg` disponível aqui, o teste real fica
   pendente. O registro passa a 98/101 verificações aprovadas (97,0%); Gentoo
   AArch64, Guix AArch64 e upgrade Solus x86_64 permanecem sem validação.
+
+### Auditoria do arquivo-fonte no HEAD atual — 2026-10-22
+
+- `scripts/source-archive.py` gerou um arquivo com 242 membros regulares no
+  commit `7244c6b`. Comparei cada membro byte a byte com o checkout: zero
+  divergências. Log e SHA-256 do arquivo estão registrados em
+  `docs/notes/linux-matrix.json`. Isso fecha a correspondência entre checkout e
+  arquivo usado pelas receitas; a geração de SBOM continua pendente.

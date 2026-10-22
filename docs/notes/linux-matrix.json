@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:51:52Z",
+  "verified_at_utc": "2026-10-22T03:53:07Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5049,16 +5049,16 @@
       "evidence": [
         {
           "kind": "local_validation_log",
-          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/source-archive-integrity-2026-10-22.log",
-          "sha256": "9c7db8db5090b8e0eca9cc87b63a082aea7c106c0a3c59c80b84eb982b108763",
-          "size_bytes": 382,
-          "archive_sha256": "9de99fdf45e97aaef1fed71862092fb75f59a80326547c18f18cc63b2d706f0d",
-          "files_checked": 240,
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/source-archive-integrity-current-head-2026-10-22.log",
+          "sha256": "56887093b043aabf33ef89a677d68c507c7925ea900565007308b37170d834f0",
+          "size_bytes": 372,
+          "archive_sha256": "840d2523b372f750caa2c8c624fa5fbe72f2437ff3bb27c57f65458118bfb637",
+          "files_checked": 242,
           "mismatches": 0
         }
       ],
-      "source_commit": "0ce1d68",
-      "notes": "The deterministic source archive used by native distro builds contained 240 regular files. Every archived file matched the current checkout byte-for-byte. This verifies source archive correspondence, not dependency completeness or a package SBOM."
+      "source_commit": "7244c6b",
+      "notes": "The source archive generated from current source commit 7244c6b contained 242 regular files. Every member matched its checkout file byte-for-byte. This verifies source/archive correspondence, not dependency completeness or a package SBOM."
     },
     {
       "target": "arch",
@@ -5354,6 +5354,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Native run 39705918511 passed all 14 package jobs at source commit 631404ec409696cbe780a462c3dd590bbfd13347, including upgrade/data-preservation checks where configured. Void glibc and musl package upgrade tests now pass on x86_64/AArch64 in run 39705918455. Flatpak and Nix pass both architectures. Gentoo/Guix remain paused. Remaining: complete Solus and paused package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "Native run 39705918511 passed all 14 package jobs at source commit 631404ec409696cbe780a462c3dd590bbfd13347, including upgrade/data-preservation checks where configured. Void glibc and musl package upgrade tests now pass on x86_64/AArch64 in run 39705918455. Flatpak and Nix pass both architectures. Gentoo/Guix remain paused. Remaining: complete Solus and paused package-upgrade combinations, validate a package SBOM, and obtain independent whole-branch review."
   ]
 }
