@@ -756,3 +756,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - Nix passou novamente instalação, `nix profile upgrade --all`, imports, remoção e preservação dos dados em x86_64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863404)) e AArch64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863678)).
 - RHEL AArch64 falhou antes do build ao baixar os metadados EPEL: mirrors retornaram TLS e checksum errors. É falha de infraestrutura externa observada no [job](https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119549499983), que requer nova tentativa; não confirma falha da receita Jarvis.
 - Na hora deste registro, o run nativo ainda construía Fedora x86_64/AArch64, RHEL x86_64 e openSUSE x86_64. Builds Gentoo e Guix permanecem pausados conforme pedido.
+
+### Ciclo Void glibc e musl nas duas arquiteturas — 2026-10-22
+
+- O run [39692211144](https://github.com/V1nic1us/jarvis/actions/runs/39692211144) concluiu com sucesso build, instalação, inspeção e remoção dos pacotes Void glibc e Void musl em x86_64 e AArch64. Jobs: [musl x86_64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030144), [glibc AArch64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030306), [musl AArch64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030529) e [glibc x86_64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543031023).
+- Isso encerra a validação de lifecycle de pacote nas quatro combinações Void desta rodada. Os testes de upgrade com preservação de dados em Void AArch64 continuam pendentes.
