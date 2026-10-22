@@ -149,6 +149,13 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
   nenhum WAV foi salvo ou transcrito. Log:
   `.superpowers/sdd/2026-10-14-jarvis-linux/arch-alsa-capture-measure-level-2026-10-22.log`
   (SHA-256 `5f89b81e2c86dab1806ccd9e6842a54dab6ef1d1ec68ce65faa03fe3760be97d`).
+- O pacote Arch 0.1.0-2 extraído em diretório temporário também passou
+  `AUDIO_BACKEND=pulse jarvis --mic-level` por 5 s: mean -38,4 dB e pico
+  -22,5 dB. O caminho encaminha os samples ao muxer null; nenhum WAV foi salvo
+  ou transcrito. O artefato usa o source commit `02381f5`; `voice/capture.py` e
+  `voice/audio.py` não mudaram desde então. Log e SHA-256:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/arch-package-pulse-mic-level-2026-10-22.log`
+  (`ad87a3c1d1c8bf74c27959d8c38ff135d137040574a90ec2a4b28b7b92a1c8b0`).
 - A bateria Linux focada na venv do projeto (`test_linux_install`,
   `test_linux_packages`, contexto, entrada, tela, plataformas, áudio, captura,
   diagnóstico, portal e STT) passou com **177 testes** em 6,55 s. Ela inclui os

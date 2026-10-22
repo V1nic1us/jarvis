@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T02:54:41Z",
+  "verified_at_utc": "2026-10-22T02:56:22Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4895,6 +4895,33 @@
       ],
       "source_commit": "521608d12a54b802f732266d9f28cf1545731fdc",
       "notes": "On the Arch Linux x86_64 KDE Wayland host, FFmpeg captured 0.5 s from the ALSA default input and volumedetect returned mean -41.3 dBFS and max -28.6 dBFS. Output went to the null muxer: no WAV was saved and no speech was transcribed. This validates a level measurement on this host only; PTT/VAD, playback/streaming and installed-package coverage remain pending."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "PipeWire/Pulse",
+      "package": "Arch native package artifact 0.1.0-2",
+      "capability": "native_package_pulse_microphone_level",
+      "status": "passed",
+      "command": "extract package to TemporaryDirectory; AUDIO_BACKEND=pulse jarvis --mic-level",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-pulse-mic-level-2026-10-22.log",
+          "sha256": "ad87a3c1d1c8bf74c27959d8c38ff135d137040574a90ec2a4b28b7b92a1c8b0"
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-upgrade-artifacts/jarvis-assistant-0.1.0-2-x86_64.pkg.tar.zst",
+          "sha256": "7d4bbd90a894b3d613946840920206a64064ea9990710c8afff4cee5baab148f"
+        }
+      ],
+      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
+      "notes": "The saved Arch package artifact from source commit 02381f5cd88090f24fb24db4218eb9c94dc2ac7a was extracted into a temporary directory; its installed launcher ran --mic-level for 5 s against the live Pulse input and returned mean -38.4 dB and max -22.5 dB. No WAV was saved or transcribed. voice/capture.py and voice/audio.py are unchanged since that source commit. This validates the packaged audio path on this Arch host only; the artifact predates current HEAD and other package targets still need their own audio checks."
     }
   ],
   "pending_gates": [
