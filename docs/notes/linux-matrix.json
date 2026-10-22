@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:27:03Z",
+  "verified_at_utc": "2026-10-22T02:04:20Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -661,6 +661,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558804295",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587845974",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -713,6 +719,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558804295",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587845974",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
         }
       ],
@@ -2077,6 +2089,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030306",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338492",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
         }
       ],
@@ -4741,10 +4759,33 @@
       ],
       "source_commit": "b80da7d36f9eb190806462f494de521f2213c158",
       "notes": "The decoder regression test passed with the repository constraint av>=11,<19 (PyAV 18.1.0), confirming compatibility for the supported faster-whisper runtime. A standalone unconstrained faster-whisper install resolved PyAV 19 and failed; production installs use voice/requirements.txt."
+    },
+    {
+      "target": "void-glibc",
+      "distro": "void",
+      "version": "rolling",
+      "arch": "aarch64",
+      "libc": "glibc",
+      "desktop": null,
+      "session": "clean Void container",
+      "package": "xbps",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "xbps-install local repo revision _1; xbps-install -u from local repo revision _2; verify user-data sentinel; remove package",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338492",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+      "notes": "The clean native Void glibc AArch64 package test built and exported revisions _1 and _2, installed and upgraded from the local repository, verified runtime and user-data preservation, then removed the package."
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Gentoo, Guix, Void glibc, Void musl",
+    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Gentoo, Guix, Void musl",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
