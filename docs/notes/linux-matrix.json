@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:21:51Z",
+  "verified_at_utc": "2026-10-22T01:23:54Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4484,6 +4484,28 @@
       ],
       "source_commit": "1f30636",
       "notes": "Two generated Portuguese chunks were synthesized by Piper and played in FIFO order by ffplay; the PipeWire null-sink monitor captured non-silent audio. No physical speaker was used. This does not validate live agent SSE/backpressure or cross-distro playback."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland",
+      "package": "source install into temporary user prefix",
+      "capability": "source_install_piper_stt_runtime_prefix_spaces",
+      "status": "passed",
+      "command": "scripts/install-source.sh --prefix <path-with-spaces> --overlay <release-binary>; installed jarvis --doctor; installed venv Piper synthesis and faster-whisper transcription",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-source-install-full-2026-10-22-evidence.log",
+          "sha256": "bf2a420ae4f3fe94a5a4146751521db61d69c9008ef1bbb521ece6ff324ba64b"
+        }
+      ],
+      "source_commit": "a4c294c",
+      "notes": "Full source install completed with private Python and npm dependencies in a prefix containing spaces. Installed doctor, Piper synthesis to a file and faster-whisper inference succeeded; temporary prefix was removed. No physical mic/speaker, live agent/MCP, GUI interaction, or cross-distro behavior was tested."
     }
   ],
   "pending_gates": [
