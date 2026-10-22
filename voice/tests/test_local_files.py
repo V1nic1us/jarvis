@@ -22,7 +22,8 @@ def test_write_append_read_and_parent_creation(tmp_path):
 def test_prefix_sibling_and_credentials_rejected(tmp_path):
     root=tmp_path/'allowed';root.mkdir()
     sibling=tmp_path/'allowed-other';sibling.mkdir()
-    for path in (sibling/'note',root/'.env',root/'.ssh'/'id_rsa'):
+    for path in (sibling/'note',root/'.env',root/'.ssh'/'id_rsa',
+                 root/'.ENV',root/'.ENV.production'):
         with pytest.raises(ValueError):write_text(str(path),'x',False,True,[str(root)])
 
 

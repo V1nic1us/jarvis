@@ -23,7 +23,8 @@ def checked_path(path: str) -> Path:
         raise ValueError('caminho absoluto necessario')
     target=Path(os.path.abspath(path))
     for name in target.parts:
-        if name.lower() in CREDENTIALS or name=='.env' or name.startswith('.env.'):
+        lowered=name.lower()
+        if lowered in CREDENTIALS or lowered=='.env' or lowered.startswith('.env.'):
             raise ValueError('recusado: acesso a credencial/segredo')
     if target==Path('/'):raise ValueError('caminho deve apontar para arquivo')
     return target
