@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T04:43:09Z",
+  "verified_at_utc": "2026-10-22T04:57:01Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -200,7 +200,8 @@
           "conclusion": "success"
         }
       ],
-      "notes": "Arch Linux ARM AArch64 package build and native install/verify/remove lifecycle passed under QEMU user-mode emulation in Docker. Arch Linux ARM makepkg emitted .pkg.tar.xz; real ARM hardware and a complete desktop/audio session remain unverified. Latest native Arch Linux ARM AArch64 build/install/inspect/remove succeeded in run 39692211142. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2."
+      "notes": "Arch Linux ARM AArch64 package build and native install/verify/remove lifecycle passed under QEMU user-mode emulation in Docker. Arch Linux ARM makepkg emitted .pkg.tar.xz; real ARM hardware and a complete desktop/audio session remain unverified. Latest native Arch Linux ARM AArch64 build/install/inspect/remove succeeded in run 39692211142. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2.",
+      "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32"
     },
     {
       "target": "debian",
@@ -590,6 +591,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846011",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105282",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -715,6 +722,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587845974",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105322",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
@@ -773,6 +786,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587845974",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105322",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -1435,6 +1454,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278893",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105293",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
       "notes": "Latest native package CI passed x86_64 RPM build, clean installation, inspection, upgrade/data preservation and removal. Latest native build/install/inspection/removal passed in CI run 39683082677. Latest build/install/inspection/removal passed in run 39683082677. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2. Current revalidation run 39718506520 passed native RPM build, clean install, inspection and removal.",
@@ -1499,6 +1524,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278893",
           "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105293",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -3435,6 +3466,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846011",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105282",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
         }
       ],
@@ -5636,12 +5673,10 @@
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Gentoo and Guix",
-    "Remaining native recipes, source builds and architecture checks",
-    "GNOME/KDE real Wayland/X11 functional matrix",
-    "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
-    "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
-    "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Native run 39705918511 passed all 14 package jobs at source commit 631404ec409696cbe780a462c3dd590bbfd13347, including upgrade/data-preservation checks where configured. Void glibc and musl package upgrade tests now pass on x86_64/AArch64 in run 39705918455. Flatpak and Nix pass both architectures. Gentoo/Guix remain paused. Remaining: complete Solus and paused package-upgrade combinations, validate a package SBOM, and obtain independent whole-branch review."
+    "Paused at user request: native Gentoo AArch64 and Guix AArch64 build/lifecycle validation; do not restart until asked.",
+    "Native Solus x86_64 package upgrade/data-preservation validation remains unverified.",
+    "Remaining distro recipes, source builds and architecture combinations beyond the recorded matrix.",
+    "Real GNOME/KDE Wayland/X11 desktop behavior, microphone/PTT/VAD/playback/streaming, portal consent/revocation, and installed agent/MCP/accessibility/clipboard/display/process-cleanup matrix remain incomplete.",
+    "Validate a package SBOM and obtain independent whole-branch review."
   ]
 }
