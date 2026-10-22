@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:12:43Z",
+  "verified_at_utc": "2026-10-22T05:13:03Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3784,10 +3784,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39719013757/job/119627896195",
           "source_commit": "5ce66ca8aeededff4200ec4ab142c0f12193f8f7",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39725806395/job/119649294949",
+          "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39607881416 passed native x86_64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264. Latest native x86_64 bundle build/install/runtime inspection passed in run 39719013757.",
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
+      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39607881416 passed native x86_64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264. Latest native x86_64 bundle build/install/runtime inspection passed in run 39719013757. Latest x86_64 Flatpak rebuild, disposable user install, runtime import/doctor checks and upload passed in CI run 39725806395.",
+      "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b"
     },
     {
       "target": "flatpak",
