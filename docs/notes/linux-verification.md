@@ -1080,3 +1080,13 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   initialize e `tools/list` por stdio, expondo 8 e 1 ferramentas. Nenhuma
   ferramenta foi invocada; controle real do desktop e áudio físico continuam
   pendentes. Log e hash estão registrados em `linux-matrix.json`.
+
+
+### Arch: medição física de nível pelo pacote instalado — 2026-10-22
+
+- Usando `capture.measure_level` do runtime instalado, FFmpeg capturou 0,5 s
+  pela fonte padrão PipeWire/Pulse (média −27,6 dBFS, pico −10,9 dBFS) e 0,5 s
+  pelo dispositivo ALSA `default` (média −25,8 dBFS, pico −14,3 dBFS).
+- Ambos usaram o muxer `null`: nenhum WAV foi salvo e nenhuma fala foi
+  transcrita. Isso comprova a medição de entrada pelo pacote instalado no Arch;
+  PTT/VAD/STT e playback físico continuam pendentes. Log e hash estão na matriz.

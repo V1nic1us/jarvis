@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T19:14:14Z",
+  "verified_at_utc": "2026-10-22T19:20:50Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -6449,12 +6449,76 @@
       "capability": "native_package_mcp_stdio_smoke",
       "command": "Installed /usr/bin/jarvis --mcp win_context and delegate_local; MCP initialize + tools/list",
       "notes": "Both installed MCP launchers initialized over stdio and exposed the expected 8 + 1 tools. No tools were invoked; clipboard, window, process, portal and model operations remain untested."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland",
+      "package": "installed pacman pkg.tar.zst 0.1.0-1",
+      "status": "passed",
+      "source_commit": "8a63692483d276f13aa86bd727bd2d61e4db237e",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-current-package-mic-level-2026-10-22.log",
+          "sha256": "8c8d82b3fd77126589d44ef190d78e44582cd743f68f4d67ead7460c769d2947"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39808807318/job/120008667922",
+          "source_commit": "8a63692483d276f13aa86bd727bd2d61e4db237e",
+          "conclusion": "success"
+        },
+        {
+          "kind": "package_sha256",
+          "sha256": "0995ab98214b15323ac176a438aa63606d21268e076e56f0fa1453526fe669c1"
+        }
+      ],
+      "capability": "native_package_pulse_microphone_level",
+      "command": "PYTHONPATH=/usr/lib/jarvis/voice:/usr/lib/jarvis/python JARVIS_PLATFORM=linux; installed runtime capture.measure_level(seconds=0.5); FFmpeg null muxer",
+      "notes": "Installed package captured 0.5 s from the default PipeWire/Pulse input; volumedetect returned mean -27.6 dBFS and max -10.9 dBFS. No WAV was saved, no speech was transcribed. This is physical input-level evidence on Arch only; PTT/VAD/STT and speaker playback remain pending."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland",
+      "package": "installed pacman pkg.tar.zst 0.1.0-1",
+      "status": "passed",
+      "source_commit": "8a63692483d276f13aa86bd727bd2d61e4db237e",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-current-package-mic-level-2026-10-22.log",
+          "sha256": "8c8d82b3fd77126589d44ef190d78e44582cd743f68f4d67ead7460c769d2947"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39808807318/job/120008667922",
+          "source_commit": "8a63692483d276f13aa86bd727bd2d61e4db237e",
+          "conclusion": "success"
+        },
+        {
+          "kind": "package_sha256",
+          "sha256": "0995ab98214b15323ac176a438aa63606d21268e076e56f0fa1453526fe669c1"
+        }
+      ],
+      "capability": "native_package_alsa_microphone_level",
+      "command": "PYTHONPATH=/usr/lib/jarvis/voice:/usr/lib/jarvis/python AUDIO_BACKEND=alsa MIC_DEVICE=default; installed runtime capture.measure_level(seconds=0.5); FFmpeg null muxer",
+      "notes": "Installed package captured 0.5 s from the ALSA default input; volumedetect returned mean -25.8 dBFS and max -14.3 dBFS. No WAV was saved, no speech was transcribed. This is physical input-level evidence on Arch only; PTT/VAD/STT and speaker playback remain pending."
     }
   ],
   "pending_gates": [
     "In-scope distro and architecture rows are limited to evidence-backed targets; Gentoo and Guix remain explicitly paused and outside the current delivery scope.",
     "Complete real desktop-session validation on GNOME/KDE Wayland and X11, including RemoteDesktop keyboard/pointer injection, portal denial/revocation, focus/accessibility, clipboard, and process cleanup; current real-session capture evidence covers Arch KDE Wayland only.",
-    "Complete end-to-end physical audio validation for microphone capture, PTT/VAD/STT and speaker playback/streaming on representative PulseAudio/PipeWire and ALSA systems; current checks include device enumeration and synthetic/null-sink or generated-audio tests.",
+    "Complete end-to-end physical audio validation for PTT/VAD/STT and speaker playback/streaming on representative PulseAudio/PipeWire and ALSA systems. The current installed Arch package now has 0.5 s physical input-level measurements for both Pulse/PipeWire and ALSA; these do not validate speech transcription or physical output.",
     "Validate a package SBOM and obtain independent whole-branch review before declaring the Linux port complete."
   ]
 }
