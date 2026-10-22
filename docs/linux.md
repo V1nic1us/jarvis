@@ -61,9 +61,10 @@ Variáveis de ambiente prevalecem sobre settings. `AUDIO_BACKEND=pulse` é o
 padrão e funciona com PipeWire-Pulse; `AUDIO_BACKEND=alsa` é alternativa.
 `MIC_DEVICE=default` pode ser substituído por um nome da enumeração.
 `jarvis --doctor` verifica se o FFmpeg tem entrada para o backend escolhido e
-se `pactl` (Pulse) ou `arecord` (ALSA) consegue enumerar fontes; isso não grava
-áudio. Se o diagnóstico marcar captura indisponível, instale as ferramentas do
-backend na distro ou teste a alternativa ALSA:
+se consegue enumerar fontes; isso não grava áudio. `--list-mics` usa `pactl`
+no Pulse e `arecord` no ALSA para mostrar nomes de dispositivos, então instale
+`alsa-utils` se esse comando falhar com `AUDIO_BACKEND=alsa`. Para testar a
+alternativa ALSA no diagnóstico:
 
 ```sh
 AUDIO_BACKEND=alsa ~/.local/bin/jarvis --doctor

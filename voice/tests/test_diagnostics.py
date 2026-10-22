@@ -27,8 +27,8 @@ def test_doctor_marks_pulse_capture_unavailable_when_server_is_unreachable(monke
     def run(argv, **kwargs):
         if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
             return subprocess.CompletedProcess(argv, 0, '', ' D d pulse Pulse audio input\n')
-        assert argv == ['pactl', '--format=json', 'list', 'sources']
-        return subprocess.CompletedProcess(argv, 1, '', 'Connection refused')
+        assert argv == ['ffmpeg', '-hide_banner', '-sources', 'pulse']
+        return subprocess.CompletedProcess(argv, 0, '', 'Auto-detected sources for pulse:\nCannot list sources: Connection refused')
     monkeypatch.setattr('audio.subprocess.run', run)
 
     capture = diagnose(cfg)['capabilities']['capture']
@@ -43,8 +43,8 @@ def test_doctor_reports_pulse_server_reachable_without_claiming_capture_tested(m
     def run(argv, **kwargs):
         if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
             return subprocess.CompletedProcess(argv, 0, '', ' D d pulse Pulse audio input\n')
-        assert argv == ['pactl', '--format=json', 'list', 'sources']
-        return subprocess.CompletedProcess(argv, 0, '[{"name":"mic usb"}]', '')
+        assert argv == ['ffmpeg', '-hide_banner', '-sources', 'pulse']
+        return subprocess.CompletedProcess(argv, 0, '', 'Auto-detected sources for pulse:\n  mic_usb [USB microphone] (input)\n')
     monkeypatch.setattr('audio.subprocess.run', run)
 
     capture = diagnose(cfg)['capabilities']['capture']
@@ -52,6 +52,7 @@ def test_doctor_reports_pulse_server_reachable_without_claiming_capture_tested(m
     assert capture['available'] is True
     assert capture['backend'] == 'pulse'
     assert 'gravacao real ainda nao testada' in capture['reason']
+    assert 'ffmpeg enumera fontes' in capture['reason']
 
 
 def test_doctor_marks_capture_unavailable_when_ffmpeg_lacks_backend_demuxer(monkeypatch):
@@ -60,8 +61,7 @@ def test_doctor_marks_capture_unavailable_when_ffmpeg_lacks_backend_demuxer(monk
     def run(argv, **kwargs):
         if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
             return subprocess.CompletedProcess(argv, 0, '', ' D d alsa ALSA audio input\n')
-        assert argv == ['pactl', '--format=json', 'list', 'sources']
-        return subprocess.CompletedProcess(argv, 0, '[{"name":"mic usb"}]', '')
+        raise AssertionError(f'no device scan should run without an FFmpeg demuxer: {argv}')
     monkeypatch.setattr('audio.subprocess.run', run)
 
     capture = diagnose(cfg)['capabilities']['capture']
@@ -70,7 +70,7 @@ def test_doctor_marks_capture_unavailable_when_ffmpeg_lacks_backend_demuxer(monk
     assert 'ffmpeg nao disponibiliza entrada pulse' in capture['reason']
 
 
-def test_doctor_checks_alsa_input_support_and_device_enumerator(monkeypatch):
+def test_doctor_checks_alsa_input_support_without_requiring_arecord(monkeypatch):
     cfg = load_config({'JARVIS_PLATFORM': 'linux', 'AUDIO_BACKEND': 'alsa'})
     monkeypatch.setattr('diagnostics.shutil.which', lambda executable: f'/usr/bin/{executable}')
     calls = []
@@ -78,8 +78,8 @@ def test_doctor_checks_alsa_input_support_and_device_enumerator(monkeypatch):
         calls.append(argv)
         if argv == ['ffmpeg', '-hide_banner', '-demuxers']:
             return subprocess.CompletedProcess(argv, 0, '', ' D d alsa ALSA audio input\n')
-        assert argv == ['arecord', '-L']
-        return subprocess.CompletedProcess(argv, 0, 'default\n    Default PCM\n', '')
+        assert argv == ['ffmpeg', '-hide_banner', '-sources', 'alsa']
+        return subprocess.CompletedProcess(argv, 0, '', 'Auto-detected sources for alsa:\n  default [Default PCM]\n')
     monkeypatch.setattr('audio.subprocess.run', run)
 
     capture = diagnose(cfg)['capabilities']['capture']
@@ -87,7 +87,8 @@ def test_doctor_checks_alsa_input_support_and_device_enumerator(monkeypatch):
     assert capture['available'] is True
     assert capture['backend'] == 'alsa'
     assert 'gravacao real ainda nao testada' in capture['reason']
-    assert calls == [['ffmpeg', '-hide_banner', '-demuxers'], ['arecord', '-L']]
+    assert 'ffmpeg enumera fontes' in capture['reason']
+    assert calls == [['ffmpeg', '-hide_banner', '-demuxers'], ['ffmpeg', '-hide_banner', '-sources', 'alsa']]
 
 
 def test_doctor_cli_prints_json_without_starting_agent():

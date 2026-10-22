@@ -3,9 +3,7 @@ import os
 import shutil
 import subprocess
 from pathlib import Path
-from audio import list_devices
 from platforms import desktop_session
-from tts import VoiceError
 
 
 def _ffmpeg_has_audio_input(config) -> bool:
@@ -25,6 +23,28 @@ def _ffmpeg_has_audio_input(config) -> bool:
     return False
 
 
+def _ffmpeg_lists_audio_sources(config) -> tuple[bool, str]:
+    try:
+        result = subprocess.run(
+            [config.ffmpeg_exe, '-hide_banner', '-sources', config.audio_backend],
+            capture_output=True, text=True, errors='replace', timeout=10,
+        )
+    except (OSError, subprocess.SubprocessError) as exc:
+        return False, str(exc)
+    output = result.stdout + '\n' + result.stderr
+    if result.returncode != 0:
+        return False, output.strip()[-200:]
+    if 'Cannot list sources:' in output:
+        return False, output.strip()[-200:]
+    header = f'Auto-detected sources for {config.audio_backend}:'
+    if header not in output:
+        return False, 'FFmpeg nao retornou a lista de fontes do backend'
+    sources = [line for line in output.split(header, 1)[1].splitlines() if line.strip()]
+    if not sources:
+        return False, 'nenhuma fonte de audio foi enumerada'
+    return True, ''
+
+
 def _capture_capability(config, ffmpeg_available: bool) -> dict:
     capability = {'available': False, 'backend': config.audio_backend}
     if not ffmpeg_available:
@@ -36,14 +56,13 @@ def _capture_capability(config, ffmpeg_available: bool) -> dict:
     if not _ffmpeg_has_audio_input(config):
         capability['reason'] = f'ffmpeg nao disponibiliza entrada {config.audio_backend}'
         return capability
-    try:
-        list_devices(config)
-    except VoiceError as exc:
-        capability['reason'] = f'ffmpeg presente, mas o backend de audio nao respondeu: {exc}'
+    available, detail = _ffmpeg_lists_audio_sources(config)
+    if not available:
+        capability['reason'] = f'ffmpeg nao conseguiu enumerar fontes {config.audio_backend}: {detail}'
         return capability
     capability.update(
         available=True,
-        reason='ffmpeg e enumerador de audio respondem; gravacao real ainda nao testada',
+        reason='ffmpeg enumera fontes de audio; gravacao real ainda nao testada',
     )
     return capability
 
