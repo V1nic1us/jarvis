@@ -544,8 +544,12 @@ Para atualizar, instale o novo `.eopkg` com `sudo eopkg install
 jarvis-assistant`. O pacote foi compilado com `solbuild`, instalado e removido
 com eopkg em Solus 4.9 x86_64. Imports privados, ABI, OpenCode 1.18.23,
 integridade, relançamento isolado da janela e preservação dos dados passaram; o
-catálogo registra o ciclo instalado para x86_64. Duas releases também foram
-construídas e atualizadas em um container descartável Solus 4.9: o `eopkg check`
+catálogo registra o ciclo instalado para x86_64. Três releases foram
+construídas; o upgrade da release 2 para a 3 também foi validado em um container
+descartável Solus 4.9. O pacote glibc remove o addon nativo musl do msgpackr; no
+rebuild, o ABI scanner deixou de reportar `Missing library: libc.so`. O scanner
+ainda registra um diagnóstico não fatal para o link do Python externo em
+`/usr/bin/python3.14`. O `eopkg check`
 e `jarvis --doctor` passaram antes e depois da atualização, os dados sentinela
 de CONFIG/DATA/CACHE/STATE permaneceram idênticos, e a remoção preservou os
 dados. Isso valida o upgrade no ambiente de container; desktop e áudio reais e
@@ -571,8 +575,8 @@ No container Solus x86_64 descartável, rode o teste de upgrade e preservação:
 
 ```sh
 scripts/test-native-solus-upgrade.sh \
-  dist/solus-r1/jarvis-assistant-0.1.0-1-1-x86_64.eopkg \
-  dist/solus-r2/jarvis-assistant-0.1.0-2-1-x86_64.eopkg 1 2
+  dist/solus-r2/jarvis-assistant-0.1.0-2-1-x86_64.eopkg \
+  dist/solus-r3/jarvis-assistant-0.1.0-3-1-x86_64.eopkg 2 3
 ```
 
 O teste instala cada release com eopkg, confere o release indicado, executa

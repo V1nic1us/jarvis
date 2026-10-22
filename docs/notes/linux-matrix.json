@@ -5869,7 +5869,7 @@
       "package": "eopkg",
       "capability": "native_package_upgrade_data_preservation",
       "status": "passed",
-      "command": "scripts/test-native-solus-upgrade.sh <release1.eopkg> <release2.eopkg> 1 2",
+      "command": "scripts/test-native-solus-upgrade.sh <release2.eopkg> <release3.eopkg> 2 3",
       "evidence": [
         {
           "kind": "local_package_artifact",
@@ -5900,10 +5900,28 @@
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-upgrade-x86_64-2026-10-22.log",
           "sha256": "87d406e635eb63590e1c5cceb972e77908460496f9bb1cc5bbf3f49c480b4a63",
           "size_bytes": 1485702
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release-3/jarvis-assistant-0.1.0-3-1-x86_64.eopkg",
+          "sha256": "55539ac2567ae95d9f633bca3fc2b1c69429a2af3146459e34f722cb372346aa",
+          "size_bytes": 202582589
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-build-release-3-x86_64-2026-10-22.log",
+          "sha256": "b468712acb6785ca93a172497b543338b7ada96b1cdb526ee79fc6c68e57fbdb",
+          "size_bytes": 1011538
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-upgrade-release-2-to-3-2026-10-22.log",
+          "sha256": "cffd8ace556d890863d21ec7492a97ccad9bb4f2c9708f2c9abc4ad988473962",
+          "size_bytes": 1486794
         }
       ],
-      "source_commit": "22e1f87f18829bf6a34b5b13458213f1a1e2023c",
-      "notes": "Built native Solus 4.9 x86_64 eopkg releases 1 and 2 with solbuild, then ran the disposable-container upgrade check. eopkg installed release 1, jarvis --doctor and package integrity passed, release 2 upgraded successfully, all XDG config/data/cache/state sentinels remained byte-identical, and removal left user data intact. Validation ran headless; graphical desktop behavior is tracked separately."
+      "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
+      "notes": "Built native Solus 4.9 x86_64 eopkg releases 1, 2 and 3 with solbuild. Release 3 removed the incompatible msgpackr musl addon from the glibc package; the ABI report no longer reports Missing library: libc.so (it still emits a non-fatal diagnostic for the external /usr/bin/python3.14 symlink). The disposable-container release 2→3 upgrade passed eopkg integrity, jarvis --doctor, XDG CONFIG/DATA/CACHE/STATE sentinel preservation and removal. Validation ran headless; graphical desktop behavior is tracked separately."
     }
   ],
   "pending_gates": [

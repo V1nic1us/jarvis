@@ -944,3 +944,16 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   desktop ou áudio físico.
 - A matriz passa a 99/101 verificações aprovadas (98,0%). Guix AArch64 e Gentoo
   AArch64 continuam sem validação e pausados a pedido do usuário.
+
+### Solus: addon nativo musl em pacote glibc — 2026-10-22
+
+- A análise ABI do build Solus apontou `Missing library: libc.so` porque o
+  `node_modules` trazia também `node.abi115.musl.node`, embora o pacote seja
+  glibc. A receita agora elimina o addon musl durante a montagem do pacote.
+- A release 3 foi construída com solbuild; o relatório não acusa mais
+  `libc.so`. O abi-wizard ainda imprime um diagnóstico não fatal ao tentar
+  seguir o link do Python externo `/usr/bin/python3.14` no staging.
+- O upgrade da release 2 para a 3 passou em container Solus atualizado:
+  `eopkg check`, `jarvis --doctor`, preservação byte a byte dos sentinelas
+  XDG CONFIG/DATA/CACHE/STATE e remoção do pacote passaram. Artefato e logs têm
+  hashes registrados na linha Solus de `docs/notes/linux-matrix.json`.
