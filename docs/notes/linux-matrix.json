@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T00:40:50Z",
+  "verified_at_utc": "2026-10-22T01:05:43Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4352,6 +4352,28 @@
         }
       ],
       "notes": "On the Arch x86_64 Wayland host, Jarvis enumerated the default input plus two real input sources and filtered monitor sources. This is enumeration only; no microphone capture, speech recognition, calibration, or playback was performed."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland session D-Bus",
+      "package": "active Arch host runtime",
+      "capability": "xdg_portal_interface_availability",
+      "status": "passed",
+      "command": "gdbus introspect --session --dest org.freedesktop.portal.Desktop --object-path /org/freedesktop/portal/desktop",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-xdg-portal-interfaces-2026-10-22.log",
+          "sha256": "5cdb9fd93d749f5f4c5bbb81e3f7b55a41d2cccfdc8fa599db91cd041e0791c8"
+        }
+      ],
+      "source_commit": "0455f0b15e98f5f76b6de333592c9e6ae75b445e",
+      "notes": "The live KDE Wayland session exposes Screenshot, RemoteDesktop, and ScreenCast interfaces. This confirms service availability only; it does not validate portal authorization, capture/input, denial, session close, or revocation."
     }
   ],
   "pending_gates": [
