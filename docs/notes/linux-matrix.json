@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:25:23Z",
+  "verified_at_utc": "2026-10-22T03:27:02Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5178,6 +5178,40 @@
       ],
       "source_commit": "56324ac",
       "notes": "An overlay binary from the current-HEAD Arch package ran on Debian 13 with all shared libraries resolved and passed the isolated Weston Wayland relaunch/accessibility test. This is cross-distro binary runtime evidence, not a Debian native package build or full desktop session. Headless GDK seat warnings appeared; real keyboard/pointer input, portals and audio remain unverified."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "packaged voice runtime",
+      "session": "offline real-time synthetic speech VAD",
+      "package": "pkg.tar.zst",
+      "capability": "native_package_vad_speech_roundtrip",
+      "status": "passed",
+      "command": "scripts/arch-package-vad-speech-positive-2026-10-22.py with package runtime; FFmpeg -re synthetic WAV source; packaged Whisper transcription",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-vad-speech-positive-2026-10-22.log",
+          "sha256": "4d1c2a29ec8fc3254d34da5d9cbb3947728461d9f828def2c9df3a3daba1eb68",
+          "size_bytes": 195,
+          "test_script": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-vad-speech-positive-2026-10-22.py",
+          "test_script_sha256": "f75b331ad71c15648c49edee5f93547681fcddea773ec2b2f081bd5d965e9610",
+          "source_commit": "56324ac",
+          "package_sha256": "847a060134565455c6a69496c8242e099f66f5e4ba8f223e78bc865a02367dbd",
+          "audio_path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-audio/vad-speech-segment.wav",
+          "audio_sha256": "918c2b5c24d2ff669aa35b5685e6f64ff9cca6fe3eb90c1041cc0183dca294d5",
+          "audio_bytes": 135246,
+          "fixture_duration_seconds": 3.8,
+          "segment_duration_seconds": 3.065034,
+          "recognized": "Olá tudo bem?",
+          "sample_rate": 22050
+        }
+      ],
+      "source_commit": "56324ac",
+      "notes": "The extracted current-HEAD Arch package processed a real-time synthetic fixture containing 1.2 s leading silence, Piper-generated Portuguese speech and 1.5 s trailing silence. Its VAD returned before the trailing silence ended and the packaged offline Whisper model transcribed “Olá tudo bem?”. This tests synthetic speech only; no microphone capture or speaker playback occurred."
     }
   ],
   "pending_gates": [
