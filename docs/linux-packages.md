@@ -3,7 +3,7 @@
 O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
 26 têm evidência de ciclo instalado: 24 pacotes nativos e dois bundles Flatpak.
 Gentoo AArch64 e Guix AArch64 são as duas combinações sem validação final. A
-matriz registra 81 de 83 verificações aprovadas.
+matriz registra 82 de 84 verificações aprovadas.
 Gentoo ARM64 e Guix ARM64 estão sem validação final e seus builds estão pausados
 a pedido do usuário. Uma receita ou um ciclo de pacote aprovado não prova, por si
 só, que áudio, captura e controle foram verificados em todas as distribuições.
@@ -13,7 +13,7 @@ para instalar e executar o bundle `.flatpak`.
 Na rodada mais recente, os 14 jobs nativos passaram build, instalação, inspeção,
 remoção e os testes de atualização/preservação de dados previstos para cada
 gerenciador ([CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511)).
-Flatpak e Nix passaram em x86_64/AArch64 ([Flatpak](https://github.com/V1nic1us/jarvis/actions/runs/39705918446), [Nix](https://github.com/V1nic1us/jarvis/actions/runs/39705918449)). Void glibc passou build, instalação e upgrade nas duas arquiteturas; os builds/upgrade de Void musl seguem ativos ([CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455)).
+Flatpak e Nix passaram em x86_64/AArch64 ([Flatpak](https://github.com/V1nic1us/jarvis/actions/runs/39705918446), [Nix](https://github.com/V1nic1us/jarvis/actions/runs/39705918449)). Void glibc e musl passaram build, instalação, upgrade e preservação de dados nas duas arquiteturas ([CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455)).
 
 A matriz registra cada job e suas limitações. O host Arch/KDE Wayland já passou
 testes funcionais do overlay, MCP instalado e áudio sintético por ALSA e
@@ -410,6 +410,9 @@ nessa arquitetura. O XBPS também passou uma
 atualização controlada da revisão `_1` para `_2`, com `jarvis --doctor` antes e
 depois e sentinel dos dados do usuário preservado; isso ainda não substitui uma
 atualização entre versões de aplicativo publicadas.
+O rerun [39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455)
+também passou build, instalação, atualização `_1`→`_2`, preservação de dados e
+remoção em Void musl x86_64 e AArch64.
 
 Em um host Void musl nativo, use o alvo específico e o mesmo fluxo de repositório
 XBPS:

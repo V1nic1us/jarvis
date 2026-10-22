@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T02:05:14Z",
+  "verified_at_utc": "2026-10-22T02:38:58Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2171,9 +2171,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030144",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338606",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
-      "notes": "XBPS install, doctor, private ABI/imports and AT-SPI, Xvfb xdotool/xclip smoke, overlay relaunch, package database checks, removal and user data preservation passed on x86_64-musl. Real desktop/audio, version upgrade remain pending. A compilação nativa mais recente, exportação do pacote e lifecycle de instalação/inspeção/remoção em Void musl limpo passaram no commit cba55c5 (2026-10-20). CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050. Latest native package build/install/inspect/remove lifecycle passed in run 39692211144.",
+      "notes": "CI run 39705918455 passed the native Void musl package build, install, runtime inspection, integrity checks, removal and data preservation on x86_64; Xvfb relaunch checks passed.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -2203,9 +2209,16 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/void-musl-upgrade-preservation.log",
           "sha256": "89eebcbfeaa24e50acbb7c8eb86bd49925001e35dbc59ca19435a5d44a125e3a"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338606",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
-      "notes": "XBPS updated Jarvis from revision _1 to _2; jarvis --doctor passed before and after, user data sentinel remained unchanged, and package removal preserved it."
+      "notes": "CI run 39705918455 built both revisions, installed _1 then upgraded to _2 with XBPS on x86_64; doctor/runtime/integrity and unchanged user data passed, then package removal passed.",
+      "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347"
     },
     {
       "target": "void-musl",
@@ -2285,9 +2298,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030529",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338351",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
-      "notes": "GitHub Actions concluiu o build nativo do pacote Void musl AArch64, instalação em container Void musl limpo, inspeção e remoção. Desktop real, áudio e atualização entre versões publicadas ainda não foram verificados nessa arquitetura. A compilação nativa mais recente, exportação do pacote e lifecycle de instalação/inspeção/remoção em Void musl limpo passaram no commit cba55c5 (2026-10-20). CI run 39526318795 passed native package build, install, inspection and removal. CI run 39526318795 passed native build/install/inspection/removal. Latest native build/install/inspection/removal passed in CI run 39681218050. Latest native package lifecycle passed in CI run 39685647431. Latest native package build/install/inspect/remove lifecycle passed in run 39692211144.",
+      "notes": "CI run 39705918455 passed the native Void musl package build, install, runtime inspection, integrity checks, removal and data preservation on aarch64; Xvfb relaunch checks passed.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -4782,15 +4801,38 @@
       ],
       "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
       "notes": "The clean native Void glibc AArch64 package test built and exported revisions _1 and _2, installed and upgraded from the local repository, verified runtime and user-data preservation, then removed the package."
+    },
+    {
+      "target": "void-musl",
+      "distro": "void",
+      "version": "rolling",
+      "arch": "aarch64",
+      "libc": "musl",
+      "desktop": null,
+      "session": "clean Void musl container",
+      "package": "xbps",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "passed",
+      "command": "xbps-install local repo revision _1; xbps-install -u from local repo revision _2; verify user-data sentinel; remove package",
+      "evidence": [
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338351",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
+        }
+      ],
+      "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+      "notes": "CI run 39705918455 built both revisions, installed _1 then upgraded to _2 with XBPS on aarch64; doctor/runtime/integrity and unchanged user data passed, then package removal passed."
     }
   ],
   "pending_gates": [
-    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Gentoo, Guix, Void musl",
+    "Native package upgrade/data-preservation tests still missing: Gentoo, Guix and Solus; AArch64 Gentoo and Guix",
     "Remaining native recipes, source builds and architecture checks",
     "GNOME/KDE real Wayland/X11 functional matrix",
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Native run 39705918511 passed all 14 package jobs at source commit 631404ec409696cbe780a462c3dd590bbfd13347, including upgrade/data-preservation checks where configured. Void glibc upgrade tests now pass on x86_64/AArch64. Void musl upgrade checks are running on x86_64/AArch64 in run 39705918455. Flatpak and Nix pass both architectures. Gentoo/Guix remain paused. Remaining: complete Solus and paused package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "Native run 39705918511 passed all 14 package jobs at source commit 631404ec409696cbe780a462c3dd590bbfd13347, including upgrade/data-preservation checks where configured. Void glibc and musl package upgrade tests now pass on x86_64/AArch64 in run 39705918455. Flatpak and Nix pass both architectures. Gentoo/Guix remain paused. Remaining: complete Solus and paused package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }
