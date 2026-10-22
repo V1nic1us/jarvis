@@ -1,7 +1,8 @@
 FROM almalinux:10
+COPY scripts/dnf-install-with-metadata-retry.sh /usr/local/bin/dnf-install-with-metadata-retry
 RUN dnf install -y dnf-plugins-core epel-release && \
     dnf config-manager --set-enabled crb && \
-    dnf install -y --setopt=install_weak_deps=False \
+    /usr/local/bin/dnf-install-with-metadata-retry install -y --setopt=install_weak_deps=False \
     rpm-build rust cargo gcc gcc-c++ make pkgconf-pkg-config \
     gtk3-devel webkit2gtk4.1-devel python3 python3-pip python3-rpm-macros \
     nodejs npm git ca-certificates tar gzip \
