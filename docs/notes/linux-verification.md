@@ -1045,3 +1045,22 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   idênticos aos usados pelo launcher no staging. É smoke do payload empacotado,
   não instalação pacman; o ciclo pacman está registrado separadamente. Script,
   log e pacote têm hashes na matriz. Estado atualizado: 107/109 (98,2%).
+
+
+### Retomada Arch e verificação do arquivo Gentoo — 2026-10-22
+
+- A instalação Arch do host continua em `jarvis-assistant 0.1.0-1`; o artefato
+  local `arch-release5-build` foi produzido no commit `365cd19`, antes da
+  atualização da explicação de capacidade Wayland em `505aa4a`.
+- Tentei reconstruir o pacote atual com
+  `scripts/build-package.sh --target arch --arch x86_64 --output
+  /var/tmp/jarvis-current-package`. O build Rust incremental e `npm ci`
+  passaram, mas `prepare-package.py` parou durante `pip install --target` com
+  `OSError: [Errno 122] Disk quota exceeded`. Não foi gerado pacote novo nem
+  executado `pacman -U`; a instalação do host permanece inalterada. Log em
+  `/var/tmp/jarvis-current-package-build.log`, SHA-256
+  `cb5b9eea24fac7714ba1037a746fca971b462dea89e6cf4ac10d787d71e92227`.
+- A hipótese de que o worktree montado impede `scripts/source-archive.py` de
+  acessar Git não foi reproduzida: o script gerou um tarball dentro de
+  `jarvis-gentoo-aarch64` usando o mount `/src`. O container foi parado após a
+  verificação e nenhum build Gentoo/Guix foi iniciado.
