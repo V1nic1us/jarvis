@@ -133,9 +133,11 @@ jarvis-overlay
 ```
 
 O runner ARM64 produz `_arm64.deb`. A CI constrói cada arquitetura no alvo,
-instala com apt e verifica recursos, imports, integridade e remoção. O comando
-`scripts/build-package.sh --target ubuntu --arch x86_64` exige um ambiente
-Ubuntu com as dependências de build e Rust compatível já instalados.
+instala com apt e verifica recursos, imports, integridade e remoção. O upgrade
+DEB de revisão com preservação dos dados passou em x86_64 e AArch64 na
+[CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511).
+O comando `scripts/build-package.sh --target ubuntu --arch x86_64` exige um
+ambiente Ubuntu com as dependências de build e Rust compatível já instalados.
 
 ## Estado da validação
 
@@ -292,7 +294,7 @@ CPU também passaram com áudio sintético usando o APK instalado; microfone e
 integração de áudio em desktop real continuam pendentes.
 
 
-### Alpine 3.24: receita em validação
+### Alpine 3.24: ciclo instalado x86_64/AArch64 validado
 
 A receita local `packaging/alpine/APKBUILD` constrói CTranslate2 e Piper para
 musl a partir de commits fixados. ONNX Runtime e NumPy vêm dos pacotes Alpine;
@@ -339,7 +341,7 @@ rede, usando Piper e Whisper tiny/CPU int8. O erro por palavra
 foi 13,3%; esse ensaio sintético não certifica captura de microfone nem qualidade
 de reconhecimento em situações reais.
 
-### Família RHEL 10: receita em validação
+### Família RHEL 10: ciclo instalado x86_64/AArch64 validado
 
 A base de build é AlmaLinux 10, com EPEL e CRB. A receita principal fica em
 `packaging/rpm/rhel/jarvis-assistant.spec`. O driver também constrói um RPM
