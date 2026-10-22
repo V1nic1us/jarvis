@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T00:29:44Z",
+  "verified_at_utc": "2026-10-22T00:33:04Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2790,9 +2790,22 @@
             "faster_whisper not installed in system Python (1 STT test)"
           ],
           "environment": "Arch Linux x86_64 Wayland host; system Python, not the packaged private runtime"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-voice-tests-2026-10-22.log",
+          "artifact_sha256": "7d884865027d89e1c364a2562d0001f61ecbce6f4b36f80930dac8ae83d83f92",
+          "size_bytes": 769,
+          "passed": 494,
+          "skipped": 1,
+          "skip_reasons": [
+            "authorized interactive Linux desktop required (1 test)"
+          ],
+          "environment": "Arch Linux rolling x86_64 Wayland host; project venv"
         }
       ],
-      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. The one skipped test needs an authorized interactive desktop session. An additional system-Python run on 2026-10-21 passed 481 tests; 10 integration cases were skipped because the host session was not authorized and dbus_next/faster_whisper were not installed in system Python."
+      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. The one skipped test needs an authorized interactive desktop session. An additional system-Python run on 2026-10-21 passed 481 tests; 10 integration cases were skipped because the host session was not authorized and dbus_next/faster_whisper were not installed in system Python. Latest full Python voice suite on the project venv passed 494 tests with one opt-in desktop skip on 2026-10-22.",
+      "source_commit": "f4b8d5d"
     },
     {
       "target": "arch",
@@ -3556,10 +3569,18 @@
           "sha256": "941fd927604956af95533710b95a4b5cfe32fe875376a69b8cd3d6db814e3c2b",
           "passed": 1,
           "skipped": 0
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-skip-2026-10-22.log",
+          "sha256": "e63ed49708f3ebe2537d2181b0917cb994f0d19528c0184317f7fe1d785ee638",
+          "size_bytes": 289,
+          "conclusion": "skipped",
+          "reason": "Fixture sentinel did not receive focus; no mutation was attempted."
         }
       ],
       "source_commit": "a4d3ad89e6b5e3c239a7933f1c3988c9b2a18af5",
-      "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session."
+      "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session. A 2026-10-22 recheck on the current session skipped before mutation because the fixture sentinel did not receive focus; the earlier passing KDE Wayland run remains the positive evidence."
     },
     {
       "target": "arch",
