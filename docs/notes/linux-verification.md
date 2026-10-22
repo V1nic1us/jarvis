@@ -761,3 +761,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 - O run [39692211144](https://github.com/V1nic1us/jarvis/actions/runs/39692211144) concluiu com sucesso build, instalação, inspeção e remoção dos pacotes Void glibc e Void musl em x86_64 e AArch64. Jobs: [musl x86_64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030144), [glibc AArch64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030306), [musl AArch64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543030529) e [glibc x86_64](https://github.com/V1nic1us/jarvis/actions/runs/39692211144/job/119543031023).
 - Isso encerra a validação de lifecycle de pacote nas quatro combinações Void desta rodada. Os testes de upgrade com preservação de dados em Void AArch64 continuam pendentes.
+
+### Conclusão da CI nativa — 2026-10-22
+
+- O rerun RHEL AArch64 do run [39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558803431) passou build, instalação, inspeção/remoção e upgrade RPM com preservação dos dados do usuário. A primeira tentativa havia falhado ao baixar metadados EPEL por erros TLS/checksum dos mirrors.
+- Com esse rerun, os 14 jobs nativos da rodada passaram. A validação continua restrita aos alvos/arquiteturas do catálogo e não certifica desktops reais, áudio ou portais em todas as distros.

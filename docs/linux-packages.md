@@ -6,15 +6,11 @@ final e os respectivos builds estão pausados a pedido do usuário. Uma receita
 ou um ciclo de pacote aprovado não prova, por si só, que áudio, captura e
 controle foram verificados em todas as distribuições.
 
-Na rodada atual, todos os 13 jobs de pacotes nativos passaram build, instalação,
-inspeção e remoção no [CI
-39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677); cada
-gerenciador executou também os testes de atualização e preservação de dados previstos no
-workflow.
+Na rodada atual, os 14 jobs nativos passaram build, instalação, inspeção e remoção no [CI 39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142), incluindo o upgrade RPM e preservação de dados RHEL AArch64 após um rerun da falha de mirror EPEL.
 
 Nix passou o ciclo de perfil, incluindo `nix profile upgrade --all`, nas duas arquiteturas ([CI 39692211308](https://github.com/V1nic1us/jarvis/actions/runs/39692211308)). Flatpak passou em x86_64 e AArch64 ([CI 39692211264](https://github.com/V1nic1us/jarvis/actions/runs/39692211264)).
 
-Void glibc e Void musl passaram build, instalação, inspeção e remoção em x86_64 e AArch64 no [CI 39692211144](https://github.com/V1nic1us/jarvis/actions/runs/39692211144). A rodada nativa 39692211142 está ativa com 14 alvos. Arch x86_64 e AArch64 já passaram build, instalação, inspeção e remoção; Fedora x86_64/AArch64, RHEL x86_64 e openSUSE x86_64 seguem em execução. RHEL AArch64 falhou ao baixar metadados do EPEL por erros TLS/checksum dos mirrors e precisa de nova tentativa. A mesma rodada confirmou `xdg-open` e o aviso MIT no pacote Arch x86_64. A matriz registra cada job e suas limitações; desktops reais, áudio e portais continuam pendentes.
+Void glibc e Void musl passaram build, instalação, inspeção e remoção em x86_64 e AArch64 no [CI 39692211144](https://github.com/V1nic1us/jarvis/actions/runs/39692211144). A rodada nativa 39692211142 terminou com os 14 jobs aprovados após o rerun de RHEL AArch64, que primeiro encontrou erros TLS/checksum nos mirrors EPEL. Ela também confirmou `xdg-open` e o aviso MIT no pacote Arch x86_64. A matriz registra cada job e suas limitações; desktops reais, áudio e portais continuam pendentes.
 
 ## NixOS
 

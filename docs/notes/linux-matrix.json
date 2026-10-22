@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T00:11:30Z",
+  "verified_at_utc": "2026-10-22T00:28:38Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1391,9 +1391,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39683082677/job/119518678474",
           "source_commit": "59861b4c2ef76b3713af6f292c26904bc50dc615",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558803431",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
-      "notes": "Latest RHEL AArch64 CI job passed native RPM build, clean installation, inspection and removal. Latest build/install/inspection/removal passed in run 39683082677.",
+      "notes": "Latest RHEL AArch64 CI job passed native RPM build, clean installation, inspection and removal. Latest build/install/inspection/removal passed in run 39683082677. Latest RHEL AArch64 native build/install/inspect/remove and RPM upgrade/data-preservation checks passed in run 39692211142 attempt 2.",
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a"
     },
     {
@@ -1438,10 +1444,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39683082677/job/119518678474",
           "source_commit": "59861b4c2ef76b3713af6f292c26904bc50dc615",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558803431",
+          "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
-      "notes": "Latest RHEL AArch64 CI job passed RPM upgrade, installed-runtime checks, removal and user-data preservation. The first retry attempt was blocked by an EPEL mirror TLS/checksum error; the completed retry passed. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677."
+      "notes": "Latest RHEL AArch64 CI job passed RPM upgrade, installed-runtime checks, removal and user-data preservation. The first retry attempt was blocked by an EPEL mirror TLS/checksum error; the completed retry passed. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677. Latest RHEL AArch64 native build/install/inspect/remove and RPM upgrade/data-preservation checks passed in run 39692211142 attempt 2."
     },
     {
       "target": "alpine",
@@ -4134,6 +4146,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Native packages 39692211142 attempt 2 is rerunning the prior RHEL AArch64 EPEL mirror failure. Void glibc and musl passed package lifecycle on x86_64/AArch64 in run 39692211144. Flatpak 39692211264 and Nix 39692211308 passed on x86_64/AArch64. Gentoo/Guix remain paused. Remaining work: complete the RHEL retry, finish missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "Native run 39692211142 attempt 2 passed all 14 package jobs, including RHEL AArch64 RPM upgrade/data preservation. Void glibc and musl passed package lifecycle on x86_64/AArch64 in run 39692211144. Flatpak 39692211264 and Nix 39692211308 passed on x86_64/AArch64. Gentoo/Guix remain paused. Remaining work: complete missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }
