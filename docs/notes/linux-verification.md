@@ -778,3 +778,9 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - A correção em `631404ec409696cbe780a462c3dd590bbfd13347` procura o pacote anterior dentro da própria etapa de instalação para glibc e musl. O teste de regressão `test_void_upgrade_steps_locate_previous_package_in_their_own_shell` está coberto por `python -m pytest -q voice/tests/test_linux_packages.py`: **79 passaram** no commit registrado acima.
 - O run antigo terminou com falha nos quatro jobs. O rerun [39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455), que contém a correção, já iniciou builds glibc e musl em x86_64 e AArch64; os quatro jobs continuam ativos e ainda precisam validar a correção.
 - Evidência local: `.superpowers/sdd/2026-10-14-jarvis-linux/void-workflow-variable-scope-2026-10-22.log`.
+
+### Revalidação nativa de pacotes — 2026-10-22
+
+- O run [39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511), no commit `631404ec409696cbe780a462c3dd590bbfd13347`, terminou com **14/14 jobs aprovados** para Alpine, Arch, Debian, Fedora, openSUSE, RHEL e Ubuntu em x86_64/AArch64. Foram aprovados build, instalação/inspeção/remoção e os ciclos de atualização/preservação de dados configurados para cada gerenciador.
+- No rerun [39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455), os upgrades Void glibc x86_64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338707)) e AArch64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338492)) passaram. Os dois builds Void musl ainda estão ativos; após concluírem, serão executados instalação, atualização e preservação de dados.
+- Esses checks não substituem a matriz GNOME/KDE, Wayland/X11, portais ou áudio físico. Gentoo e Guix ARM64 continuam pausados conforme pedido.

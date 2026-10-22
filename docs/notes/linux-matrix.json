@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T02:04:20Z",
+  "verified_at_utc": "2026-10-22T02:05:14Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4791,6 +4791,6 @@
     "Microphone, calibration, PTT/VAD, playback and streaming on installed targets",
     "Screenshot/RemoteDesktop consent, denial and revocation on installed targets",
     "Installed agent/MCP, accessibility, clipboard, monitors/scaling and process cleanup matrix",
-    "Native run 39692211142 attempt 2 passed all 14 package jobs, including package-manager updates and data-preservation checks where configured. Void glibc/musl passed lifecycle on x86_64/AArch64 in run 39692211144. Flatpak 39692211264 and Nix 39692211308 passed on x86_64/AArch64. Gentoo/Guix remain paused. Remaining work: complete missing package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
+    "Native run 39705918511 passed all 14 package jobs at source commit 631404ec409696cbe780a462c3dd590bbfd13347, including upgrade/data-preservation checks where configured. Void glibc upgrade tests now pass on x86_64/AArch64. Void musl upgrade checks are running on x86_64/AArch64 in run 39705918455. Flatpak and Nix pass both architectures. Gentoo/Guix remain paused. Remaining: complete Solus and paused package-upgrade combinations, validate helper/source correspondence and SBOM, and obtain independent whole-branch review."
   ]
 }
