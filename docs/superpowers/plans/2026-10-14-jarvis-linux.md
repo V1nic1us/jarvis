@@ -10,6 +10,10 @@
 
 **Spec:** `docs/superpowers/specs/2026-10-14-jarvis-linux-design.md`
 
+## User scope amendment — 2026-10-22
+
+Por decisão explícita do usuário, Gentoo e GNU Guix ficam fora da entrega atual. Não iniciar nem retomar compilações ou validações nesses alvos. Preservar os resultados já obtidos como evidência histórica e manter AArch64 pausado em `docs/notes/PAUSED-GENTOO-GUIX.md`. A conclusão da matriz considera somente os demais alvos da especificação.
+
 ## Global Constraints
 
 - O caminho Linux não exige Windows, PowerShell, caminhos `/mnt/c`, dispositivos DirectShow ou serviços WSL.
@@ -134,14 +138,14 @@ O plano é dividido em quatro blocos testáveis: plataforma/voz (1–2), desktop
 
 ## Task 9: Gerenciadores nativos
 
-**Files:** criar `packaging/debian/`, `packaging/rpm/fedora/`, `packaging/rpm/suse/`, `packaging/arch/PKGBUILD`, `packaging/alpine/APKBUILD`, `packaging/void/template`, `packaging/gentoo/`, `packaging/nix/flake.nix`, `packaging/guix/jarvis.scm`, `packaging/slackware/jarvis.SlackBuild`, `packaging/solus/package.yml`, `scripts/build-package.sh`, `.github/workflows/linux-packages.yml`, `packaging/targets.json`, `docs/linux-packages.md`.
+**Files:** criar `packaging/debian/`, `packaging/rpm/fedora/`, `packaging/rpm/suse/`, `packaging/arch/PKGBUILD`, `packaging/alpine/APKBUILD`, `packaging/void/template`, `packaging/nix/flake.nix`, `packaging/slackware/jarvis.SlackBuild`, `packaging/solus/package.yml`, `scripts/build-package.sh`, `.github/workflows/linux-packages.yml`, `packaging/targets.json`, `docs/linux-packages.md`.
 
 **Interfaces:** `scripts/build-package.sh --target <target> --arch <arch> --output <dir>`; target é explícito, registrado em JSON com distro/version/libc/arquitetura/formato. O script falha fora do ambiente correspondente em vez de gerar artefato falsamente universal. Cada receita instala a árvore da tarefa 7 e declara dependências específicas; fonte e licença acompanham redistribuição.
 
 Executar o ciclo abaixo separadamente para cada família da tabela da spec, com commits por família; não marcar a tarefa inteira por um único DEB/RPM.
 
 - [ ] Preparar teste de pacote que exige metadados, dependências, arquivos, launcher e recursos da árvore comum; instalação em ambiente vazio deve falhar antes da receita existir.
-- [ ] Construir usando dpkg-buildpackage, rpmbuild (Fedora/SUSE separados), makepkg, abuild, xbps-src, ebuild, nix build, guix build, SlackBuild e ferramenta de build Solus nos respectivos alvos. Dependências musl recebem build próprio; não reutilizar wheels glibc.
+- [ ] Construir usando dpkg-buildpackage, rpmbuild (Fedora/SUSE separados), makepkg, abuild, xbps-src, nix build, SlackBuild e ferramenta de build Solus nos respectivos alvos. Dependências musl recebem build próprio; não reutilizar wheels glibc. Gentoo e Guix estão excluídos pelo adendo de escopo acima.
 - [ ] Inspecionar artefato com ferramentas nativas e validadores disponíveis (lintian/rpmlint/namcap etc.); instalar pelo gerenciador do alvo com dependências, executar launcher/doctor e overlay em desktop real.
 - [ ] Construir segunda versão, atualizar, verificar dados/modelos existentes e remover. Asserções: dados do usuário idênticos; arquivos de sistema do pacote removidos; zero pip/download de root em pós-instalação. Testar x86_64/aarch64 onde suportados e Void glibc/musl.
 - [ ] Documentar comandos de artefato local/receita, distro/versão/ABI, checksums e atualização. Não anunciar disponibilidade em repositório oficial sem publicação real.
@@ -154,7 +158,7 @@ Executar o ciclo abaixo separadamente para cada família da tabela da spec, com 
 **Interfaces:** Cada resultado da matriz registra distro/version/arch/libc/desktop/session/package, comando, resultado e evidência. Campo sem evidência é `unverified`, nunca `passed`.
 
 - [ ] Rodar regressão `python3 -m pytest voice/tests -q`, suites MCP separadas, `node --test '.opencode/**/*.test.ts'`, cargo test/build e builds de distribuição. Confirmar suporte do Node a TypeScript antes de escolher versão de CI.
-- [ ] Executar matriz Ubuntu/Debian, Fedora, Arch, openSUSE, GNOME/KDE Wayland e X11; demais alvos da tarefa 9 incluem validação de pacote e funcionalidade instalada. Containers comprovam pacote, não substituem áudio/GUI reais. Registrar arquiteturas e musl.
+- [ ] Executar matriz Ubuntu/Debian, Fedora, Arch, openSUSE, GNOME/KDE Wayland e X11; demais alvos da tarefa 9 incluem validação de pacote e funcionalidade instalada. Containers comprovam pacote, não substituem áudio/GUI reais. Registrar arquiteturas e musl. Registros Gentoo/Guix podem permanecer na matriz histórica como pausados, fora do critério de conclusão atual.
 - [ ] Verificar em cada desktop os fluxos da spec: mic/calibração/VAD/PTT/fixed/STT/TTS/streaming, screenshot e consentimento, ações e contexto, arquivos, menu/settings/reinício/saída e ausência de órfãos. Incluir Wayland nativo, multi-monitor/escala, revogação e background sem mudança de foco.
 - [ ] Atualizar documentação com somente resultados comprovados, limitações por capacidade, requisitos externos e recuperação. Não apresentar resultados simulados como E2E real.
 - [ ] Auditar os dez critérios da spec requisito por requisito e ligar cada um à evidência atual. Corrigir lacunas ou manter objetivo incompleto quando faltarem ambientes; não concluir pelo total de unit tests.
