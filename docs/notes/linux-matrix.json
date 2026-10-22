@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T04:59:08Z",
+  "verified_at_utc": "2026-10-22T05:01:41Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3116,9 +3116,20 @@
           ],
           "environment": "Arch Linux rolling x86_64 KDE Wayland; project venv",
           "source_commit": "74bbdfeaf584f74f00f6a070fd64e15bcf97c4de"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-voice-suite-2026-10-22-clean-env.log",
+          "sha256": "2f3228a1c4a017e3ba8e92c619302b0667060dce15a140b2804eca68e1219332",
+          "size_bytes": 761,
+          "passed": 501,
+          "skipped": 1,
+          "skip_reason": "interactive desktop test requires an authorized desktop session",
+          "source_commit": "6f037671f4f55a40fb78a902f4ab9526c3dbe7c0",
+          "environment": "Arch Linux x86_64 KDE Wayland; project venv; PYTHONPATH unset"
         }
       ],
-      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session.",
+      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session. The current commit 6f03767 also passed 501 tests with one authorized-desktop test skipped when run with PYTHONPATH unset.",
       "source_commit": "0ce1d68"
     },
     {
