@@ -1,10 +1,12 @@
 # Linux ARM64 build checkpoint
 
-Status: paused at the user's request on 2026-10-21. The current branch is
-`feat/linux-port`, currently at commit
-`30dd7d9e09d2e569804000f6cbb4d6db2152a5b4`. The worktree is clean. The
-containers were rechecked on 2026-10-21: both exited with code 137 and
-`OOMKilled=false` at 19:48:21 UTC. No Gentoo or Guix build process is active.
+Status: paused at the user's request on 2026-10-21. The original pause
+checkpoint was commit `30dd7d9e09d2e569804000f6cbb4d6db2152a5b4`. The branch remains
+`feat/linux-port`; the worktree is clean as of this note refresh. The
+containers were rechecked on 2026-10-22: `jarvis-gentoo-aarch64` and
+`jarvis-guix-rust190-seccomp` remain exited with code 137; no Gentoo or Guix
+build process is active on the host. The original failure details below are
+preserved as recorded at the pause.
 
 Do not count either target as supported or tested yet. The distro matrix still
 marks both native package lifecycles as `unverified`.
