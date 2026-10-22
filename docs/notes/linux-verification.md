@@ -199,9 +199,11 @@ com consentimento e execução em outros desktops ainda não foram verificadas.
   passaram e 13 testes MCP passaram. O teste GUI foi executado separadamente:
   5 passed (background nativo mais contexto).
 
-Pendências: click real pelo portal, abertura real pelo desktop, clipboard,
-revogação real de sessão, lifecycle ligado ao cérebro/overlay, instalação,
-Flatpak e pacotes/matriz de distros. As evidências acima não concluem o porte.
+Pendências naquele checkpoint: click real pelo portal, clipboard, revogação real
+de sessão, lifecycle ligado ao cérebro/overlay, instalação, Flatpak e matriz de
+distros. A validação posterior abaixo confirmou o despacho de abertura e a
+janela do Kate em KDE Wayland; o conteúdo do arquivo e a aceitação pelo app
+continuam sem confirmação. As evidências não concluem o porte.
 
 Verificação parcial do abridor no host KDE Wayland (2026-10-20):
 `open_target` encaminhou um arquivo temporário por `xdg-open`; o processo real
