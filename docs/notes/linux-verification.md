@@ -853,3 +853,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - No host Arch Linux x86_64 Wayland, `voice/.venv/bin/python -m pytest -q -rs voice/tests` passou **501 testes**; 1 teste AT-SPI interativo foi pulado porque exige uma sessão de desktop autorizada. Evidência: `.superpowers/sdd/2026-10-14-jarvis-linux/linux-voice-tests-2026-10-22-rerun.log`, SHA-256 `714e2fde2eb9a7630097eea742d8567db9c8ead7949490bc22b9883b6303a450`.
 - `voice/.venv/bin/python -m pytest -q voice/tests/test_linux_packages.py` passou **79 testes**. Evidência: `.superpowers/sdd/2026-10-14-jarvis-linux/linux-package-recipe-tests-current-2026-10-22.log`, SHA-256 `dfc76be55c53ad0262d5bd0e0a0fbd010796848fe68dbfddf09e7b20c9fb01d3`.
 - Essas verificações cobrem a regressão Python e as receitas declaradas; não substituem o teste do runtime instalado em cada distro, desktop, áudio físico ou portais.
+
+### Integridade das fontes e rechecagem AT-SPI — 2026-10-22
+
+- O arquivo fonte determinístico usado pelas receitas nativas contém 240 arquivos regulares, todos idênticos byte a byte ao checkout no commit `0ce1d68`; nenhuma divergência. SHA-256 do tarball: `9de99fdf45e97aaef1fed71862092fb75f59a80326547c18f18cc63b2d706f0d`. Registro: `.superpowers/sdd/2026-10-14-jarvis-linux/source-archive-integrity-2026-10-22.log`.
+- A rechecagem AT-SPI opt-in do host Arch Wayland pulou antes da ação porque a sentinela não recebeu foco. Nenhuma mutação foi tentada. A aprovação positiva anterior na sessão KDE Wayland permanece como evidência separada; o resultado atual não a substitui. Registro: `.superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-rerun-2026-10-22.log`.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T02:59:15Z",
+  "verified_at_utc": "2026-10-22T03:03:26Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2920,7 +2920,7 @@
         }
       ],
       "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session.",
-      "source_commit": "28eabd0"
+      "source_commit": "0ce1d68"
     },
     {
       "target": "arch",
@@ -3743,10 +3743,18 @@
           "size_bytes": 289,
           "conclusion": "skipped",
           "reason": "Fixture sentinel did not receive focus; no mutation was attempted."
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-rerun-2026-10-22.log",
+          "sha256": "245fb0c616c49d7bf6b59cbc9686ab2bc408ba0160e27bc14c8d003273da8e75",
+          "size_bytes": 274,
+          "conclusion": "skipped",
+          "reason": "Fixture sentinel did not receive focus; no mutation was attempted."
         }
       ],
-      "source_commit": "a4d3ad89e6b5e3c239a7933f1c3988c9b2a18af5",
-      "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session. A 2026-10-22 recheck on the current session skipped before mutation because the fixture sentinel did not receive focus; the earlier passing KDE Wayland run remains the positive evidence."
+      "source_commit": "0ce1d68",
+      "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session. A 2026-10-22 rerun on the current session also skipped before mutation because the fixture sentinel did not receive focus; this result does not replace the earlier passing KDE Wayland evidence."
     },
     {
       "target": "arch",
@@ -4158,7 +4166,7 @@
           "skipped": 0
         }
       ],
-      "source_commit": "28eabd0",
+      "source_commit": "0ce1d68",
       "notes": "The packaging test suite checks target declarations against recipe files, architecture claims, package lifecycle evidence and workflow setup. Latest run on 2026-10-22 passed all 79 tests."
     },
     {
@@ -4996,6 +5004,32 @@
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
       "notes": "The saved Arch package artifact from source commit 02381f5cd88090f24fb24db4218eb9c94dc2ac7a was extracted and its packaged record_auto path received a synthetic 16 kHz WAV with silence-tone-silence through an FFmpeg wrapper. The tone was detected, 49,230 bytes were returned, and the WAV was removed from the temporary cache. No real microphone or STT was used. voice/capture.py and voice/audio.py are unchanged since the artifact source commit. This validates positive segmentation/cleanup only; real speech VAD and other package targets remain unverified."
+    },
+    {
+      "target": "linux source archive",
+      "distro": "cross-distro",
+      "version": null,
+      "arch": "source",
+      "libc": null,
+      "desktop": null,
+      "session": null,
+      "package": "source archive",
+      "capability": "source_archive_integrity",
+      "status": "passed",
+      "command": "scripts/source-archive.py; byte-compare each regular archive member to checkout",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/source-archive-integrity-2026-10-22.log",
+          "sha256": "9c7db8db5090b8e0eca9cc87b63a082aea7c106c0a3c59c80b84eb982b108763",
+          "size_bytes": 382,
+          "archive_sha256": "9de99fdf45e97aaef1fed71862092fb75f59a80326547c18f18cc63b2d706f0d",
+          "files_checked": 240,
+          "mismatches": 0
+        }
+      ],
+      "source_commit": "0ce1d68",
+      "notes": "The deterministic source archive used by native distro builds contained 240 regular files. Every archived file matched the current checkout byte-for-byte. This verifies source archive correspondence, not dependency completeness or a package SBOM."
     }
   ],
   "pending_gates": [
