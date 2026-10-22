@@ -869,3 +869,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - No mesmo runtime extraído, a volta TTS→STT offline reconheceu “Olá tudo bem?” para a frase sintetizada “Olá, tudo bem?”, usando o modelo português Piper e o modelo Whisper base local, CPU int8. O WAV de 1,10 s, o log e seus hashes estão registrados na matriz; não houve captura física nem playback.
 - Verifiquei também o overlay do pacote Arch dentro de Debian 13 Trixie com Weston headless. `ldd` resolveu as bibliotecas com requisito máximo `GLIBC_2.39` no host glibc 2.41; o teste de relançamento e AT-SPI passou. GDK emitiu avisos de seat sem teclado no Weston headless; o teste não cobre teclado/pointer reais, portais ou áudio. Evidência: `.superpowers/sdd/2026-10-14-jarvis-linux/arch-overlay-debian-wayland-2026-10-22.log`.
 - O pacote Arch do HEAD também passou VAD com fala sintética em tempo real: o fixture de 3,8 s continha 1,2 s de silêncio inicial, fala Piper e 1,5 s de silêncio final; a captura fechou em 3,07 s e o Whisper empacotado reconheceu “Olá tudo bem?”. A fala foi gerada localmente; microfone e playback não foram usados. Script, WAV segmentado e hashes estão registrados na matriz.
+
+### Regressão dos portais Wayland — 2026-10-22
+
+- `test_portal.py`: 12 testes passaram no harness de D-Bus privado. `test_linux_input.py`: 16 testes passaram para o backend Wayland e revogação simulada. `test_linux_screen.py`: 8 testes passaram para dispatch de captura e validação de URI/PNG.
+- O serviço D-Bus da sessão KDE Wayland expõe Screenshot e RemoteDesktop; a introspecção confirmou os métodos de sessão e entrada. Nenhuma solicitação real de captura ou controle foi enviada. Consentimento, negação e revogação em portal real seguem sem validação.
