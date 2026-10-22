@@ -60,6 +60,18 @@ settings em `$XDG_CONFIG_HOME/jarvis` e logs em `$XDG_STATE_HOME/jarvis`.
 Variáveis de ambiente prevalecem sobre settings. `AUDIO_BACKEND=pulse` é o
 padrão e funciona com PipeWire-Pulse; `AUDIO_BACKEND=alsa` é alternativa.
 `MIC_DEVICE=default` pode ser substituído por um nome da enumeração.
+`jarvis --doctor` verifica se o FFmpeg tem entrada para o backend escolhido e
+se `pactl` (Pulse) ou `arecord` (ALSA) consegue enumerar fontes; isso não grava
+áudio. Se o diagnóstico marcar captura indisponível, instale as ferramentas do
+backend na distro ou teste a alternativa ALSA:
+
+```sh
+AUDIO_BACKEND=alsa ~/.local/bin/jarvis --doctor
+```
+
+Para verificar a captura de fato, execute
+`~/.local/bin/jarvis --mic-level` numa sessão em que seja seguro gravar o
+microfone.
 
 O arquivo `~/.config/jarvis/overlay.json` aceita `launcher` (caminho para
 jarvis) ou `loop_cmd` (comando definido pelo usuário). `JARVIS_OVERLAY_CONFIG`
