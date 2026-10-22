@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T15:36:26Z",
+  "verified_at_utc": "2026-10-22T15:42:30Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -6220,9 +6220,10 @@
     }
   ],
   "pending_gates": [
-    "Paused at user request: native Gentoo AArch64 and Guix AArch64 build/lifecycle validation; do not restart until asked.",
-    "Remaining distro recipes, source builds and architecture combinations beyond the recorded matrix.",
-    "Real GNOME/KDE Wayland/X11 desktop behavior, microphone/PTT/VAD/playback/streaming, portal consent/revocation, and installed agent/MCP/accessibility/clipboard/display/process-cleanup matrix remain incomplete.",
-    "Validate a package SBOM and obtain independent whole-branch review."
+    "In-scope distro and architecture rows are limited to evidence-backed targets; Gentoo and Guix remain explicitly paused and outside the current delivery scope.",
+    "Complete real desktop-session validation on GNOME/KDE Wayland and X11, including RemoteDesktop keyboard/pointer injection, portal denial/revocation, focus/accessibility, clipboard, and process cleanup; current real-session capture evidence covers Arch KDE Wayland only.",
+    "Complete end-to-end physical audio validation for microphone capture, PTT/VAD/STT and speaker playback/streaming on representative PulseAudio/PipeWire and ALSA systems; current checks include device enumeration and synthetic/null-sink or generated-audio tests.",
+    "Rebuild and install the current source revision on the user Arch machine so the packaged doctor reflects the latest Wayland capability fix; validate installed app/MCP integration after that rebuild.",
+    "Validate a package SBOM and obtain independent whole-branch review before declaring the Linux port complete."
   ]
 }
