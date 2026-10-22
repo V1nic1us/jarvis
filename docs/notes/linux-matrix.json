@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:05:43Z",
+  "verified_at_utc": "2026-10-22T01:08:00Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4374,6 +4374,28 @@
       ],
       "source_commit": "0455f0b15e98f5f76b6de333592c9e6ae75b445e",
       "notes": "The live KDE Wayland session exposes Screenshot, RemoteDesktop, and ScreenCast interfaces. This confirms service availability only; it does not validate portal authorization, capture/input, denial, session close, or revocation."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland / PipeWire Pulse compatibility protocol",
+      "package": "source checkout",
+      "capability": "pulse_synthetic_capture_and_level",
+      "status": "passed",
+      "command": "capture.record(2, output_wav, config[AUDIO_BACKEND=pulse, MIC_DEVICE=jarvis_port_test.monitor]); measure_level(2, config)",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-pipewire-pulse-synthetic-capture-2026-10-22.log",
+          "sha256": "97dba979d8bd674a0fd30becd1dd90595787c9c3e89d92b668a0d96f1f8ff1e3"
+        }
+      ],
+      "source_commit": "bc56558",
+      "notes": "Jarvis recorded a synthetic 440 Hz tone through an ephemeral PipeWire null sink and the Pulse-compatible protocol; measure_level returned -21.1 dB mean/-18.1 dB max and independent volumedetect confirmed the captured WAV was non-silent. The physical microphone was not opened. This is host-specific synthetic I/O evidence, not physical mic calibration, STT, PTT/VAD, playback, or cross-distro verification."
     }
   ],
   "pending_gates": [
