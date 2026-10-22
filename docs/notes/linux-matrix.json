@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:14:56Z",
+  "verified_at_utc": "2026-10-22T05:16:11Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5254,10 +5254,19 @@
           "kind": "local_validation_log",
           "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-mcp-plugin-tests-2026-10-22.log",
           "sha256": "2469b22fceacc63aa28d52f53cbf5b4bb7d526b1781ec3f3430e8b966819efba"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-node-actions-safety-2026-10-22-current.log",
+          "sha256": "6c18b272538b44462f867f842294926d7963b18a4324f8aed7789f735cce146d",
+          "size_bytes": 14087,
+          "passed": 95,
+          "failed": 0,
+          "source_commit": "f235fe9"
         }
       ],
-      "source_commit": "44986f0",
-      "notes": "All Python MCP server tests (13 + 17) and Linux agent action/plugin/SafetyGate Node tests (95) passed. This is unit evidence only; installed MCP/agent behavior, live OpenCode, real desktop, portal consent and AT-SPI remain unverified."
+      "source_commit": "f235fe9",
+      "notes": "All Python MCP server tests (13 + 17) and Linux agent action/plugin/SafetyGate Node tests (95) passed. This is unit evidence only; installed MCP/agent behavior, live OpenCode, real desktop, portal consent and AT-SPI remain unverified. Re-run on the current source tree passed all 95 Node Linux action/plugin/SafetyGate tests; this remains unit-level coverage."
     },
     {
       "target": "arch",
