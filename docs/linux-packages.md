@@ -1,16 +1,18 @@
 # Pacotes Linux em desenvolvimento
 
 O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
-26 combinações estão validadas. Gentoo ARM64 e Guix ARM64 seguem sem validação
-final e os respectivos builds estão pausados a pedido do usuário. Uma receita
-ou um ciclo de pacote aprovado não prova, por si só, que áudio, captura e
-controle foram verificados em todas as distribuições.
+26 têm evidência de ciclo nativo. A matriz registra 81 de 83 verificações aprovadas.
+Gentoo ARM64 e Guix ARM64 estão sem validação final e seus builds estão pausados
+a pedido do usuário. Uma receita ou um ciclo de pacote aprovado não prova, por si
+só, que áudio, captura e controle foram verificados em todas as distribuições.
 
-Na rodada atual, os 14 jobs nativos passaram build, instalação, inspeção, remoção e os testes de atualização/preservação de dados previstos para cada gerenciador. Isso inclui Arch ARM64 e RHEL ARM64 após rerun da falha de mirror EPEL ([CI 39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142)).
+Na rodada mais recente, os 14 jobs nativos passaram build, instalação, inspeção,
+remoção e os testes de atualização/preservação de dados previstos para cada
+gerenciador ([CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511)).
+Flatpak e Nix passaram em x86_64/AArch64 ([Flatpak](https://github.com/V1nic1us/jarvis/actions/runs/39705918446), [Nix](https://github.com/V1nic1us/jarvis/actions/runs/39705918449)). Void glibc passou build, instalação e upgrade nas duas arquiteturas; os builds/upgrade de Void musl seguem ativos ([CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455)).
 
-Nix passou o ciclo de perfil, incluindo `nix profile upgrade --all`, nas duas arquiteturas ([CI 39692211308](https://github.com/V1nic1us/jarvis/actions/runs/39692211308)). Flatpak passou em x86_64 e AArch64 ([CI 39692211264](https://github.com/V1nic1us/jarvis/actions/runs/39692211264)).
-
-Void glibc e Void musl passaram build, instalação, inspeção e remoção em x86_64 e AArch64 no [CI 39692211144](https://github.com/V1nic1us/jarvis/actions/runs/39692211144). A rodada nativa 39692211142 terminou com os 14 jobs aprovados após o rerun de RHEL AArch64, que primeiro encontrou erros TLS/checksum nos mirrors EPEL. Ela também confirmou `xdg-open` e o aviso MIT no pacote Arch x86_64. A matriz registra cada job e suas limitações; desktops reais, áudio e portais continuam pendentes.
+A matriz registra cada job e suas limitações. Desktop real, áudio físico e
+portais continuam pendentes.
 
 ## NixOS
 

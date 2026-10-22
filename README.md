@@ -1,6 +1,6 @@
 # jarvis
 
-**Porte Linux em implementação:** veja [instalação nativa e estado da validação](docs/linux.md). O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura; 26 estão validadas. Gentoo ARM64 e Guix ARM64 seguem em build e validação. Os testes completos de desktop, áudio e portais ainda estão pendentes.
+**Porte Linux em implementação:** veja [instalação nativa e estado da validação](docs/linux.md). O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura; 26 têm evidência de ciclo nativo. A matriz registra 81 de 83 verificações aprovadas. Os 14 jobs nativos passaram na [CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511). Gentoo ARM64 e Guix ARM64 estão pausados a pedido; os upgrades Void musl ainda estão em execução. Desktop real, áudio físico e portais seguem pendentes.
 
 Assistente pessoal por voz, **sempre ligado**, que roda no seu PC: o "cérebro" vive no **WSL (Python)** e conversa com o **Windows** para ouvir o microfone, falar, ver a tela e executar ações. Há uma presença visual discreta no Windows — um **orbe** que mostra o que o Jarvis está fazendo.
 

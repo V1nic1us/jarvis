@@ -2,17 +2,15 @@
 
 O porte continua em implementação. Voz, screenshot, ações, contexto AT-SPI,
 arquivos e overlay têm implementação nativa; o runtime foi exercitado no Arch/KDE
-Wayland. O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 estão
-validadas. Todos os 13 jobs nativos passaram build, instalação, inspeção e
-remoção no [CI 39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39683082677),
-com testes de atualização/preservação de dados nos gerenciadores cobertos pelo
-workflow. Nix (incluindo upgrade de perfil e preservação de dados) e Flatpak passaram em x86_64/AArch64; Void glibc também passou nas
-duas arquiteturas; Void musl também passou nas duas arquiteturas no [CI 39692211144](https://github.com/V1nic1us/jarvis/actions/runs/39692211144).
-A rodada nativa [39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142) concluiu os 14 jobs e testes de atualização configurados com sucesso, incluindo Arch ARM64 e RHEL ARM64 após repetir o job que encontrou erros TLS/checksum nos mirrors EPEL.
-Os builds de Gentoo e Guix estão pausados a pedido. Ainda faltam combinações de
-atualização, desktops reais,
-áudio/captura e portais em mais distribuições. Veja `docs/linux-packages.md` e
-`docs/notes/linux-verification.md` para a matriz e as limitações de cada teste.
+Wayland. O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 têm
+evidência de ciclo nativo. A matriz registra 81 de 83 verificações aprovadas.
+Todos os 14 jobs nativos passaram na [CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511), incluindo upgrades e preservação de dados onde configurados.
+Nix e Flatpak passaram em x86_64/AArch64. Void glibc passou em ambas as arquiteturas;
+Void musl tem build e upgrade em andamento na [CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455).
+Gentoo ARM64 e Guix ARM64 estão pausados a pedido. Ainda faltam combinações de
+atualização, desktops reais, áudio/captura e portais em mais distribuições. Veja
+`docs/linux-packages.md` e `docs/notes/linux-verification.md` para a matriz e as
+limitações de cada teste.
 
 ## Instalação por fonte
 
