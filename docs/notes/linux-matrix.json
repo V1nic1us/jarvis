@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T06:27:33Z",
+  "verified_at_utc": "2026-10-22T06:30:48Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5980,6 +5980,53 @@
       ],
       "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
       "notes": "Piper generated “Olá, tudo bem?” and faster-whisper recognized “Olá tudo bem?” from the VAD segment. The 3.065-second segment ended before the 3.8-second fixture finished its trailing silence. This is a packaged CPU speech pipeline with synthetic audio; no physical microphone capture or speaker playback was performed."
+    },
+    {
+      "target": "solus",
+      "distro": "solus",
+      "version": "4.9",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "headless Solus app container connected to host PipeWire",
+      "session": "PulseAudio compatibility protocol; null sink monitor capture",
+      "package": "eopkg release 3",
+      "capability": "native_package_piper_ffplay_pipewire_playback",
+      "status": "passed",
+      "command": "Installed release 3; packaged Piper synthesized Portuguese speech; packaged ffplay played through PULSE_SINK null sink on host PipeWire; host FFmpeg captured sink monitor and volumedetect analyzed it",
+      "evidence": [
+        {
+          "kind": "test_script",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-tts-playback-2026-10-22.py",
+          "sha256": "d76a674024c0a2cf072d6d5888b07d0c3385ea2ba34efdbbca70ef99a14462a1",
+          "size_bytes": 598
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-tts-playback-2026-10-22.log",
+          "sha256": "3604eb8256ff5e3f0227d58f02a823e7ab925224058ee1d1fd834d2f0c62ee0d",
+          "size_bytes": 74
+        },
+        {
+          "kind": "local_audio_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-tts-playback-capture-2026-10-22.wav",
+          "sha256": "d8d36686748e4048eb94e36c20984af02c82ab21a672d695425a47c482a9b01c",
+          "size_bytes": 1530882
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-tts-playback-levels-2026-10-22.log",
+          "sha256": "1039f7e1eb618003ec2368b0ed5c02d846a4302e0dd058da9334277a104b8160",
+          "size_bytes": 1486
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release-3/jarvis-assistant-0.1.0-3-1-x86_64.eopkg",
+          "sha256": "55539ac2567ae95d9f633bca3fc2b1c69429a2af3146459e34f722cb372346aa",
+          "size_bytes": 202582589
+        }
+      ],
+      "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
+      "notes": "Packaged Piper synthesized “Olá, tudo bem?” and packaged ffplay played it through the PulseAudio protocol to the host PipeWire null sink. Captured monitor audio had mean volume -26.0 dB and peak -0.0 dB. This verifies the playback path without physical speakers; it does not validate microphone capture or acoustic output."
     }
   ],
   "pending_gates": [

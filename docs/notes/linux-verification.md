@@ -978,3 +978,14 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O teste foi headless e sintético: não capturou microfone físico nem reproduziu
   som. Script, pacote e log estão na linha Solus da matriz com SHA-256. A matriz
   atualiza para 101/103 verificações aprovadas (98,1%).
+
+
+### Solus: reprodução Piper pelo pacote — 2026-10-22
+
+- A release 3 instalada sintetizou “Olá, tudo bem?” com Piper e reproduziu a
+  fala via ffplay e protocolo PulseAudio do PipeWire do host, direcionando-a a
+  um sink nulo temporário. A captura do monitor teve áudio não silencioso
+  (média −26,0 dB, pico −0,0 dB). O container não usou alto-falantes físicos
+  nem capturou microfone.
+- Script, pacote, captura WAV e medição de nível estão registrados com hashes
+  na matriz. O estado atual é 102/104 verificações aprovadas (98,1%).
