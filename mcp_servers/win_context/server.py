@@ -11,6 +11,7 @@ Reusa a descoberta de janelas do `win_list` (mesmo P/Invoke).
 from __future__ import annotations
 
 from mcp.server.mcpserver import MCPServer
+from mcp.server.mcpserver.exceptions import ToolError
 
 import context as ctx
 import sys
@@ -51,7 +52,7 @@ def win_tree_text(hwnd: int, max_nodes: int = 200) -> str:
         max_nodes: teto de nós para não estourar tokens (default 200).
     """
     if _linux():
-        raise ValueError("hwnd e especifico de Windows; use desktop_tree_text com ID AT-SPI")
+        raise ToolError("hwnd e especifico de Windows; use desktop_tree_text com ID AT-SPI")
     if hwnd <= 0:
         raise ValueError("hwnd invalido")
     if max_nodes <= 0:
@@ -67,7 +68,10 @@ def win_tree_text(hwnd: int, max_nodes: int = 200) -> str:
 def win_clipboard_text() -> str:
     """Devolve o texto atual do clipboard do Windows (vazio se não houver)."""
     if _linux():
-        return linux.clipboard_text()
+        try:
+            return linux.clipboard_text()
+        except linux.ContextError as exc:
+            raise ToolError(str(exc)) from exc
     script = "Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.Clipboard]::GetText()"
     try:
         return ctx._default_run(script).strip() or "(clipboard vazio)"
@@ -104,13 +108,17 @@ def desktop_list_text() -> str:
     if not _linux():return win_list_text()
     try:
         return "\n".join(f"{w['id']}\t{w['process']}\t{w['title']}" for w in linux.list_windows()) or "(nenhuma janela acessivel)"
-    except linux.ContextError as exc:raise RuntimeError(str(exc)) from exc
+    except linux.ContextError as exc:raise ToolError(str(exc)) from exc
 
 
 @mcp.tool()
 def desktop_tree_text(window_id: str, max_nodes: int = 200) -> str:
     """Arvore acessivel limitada; ID opaco de desktop_list_text."""
-    if _linux():return linux.accessibility_tree(window_id,max_nodes)
+    if _linux():
+        try:
+            return linux.accessibility_tree(window_id,max_nodes)
+        except linux.ContextError as exc:
+            raise ToolError(str(exc)) from exc
     if not window_id.startswith("hwnd:"):raise ValueError("Windows exige ID hwnd:<numero>")
     return win_tree_text(int(window_id[5:]),max_nodes)
 

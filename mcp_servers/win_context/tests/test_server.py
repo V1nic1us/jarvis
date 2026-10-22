@@ -3,6 +3,7 @@ import importlib
 import pytest
 
 import context as ctx
+from mcp.server.mcpserver.exceptions import ToolError
 
 @pytest.fixture(autouse=True)
 def windows_contract(monkeypatch):
@@ -68,7 +69,7 @@ def test_linux_windows_alias_selects_native_backend(monkeypatch):
     monkeypatch.setattr(s.linux,"list_windows",lambda:[{"id":"atspi:opaque","process":"gtk","title":"ação"}])
     monkeypatch.setattr(ctx,"list_windows",lambda:pytest.fail("Windows backend invoked"))
     assert s.win_list_text()=="atspi:opaque\tgtk\tação"
-    with pytest.raises(ValueError,match="hwnd"):
+    with pytest.raises(ToolError,match="hwnd"):
         s.win_tree_text(123)
 
 
@@ -77,6 +78,7 @@ def test_linux_windows_alias_selects_native_backend(monkeypatch):
     [
         ("desktop_list_text", "AT-SPI exige sessao grafica"),
         ("desktop_clipboard_text", "clipboard exige sessao grafica"),
+        ("desktop_tree_text", "AT-SPI exige sessao grafica"),
     ],
 )
 def test_linux_desktop_context_reports_unsupported_when_headless(monkeypatch, tool_name, message):
@@ -86,5 +88,8 @@ def test_linux_desktop_context_reports_unsupported_when_headless(monkeypatch, to
     monkeypatch.delenv("WAYLAND_DISPLAY", raising=False)
     monkeypatch.delenv("DISPLAY", raising=False)
 
-    with pytest.raises(RuntimeError, match=message):
-        getattr(s, tool_name)()
+    with pytest.raises(ToolError, match=message):
+        if tool_name == "desktop_tree_text":
+            s.desktop_tree_text("atspi:opaque")
+        else:
+            getattr(s, tool_name)()
