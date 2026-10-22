@@ -1090,3 +1090,11 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - Ambos usaram o muxer `null`: nenhum WAV foi salvo e nenhuma fala foi
   transcrita. Isso comprova a medição de entrada pelo pacote instalado no Arch;
   PTT/VAD/STT e playback físico continuam pendentes. Log e hash estão na matriz.
+
+
+### Rechecagem AT-SPI no KDE Wayland — 2026-10-22
+
+- `JARVIS_DESKTOP_TESTS=1` executado com a venv do projeto: **1 passou**. A janela GTK descartável recebeu `Texto em segundo plano`; a sentinela manteve o foco e o campo vazio, e a posição do ponteiro permaneceu igual. Nenhum aplicativo do usuário foi alvo.
+- Uma tentativa imediatamente anterior falhou porque o AT-SPI não conseguiu verificar qual controle mantinha foco. As duas tentativas seguintes passaram sem reiniciar o serviço AT-SPI. O resultado mostra funcionamento nesta sessão, com uma falha intermitente a investigar.
+- Log: `.superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-pass-2026-10-22.log`; SHA-256 `0d70d5e3025d41820ee8d7865e5ffaa062debd9f4fd30ca4b26f7820dfb180f9`.
+- Isso valida edição acessível em segundo plano no KDE Wayland. Não valida injeção de teclado/clique pelo portal RemoteDesktop, revogação real, outros desktops ou outras distribuições.

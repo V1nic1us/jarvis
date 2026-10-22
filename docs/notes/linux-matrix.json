@@ -4299,10 +4299,18 @@
           "size_bytes": 274,
           "conclusion": "skipped",
           "reason": "Fixture sentinel did not receive focus; no mutation was attempted."
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-pass-2026-10-22.log",
+          "sha256": "0d70d5e3025d41820ee8d7865e5ffaa062debd9f4fd30ca4b26f7820dfb180f9",
+          "passed": 1,
+          "skipped": 0,
+          "conclusion": "success"
         }
       ],
       "source_commit": "0ce1d68",
-      "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session. A 2026-10-22 rerun on the current session also skipped before mutation because the fixture sentinel did not receive focus; this result does not replace the earlier passing KDE Wayland evidence."
+      "notes": "An initial recheck skipped before mutation because neither GTK test window reported active. Diagnosis found the host AT-SPI service active but its bus socket refused direct connections. After restarting the user at-spi-dbus-bus service, the same test passed with a focused sentinel, verified background text entry, preserved focus, and unchanged pointer. Evidence is limited to this Arch rolling x86_64 KDE Plasma Wayland session. A 2026-10-22 rerun on the current session also skipped before mutation because the fixture sentinel did not receive focus; this result does not replace the earlier passing KDE Wayland evidence. A fresh rerun on 2026-10-22 passed in the current session with the disposable GTK widget receiving background text, the sentinel retaining focus and empty contents, and the pointer unchanged. One immediately preceding run transiently failed because AT-SPI could not verify the focused node; the next two runs passed without restarting the accessibility service."
     },
     {
       "target": "arch",
