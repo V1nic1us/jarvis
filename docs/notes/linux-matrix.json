@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:20:50Z",
+  "verified_at_utc": "2026-10-22T03:25:23Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5150,6 +5150,34 @@
       ],
       "source_commit": "56324ac",
       "notes": "The extracted current-HEAD Arch package completed an offline TTS-to-STT file round trip with the local Portuguese Piper model and local faster-whisper base model. Whisper returned “Olá tudo bem?” for the synthesized “Olá, tudo bem?”. No microphone or audio playback was used; physical capture and playback/streaming remain unverified."
+    },
+    {
+      "target": "debian cross-distro smoke",
+      "distro": "debian",
+      "version": "13 trixie",
+      "arch": "x86_64",
+      "libc": "glibc 2.41",
+      "desktop": "GTK overlay",
+      "session": "isolated Weston headless Wayland",
+      "package": "Arch native overlay binary",
+      "capability": "arch_overlay_cross_distro_debian_wayland",
+      "status": "passed",
+      "command": "docker run Debian 13 container with weston and at-spi2-core; python3 scripts/test-overlay-wayland.py <Arch package>/usr/bin/jarvis-overlay",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-overlay-debian-wayland-2026-10-22.log",
+          "sha256": "072a3dac7236d18886078e53c43c6811ccea1b60226b61aa19c394882f8061c6",
+          "size_bytes": 1213,
+          "source_commit": "56324ac",
+          "package_sha256": "847a060134565455c6a69496c8242e099f66f5e4ba8f223e78bc865a02367dbd",
+          "max_required_glibc": "2.39",
+          "debian_glibc": "2.41",
+          "passed": true
+        }
+      ],
+      "source_commit": "56324ac",
+      "notes": "An overlay binary from the current-HEAD Arch package ran on Debian 13 with all shared libraries resolved and passed the isolated Weston Wayland relaunch/accessibility test. This is cross-distro binary runtime evidence, not a Debian native package build or full desktop session. Headless GDK seat warnings appeared; real keyboard/pointer input, portals and audio remain unverified."
     }
   ],
   "pending_gates": [
