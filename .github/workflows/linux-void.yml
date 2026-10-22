@@ -32,19 +32,25 @@ jobs:
           docker build --progress=plain -f packaging/void/Dockerfile -t jarvis-void .
       - name: Export package and checksum
         run: |
-          mkdir -p dist/native
-          docker run --rm -v "$PWD/dist/native:/export" jarvis-void
-          package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.xbps' -print -quit)
+          mkdir -p dist/native dist/upgrade
+          docker run --rm \
+            -v "$PWD/dist/native:/export" \
+            -v "$PWD/dist/upgrade:/export-upgrade" \
+            jarvis-void
+          package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0_2.*.xbps' -print -quit)
+          previous=$(find dist/upgrade -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0_1.*.xbps' -print -quit)
           test -n "$package"
+          test -n "$previous"
           (cd dist/native && sha256sum "$(basename "$package")" > SHA256SUMS)
       - name: Install, inspect and remove in clean Void container
         run: |
           package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.xbps' -print -quit)
           docker run --rm \
             -v "$PWD/dist/native:/packages:ro" \
+            -v "$PWD/dist/upgrade:/upgrade:ro" \
             -v "$PWD/scripts:/checks:ro" \
             ghcr.io/void-linux/void-glibc-full:latest \
-            sh /checks/test-native-package.sh void-glibc "/packages/$(basename "$package")"
+            sh /checks/test-native-package.sh void-glibc "/packages/$(basename "$package")" "/upgrade/$(basename "$previous")"
       - name: Upload native Void package
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
@@ -75,19 +81,25 @@ jobs:
             -f packaging/void/Dockerfile -t jarvis-void-musl .
       - name: Export musl package and checksum
         run: |
-          mkdir -p dist/native
-          docker run --rm -v "$PWD/dist/native:/export" jarvis-void-musl
-          package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.*-musl.xbps' -print -quit)
+          mkdir -p dist/native dist/upgrade
+          docker run --rm \
+            -v "$PWD/dist/native:/export" \
+            -v "$PWD/dist/upgrade:/export-upgrade" \
+            jarvis-void-musl
+          package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0_2.*-musl.xbps' -print -quit)
+          previous=$(find dist/upgrade -maxdepth 1 -type f -name 'jarvis-assistant-0.1.0_1.*-musl.xbps' -print -quit)
           test -n "$package"
+          test -n "$previous"
           (cd dist/native && sha256sum "$(basename "$package")" > SHA256SUMS)
       - name: Install, inspect and remove in clean Void musl container
         run: |
           package=$(find dist/native -maxdepth 1 -type f -name 'jarvis-assistant-*.*-musl.xbps' -print -quit)
           docker run --rm \
             -v "$PWD/dist/native:/packages:ro" \
+            -v "$PWD/dist/upgrade:/upgrade:ro" \
             -v "$PWD/scripts:/checks:ro" \
             ghcr.io/void-linux/void-musl-full:latest \
-            sh /checks/test-native-package.sh void-musl "/packages/$(basename "$package")"
+            sh /checks/test-native-package.sh void-musl "/packages/$(basename "$package")" "/upgrade/$(basename "$previous")"
       - name: Upload native Void musl package
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

@@ -4,6 +4,7 @@ set -eu
 [ -f /.dockerenv ] || [ -f /run/.containerenv ] || { echo 'Execute apenas em container descartavel.' >&2; exit 2; }
 task_family=${1:?familia obrigatoria}
 task_package=${2:?artefato obrigatorio}
+task_previous_package=${3:-}
 task_checks=$(CDPATH= cd -P "$(dirname "$0")" && pwd)
 . /etc/os-release
 PATH="/usr/lib/jarvis/bin:$PATH"
@@ -35,10 +36,28 @@ case "$task_family:$ID" in
         ;;
     void-glibc:void|void-musl:void)
         task_repository=$(mktemp -d)
-        cp "$task_package" "$task_repository/"
-        xbps-rindex -a "$task_repository/$(basename "$task_package")"
+        if [ -n "$task_previous_package" ]; then
+            test -f "$task_previous_package"
+            cp "$task_previous_package" "$task_repository/"
+            xbps-rindex -a "$task_repository/$(basename "$task_previous_package")"
+        else
+            cp "$task_package" "$task_repository/"
+            xbps-rindex -a "$task_repository/$(basename "$task_package")"
+        fi
         xbps-install -Sy xorg-server-xvfb dbus
         xbps-install -y -R "$task_repository" jarvis-assistant
+        if [ -n "$task_previous_package" ]; then
+            task_old_base=$(basename "$task_previous_package" .xbps)
+            task_xbps_arch=$(xbps-uhelper arch)
+            task_expected_old=${task_old_base%."$task_xbps_arch"}
+            test "$(xbps-query -p pkgver jarvis-assistant)" = "$task_expected_old"
+            cp "$task_package" "$task_repository/"
+            xbps-rindex -a "$task_repository/$(basename "$task_package")"
+            xbps-install -yu -R "$task_repository" jarvis-assistant
+            task_new_base=$(basename "$task_package" .xbps)
+            task_expected_new=${task_new_base%."$task_xbps_arch"}
+            test "$(xbps-query -p pkgver jarvis-assistant)" = "$task_expected_new"
+        fi
         ;;
     rhel:rhel|rhel:almalinux|rhel:rocky|rhel:centos|rhel:ol)
         [ "${VERSION_ID%%.*}" = 10 ] || { echo 'Teste rhel exige versao 10.' >&2; exit 2; }

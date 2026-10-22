@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T00:33:04Z",
+  "verified_at_utc": "2026-10-22T00:40:50Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4331,6 +4331,27 @@
       ],
       "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
       "notes": "Arch Linux ARM AArch64 job on the native ubuntu-24.04-arm runner passed the second-revision package upgrade, pacman integrity check, unchanged config/data/cache hashes, and removal."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Wayland",
+      "session": "PipeWire/Pulse compatibility protocol",
+      "package": "native host runtime",
+      "capability": "audio_input_device_enumeration",
+      "status": "passed",
+      "command": "PYTHONPATH=voice voice/.venv/bin/python -c \"load_config(JARVIS_PLATFORM=linux); list_devices(config)\"",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-pipewire-device-enumeration-2026-10-22.log",
+          "sha256": "079e8a3ce796a3b196ba24a13ac5631848268e09d754a530039fb42f8ffe6c83"
+        }
+      ],
+      "notes": "On the Arch x86_64 Wayland host, Jarvis enumerated the default input plus two real input sources and filtered monitor sources. This is enumeration only; no microphone capture, speech recognition, calibration, or playback was performed."
     }
   ],
   "pending_gates": [

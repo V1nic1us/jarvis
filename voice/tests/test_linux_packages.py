@@ -619,8 +619,12 @@ def test_void_glibc_ci_builds_and_tests_native_xbps_on_both_architectures():
     for required in ('ubuntu-24.04', 'ubuntu-24.04-arm', 'x86_64', 'aarch64',
                      'packaging/void/Dockerfile', 'test-native-package.sh',
                      'void-glibc', 'ghcr.io/void-linux/void-glibc-full:latest',
-                     'timeout-minutes: 240'):
+                     'timeout-minutes: 240', 'dist/upgrade',
+                     'jarvis-assistant-0.1.0_1.*.xbps',
+                     'jarvis-assistant-0.1.0_2.*.xbps'):
         assert required in text
+    dockerfile=(ROOT/'packaging/void/Dockerfile').read_text()
+    assert 'scripts/repack-xbps-previous.py' in dockerfile
 
 
 def test_void_builder_supports_a_musl_target_without_changing_glibc_defaults():
@@ -632,13 +636,18 @@ def test_void_builder_supports_a_musl_target_without_changing_glibc_defaults():
     workflow=(ROOT/'.github/workflows/linux-void.yml').read_text()
     assert 'void-musl:' in workflow
     for required in ('--build-arg JARVIS_VOID_LIBC=musl', '--build-arg JARVIS_VOID_TARGET=void-musl',
-                     'ghcr.io/void-linux/void-musl-full:latest', 'timeout-minutes: 360'):
+                     'ghcr.io/void-linux/void-musl-full:latest', 'timeout-minutes: 360',
+                     'jarvis-assistant-0.1.0_1.*-musl.xbps', 'jarvis-assistant-0.1.0_2.*-musl.xbps'):
         assert required in workflow
+    native=(ROOT/'scripts/test-native-package.sh').read_text()
+    for required in ('task_previous_package=${3:-}', 'xbps-query -p pkgver jarvis-assistant',
+                     'xbps-install -yu -R "$task_repository" jarvis-assistant'):
+        assert required in native
 
 
 def test_void_arm_bootstrap_installs_binary_mesa_before_xbps_src_build():
     dockerfile=(ROOT/'packaging/void/Dockerfile').read_text()
-    assert 'libffi-devel ca-certificates mesa && \\' in dockerfile
+    assert 'libffi-devel ca-certificates mesa tar zstd && \\' in dockerfile
 
 
 def test_void_builder_keeps_binary_repository_and_source_snapshot_aligned():
@@ -656,6 +665,41 @@ def test_void_recipes_install_tar_for_source_archive_extraction():
         recipe=(ROOT/recipe_path).read_text()
         hostdeps=next(line for line in recipe.splitlines() if line.startswith('hostmakedepends='))
         assert 'tar' in hostdeps.split('=',1)[1].strip('"').split()
+        assert 'zstd' in hostdeps.split('=',1)[1].strip('"').split()
+        assert 'tar -xzf "${FILESDIR}/jarvis-${version}.tar.gz"' in recipe
+        assert 'bsdtar -xf' not in recipe
+    dockerfile=(ROOT/'packaging/void/Dockerfile').read_text()
+    assert 'python3-pip pkg-config gtk+3-devel libwebkit2gtk41-devel libffi-devel ca-certificates mesa tar zstd' in dockerfile
+
+
+def test_xbps_previous_revision_preserves_arch_and_rewrites_versioned_provides():
+    spec=importlib.util.spec_from_file_location('xbps_previous_revision',ROOT/'scripts/repack-xbps-previous.py')
+    module=importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    source={
+        'pkgname':'jarvis-assistant',
+        'pkgver':'jarvis-assistant-0.1.0_2',
+        'version':'0.1.0_2',
+        'architecture':'aarch64-musl',
+        'provides':['cmd:jarvis-0.1.0_2','cmd:jarvis-overlay-0.1.0_2'],
+        'run_depends':['python3>=3.14<3.15','ffmpeg>=0'],
+    }
+    result=module.previous_revision_properties(source)
+    assert result['pkgver']=='jarvis-assistant-0.1.0_1'
+    assert result['version']=='0.1.0_1'
+    assert result['architecture']=='aarch64-musl'
+    assert result['provides']==['cmd:jarvis-0.1.0_1','cmd:jarvis-overlay-0.1.0_1']
+    assert result['run_depends']==source['run_depends']
+
+
+def test_xbps_previous_revision_rejects_first_or_inconsistent_revision():
+    spec=importlib.util.spec_from_file_location('xbps_previous_revision',ROOT/'scripts/repack-xbps-previous.py')
+    module=importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    with pytest.raises(ValueError,match='no previous XBPS revision'):
+        module.previous_revision_properties({'pkgname':'jarvis-assistant','pkgver':'jarvis-assistant-0.1.0_1','version':'0.1.0_1'})
+    with pytest.raises(ValueError,match='pkgver/version mismatch'):
+        module.previous_revision_properties({'pkgname':'jarvis-assistant','pkgver':'jarvis-assistant-0.1.0_2','version':'0.1.0_3'})
 
 
 def test_native_driver_builds_the_nix_flake(tmp_path):

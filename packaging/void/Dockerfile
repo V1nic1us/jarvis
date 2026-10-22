@@ -16,7 +16,7 @@ RUN mkdir -p /var/cache/xbps /rootfs/var/db/xbps /rootfs/var/cache/xbps /rootfs/
     -R "$task_repo" \
     -R "$task_bootstrap" \
     base-chroot git rust cargo nodejs python3 python3-devel \
-    python3-pip pkg-config gtk+3-devel libwebkit2gtk41-devel libffi-devel ca-certificates mesa && \
+    python3-pip pkg-config gtk+3-devel libwebkit2gtk41-devel libffi-devel ca-certificates mesa tar zstd && \
     rm -rf /rootfs/var/cache/xbps
 FROM scratch
 ARG JARVIS_VOID_TARGET=void-glibc
@@ -39,4 +39,4 @@ COPY . .
 ENV CARGO_HTTP_TIMEOUT=600 CARGO_NET_RETRY=10
 RUN git init -q && git add -A && \
     sh scripts/build-package.sh --target "$JARVIS_VOID_TARGET" --output /out
-CMD ["sh", "-c", "find /out -name '*.xbps' -type f -exec cp '{}' /export/ ';'"]
+CMD ["sh", "-c", "set -eu; task_package=$(find /out -maxdepth 1 -type f -name '*.xbps' -print -quit); test -n \"$task_package\"; python3 scripts/repack-xbps-previous.py \"$task_package\" --output-dir /out/upgrade; task_previous=$(find /out/upgrade -maxdepth 1 -type f -name '*.xbps' -print -quit); test -n \"$task_previous\"; cp \"$task_package\" /export/; cp \"$task_previous\" /export-upgrade/"]
