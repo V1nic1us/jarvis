@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:17:17Z",
+  "verified_at_utc": "2026-10-22T05:20:15Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -2406,10 +2406,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338606",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460697/job/119640995048",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
-      "notes": "CI run 39705918455 passed the native Void musl package build, install, runtime inspection, integrity checks, removal and data preservation on x86_64; Xvfb relaunch checks passed.",
-      "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
+      "notes": "CI run 39705918455 passed the native Void musl package build, install, runtime inspection, integrity checks, removal and data preservation on x86_64; Xvfb relaunch checks passed. Current native Void musl x86_64 CI build, install/runtime smoke, upgrade/data-preservation and removal passed in run 39721460697.",
+      "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32"
     },
     {
       "target": "void-musl",
@@ -2444,10 +2450,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918455/job/119592338606",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460697/job/119640995048",
+          "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
+          "conclusion": "success"
         }
       ],
-      "notes": "CI run 39705918455 built both revisions, installed _1 then upgraded to _2 with XBPS on x86_64; doctor/runtime/integrity and unchanged user data passed, then package removal passed.",
-      "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347"
+      "notes": "CI run 39705918455 built both revisions, installed _1 then upgraded to _2 with XBPS on x86_64; doctor/runtime/integrity and unchanged user data passed, then package removal passed. Current native Void musl x86_64 CI build, install/runtime smoke, upgrade/data-preservation and removal passed in run 39721460697.",
+      "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32"
     },
     {
       "target": "void-musl",
