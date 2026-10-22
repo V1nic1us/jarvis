@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:53:07Z",
+  "verified_at_utc": "2026-10-22T04:07:27Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -1333,9 +1333,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846117",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278893",
+          "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
         }
       ],
-      "notes": "Latest native package CI passed x86_64 RPM build, clean installation, inspection, upgrade/data preservation and removal. Latest native build/install/inspection/removal passed in CI run 39683082677. Latest build/install/inspection/removal passed in run 39683082677. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2.",
+      "notes": "Latest native package CI passed x86_64 RPM build, clean installation, inspection, upgrade/data preservation and removal. Latest native build/install/inspection/removal passed in CI run 39683082677. Latest build/install/inspection/removal passed in run 39683082677. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2. Current revalidation run 39718506520 passed native RPM build, clean install, inspection and removal.",
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a"
     },
     {
@@ -1392,10 +1398,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846117",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39718506520/job/119626278893",
+          "source_commit": "1babf24f17a0e42996470beb11a30eac27375e89",
+          "conclusion": "success"
         }
       ],
       "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
-      "notes": "Current CI run 39526318763 passed the rhel x86_64 native package upgrade and user-data-preservation test. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677. Latest package upgrade and user-data-preservation step passed in 39692211142 attempt 2."
+      "notes": "Current CI run 39526318763 passed the rhel x86_64 native package upgrade and user-data-preservation test. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677. Latest package upgrade and user-data-preservation step passed in 39692211142 attempt 2. Current revalidation run 39718506520 passed the RPM upgrade and user-data-preservation test."
     },
     {
       "target": "rhel",
@@ -2917,6 +2929,18 @@
             "authorized interactive Linux desktop required (1 test)"
           ],
           "environment": "Arch Linux rolling x86_64 Wayland host; project venv"
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-voice-tests-2026-10-22-head-74bbdfe.log",
+          "artifact_sha256": "03ea74a6696c407922e71450e58e7a9e4aa6f8ccede9b72f478863ec928d796c",
+          "passed": 501,
+          "skipped": 1,
+          "skip_reasons": [
+            "AT-SPI desktop test skipped because the sentinel window did not receive focus; no mutation was attempted"
+          ],
+          "environment": "Arch Linux rolling x86_64 KDE Wayland; project venv",
+          "source_commit": "74bbdfeaf584f74f00f6a070fd64e15bcf97c4de"
         }
       ],
       "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session.",
@@ -3479,9 +3503,15 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918446/job/119585808077",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39719013757/job/119627896195",
+          "source_commit": "5ce66ca8aeededff4200ec4ab142c0f12193f8f7",
+          "conclusion": "success"
         }
       ],
-      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39607881416 passed native x86_64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264.",
+      "notes": "Current fork run passed the x86_64 Flatpak bundle build, install, and bundled-runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39526318796 passed native x86_64 bundle build, install and runtime inspection. CI run 39607881416 passed native x86_64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264. Latest native x86_64 bundle build/install/runtime inspection passed in run 39719013757.",
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e"
     },
     {
@@ -4304,10 +4334,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918446/job/119585808383",
           "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39719013757/job/119627896362",
+          "source_commit": "5ce66ca8aeededff4200ec4ab142c0f12193f8f7",
+          "conclusion": "success"
         }
       ],
       "source_commit": "ca398f3f0186e7c74296b4e8e430a7d2ba1ca24e",
-      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264."
+      "notes": "CI run 39526318796 passed native AArch64 Flatpak bundle build, install and runtime inspection. This does not test in-place bundle upgrade/data preservation. CI run 39526318796 passed native aarch64 bundle build, install and runtime inspection. CI run 39607881416 passed native AArch64 bundle build, install and runtime inspection. Latest native bundle build/install/runtime inspection passed in CI run 39685647380. Latest CI revalidation passed in run 39692211264. Latest native AArch64 bundle build/install/runtime inspection passed in run 39719013757."
     },
     {
       "target": "arch",
