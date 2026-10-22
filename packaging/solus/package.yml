@@ -50,5 +50,6 @@ install    : |
     python3 scripts/prepare-package.py --prefix /usr --destdir "$installdir" \
         --overlay gui/src-tauri/target/release/jarvis-overlay \
         --python /usr/bin/python3 --opencode opencode-package
+    python3 scripts/prune-node-addons.py glibc "$installdir/usr/lib/jarvis/.opencode"
     %install_license LICENSE
     %install_file docs/linux.md "$installdir/usr/share/doc/jarvis-assistant/linux.md"
