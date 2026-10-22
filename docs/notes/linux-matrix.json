@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:17:01Z",
+  "verified_at_utc": "2026-10-22T03:20:50Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5116,6 +5116,40 @@
       ],
       "source_commit": "56324ac",
       "notes": "Piper synthesis through the extracted current-HEAD Arch package runtime produced a valid mono 22050 Hz PCM WAV using the existing Portuguese voice model. The model was read only; no microphone capture or audio playback occurred. This validates synthesis-to-file, not playback/streaming."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "packaged voice runtime",
+      "session": "offline audio-file round trip",
+      "package": "pkg.tar.zst",
+      "capability": "native_package_tts_stt_roundtrip",
+      "status": "passed",
+      "command": "package Piper synthesis to WAV; package faster-whisper transcribe WAV (offline, CPU int8)",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-speech-roundtrip-2026-10-22.log",
+          "sha256": "348f30b48ff894b1ea466c093492d13fb657a3434d6704f65b6141489333bfdf",
+          "size_bytes": 611,
+          "source_commit": "56324ac",
+          "package_sha256": "847a060134565455c6a69496c8242e099f66f5e4ba8f223e78bc865a02367dbd",
+          "audio_path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-audio/stt-roundtrip.wav",
+          "audio_sha256": "fd144732cb280ccaf12ebbb6fc65d172d1bc4ad85e22baabfa1747edfd9c0f3f",
+          "audio_bytes": 48684,
+          "sample_rate": 22050,
+          "channels": 1,
+          "duration_seconds": 1.102948,
+          "expected": "Olá, tudo bem?",
+          "recognized": "Olá tudo bem?",
+          "network": "disabled"
+        }
+      ],
+      "source_commit": "56324ac",
+      "notes": "The extracted current-HEAD Arch package completed an offline TTS-to-STT file round trip with the local Portuguese Piper model and local faster-whisper base model. Whisper returned “Olá tudo bem?” for the synthesized “Olá, tudo bem?”. No microphone or audio playback was used; physical capture and playback/streaming remain unverified."
     }
   ],
   "pending_gates": [
