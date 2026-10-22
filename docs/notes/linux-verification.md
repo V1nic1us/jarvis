@@ -130,7 +130,13 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
   um portal real. O teste STT verificou compatibilidade de decode PCM, sem
   baixar modelo ou testar reconhecimento nessa execução.
 - `python3 -m pytest -q voice/tests/test_linux_packages.py`: **79 passed** em
-  2,04 s.
+  2,04 s; junto com `voice/tests/test_linux_install.py`, **84 passed** em
+  3,00 s, cobrindo staging, relocação e ciclo dos pacotes.
+- A tentativa opt-in `JARVIS_DESKTOP_TESTS=1 PYTHONPATH=voice
+  voice/.venv/bin/python -m pytest -q -rs voice/tests/test_atspi_desktop.py`
+  foi pulada antes de enviar texto porque a janela sentinela não recebeu foco;
+  nenhuma janela do usuário foi modificada. A aprovação anterior no KDE Wayland
+  permanece registrada separadamente.
 - O venv temporário está em `/tmp/jarvis-linux-optional-tests`; não altera as
   dependências do sistema nem do projeto.
 
