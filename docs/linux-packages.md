@@ -15,11 +15,11 @@ remoção e os testes de atualização/preservação de dados previstos para cad
 gerenciador ([CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511)).
 Flatpak e Nix passaram em x86_64/AArch64 ([Flatpak](https://github.com/V1nic1us/jarvis/actions/runs/39705918446), [Nix](https://github.com/V1nic1us/jarvis/actions/runs/39705918449)). Void glibc e musl passaram build, instalação, upgrade e preservação de dados nas duas arquiteturas ([CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455)).
 
-A matriz registra cada job e suas limitações. O host Arch/KDE Wayland já passou
-testes funcionais do overlay, MCP instalado e áudio sintético por ALSA e
-PipeWire/Pulse, incluindo Piper, STT e VAD. Permanecem pendentes microfone e
-reprodução físicos, autorização/recusa/revogação real de Screenshot e
-RemoteDesktop e a repetição dessa cobertura em outros desktops e distribuições.
+A matriz registra cada job e suas limitações. O host Arch/KDE Wayland já passou testes funcionais do overlay, MCP instalado
+e áudio sintético por ALSA e PipeWire/Pulse, incluindo Piper, STT e VAD. Uma
+medição Pulse de nível por 0,5 s também passou no host. Ainda faltam PTT/VAD e
+reprodução/streaming nos pacotes instalados, autorização/recusa/revogação real
+de Screenshot e RemoteDesktop e repetir a cobertura em outros desktops e distros.
 
 ## NixOS
 
@@ -217,10 +217,9 @@ do agente, presença de pactl, verificação rpm e remoção com preservação d
 de usuário usado no teste. O ciclo do
 pacote atualizado e o relançamento do overlay em Xvfb também passaram. Não há
 RPM publicado em repositório oficial. A validação do desktop completo e do
-áudio físico permanece pendente. O arquivo `packaging/targets.json` registra as famílias previstas,
-separa receita disponível de validação e marca explicitamente os alvos cuja
-implementação ainda está pendente. Suporte ARM64 declarado é um alvo de build,
-não evidência de execução nessa arquitetura.
+áudio físico permanece pendente. O arquivo `packaging/targets.json` registra separadamente as arquiteturas
+declaradas e as validadas; o job Fedora AArch64 passou o upgrade e preservação
+de dados na CI 39705918511.
 
 A CI acrescentou um teste de importação do AT-SPI que revelou a ausência de
 `DBus-1.0.typelib` nas instalações mínimas Fedora x86_64 e ARM64. A receita
@@ -360,8 +359,9 @@ interface Wayland em Weston isolado, integridade e remoção preservando os dado
 de teste. O catálogo registra **installed-smoke** para x86_64 e aarch64: os dois jobs
 RHEL da [CI 38947707383](https://github.com/V1nic1us/jarvis/actions/runs/38947707383)
 passaram nos testes instalados da arquitetura correspondente.
-Atualização de versão, áudio, portais e desktops reais continuam pendentes.
-A seleção de repositórios da imagem de build é específica do AlmaLinux; os testes
+Upgrade RPM de revisão e preservação de dados passaram em x86_64 e AArch64 na
+CI 39705918511. Upgrade entre versões publicadas do aplicativo, áudio, portais
+e desktops reais continuam pendentes. A seleção de repositórios da imagem de build é específica do AlmaLinux; os testes
 não certificam outras distribuições da família.
 
 ### Void glibc: ciclo instalado x86_64 validado
@@ -384,7 +384,7 @@ preservação de dados passaram. O artefato e o log de validação estão em
 revisão `_1` para `_2`, com doctor antes e depois e sentinel dos dados do usuário
 preservado; isso não substitui atualização entre versões de aplicativo
 publicadas. CI também construiu o pacote e passou instalação, inspeção e
-remoção em Void glibc AArch64 na [CI 39419181120](https://github.com/V1nic1us/jarvis/actions/runs/39419181120). Desktop real, áudio e atualização AArch64 entre versões publicadas ainda não foram validados.
+remoção em Void glibc AArch64 na [CI 39419181120](https://github.com/V1nic1us/jarvis/actions/runs/39419181120). O rerun [39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455) passou upgrade `_1`→`_2` e preservação de dados em x86_64 e AArch64. Desktop real, áudio e migração entre versões publicadas do aplicativo ainda não foram validados.
 
 Em um host Void glibc nativo, compile o pacote e instale-o pelo repositório
 XBPS local:
