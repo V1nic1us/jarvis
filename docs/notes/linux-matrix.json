@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:39:55Z",
+  "verified_at_utc": "2026-10-22T03:51:52Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5329,6 +5329,22 @@
       ],
       "source_commit": "56324ac",
       "notes": "The overlay binary from the extracted Arch package completed the Wayland relaunch/exit and AT-SPI menu checks under Debian 13 Weston. Headless GDK seat warnings appeared. This remains an isolated cross-distro compositor test; real keyboard/pointer input, live portals, audio and installed desktop behavior are unverified."
+    },
+    {
+      "target": "solus",
+      "distro": "solus",
+      "version": "4.9",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": null,
+      "session": null,
+      "package": "eopkg",
+      "capability": "native_package_upgrade_data_preservation",
+      "status": "unverified",
+      "command": "scripts/test-native-solus-upgrade.sh <release1.eopkg> <release2.eopkg> 1 2",
+      "evidence": [],
+      "source_commit": "5ce66ca",
+      "notes": "The upgrade test script and release override exist. The script passed a disposable mock-eopkg smoke, including detecting a mutated XDG sentinel, but no Solus/eopkg runtime or package artifacts are available in this environment. Mock evidence is not accepted as native upgrade evidence; run the command in a disposable Solus 4.9 x86_64 container."
     }
   ],
   "pending_gates": [

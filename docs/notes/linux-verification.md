@@ -911,3 +911,13 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   preservação dos sentinels passaram; uma segunda execução alterou um sentinel e
   foi recusada pelo comparador. Isso valida o fluxo do script, não o
   comportamento real do gerenciador Solus; a validação nativa segue pendente.
+
+### Upgrade eopkg do Solus ainda sem execução nativa — 2026-10-22
+
+- A matriz agora inclui explicitamente o upgrade Solus x86_64 como
+  `unverified`. O script `test-native-solus-upgrade.sh` passou o fluxo positivo
+  e detectou a alteração deliberada de um sentinel com eopkg simulado; isso não
+  comprova instalação nem atualização pelo gerenciador real.
+- Sem `eopkg`, `solbuild` ou artefato `.eopkg` disponível aqui, o teste real fica
+  pendente. O registro passa a 98/101 verificações aprovadas (97,0%); Gentoo
+  AArch64, Guix AArch64 e upgrade Solus x86_64 permanecem sem validação.
