@@ -858,3 +858,9 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 - O arquivo fonte determinístico usado pelas receitas nativas contém 240 arquivos regulares, todos idênticos byte a byte ao checkout no commit `0ce1d68`; nenhuma divergência. SHA-256 do tarball: `9de99fdf45e97aaef1fed71862092fb75f59a80326547c18f18cc63b2d706f0d`. Registro: `.superpowers/sdd/2026-10-14-jarvis-linux/source-archive-integrity-2026-10-22.log`.
 - A rechecagem AT-SPI opt-in do host Arch Wayland pulou antes da ação porque a sentinela não recebeu foco. Nenhuma mutação foi tentada. A aprovação positiva anterior na sessão KDE Wayland permanece como evidência separada; o resultado atual não a substitui. Registro: `.superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-rerun-2026-10-22.log`.
+
+### Pacote Arch construído do HEAD e smoke extraído — 2026-10-22
+
+- `npm_config_audit=false scripts/build-package.sh --target arch --arch x86_64 --output /tmp/jarvis-arch-head` gerou o pacote Arch nativamente no host Arch x86_64 usando o commit `56324ac`. O pacote tem 229.834.022 bytes e SHA-256 `847a060134565455c6a69496c8242e099f66f5e4ba8f223e78bc865a02367dbd`.
+- Sem instalar o pacote, extraí o artefato em diretório temporário. O launcher empacotado passou `--doctor` e `--list-mics`; o FFmpeg enumerou `default` e duas fontes PipeWire/Pulse ALSA. Nenhum áudio foi gravado. O diretório XDG isolado não tinha modelo Piper, e o comportamento de desktop autorizado por portal continua pendente.
+- A primeira execução do build ficou parada em `npm ci` durante a auditoria npm; a repetição desativou apenas a auditoria para essa execução e concluiu. Evidência: `.superpowers/sdd/2026-10-14-jarvis-linux/arch-current-head-package-smoke-2026-10-22.log`, SHA-256 `13e2cf00b80f3cd309d9e03308a390ae1e0e59ab11cf0f5c73afd07997d9ca54`.
