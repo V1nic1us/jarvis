@@ -117,6 +117,23 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
 - Suíte completa no venv com dependências reais: 354 passed in 11.71s.
 - `pip check`: No broken requirements found.
 
+### Regressão Arch Linux x86_64 — 2026-10-22
+
+- `python3 -m pytest -q -rs voice/tests`: **492 passed, 10 skipped** em
+  16,92 s no host Arch Linux rolling, Python 3.14.8, Wayland. Os skips foram
+  o teste de desktop interativo (opt-in), 8 testes que precisam de `dbus_next`
+  e um teste que precisa de `faster_whisper`; estes dois grupos passaram quando
+  reexecutados com as dependências em venv isolado.
+- `PYTHONPATH=voice /tmp/jarvis-linux-optional-tests/bin/python -m pytest -q -rs voice/tests/test_portal.py voice/tests/test_stt.py`: **17 passed** em 1,04 s,
+  com `dbus-next==0.2.3`, `faster-whisper` 1.x e PyAV `<19`. O portal foi
+  exercitado em sessão D-Bus privada; isso não concede nem revoga permissões em
+  um portal real. O teste STT verificou compatibilidade de decode PCM, sem
+  baixar modelo ou testar reconhecimento nessa execução.
+- `python3 -m pytest -q voice/tests/test_linux_packages.py`: **79 passed** em
+  2,04 s.
+- O venv temporário está em `/tmp/jarvis-linux-optional-tests`; não altera as
+  dependências do sistema nem do projeto.
+
 A tarefa de áudio tem implementação e testes reais de captura/STT/TTS; a
 validação integral entre backends/ambientes permanece em andamento. A tarefa
 de screenshot tem implementação e testes de transporte, mas captura Wayland
