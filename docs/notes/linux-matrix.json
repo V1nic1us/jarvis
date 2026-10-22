@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:03:34Z",
+  "verified_at_utc": "2026-10-22T05:05:00Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -3140,7 +3140,7 @@
           "environment": "Arch Linux x86_64 KDE Wayland; project venv; PYTHONPATH unset"
         }
       ],
-      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session. The current commit 6f03767 also passed 501 tests with one authorized-desktop test skipped when run with PYTHONPATH unset. Commit 787dc9f removes inherited host PYTHONPATH while checking the Nix external Python runtime; full suite passed 501 tests with one authorized-desktop test skipped.",
+      "notes": "Full voice Python regression suite ran in the project virtualenv on the native Arch Linux Wayland host. Latest run on 2026-10-22 passed 501 tests; one opt-in desktop test was skipped because it requires an authorized interactive Linux desktop session. The current commit 6f03767 also passed 501 tests with one authorized-desktop test skipped when run with PYTHONPATH unset. Commit 787dc9f removes inherited host PYTHONPATH while checking the Nix external Python runtime; full suite passed 501 tests with one authorized-desktop test skipped. Regression test injects an inherited host PYTHONPATH and verifies the external-runtime checks strip it; the suite passed on commit 787dc9f.",
       "source_commit": "0ce1d68"
     },
     {
