@@ -6,7 +6,7 @@ exercitados o overlay e o MCP instalado, síntese Piper, captura de áudio
 sintético via PipeWire/Pulse e ALSA, STT em português e VAD com áudio sintético.
 O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 têm evidência de
 ciclo instalado: 24 pacotes nativos e dois bundles Flatpak. Gentoo AArch64 e
-Guix AArch64 são as duas combinações sem validação final. A matriz registra 106 de 108 verificações aprovadas (98,1%). Todos os 14
+Guix AArch64 são as duas combinações sem validação final. A matriz registra 107 de 109 verificações aprovadas (98,2%). Todos os 14
 jobs nativos passaram na [CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511),
 incluindo upgrades e preservação de dados onde configurados. Nix e Flatpak
 passaram em x86_64/AArch64. Void glibc e musl passaram build, instalação,

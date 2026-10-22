@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T06:54:55Z",
+  "verified_at_utc": "2026-10-22T07:02:56Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -6161,6 +6161,41 @@
       ],
       "source_commit": "7c739d0",
       "notes": "pacman installed the package and dependencies in a disposable rolling Arch x86_64 container. jarvis --doctor, private runtime imports, pacman -Qkk, user-data preservation, isolated Xvfb overlay relaunch and package removal passed. This validates package lifecycle and an isolated X11 relaunch, not a real Arch desktop/audio session."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "headless staged native package tree",
+      "session": "MCP stdio calls for unsupported desktop resources and process query",
+      "package": "pacman pkg.tar.zst release 0.1.0-1 built from source commit 365cd19",
+      "capability": "native_package_mcp_headless_error_details",
+      "status": "passed",
+      "command": "scripts/build-package.sh --target arch --arch x86_64; MCP stdio client via staged /usr/bin/jarvis --mcp win_context; check package-payload hashes, headless errors and read-only process query",
+      "evidence": [
+        {
+          "kind": "test_script",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release5-mcp-headless.py",
+          "sha256": "18b577cb72c469d5c0a086f678dd16fa25385e9a8b12eb391b3dac338cf2733b",
+          "size_bytes": 2795
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release5-mcp-headless.log",
+          "sha256": "d4493c5817eff0fadca10fc08e55341f9adde8b5e51ed15f6a1c84e06b775610",
+          "size_bytes": 842
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release5-build/jarvis-assistant-0.1.0-1-x86_64.pkg.tar.zst",
+          "sha256": "92fdf8bb48167f76852c0702a0c5e60c042d1ba746f8572f1b5bf0452e36b493",
+          "size_bytes": 229848727
+        }
+      ],
+      "source_commit": "365cd19",
+      "notes": "The package archive payload for server.py and linux_context.py matched the staged tree. The packaged launcher returned is_error=true with explicit AT-SPI and clipboard headless reasons; desktop_processes_text still returned a read-only process result. Uses the package build tree, not a pacman-installed package; pacman lifecycle is recorded separately."
     }
   ],
   "pending_gates": [

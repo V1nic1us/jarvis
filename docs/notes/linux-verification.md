@@ -1033,3 +1033,15 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O relançamento foi isolado em Xvfb; isso não comprova uma sessão Arch real,
   áudio ou portais. Log e artefato estão na matriz com hashes. Estado atualizado:
   106/108 verificações aprovadas (98,1%).
+
+
+### Arch: MCP empacotado informa capacidades headless — 2026-10-22
+
+- O cliente MCP stdio iniciou o servidor `win_context` pelo launcher do pacote
+  Arch x86_64 reconstruído no commit `365cd19`. A listagem de janelas e a leitura
+  de clipboard retornaram `is_error=true` com o motivo específico de sessão
+  gráfica ausente; a consulta somente leitura de processos continuou funcionando.
+- O teste conferiu que os arquivos MCP/desktop do arquivo `.pkg.tar.zst` são
+  idênticos aos usados pelo launcher no staging. É smoke do payload empacotado,
+  não instalação pacman; o ciclo pacman está registrado separadamente. Script,
+  log e pacote têm hashes na matriz. Estado atualizado: 107/109 (98,2%).
