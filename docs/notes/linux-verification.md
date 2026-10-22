@@ -139,6 +139,11 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
   permanece registrada separadamente.
 - O venv temporário está em `/tmp/jarvis-linux-optional-tests`; não altera as
   dependências do sistema nem do projeto.
+- Captura real de entrada Pulse por 0,5 s no host: `measure_level` retornou
+  mean -40,7 dBFS e pico -26,6 dBFS. FFmpeg enviou os samples ao muxer null;
+  nenhum WAV foi salvo ou transcrito. Log:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/arch-pulse-capture-measure-level-2026-10-22.log`
+  (SHA-256 `16a84b94bc96f8b3b100c33f3dfa315a1adc87c8b7486ba664a402acc43cc499`).
 - A bateria Linux focada na venv do projeto (`test_linux_install`,
   `test_linux_packages`, contexto, entrada, tela, plataformas, áudio, captura,
   diagnóstico, portal e STT) passou com **177 testes** em 6,55 s. Ela inclui os

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T02:38:58Z",
+  "verified_at_utc": "2026-10-22T02:46:40Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4824,6 +4824,28 @@
       ],
       "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
       "notes": "CI run 39705918455 built both revisions, installed _1 then upgraded to _2 with XBPS on aarch64; doctor/runtime/integrity and unchanged user data passed, then package removal passed."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "PipeWire/Pulse",
+      "package": "native host runtime",
+      "capability": "pulse_microphone_capture_level_measurement",
+      "status": "passed",
+      "command": "PYTHONPATH=voice voice/.venv/bin/python measure_level(seconds=0.5, AUDIO_BACKEND=pulse)",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-pulse-capture-measure-level-2026-10-22.log",
+          "sha256": "16a84b94bc96f8b3b100c33f3dfa315a1adc87c8b7486ba664a402acc43cc499"
+        }
+      ],
+      "source_commit": "748695d7797d94131ab5ec1ae9ef76ac9407f657",
+      "notes": "On the Arch Linux x86_64 KDE Wayland host, FFmpeg captured 0.5 s from the default Pulse input and volumedetect returned mean -40.7 dBFS and max -26.6 dBFS. Output was sent to the null muxer: no WAV was saved and no speech was transcribed. This proves a real input-level measurement on this host only; PTT/VAD, playback/streaming and installed-package coverage remain pending."
     }
   ],
   "pending_gates": [
