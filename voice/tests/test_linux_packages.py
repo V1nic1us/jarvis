@@ -1024,6 +1024,7 @@ def test_nix_package_links_immutable_python_runtime_without_pip(tmp_path,monkeyp
         calls.append((command,kwargs.get('env',{})))
     monkeypatch.setattr(package.subprocess,'check_output',check_output)
     monkeypatch.setattr(package.subprocess,'run',run)
+    monkeypatch.setenv('PYTHONPATH',str(tmp_path/'host-python'))
     package.prepare(str(prefix),'','/unused',str(external_python),str(opencode),external_python_runtime=str(external_python),with_node_modules=False,expected_opencode_version='1.3.14')
     assert (app/'runtime/bin/python3').resolve()==external_python.resolve()
     assert staged==[False]

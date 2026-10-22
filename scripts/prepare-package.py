@@ -108,6 +108,7 @@ def prepare(prefix: str,destdir: str,overlay: str,python: str,opencode: str,whee
     (app/'install-manifest.json').write_text(json.dumps({'prefix':prefix,'python_abi':version,'files':files},indent=2)+'\n')
     env=dict(os.environ,PATH=str(app/'bin')+os.pathsep+str(runtime/'bin')+os.pathsep+os.environ.get('PATH',''),PYTHONDONTWRITEBYTECODE='1',JARVIS_PROJECT_ROOT=str(app),JARVIS_PLATFORM='linux')
     if runtime.is_dir():env['PYTHONPATH']=str(runtime)
+    else:env.pop('PYTHONPATH',None)
     subprocess.run([python,str(app/'voice/loop.py'),'--doctor'],env=env,check=True)
     subprocess.run([python,'-c','import faster_whisper,piper,mcp,httpx,dbus_next;print("native runtime imports passed")'],env=env,check=True)
 
