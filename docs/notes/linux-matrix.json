@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T06:33:02Z",
+  "verified_at_utc": "2026-10-22T06:36:15Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -6062,6 +6062,41 @@
       ],
       "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
       "notes": "The installed Solus launcher started win_context and delegate_local as stdio MCP servers. initialize returned protocol 2025-11-25; tools/list returned the expected 8 win_context names and 1 delegate_local name. The tools themselves were not invoked; eopkg integrity and removal passed."
+    },
+    {
+      "target": "solus",
+      "distro": "solus",
+      "version": "4.9",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "headless container",
+      "session": "MCP read-only process query over stdio",
+      "package": "eopkg release 3",
+      "capability": "native_package_mcp_process_query",
+      "status": "passed",
+      "command": "Installed release 3; packaged MCP client called desktop_processes_text(name_filter=python) through win_context; eopkg check and remove",
+      "evidence": [
+        {
+          "kind": "test_script",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-mcp-stdio-2026-10-22.py",
+          "sha256": "92b95898678bb798694802ddf432506cd47f807ab7d8b81bcbda783250be0e19",
+          "size_bytes": 1791
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-mcp-stdio-2026-10-22.log",
+          "sha256": "0ad1b010262d766197f5c5d5726e67f08d0d5627008970102bf3306b24981f8e",
+          "size_bytes": 1071688
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release-3/jarvis-assistant-0.1.0-3-1-x86_64.eopkg",
+          "sha256": "55539ac2567ae95d9f633bca3fc2b1c69429a2af3146459e34f722cb372346aa",
+          "size_bytes": 202582589
+        }
+      ],
+      "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
+      "notes": "The installed MCP desktop_processes_text tool invoked the Linux processes implementation with a literal filter and returned python3 plus a PID from inside the disposable container. This is a read-only container process query, not desktop-process discovery on the host. MCP initialize/tools/list, package integrity and removal also passed."
     }
   ],
   "pending_gates": [

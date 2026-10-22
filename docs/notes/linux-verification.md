@@ -1000,3 +1000,14 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O teste não invocou ferramentas, portanto não valida clipboard, processos,
   acessibilidade ou agente. `eopkg check` e remoção passaram. Logs e script
   estão na matriz com hashes; o estado atual é 103/105 (98,1%).
+
+
+### Solus: chamada somente leitura pelo MCP instalado — 2026-10-22
+
+- O cliente MCP invocou `desktop_processes_text` com filtro literal `python` no
+  servidor `win_context` da release 3. A chamada retornou `python3` e PID do
+  próprio container descartável; `eopkg check` e remoção passaram.
+- Isso exercita a rota de contexto Linux, mas lista processos do container, não
+  do desktop hospedeiro. Não valida clipboard, AT-SPI ou outras ações. Script e
+  log estão na matriz com hashes; total atual: 104/106 verificações aprovadas
+  (98,1%).
