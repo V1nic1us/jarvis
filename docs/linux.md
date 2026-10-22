@@ -8,7 +8,7 @@ remoção no [CI 39683082677](https://github.com/V1nic1us/jarvis/actions/runs/39
 com testes de atualização/preservação de dados nos gerenciadores cobertos pelo
 workflow. Nix (incluindo upgrade de perfil e preservação de dados) e Flatpak passaram em x86_64/AArch64; Void glibc também passou nas
 duas arquiteturas; Void musl também passou nas duas arquiteturas no [CI 39692211144](https://github.com/V1nic1us/jarvis/actions/runs/39692211144).
-A rodada nativa [39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142) concluiu os 14 jobs com sucesso após repetir RHEL ARM64, que primeiro encontrou erros TLS/checksum nos mirrors EPEL.
+A rodada nativa [39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142) concluiu os 14 jobs e testes de atualização configurados com sucesso, incluindo Arch ARM64 e RHEL ARM64 após repetir o job que encontrou erros TLS/checksum nos mirrors EPEL.
 Os builds de Gentoo e Guix estão pausados a pedido. Ainda faltam combinações de
 atualização, desktops reais,
 áudio/captura e portais em mais distribuições. Veja `docs/linux-packages.md` e

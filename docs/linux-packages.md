@@ -6,7 +6,7 @@ final e os respectivos builds estão pausados a pedido do usuário. Uma receita
 ou um ciclo de pacote aprovado não prova, por si só, que áudio, captura e
 controle foram verificados em todas as distribuições.
 
-Na rodada atual, os 14 jobs nativos passaram build, instalação, inspeção e remoção no [CI 39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142), incluindo o upgrade RPM e preservação de dados RHEL AArch64 após um rerun da falha de mirror EPEL.
+Na rodada atual, os 14 jobs nativos passaram build, instalação, inspeção, remoção e os testes de atualização/preservação de dados previstos para cada gerenciador. Isso inclui Arch ARM64 e RHEL ARM64 após rerun da falha de mirror EPEL ([CI 39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142)).
 
 Nix passou o ciclo de perfil, incluindo `nix profile upgrade --all`, nas duas arquiteturas ([CI 39692211308](https://github.com/V1nic1us/jarvis/actions/runs/39692211308)). Flatpak passou em x86_64 e AArch64 ([CI 39692211264](https://github.com/V1nic1us/jarvis/actions/runs/39692211264)).
 

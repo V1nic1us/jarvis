@@ -765,4 +765,4 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 ### Conclusão da CI nativa — 2026-10-22
 
 - O rerun RHEL AArch64 do run [39692211142](https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558803431) passou build, instalação, inspeção/remoção e upgrade RPM com preservação dos dados do usuário. A primeira tentativa havia falhado ao baixar metadados EPEL por erros TLS/checksum dos mirrors.
-- Com esse rerun, os 14 jobs nativos da rodada passaram. A validação continua restrita aos alvos/arquiteturas do catálogo e não certifica desktops reais, áudio ou portais em todas as distros.
+- O job Arch Linux ARM AArch64 ([job](https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558804315)) também passou upgrade entre revisões, `pacman -Qkk` e preservação dos hashes de configuração/dados/cache. Com esse resultado, os 14 jobs nativos e os testes de atualização configurados passaram. A validação continua restrita aos alvos/arquiteturas do catálogo e não certifica desktops reais, áudio ou portais em todas as distros.
