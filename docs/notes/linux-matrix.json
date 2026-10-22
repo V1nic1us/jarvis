@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:20:12Z",
+  "verified_at_utc": "2026-10-22T01:21:51Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4462,6 +4462,28 @@
       ],
       "source_commit": "b8e4418",
       "notes": "Jarvis record_auto captured a synthetic Portuguese Piper utterance from an ephemeral PipeWire null sink and stopped after trailing silence; faster-whisper returned non-empty approximate text. No physical microphone or speakers were used. This does not establish physical microphone calibration, PTT, STT accuracy, or cross-distro behavior."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland / PipeWire",
+      "package": "source checkout",
+      "capability": "piper_streaming_fifo_pipewire_playback",
+      "status": "passed",
+      "command": "SentenceChunker.feed/flush -> Speaker.say/close/join with temporary PipeWire null sink as default output",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-pipewire-streaming-tts-2026-10-22.log",
+          "sha256": "6b56a019c0e66d272b3f50de2fe12e95b364e71bcaa3196b8fcc12b25c671243"
+        }
+      ],
+      "source_commit": "1f30636",
+      "notes": "Two generated Portuguese chunks were synthesized by Piper and played in FIFO order by ffplay; the PipeWire null-sink monitor captured non-silent audio. No physical speaker was used. This does not validate live agent SSE/backpressure or cross-distro playback."
     }
   ],
   "pending_gates": [
