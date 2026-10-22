@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:33:02Z",
+  "verified_at_utc": "2026-10-22T03:39:55Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5303,6 +5303,32 @@
       ],
       "source_commit": "56324ac",
       "notes": "The extracted Arch package runtime completed MCP initialize and list_tools over stdio for win_context (8 tools) and delegate_local (1 tool). No tools were invoked, so this does not validate live clipboard, process, accessibility, desktop, or model access."
+    },
+    {
+      "target": "arch",
+      "distro": "debian",
+      "version": "13 trixie validation container",
+      "arch": "x86_64",
+      "libc": "glibc 2.41",
+      "desktop": "GTK overlay",
+      "session": "isolated Weston headless Wayland with private D-Bus and AT-SPI",
+      "package": "Arch native pkg.tar.zst artifact 0.1.0-1",
+      "capability": "native_package_wayland_overlay_relaunch",
+      "status": "passed",
+      "command": "python3 scripts/test-overlay-wayland.py <extracted Arch package>/usr/bin/jarvis-overlay",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-wayland-overlay-debian-run-2026-10-22-rerun.log",
+          "sha256": "919988a24d6763ded1054630e84c9dbea728f6ee03f4939c8fdd87bc2b126b3d",
+          "size_bytes": 979,
+          "package_sha256": "847a060134565455c6a69496c8242e099f66f5e4ba8f223e78bc865a02367dbd",
+          "source_commit": "56324ac",
+          "passed": true
+        }
+      ],
+      "source_commit": "56324ac",
+      "notes": "The overlay binary from the extracted Arch package completed the Wayland relaunch/exit and AT-SPI menu checks under Debian 13 Weston. Headless GDK seat warnings appeared. This remains an isolated cross-distro compositor test; real keyboard/pointer input, live portals, audio and installed desktop behavior are unverified."
     }
   ],
   "pending_gates": [

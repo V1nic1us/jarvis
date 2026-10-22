@@ -884,3 +884,13 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   de desktop e acesso ao modelo continuam sem validação neste teste. A matriz
   passa a registrar **97/99** verificações; as duas não verificadas continuam
   sendo Gentoo AArch64 e Guix AArch64, cujos builds seguem pausados a pedido do usuário.
+
+### Overlay Wayland do pacote Arch sob Weston isolado — 2026-10-22
+
+- O binário do pacote Arch passou o relaunch/saída e a ativação dos controles
+  AT-SPI no fixture `test-overlay-wayland.py`, executado em Debian 13 com Weston,
+  D-Bus e AT-SPI privados. Log: `.superpowers/sdd/2026-10-14-jarvis-linux/arch-package-wayland-overlay-debian-run-2026-10-22-rerun.log`.
+- Houve avisos GDK de seat no compositor sem hardware. O teste confirma o ciclo
+  isolado Wayland, não entrada real, portais, áudio ou sessão desktop instalada.
+  A matriz passa a registrar **98/100** verificações; Gentoo AArch64 e Guix
+  AArch64 seguem sem validação e com builds pausados.
