@@ -1098,3 +1098,12 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - Uma tentativa imediatamente anterior falhou porque o AT-SPI não conseguiu verificar qual controle mantinha foco. As duas tentativas seguintes passaram sem reiniciar o serviço AT-SPI. O resultado mostra funcionamento nesta sessão, com uma falha intermitente a investigar.
 - Log: `.superpowers/sdd/2026-10-14-jarvis-linux/atspi-desktop-current-session-pass-2026-10-22.log`; SHA-256 `0d70d5e3025d41820ee8d7865e5ffaa062debd9f4fd30ca4b26f7820dfb180f9`.
 - Isso valida edição acessível em segundo plano no KDE Wayland. Não valida injeção de teclado/clique pelo portal RemoteDesktop, revogação real, outros desktops ou outras distribuições.
+
+
+### Portal RemoteDesktop real input probe — 2026-10-22
+
+- Em uma janela GTK temporária mantida viva entre chamadas, o portal KDE Wayland enviou `Jarvis RemoteDesktop OK 123`; o próprio campo confirmou o texto e registrou os eventos de teclado. A ferramenta manteve o retorno `unconfirmed`, que informa corretamente que ela não verifica por si só a aceitação pelo app.
+- O teste de ponteiro não passou: um clique destinado ao botão da janela descartável retornou `unconfirmed`, mas o contador ficou em zero e a janela perdeu o estado ativo. Parei os cliques nesse ponto. O mapeamento de coordenadas/stream continua sem prova funcional.
+- Um novo pedido de consentimento ficou pendente no KDE e foi encerrado sem emitir entrada. O teste precisa de nova autorização explícita no diálogo do portal para continuar.
+- Evidência local: `.superpowers/sdd/2026-10-14-jarvis-linux/wayland-remotedesktop-input-probe-2026-10-22.log`; SHA-256 `b4bd5074338ea466470a2b797792d1399922db67cc38c637ab1858812a269776`.
+- Referência do protocolo: [XDG Remote Desktop](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.RemoteDesktop.html) especifica consentimento no `Start()` e coordenadas absolutas no espaço lógico do stream. [XDG ScreenCast](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.ScreenCast.html) define `position`/`size` em coordenadas do compositor; a falha observada ainda precisa ser localizada no mapeamento do compositor KDE ou na seleção do stream.
