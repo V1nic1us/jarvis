@@ -1022,3 +1022,14 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - O smoke executou o código empacotado em diretório temporário. Não instalou o
   pacote com pacman; os hashes do pacote, script e log estão na matriz. Estado
   atualizado: 105/107 verificações aprovadas (98,1%).
+
+
+### Arch: ciclo pacman com o pacote reconstruído — 2026-10-22
+
+- O pacote `0.1.0-1` do commit `7c739d0` foi instalado no container Arch
+  rolling descartável pelo pacman. `jarvis --doctor`, imports do runtime privado,
+  `pacman -Qkk`, preservação dos dados do usuário, relançamento do overlay em
+  Xvfb e remoção do pacote passaram.
+- O relançamento foi isolado em Xvfb; isso não comprova uma sessão Arch real,
+  áudio ou portais. Log e artefato estão na matriz com hashes. Estado atualizado:
+  106/108 verificações aprovadas (98,1%).

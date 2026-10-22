@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T06:47:35Z",
+  "verified_at_utc": "2026-10-22T06:54:55Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -6132,6 +6132,35 @@
       ],
       "source_commit": "7c739d0",
       "notes": "The Arch package metadata identifies jarvis-assistant 0.1.0-1. The check executed the exact local_files.py extracted from that package. Both uppercase dotenv names raised the credential/secret rejection and neither path was created. This is a package-code security smoke, not a pacman installation lifecycle test."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "disposable Arch container with Xvfb",
+      "session": "pacman install, package integrity, doctor, isolated overlay relaunch and removal",
+      "package": "pacman pkg.tar.zst release 0.1.0-1 built from source commit 7c739d0",
+      "capability": "native_package_pacman_lifecycle_release4",
+      "status": "passed",
+      "command": "docker run --rm archlinux:base sh /probe/test-native-package.sh arch /packages/jarvis-assistant-0.1.0-1-x86_64.pkg.tar.zst",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release4-pacman-lifecycle.log",
+          "sha256": "3af9914c58f654e55df482d3ff985a3ecb9620f852ebf479951a84ddbbaa5d44",
+          "size_bytes": 50618
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-release4-build/jarvis-assistant-0.1.0-1-x86_64.pkg.tar.zst",
+          "sha256": "7e993d52f3bf16a327b5b2649aac91a082448d83cda157aa6f3f4f52aadec740",
+          "size_bytes": 229837854
+        }
+      ],
+      "source_commit": "7c739d0",
+      "notes": "pacman installed the package and dependencies in a disposable rolling Arch x86_64 container. jarvis --doctor, private runtime imports, pacman -Qkk, user-data preservation, isolated Xvfb overlay relaunch and package removal passed. This validates package lifecycle and an isolated X11 relaunch, not a real Arch desktop/audio session."
     }
   ],
   "pending_gates": [
