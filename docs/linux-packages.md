@@ -3,7 +3,7 @@
 O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
 26 têm evidência de ciclo instalado: 24 pacotes nativos e dois bundles Flatpak.
 Gentoo AArch64 e Guix AArch64 são as duas combinações sem validação final. A
-matriz registra 98 de 101 verificações aprovadas (97,0%).
+matriz registra 99 de 101 verificações aprovadas (98,0%).
 Gentoo ARM64 e Guix ARM64 estão sem validação final e seus builds estão pausados
 a pedido do usuário. Uma receita ou um ciclo de pacote aprovado não prova, por si
 só, que áudio, captura e controle foram verificados em todas as distribuições.
@@ -525,7 +525,7 @@ depois da instalação e executa um teste de xdotool e roundtrip xclip em Xvfb.
 Build e roundtrip X11 passaram no current; clipboard Wayland ainda requer um
 compositor com seat.
 
-### Solus: receita eopkg e smoke instalado
+### Solus: receita eopkg, ciclo instalado e upgrade
 
 `packaging/solus/package.yml` descreve a receita nativa do Solus para x86_64.
 O driver cria um arquivo-fonte do checkout, injeta seu SHA256 e URI local na
@@ -544,9 +544,13 @@ Para atualizar, instale o novo `.eopkg` com `sudo eopkg install
 jarvis-assistant`. O pacote foi compilado com `solbuild`, instalado e removido
 com eopkg em Solus 4.9 x86_64. Imports privados, ABI, OpenCode 1.18.23,
 integridade, relançamento isolado da janela e preservação dos dados passaram; o
-catálogo registra **installed-smoke** para x86_64. Desktop e áudio reais,
-atualização de versão e Wayland nativo continuam pendentes. O log está em
-`docs/notes/linux-verification.md` e no artefato local indicado na matriz.
+catálogo registra o ciclo instalado para x86_64. Duas releases também foram
+construídas e atualizadas em um container descartável Solus 4.9: o `eopkg check`
+e `jarvis --doctor` passaram antes e depois da atualização, os dados sentinela
+de CONFIG/DATA/CACHE/STATE permaneceram idênticos, e a remoção preservou os
+dados. Isso valida o upgrade no ambiente de container; desktop e áudio reais e
+Wayland nativo continuam pendentes. A evidência está em
+`docs/notes/linux-matrix.json` e nos logs/artefatos locais indicados nela.
 `networking: true` permite que o build atual baixe dependências npm/Python e o
 agente; a instalação do pacote não baixa dependências da aplicação.
 Depois de gerar o `.eopkg`, rode o ciclo em um container Solus x86_64:
@@ -573,9 +577,9 @@ scripts/test-native-solus-upgrade.sh \
 
 O teste instala cada release com eopkg, confere o release indicado, executa
 `jarvis --doctor` e `eopkg check`, compara sentinels em CONFIG/DATA/CACHE/STATE
-antes e depois do upgrade e confirma que a remoção mantém os dados. Ele ainda
-não foi executado num sistema Solus; portanto a matriz continua pendente para
-upgrade e preservação de dados do Solus.
+antes e depois do upgrade e confirma que a remoção mantém os dados. Esse teste
+passou em container Solus 4.9 x86_64 em 2026-10-22; não substitui a validação
+em desktop real.
 
 ### GNU Guix: pacote nativo local
 
