@@ -906,3 +906,8 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 - A mudança permite gerar os dois `.eopkg` necessários para o próximo teste,
   mas o upgrade real via eopkg ainda não foi executado e não aumenta a contagem
   aprovada da matriz.
+- O novo `scripts/test-native-solus-upgrade.sh` foi exercitado em Arch descartável
+  com eopkg/launcher simulados: releases 1→2, doctor, integridade, remoção e
+  preservação dos sentinels passaram; uma segunda execução alterou um sentinel e
+  foi recusada pelo comparador. Isso valida o fluxo do script, não o
+  comportamento real do gerenciador Solus; a validação nativa segue pendente.

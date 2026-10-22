@@ -563,11 +563,19 @@ scripts/build-package.sh --target solus --arch x86_64 --release 1 --output "$PWD
 scripts/build-package.sh --target solus --arch x86_64 --release 2 --output "$PWD/dist/solus-r2"
 ```
 
-Instale a revisão 1 com `eopkg`, crie dados de teste em `XDG_DATA_HOME`, instale
-o `.eopkg` da revisão 2, confirme `jarvis --doctor`, `eopkg check
-jarvis-assistant` e que o sentinel de dados continua igual; depois remova o
-pacote. Esse upgrade ainda não foi executado e não conta como verificação
-aprovada na matriz.
+No container Solus x86_64 descartável, rode o teste de upgrade e preservação:
+
+```sh
+scripts/test-native-solus-upgrade.sh \
+  dist/solus-r1/jarvis-assistant-0.1.0-1-1-x86_64.eopkg \
+  dist/solus-r2/jarvis-assistant-0.1.0-2-1-x86_64.eopkg 1 2
+```
+
+O teste instala cada release com eopkg, confere o release indicado, executa
+`jarvis --doctor` e `eopkg check`, compara sentinels em CONFIG/DATA/CACHE/STATE
+antes e depois do upgrade e confirma que a remoção mantém os dados. Ele ainda
+não foi executado num sistema Solus; portanto a matriz continua pendente para
+upgrade e preservação de dados do Solus.
 
 ### GNU Guix: pacote nativo local
 
