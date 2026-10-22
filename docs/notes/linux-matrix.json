@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:10:27Z",
+  "verified_at_utc": "2026-10-22T05:11:48Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -147,10 +147,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105368",
           "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39725806434/job/119649295278",
+          "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
-      "notes": "Current fork run: package build, artifact export, clean native install, inspection and removal succeeded. Run 39526318763 passed native arch x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64. Latest build/install/inspection/removal passed in run 39683082677. Latest native build/install/inspect/remove succeeded in run 39692211142; this run also checks the installed xdg-open provider and OpenCode MIT notice. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2."
+      "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+      "notes": "Current fork run: package build, artifact export, clean native install, inspection and removal succeeded. Run 39526318763 passed native arch x86_64 build, install, inspection and removal. CI run 39526318763 also passed package build, install, inspection and removal for x86_64. Latest build/install/inspection/removal passed in run 39683082677. Latest native build/install/inspect/remove succeeded in run 39692211142; this run also checks the installed xdg-open provider and OpenCode MIT notice. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2. Latest native CI run 39725806434 on 787dc9f passed this package lifecycle/upgrade check."
     },
     {
       "target": "arch",
@@ -3318,10 +3324,16 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39721460709/job/119637105368",
           "source_commit": "4ab4edd969c56de84003e0988b3c4c5d41cd7a32",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39725806434/job/119649295278",
+          "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+          "conclusion": "success"
         }
       ],
-      "source_commit": "02381f5cd88090f24fb24db4218eb9c94dc2ac7a",
-      "notes": "Current CI run 39526318763 passed the arch x86_64 native package upgrade and user-data-preservation test. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677. Latest package upgrade and user-data-preservation step passed in 39692211142 attempt 2."
+      "source_commit": "787dc9fb0da90bb0f36bd3219751615ad0eb112b",
+      "notes": "Current CI run 39526318763 passed the arch x86_64 native package upgrade and user-data-preservation test. Latest upgrade and user-data-preservation lifecycle passed in run 39683082677. Latest package upgrade and user-data-preservation step passed in 39692211142 attempt 2. Latest native CI run 39725806434 on 787dc9f passed this package lifecycle/upgrade check."
     },
     {
       "target": "debian",
