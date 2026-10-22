@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:23:54Z",
+  "verified_at_utc": "2026-10-22T01:25:19Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4506,6 +4506,28 @@
       ],
       "source_commit": "a4c294c",
       "notes": "Full source install completed with private Python and npm dependencies in a prefix containing spaces. Installed doctor, Piper synthesis to a file and faster-whisper inference succeeded; temporary prefix was removed. No physical mic/speaker, live agent/MCP, GUI interaction, or cross-distro behavior was tested."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "host unit-test environment",
+      "session": null,
+      "package": "source tests",
+      "capability": "linux_mcp_actions_safety_unit_tests",
+      "status": "passed",
+      "command": "pytest mcp_servers/win_context/tests; pytest mcp_servers/delegate_local/tests; node --test Linux action/plugin/SafetyGate suites",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-mcp-plugin-tests-2026-10-22.log",
+          "sha256": "2469b22fceacc63aa28d52f53cbf5b4bb7d526b1781ec3f3430e8b966819efba"
+        }
+      ],
+      "source_commit": "44986f0",
+      "notes": "All Python MCP server tests (13 + 17) and Linux agent action/plugin/SafetyGate Node tests (95) passed. This is unit evidence only; installed MCP/agent behavior, live OpenCode, real desktop, portal consent and AT-SPI remain unverified."
     }
   ],
   "pending_gates": [
