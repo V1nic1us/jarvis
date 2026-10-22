@@ -61,6 +61,14 @@ def test_void_builds_are_not_cancelled_by_new_commits():
         assert 'cancel-in-progress: false' in workflow, name
 
 
+def test_suse_rolling_container_synchronizes_snapshot_before_installing_build_deps():
+    dockerfile=(ROOT/'packaging/rpm/suse/Dockerfile').read_text()
+    refresh=dockerfile.index('zypper --non-interactive refresh --force')
+    dup=dockerfile.index('zypper --non-interactive dup --no-recommends')
+    install=dockerfile.index('zypper --non-interactive install --no-recommends')
+    assert refresh < dup < install
+
+
 def archive(binary=b'\x7fELFtest',kind=tarfile.REGTYPE,extra=None):
     stream=io.BytesIO()
     with tarfile.open(fileobj=stream,mode='w:gz') as tar:
