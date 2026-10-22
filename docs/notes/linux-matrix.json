@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T04:57:01Z",
+  "verified_at_utc": "2026-10-22T04:59:08Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4170,10 +4170,20 @@
           "sha256": "8c430806d3e3d4276145060e98c23a761b6827a00a40b2227917b8ecdf9cbce5",
           "passed": 490,
           "skipped": 1
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/linux-integration-suite-2026-10-22-after-native-matrix.log",
+          "sha256": "8ee27d1fb6ae901c2858c8db174db40c8d1c2b412cd418603ca1c00a8f5d52d4",
+          "size_bytes": 449,
+          "passed": 58,
+          "skipped": 0,
+          "source_commit": "ce90dd609fd1ea4ea735f92907db9305cbd04a04",
+          "host": "Arch Linux x86_64, KDE Wayland"
         }
       ],
       "source_commit": "8494c0b906368cfa186ea9326d18a66041c933ef",
-      "notes": "The full selected source-level Linux integration suite passed again on the current checkout: 58 passed, no skips, with pinned dbus-next 0.2.3 from an isolated temporary directory. This does not replace live portal permission, physical audio, or cross-desktop validation."
+      "notes": "The full selected source-level Linux integration suite passed again on the current checkout: 58 passed, no skips, with pinned dbus-next 0.2.3 from an isolated temporary directory. This does not replace live portal permission, physical audio, or cross-desktop validation. Re-run on commit ce90dd6 on the active Arch KDE Wayland host passed 58/58 (2026-10-22); this remains source-level test evidence and does not prove live portal consent or hardware audio."
     },
     {
       "target": "debian",
