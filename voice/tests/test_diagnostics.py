@@ -21,6 +21,35 @@ def test_doctor_reports_missing_dependencies_without_side_effects(tmp_path, monk
     assert list(tmp_path.iterdir()) == []
 
 
+def test_doctor_marks_pulse_capture_unavailable_when_server_is_unreachable(monkeypatch):
+    cfg = load_config({'JARVIS_PLATFORM': 'linux', 'AUDIO_BACKEND': 'pulse'})
+    monkeypatch.setattr('diagnostics.shutil.which', lambda executable: f'/usr/bin/{executable}')
+    def run(argv, **kwargs):
+        assert argv == ['pactl', '--format=json', 'list', 'sources']
+        return subprocess.CompletedProcess(argv, 1, '', 'Connection refused')
+    monkeypatch.setattr('audio.subprocess.run', run)
+
+    capture = diagnose(cfg)['capabilities']['capture']
+
+    assert capture['available'] is False
+    assert 'Connection refused' in capture['reason']
+
+
+def test_doctor_reports_pulse_server_reachable_without_claiming_capture_tested(monkeypatch):
+    cfg = load_config({'JARVIS_PLATFORM': 'linux', 'AUDIO_BACKEND': 'pulse'})
+    monkeypatch.setattr('diagnostics.shutil.which', lambda executable: f'/usr/bin/{executable}')
+    def run(argv, **kwargs):
+        assert argv == ['pactl', '--format=json', 'list', 'sources']
+        return subprocess.CompletedProcess(argv, 0, '[{"name":"mic usb"}]', '')
+    monkeypatch.setattr('audio.subprocess.run', run)
+
+    capture = diagnose(cfg)['capabilities']['capture']
+
+    assert capture['available'] is True
+    assert capture['backend'] == 'pulse'
+    assert 'gravacao real ainda nao testada' in capture['reason']
+
+
 def test_doctor_cli_prints_json_without_starting_agent():
     proc = subprocess.run([sys.executable, str(Path(__file__).resolve().parents[1] / 'loop.py'), '--doctor'], capture_output=True, text=True, timeout=10)
     assert proc.returncode == 0

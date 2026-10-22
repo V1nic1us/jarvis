@@ -2,7 +2,29 @@
 import os
 import shutil
 from pathlib import Path
+from audio import list_devices
 from platforms import desktop_session
+from tts import VoiceError
+
+
+def _capture_capability(config, ffmpeg_available: bool) -> dict:
+    capability = {'available': False, 'backend': config.audio_backend}
+    if not ffmpeg_available:
+        capability['reason'] = 'ffmpeg ausente'
+        return capability
+    if config.platform != 'linux':
+        capability.update(available=True, reason='ffmpeg presente; gravacao real ainda nao testada')
+        return capability
+    try:
+        list_devices(config)
+    except VoiceError as exc:
+        capability['reason'] = f'ffmpeg presente, mas o backend de audio nao respondeu: {exc}'
+        return capability
+    capability.update(
+        available=True,
+        reason='ffmpeg e enumerador de audio respondem; gravacao real ainda nao testada',
+    )
+    return capability
 
 
 def diagnose(config) -> dict:
@@ -18,8 +40,7 @@ def diagnose(config) -> dict:
     dependencies['piper_model'] = {'available': model_exists, 'path': str(model),
                                   'reason': 'modelo e configuracao presentes' if model_exists else 'modelo .onnx ou configuracao .onnx.json ausente'}
     capabilities = {
-        'capture': {'available': dependencies['ffmpeg']['available'], 'backend': config.audio_backend,
-                    'reason': 'servidor/device precisa de teste de gravacao'},
+        'capture': _capture_capability(config, dependencies['ffmpeg']['available']),
         'tts': {'available': dependencies['piper']['available'] and model_exists and dependencies['ffplay']['available'],
                 'backend': config.tts_backend, 'reason': 'presenca de dependencias; sintese nao verificada'},
         'desktop': {'available': False, 'backend': session, 'validation': 'not_run',
