@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T06:30:48Z",
+  "verified_at_utc": "2026-10-22T06:33:02Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -6027,6 +6027,41 @@
       ],
       "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
       "notes": "Packaged Piper synthesized “Olá, tudo bem?” and packaged ffplay played it through the PulseAudio protocol to the host PipeWire null sink. Captured monitor audio had mean volume -26.0 dB and peak -0.0 dB. This verifies the playback path without physical speakers; it does not validate microphone capture or acoustic output."
+    },
+    {
+      "target": "solus",
+      "distro": "solus",
+      "version": "4.9",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "headless container",
+      "session": "MCP stdio initialize + tools/list",
+      "package": "eopkg release 3",
+      "capability": "native_package_mcp_stdio_smoke",
+      "status": "passed",
+      "command": "Updated Solus container; installed release 3; packaged Python MCP client initialized /usr/bin/jarvis --mcp win_context and delegate_local and enumerated tools; eopkg check and remove",
+      "evidence": [
+        {
+          "kind": "test_script",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-mcp-stdio-2026-10-22.py",
+          "sha256": "e8f6e7ddba3cb971c798354acea43d8c63215b7770259ae0008551758b27cc47",
+          "size_bytes": 1157
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-mcp-stdio-2026-10-22.log",
+          "sha256": "acc4c770efa1b1fe29e98452f6a59b1d3d88a51bb078cf08a38461e617c05194",
+          "size_bytes": 1071639
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release-3/jarvis-assistant-0.1.0-3-1-x86_64.eopkg",
+          "sha256": "55539ac2567ae95d9f633bca3fc2b1c69429a2af3146459e34f722cb372346aa",
+          "size_bytes": 202582589
+        }
+      ],
+      "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
+      "notes": "The installed Solus launcher started win_context and delegate_local as stdio MCP servers. initialize returned protocol 2025-11-25; tools/list returned the expected 8 win_context names and 1 delegate_local name. The tools themselves were not invoked; eopkg integrity and removal passed."
     }
   ],
   "pending_gates": [

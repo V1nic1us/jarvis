@@ -989,3 +989,14 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   nem capturou microfone.
 - Script, pacote, captura WAV e medição de nível estão registrados com hashes
   na matriz. O estado atual é 102/104 verificações aprovadas (98,1%).
+
+
+### Solus: inicialização dos servidores MCP instalados — 2026-10-22
+
+- Com a release 3 instalada, o cliente MCP do runtime iniciou `win_context` e
+  `delegate_local` pelo launcher `/usr/bin/jarvis --mcp` e concluiu
+  `initialize` e `tools/list`. Recebeu as 8 ferramentas esperadas de
+  `win_context` e a ferramenta `delegate_local`, com protocolo 2025-11-25.
+- O teste não invocou ferramentas, portanto não valida clipboard, processos,
+  acessibilidade ou agente. `eopkg check` e remoção passaram. Logs e script
+  estão na matriz com hashes; o estado atual é 103/105 (98,1%).
