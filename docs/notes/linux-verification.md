@@ -912,15 +912,16 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   foi recusada pelo comparador. Isso valida o fluxo do script, não o
   comportamento real do gerenciador Solus; a validação nativa segue pendente.
 
-### Upgrade eopkg do Solus ainda sem execução nativa — 2026-10-22
+### Estado do upgrade eopkg Solus antes da execução nativa — 2026-10-22
 
-- A matriz agora inclui explicitamente o upgrade Solus x86_64 como
+- Na medição desta nota, a matriz incluía o upgrade Solus x86_64 como
   `unverified`. O script `test-native-solus-upgrade.sh` passou o fluxo positivo
   e detectou a alteração deliberada de um sentinel com eopkg simulado; isso não
   comprova instalação nem atualização pelo gerenciador real.
-- Sem `eopkg`, `solbuild` ou artefato `.eopkg` disponível aqui, o teste real fica
-  pendente. O registro passa a 98/101 verificações aprovadas (97,0%); Gentoo
-  AArch64, Guix AArch64 e upgrade Solus x86_64 permanecem sem validação.
+- Sem `eopkg`, `solbuild` ou artefato `.eopkg` disponível naquele momento, o teste
+  real ficava pendente. O registro então marcava 98/101 verificações aprovadas
+  (97,0%); Gentoo AArch64, Guix AArch64 e upgrade Solus x86_64 permaneciam sem
+  validação.
 
 ### Auditoria do arquivo-fonte no HEAD atual — 2026-10-22
 
@@ -929,3 +930,17 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   divergências. Log e SHA-256 do arquivo estão registrados em
   `docs/notes/linux-matrix.json`. Isso fecha a correspondência entre checkout e
   arquivo usado pelas receitas; a geração de SBOM continua pendente.
+
+### Upgrade nativo eopkg Solus 4.9 x86_64 — 2026-10-22
+
+- Duas releases `.eopkg` foram compiladas por `solbuild` no perfil Solus 4.9
+  x86_64 e instaladas/atualizadas em um container descartável Solus. `eopkg
+  check` e `jarvis --doctor` passaram antes e depois da atualização; os
+  sentinelas de XDG CONFIG/DATA/CACHE/STATE permaneceram idênticos e a remoção
+  manteve os dados do usuário.
+- Os pacotes, logs de build e log do teste estão em
+  `.superpowers/sdd/2026-10-14-jarvis-linux/` e seus hashes estão registrados
+  na matriz. Isso comprova o ciclo de pacote no container, não a integração com
+  desktop ou áudio físico.
+- A matriz passa a 99/101 verificações aprovadas (98,0%). Guix AArch64 e Gentoo
+  AArch64 continuam sem validação e pausados a pedido do usuário.

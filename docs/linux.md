@@ -6,12 +6,13 @@ exercitados o overlay e o MCP instalado, síntese Piper, captura de áudio
 sintético via PipeWire/Pulse e ALSA, STT em português e VAD com áudio sintético.
 O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 têm evidência de
 ciclo instalado: 24 pacotes nativos e dois bundles Flatpak. Gentoo AArch64 e
-Guix AArch64 são as duas combinações sem validação final. A matriz registra 98 de 101 verificações aprovadas (97,0%). Todos os 14
+Guix AArch64 são as duas combinações sem validação final. A matriz registra 99 de 101 verificações aprovadas (98,0%). Todos os 14
 jobs nativos passaram na [CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511),
 incluindo upgrades e preservação de dados onde configurados. Nix e Flatpak
 passaram em x86_64/AArch64. Void glibc e musl passaram build, instalação,
 upgrade e preservação de dados em ambas as arquiteturas na [CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455).
-Gentoo ARM64 e Guix ARM64 estão pausados a pedido. As medições de nível Pulse e ALSA de 0,5 s passaram no host Arch; o pacote Arch
+O upgrade Solus 4.9 x86_64 passou em container descartável com eopkg e dados
+XDG preservados. Gentoo ARM64 e Guix ARM64 estão pausados a pedido. As medições de nível Pulse e ALSA de 0,5 s passaram no host Arch; o pacote Arch
 extraído também passou `--mic-level` via Pulse e VAD com tom sintético. Ainda faltam PTT e VAD com fala real,
 reprodução/streaming e repetir a validação de microfone nos demais pacotes,
 fluxos reais de consentimento/recusa/revogação dos portais e cobertura funcional
