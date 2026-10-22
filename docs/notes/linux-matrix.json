@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:21:11Z",
+  "verified_at_utc": "2026-10-22T05:58:16Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5868,16 +5868,46 @@
       "session": null,
       "package": "eopkg",
       "capability": "native_package_upgrade_data_preservation",
-      "status": "unverified",
+      "status": "passed",
       "command": "scripts/test-native-solus-upgrade.sh <release1.eopkg> <release2.eopkg> 1 2",
-      "evidence": [],
-      "source_commit": "5ce66ca",
-      "notes": "The upgrade test script and release override exist. The script passed a disposable mock-eopkg smoke, including detecting a mutated XDG sentinel, but no Solus/eopkg runtime or package artifacts are available in this environment. Mock evidence is not accepted as native upgrade evidence; run the command in a disposable Solus 4.9 x86_64 container."
+      "evidence": [
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-jarvis-assistant-0.1.0-release-1-x86_64.eopkg",
+          "sha256": "8b2b2422a4ff685b7e49bf08967d947db54e3e0ae883e3350501d75be72383a1",
+          "size_bytes": 202616836
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-jarvis-assistant-0.1.0-release-2-x86_64.eopkg",
+          "sha256": "3c5d949b9496bbd96b6409ba1abe72c0a7e60601ee67a5ecbe341b2f694d9d6d",
+          "size_bytes": 202616371
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-build-release-1-x86_64-2026-10-22.log",
+          "sha256": "b8296915200471c8c4e67b1f0f666af3e5abd18a4b2dd7e063182aac0f677584",
+          "size_bytes": 1012171
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-build-release-2-x86_64-2026-10-22.log",
+          "sha256": "8fcf4e2d38f4e0a019a9c9fa458380b32da1a036cf90a0ea8b003c2f0f5664ee",
+          "size_bytes": 1011712
+        },
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-eopkg-upgrade-x86_64-2026-10-22.log",
+          "sha256": "87d406e635eb63590e1c5cceb972e77908460496f9bb1cc5bbf3f49c480b4a63",
+          "size_bytes": 1485702
+        }
+      ],
+      "source_commit": "22e1f87f18829bf6a34b5b13458213f1a1e2023c",
+      "notes": "Built native Solus 4.9 x86_64 eopkg releases 1 and 2 with solbuild, then ran the disposable-container upgrade check. eopkg installed release 1, jarvis --doctor and package integrity passed, release 2 upgraded successfully, all XDG config/data/cache/state sentinels remained byte-identical, and removal left user data intact. Validation ran headless; graphical desktop behavior is tracked separately."
     }
   ],
   "pending_gates": [
     "Paused at user request: native Gentoo AArch64 and Guix AArch64 build/lifecycle validation; do not restart until asked.",
-    "Native Solus x86_64 package upgrade/data-preservation validation remains unverified.",
     "Remaining distro recipes, source builds and architecture combinations beyond the recorded matrix.",
     "Real GNOME/KDE Wayland/X11 desktop behavior, microphone/PTT/VAD/playback/streaming, portal consent/revocation, and installed agent/MCP/accessibility/clipboard/display/process-cleanup matrix remain incomplete.",
     "Validate a package SBOM and obtain independent whole-branch review."
