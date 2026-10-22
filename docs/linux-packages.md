@@ -110,9 +110,9 @@ o novo DEB com `apt install ./caminho/do/pacote.deb`; para remover, use
 Os DEBs x86_64 e ARM64 foram compilados no Debian 13 e passaram pela instalação com apt,
 diagnóstico, imports, verificação de arquivos e remoção em container limpo,
 preservando o dado de usuário usado no teste. O teste de abertura, segunda execução e saída da interface passou em X11
-isolado. A atualização Debian x86_64 de `0.1.0-1` para uma reconstrução de teste
-`0.1.0-2` passou com `apt`, preservando dados e integridade; atualização ARM64 e
-uso completo no desktop continuam pendentes.
+isolado. A atualização Debian de `0.1.0-1` para `0.1.0-2` passou com `apt`
+em x86_64 e ARM64, preservando dados e integridade ([CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511)).
+Uso completo no desktop continua pendente.
 
 ## Ubuntu 24.04
 
@@ -210,10 +210,11 @@ No ARM64, use o RPM `.aarch64.rpm`. Para atualizar, use `sudo dnf upgrade
 ./caminho/do/pacote.rpm`; para remover, `sudo dnf remove jarvis-assistant`.
 O arquivo `.src.rpm` contém fontes e receita e não instala a aplicação.
 
-O RPM Fedora 44 x86_64 passou pela instalação com dnf, doctor, imports, versão
+Os RPMs Fedora 44 x86_64 e ARM64 passaram pela atualização de `0.1.0-1` para
+`0.1.0-2` com DNF, preservando dados e passando `rpm -V` ([CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511)).
+O RPM x86_64 também passou pela instalação com dnf, doctor, imports, versão
 do agente, presença de pactl, verificação rpm e remoção com preservação do dado
-de usuário usado no teste. Também passou por uma atualização real de `0.1.0-1`
-para `0.1.0-2` com DNF, preservando os dados e passando `rpm -V`; o ciclo do
+de usuário usado no teste. O ciclo do
 pacote atualizado e o relançamento do overlay em Xvfb também passaram. Não há
 RPM publicado em repositório oficial. A validação do desktop completo e do
 áudio físico permanece pendente. O arquivo `packaging/targets.json` registra as famílias previstas,
@@ -332,7 +333,8 @@ passaram; o catálogo registra **installed-smoke** para ambas as arquiteturas.
 O APK x86_64 passou também pela atualização assinada r0→r1 construída das fontes
 completas, preservando hashes de configuração, cache e dados do modelo; o teste
 está em `.superpowers/sdd/2026-10-14-jarvis-linux/alpine-full-source-signed-upgrade-retry.log`.
-A atualização aarch64, microfone e desktops reais seguem pendentes. O APK x86_64
+A atualização assinada r0→r1 passou também em AArch64 na CI 39705918511.
+Microfone e desktops reais seguem pendentes. O APK x86_64
 instalado também sintetizou e transcreveu uma frase de teste em português, sem
 rede, usando Piper e Whisper tiny/CPU int8. O erro por palavra
 foi 13,3%; esse ensaio sintético não certifica captura de microfone nem qualidade
