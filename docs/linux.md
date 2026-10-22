@@ -7,13 +7,13 @@ sintético via PipeWire/Pulse e ALSA, STT em português e VAD com áudio sintét
 O catálogo declara 15 alvos e 28 combinações de arquitetura; 26 têm evidência de
 ciclo instalado: 24 pacotes nativos e dois bundles Flatpak. Gentoo AArch64 e
 Guix AArch64 são as duas combinações sem validação final. A matriz registra 83
-de 89 verificações aprovadas. Todos os 14
+de 90 verificações aprovadas. Todos os 14
 jobs nativos passaram na [CI 39705918511](https://github.com/V1nic1us/jarvis/actions/runs/39705918511),
 incluindo upgrades e preservação de dados onde configurados. Nix e Flatpak
 passaram em x86_64/AArch64. Void glibc e musl passaram build, instalação,
 upgrade e preservação de dados em ambas as arquiteturas na [CI 39705918455](https://github.com/V1nic1us/jarvis/actions/runs/39705918455).
 Gentoo ARM64 e Guix ARM64 estão pausados a pedido. As medições de nível Pulse e ALSA de 0,5 s passaram no host Arch; o pacote Arch
-extraído também passou `--mic-level` via Pulse. Ainda faltam PTT e VAD com fala real,
+extraído também passou `--mic-level` via Pulse e VAD com tom sintético. Ainda faltam PTT e VAD com fala real,
 reprodução/streaming e repetir a validação de microfone nos demais pacotes,
 fluxos reais de consentimento/recusa/revogação dos portais e cobertura funcional
 em outros desktops, sessões e distribuições.

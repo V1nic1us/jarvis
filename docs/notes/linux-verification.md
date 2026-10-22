@@ -163,6 +163,13 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
   `.superpowers/sdd/2026-10-14-jarvis-linux/arch-package-pulse-vad-idle-2026-10-22.log`
   (SHA-256 `e79957e6a1c644725985d34fb68ab8f73798ec1515627db5dd4458d0df6fde33`).
   Isso cobre ausência de falso positivo e limpeza no host, não detecção de fala real.
+- O pacote Arch 0.1.0-2 também passou VAD positivo com fixture sintética
+  silêncio→tom→silêncio de 16 kHz: o tom foi detectado, gerou segmento de
+  49.230 bytes e não deixou WAV no cache temporário. O teste usou um wrapper
+  FFmpeg sobre `record_auto`; não usou microfone real nem STT. O artefato usa
+  source commit `02381f5`. Log e hash:
+  `.superpowers/sdd/2026-10-14-jarvis-linux/arch-package-vad-synthetic-positive-2026-10-22.log`
+  (`e0deb28fdd041caefff9c133ef7ea915135abe338afefeeb0a07627e7b6ab3ed`).
 - A bateria Linux focada na venv do projeto (`test_linux_install`,
   `test_linux_packages`, contexto, entrada, tela, plataformas, áudio, captura,
   diagnóstico, portal e STT) passou com **177 testes** em 6,55 s. Ela inclui os
