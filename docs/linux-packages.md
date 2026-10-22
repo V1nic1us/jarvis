@@ -3,7 +3,7 @@
 O catálogo declara 15 alvos de empacotamento e 28 combinações de arquitetura;
 26 têm evidência de ciclo instalado: 24 pacotes nativos e dois bundles Flatpak.
 Gentoo AArch64 e Guix AArch64 são as duas combinações sem validação final. A
-matriz registra 99 de 101 verificações aprovadas (98,0%).
+matriz registra 100 de 102 verificações aprovadas (98,0%).
 Gentoo ARM64 e Guix ARM64 estão sem validação final e seus builds estão pausados
 a pedido do usuário. Uma receita ou um ciclo de pacote aprovado não prova, por si
 só, que áudio, captura e controle foram verificados em todas as distribuições.
@@ -549,11 +549,12 @@ construídas; o upgrade da release 2 para a 3 também foi validado em um contain
 descartável Solus 4.9. O pacote glibc remove o addon nativo musl do msgpackr; no
 rebuild, o ABI scanner deixou de reportar `Missing library: libc.so`. O scanner
 ainda registra um diagnóstico não fatal para o link do Python externo em
-`/usr/bin/python3.14`. O `eopkg check`
-e `jarvis --doctor` passaram antes e depois da atualização, os dados sentinela
-de CONFIG/DATA/CACHE/STATE permaneceram idênticos, e a remoção preservou os
-dados. Isso valida o upgrade no ambiente de container; desktop e áudio reais e
-Wayland nativo continuam pendentes. A evidência está em
+`/usr/bin/python3.14`. `eopkg check` e `jarvis --doctor` passaram antes e
+depois da atualização; a release 3 também enumerou fontes ALSA pelo launcher
+e passou integridade no container. Isso não valida captura por microfone físico. Os dados sentinela de
+CONFIG/DATA/CACHE/STATE permaneceram idênticos, e a remoção preservou os dados.
+Isso valida o upgrade no ambiente de container; desktop e áudio reais e Wayland
+nativo continuam pendentes. A evidência está em
 `docs/notes/linux-matrix.json` e nos logs/artefatos locais indicados nela.
 `networking: true` permite que o build atual baixe dependências npm/Python e o
 agente; a instalação do pacote não baixa dependências da aplicação.

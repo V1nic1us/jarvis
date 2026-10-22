@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T05:58:16Z",
+  "verified_at_utc": "2026-10-22T06:22:31Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5922,6 +5922,29 @@
       ],
       "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
       "notes": "Built native Solus 4.9 x86_64 eopkg releases 1, 2 and 3 with solbuild. Release 3 removed the incompatible msgpackr musl addon from the glibc package; the ABI report no longer reports Missing library: libc.so (it still emits a non-fatal diagnostic for the external /usr/bin/python3.14 symlink). The disposable-container release 2→3 upgrade passed eopkg integrity, jarvis --doctor, XDG CONFIG/DATA/CACHE/STATE sentinel preservation and removal. Validation ran headless; graphical desktop behavior is tracked separately."
+    },
+    {
+      "target": "solus",
+      "distro": "solus",
+      "version": "4.9",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "headless container",
+      "session": "ALSA device enumeration",
+      "package": "eopkg release 3",
+      "capability": "native_package_audio_device_enumeration",
+      "status": "passed",
+      "command": "eopkg -y up; eopkg -y install <release3.eopkg>; AUDIO_BACKEND=alsa jarvis --list-mics; eopkg check jarvis-assistant; eopkg -y remove jarvis-assistant",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/solus-release3-alsa-device-list-2026-10-22.log",
+          "sha256": "5fa912331df7e6e9d9fefe34cbe05c5a78c55e69ba7dc8c797140b301ba31c37",
+          "size_bytes": 1071447
+        }
+      ],
+      "source_commit": "f33009cb65a6b9c08435ac605f509b7f8323208b",
+      "notes": "Release 3 installed in an updated, privileged Solus container. The packaged launcher completed ALSA enumeration and listed default, null and sysdefault:CARD=sofhdadsp; eopkg integrity and removal passed. This is device enumeration only; it does not establish that a physical microphone captured audio."
     }
   ],
   "pending_gates": [

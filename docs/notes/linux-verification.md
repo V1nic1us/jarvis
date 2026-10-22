@@ -957,3 +957,12 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   `eopkg check`, `jarvis --doctor`, preservação byte a byte dos sentinelas
   XDG CONFIG/DATA/CACHE/STATE e remoção do pacote passaram. Artefato e logs têm
   hashes registrados na linha Solus de `docs/notes/linux-matrix.json`.
+
+
+### Solus: enumeração ALSA pelo pacote instalado — 2026-10-22
+
+- Em container Solus atualizado, a release 3 foi instalada e o launcher rodou
+  `AUDIO_BACKEND=alsa jarvis --list-mics`. A enumeração listou `default`,
+  `null` e `sysdefault:CARD=sofhdadsp`; `eopkg check` e remoção passaram.
+- O log foi registrado na matriz. O container era headless: isso valida o
+  caminho de enumeração do pacote, não captura de um microfone físico.
