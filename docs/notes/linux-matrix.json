@@ -4290,6 +4290,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863404",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918449/job/119586586828",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
       "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
@@ -4312,6 +4318,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211308/job/119540863678",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918449/job/119586587685",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
         }
       ],
@@ -4559,6 +4571,32 @@
       ],
       "source_commit": "b029ac6",
       "notes": "Both installed MCP launchers completed stdio initialization and exposed their expected tools. No tools were invoked, so no user windows/clipboard were read and no local Ollama request was sent. This does not validate tool execution, real AT-SPI/desktop access, live OpenCode, or other distros."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": null,
+      "session": "temporary Python venv",
+      "package": "voice/requirements.txt",
+      "capability": "faster_whisper_pyav_pinned_audio_decode",
+      "status": "passed",
+      "command": "install voice/requirements.txt in temporary venv; PYTHONPATH=voice python -m pytest -q voice/tests/test_stt.py",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-stt-audio-decode-2026-10-22.log",
+          "sha256": "54f2aaa58a6ec0bbf4066f39e167ebe4641712e9baac061a4ea29625b36d0ab4",
+          "passed": 5,
+          "skipped": 0,
+          "source_commit": "b80da7d36f9eb190806462f494de521f2213c158",
+          "verified_at_utc": "2026-10-22T01:40:01Z"
+        }
+      ],
+      "source_commit": "b80da7d36f9eb190806462f494de521f2213c158",
+      "notes": "The decoder regression test passed with the repository constraint av>=11,<19 (PyAV 18.1.0), confirming compatibility for the supported faster-whisper runtime. A standalone unconstrained faster-whisper install resolved PyAV 19 and failed; production installs use voice/requirements.txt."
     }
   ],
   "pending_gates": [
