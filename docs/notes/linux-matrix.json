@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T01:25:19Z",
+  "verified_at_utc": "2026-10-22T01:27:03Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -4528,6 +4528,28 @@
       ],
       "source_commit": "44986f0",
       "notes": "All Python MCP server tests (13 + 17) and Linux agent action/plugin/SafetyGate Node tests (95) passed. This is unit evidence only; installed MCP/agent behavior, live OpenCode, real desktop, portal consent and AT-SPI remain unverified."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "KDE Plasma",
+      "session": "Wayland",
+      "package": "full source install in temporary prefix with spaces",
+      "capability": "installed_mcp_stdio_initialization_and_tool_discovery",
+      "status": "passed",
+      "command": "MCP ClientSession initialize + tools/list through installed jarvis --mcp win_context and jarvis --mcp delegate_local",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-installed-mcp-discovery-2026-10-22.log",
+          "sha256": "82b4396cc49bf9525f13be59fbbdebd56e4ddf4518d992b7f09863297b31ddf8"
+        }
+      ],
+      "source_commit": "b029ac6",
+      "notes": "Both installed MCP launchers completed stdio initialization and exposed their expected tools. No tools were invoked, so no user windows/clipboard were read and no local Ollama request was sent. This does not validate tool execution, real AT-SPI/desktop access, live OpenCode, or other distros."
     }
   ],
   "pending_gates": [
