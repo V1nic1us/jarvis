@@ -139,6 +139,11 @@ https://huggingface.co/rhasspy/piper-voices/tree/main/pt/pt_BR/faber/medium
   permanece registrada separadamente.
 - O venv temporário está em `/tmp/jarvis-linux-optional-tests`; não altera as
   dependências do sistema nem do projeto.
+- A bateria Linux focada na venv do projeto (`test_linux_install`,
+  `test_linux_packages`, contexto, entrada, tela, plataformas, áudio, captura,
+  diagnóstico, portal e STT) passou com **177 testes** em 6,55 s. Ela inclui os
+  84 testes de instalação/pacote acima. `sh -n` passou em todos os scripts
+  `scripts/*.sh`.
 
 A tarefa de áudio tem implementação e testes reais de captura/STT/TTS; a
 validação integral entre backends/ambientes permanece em andamento. A tarefa
