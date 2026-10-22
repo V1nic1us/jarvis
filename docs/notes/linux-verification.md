@@ -874,3 +874,13 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
 
 - `test_portal.py`: 12 testes passaram no harness de D-Bus privado. `test_linux_input.py`: 16 testes passaram para o backend Wayland e revogação simulada. `test_linux_screen.py`: 8 testes passaram para dispatch de captura e validação de URI/PNG.
 - O serviço D-Bus da sessão KDE Wayland expõe Screenshot e RemoteDesktop; a introspecção confirmou os métodos de sessão e entrada. Nenhuma solicitação real de captura ou controle foi enviada. Consentimento, negação e revogação em portal real seguem sem validação.
+
+### MCP empacotado no Arch — 2026-10-22
+
+- O runtime extraído do pacote Arch atual inicializou por stdio os servidores
+  `win_context` e `delegate_local` e listou as 9 ferramentas esperadas. Evidência
+  e script: `.superpowers/sdd/2026-10-14-jarvis-linux/arch-package-mcp-stdio-smoke-2026-10-22.{log,py}`.
+- Nenhuma ferramenta foi chamada. Clipboard, processos, acessibilidade, contexto
+  de desktop e acesso ao modelo continuam sem validação neste teste. A matriz
+  passa a registrar **97/99** verificações; as duas não verificadas continuam
+  sendo Gentoo AArch64 e Guix AArch64, cujos builds seguem pausados a pedido do usuário.

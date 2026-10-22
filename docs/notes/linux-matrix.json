@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at_utc": "2026-10-22T03:30:06Z",
+  "verified_at_utc": "2026-10-22T03:33:02Z",
   "scope": "Evidence for individual checks; not a declaration of universal Linux support.",
   "limitations": [
     "Isolated Xvfb/Weston checks do not certify a real desktop session.",
@@ -5267,6 +5267,42 @@
       ],
       "source_commit": "2a55375",
       "notes": "Sixteen unit tests passed for Wayland key events, authorization/session reuse, revocation behavior, stream bounds and safe action dispatch. These use a mock portal and do not prove live consent or desktop events."
+    },
+    {
+      "target": "arch",
+      "distro": "arch",
+      "version": "rolling",
+      "arch": "x86_64",
+      "libc": "glibc",
+      "desktop": "GTK package runtime",
+      "session": "MCP stdio initialize/list_tools",
+      "package": "native pkg.tar.zst artifact 0.1.0-1",
+      "capability": "native_package_mcp_stdio_smoke",
+      "status": "passed",
+      "command": "packaged Python runtime executes MCP stdio client against extracted package launcher; initialize and list_tools for win_context and delegate_local",
+      "evidence": [
+        {
+          "kind": "local_validation_log",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-mcp-stdio-smoke-2026-10-22.log",
+          "sha256": "99d4cd927683a4cdff437fc54aa34d60f1b951206c5ca8f3a07877c4c5334394",
+          "size_bytes": 246,
+          "tools_listed": 9,
+          "protocol_version": "2025-11-25"
+        },
+        {
+          "kind": "test_script",
+          "path": ".superpowers/sdd/2026-10-14-jarvis-linux/arch-package-mcp-stdio-smoke-2026-10-22.py",
+          "sha256": "ebf2d30a482cfa3011865943de2b815362d8e2684ad20de9bd4f2ab88da04703"
+        },
+        {
+          "kind": "local_package_artifact",
+          "path": "/tmp/jarvis-arch-package-smoke.pd3zI5/usr/lib/jarvis",
+          "source_commit": "56324ac",
+          "package_sha256": "847a060134565455c6a69496c8242e099f66f5e4ba8f223e78bc865a02367dbd"
+        }
+      ],
+      "source_commit": "56324ac",
+      "notes": "The extracted Arch package runtime completed MCP initialize and list_tools over stdio for win_context (8 tools) and delegate_local (1 tool). No tools were invoked, so this does not validate live clipboard, process, accessibility, desktop, or model access."
     }
   ],
   "pending_gates": [
