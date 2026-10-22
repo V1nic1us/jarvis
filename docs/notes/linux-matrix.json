@@ -1309,6 +1309,12 @@
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558846297",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
           "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846117",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
+          "conclusion": "success"
         }
       ],
       "notes": "Latest native package CI passed x86_64 RPM build, clean installation, inspection, upgrade/data preservation and removal. Latest native build/install/inspection/removal passed in CI run 39683082677. Latest build/install/inspection/removal passed in run 39683082677. Latest native CI build/install/inspect/remove passed in 39692211142 attempt 2.",
@@ -1361,6 +1367,12 @@
           "kind": "ci_job",
           "url": "https://github.com/V1nic1us/jarvis/actions/runs/39692211142/job/119558846297",
           "source_commit": "4ffffbc12d7d5d68b79f99d16ecdb14e576dec1b",
+          "conclusion": "success"
+        },
+        {
+          "kind": "ci_job",
+          "url": "https://github.com/V1nic1us/jarvis/actions/runs/39705918511/job/119587846117",
+          "source_commit": "631404ec409696cbe780a462c3dd590bbfd13347",
           "conclusion": "success"
         }
       ],
