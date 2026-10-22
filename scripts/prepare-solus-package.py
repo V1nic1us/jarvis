@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 from pathlib import Path
+import re
 
 
 def sha256(path: Path) -> str:
@@ -13,7 +14,7 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def render(template: Path, archive: Path, output: Path) -> None:
+def render(template: Path, archive: Path, output: Path, release: int | None = None) -> None:
     if not archive.is_file():
         raise ValueError('Solus source archive does not exist')
     content = template.read_text()
@@ -25,6 +26,12 @@ def render(template: Path, archive: Path, output: Path) -> None:
         if content.count(placeholder) != 1:
             raise ValueError(f'expected exactly one {placeholder} placeholder')
         content = content.replace(placeholder, value)
+    if release is not None:
+        if release < 1:
+            raise ValueError('Solus package release must be a positive integer')
+        content, count = re.subn(r'(?m)^release\s*:\s*\d+\s*$', f'release    : {release}', content)
+        if count != 1:
+            raise ValueError(f'expected exactly one Solus release field, found {count}')
     if '@JARVIS_SOURCE_' in content:
         raise ValueError('unresolved Solus source placeholder')
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -36,8 +43,9 @@ def main() -> None:
     parser.add_argument('template', type=Path)
     parser.add_argument('archive', type=Path)
     parser.add_argument('output', type=Path)
+    parser.add_argument('--release', type=int)
     args = parser.parse_args()
-    render(args.template, args.archive, args.output)
+    render(args.template, args.archive, args.output, args.release)
 
 
 if __name__ == '__main__':

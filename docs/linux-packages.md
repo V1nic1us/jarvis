@@ -555,6 +555,20 @@ Depois de gerar o `.eopkg`, rode o ciclo em um container Solus x86_64:
 scripts/test-native-package.sh solus "$PWD/dist/solus/jarvis-assistant-0.1.0-1-1-x86_64.eopkg"
 ```
 
+O builder aceita `--release` somente para Solus, mantendo `1` como padrão. Para
+preparar duas revisões do mesmo checkout e exercitar um upgrade local:
+
+```sh
+scripts/build-package.sh --target solus --arch x86_64 --release 1 --output "$PWD/dist/solus-r1"
+scripts/build-package.sh --target solus --arch x86_64 --release 2 --output "$PWD/dist/solus-r2"
+```
+
+Instale a revisão 1 com `eopkg`, crie dados de teste em `XDG_DATA_HOME`, instale
+o `.eopkg` da revisão 2, confirme `jarvis --doctor`, `eopkg check
+jarvis-assistant` e que o sentinel de dados continua igual; depois remova o
+pacote. Esse upgrade ainda não foi executado e não conta como verificação
+aprovada na matriz.
+
 ### GNU Guix: pacote nativo local
 
 `packaging/guix/jarvis.scm` define pacotes Guix para x86_64 e aarch64. O driver

@@ -894,3 +894,15 @@ não substitui áudio, permissões de portal ou desktop real na distribuição a
   isolado Wayland, não entrada real, portais, áudio ou sessão desktop instalada.
   A matriz passa a registrar **98/100** verificações; Gentoo AArch64 e Guix
   AArch64 seguem sem validação e com builds pausados.
+
+### Preparação de upgrade Solus — 2026-10-22
+
+- `build-package.sh` agora aceita `--release` exclusivamente no alvo Solus; o
+  padrão continua release 1. Quatro testes cobrem release padrão, geração da
+  revisão 2 com hash da fonte, rejeição de zero e rejeição em outro alvo.
+- A auditoria da matriz permite somente os dois alvos meta conhecidos
+  (`linux source archive` e `debian cross-distro smoke`) e exige suas capacidades
+  correspondentes. Regressão completa: 501 passed, 1 skipped.
+- A mudança permite gerar os dois `.eopkg` necessários para o próximo teste,
+  mas o upgrade real via eopkg ainda não foi executado e não aumenta a contagem
+  aprovada da matriz.

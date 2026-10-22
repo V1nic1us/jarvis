@@ -583,6 +583,10 @@ def test_linux_target_claims_match_recipe_files_and_lifecycle_evidence():
     import json
     catalog=json.loads((ROOT/'packaging/targets.json').read_text())
     matrix=json.loads((ROOT/'docs/notes/linux-matrix.json').read_text())
+    meta_targets={
+        'linux source archive': {'source_archive_integrity'},
+        'debian cross-distro smoke': {'arch_overlay_cross_distro_debian_wayland'},
+    }
     lifecycle=[r for r in matrix['results'] if r['capability']=='native_package_lifecycle']
     passed={(r['target'],r['arch']) for r in lifecycle if r['status']=='passed'}
     for target,item in catalog.items():
@@ -595,7 +599,8 @@ def test_linux_target_claims_match_recipe_files_and_lifecycle_evidence():
             else:
                 assert (target,arch) in passed,(target,arch)
     for result in matrix['results']:
-        assert result['target'] in catalog,result['target']
+        if result['target'] not in catalog:
+            assert result['capability'] in meta_targets.get(result['target'], set()),result
         if result['capability']=='native_package_lifecycle' and result['status']=='passed':
             assert result['arch'] in catalog[result['target']]['architectures'],result
             assert result['arch'] in catalog[result['target']]['validated_architectures'],result

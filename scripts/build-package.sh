@@ -5,15 +5,21 @@ task_root=$(CDPATH= cd -P "$(dirname "$0")/.." && pwd)
 task_target=
 task_arch=$(uname -m)
 task_output=$task_root/dist/native
+task_release=
 while [ "$#" -gt 0 ]; do
     case "$1" in
         --target) task_target=$2; shift 2 ;;
         --arch) task_arch=$2; shift 2 ;;
         --output) task_output=$2; shift 2 ;;
-        --help) echo 'Uso: build-package.sh --target ALVO --arch ARQUITETURA [--output DIR]'; exit 0 ;;
+        --release) task_release=$2; shift 2 ;;
+        --help) echo 'Uso: build-package.sh --target ALVO --arch ARQUITETURA [--output DIR] [--release REVISAO_SOLUS]'; exit 0 ;;
         *) echo "opcao desconhecida: $1" >&2; exit 2 ;;
     esac
 done
+if [ -n "$task_release" ]; then
+    [ "$task_target" = solus ] || { echo '--release so e valido para o alvo solus.' >&2; exit 2; }
+    case "$task_release" in ''|*[!0-9]*|0) echo '--release exige um inteiro positivo.' >&2; exit 2 ;; esac
+fi
 if [ "$task_arch" != "$(uname -m)" ]; then
     echo 'Build nativo exige arquitetura correspondente; use container/VM do alvo.' >&2
     exit 2
@@ -248,8 +254,13 @@ PY
         task_build=$(mktemp -d "$task_output/.solus-build-XXXXXX")
         task_source=$task_build/jarvis-0.1.0.tar.gz
         python3 "$task_root/scripts/source-archive.py" --output "$task_source"
-        python3 "$task_root/scripts/prepare-solus-package.py" \
-            "$task_root/packaging/solus/package.yml" "$task_source" "$task_build/package.yml"
+        if [ -n "$task_release" ]; then
+            python3 "$task_root/scripts/prepare-solus-package.py" \
+                "$task_root/packaging/solus/package.yml" "$task_source" "$task_build/package.yml" --release "$task_release"
+        else
+            python3 "$task_root/scripts/prepare-solus-package.py" \
+                "$task_root/packaging/solus/package.yml" "$task_source" "$task_build/package.yml"
+        fi
         (
             cd "$task_build"
             if [ "$(id -u)" -eq 0 ]; then
